@@ -2,6 +2,7 @@
    - Kiểu bàn phím theo ô nhập: inputmode="numeric" hoặc type="number" → phím số; inputmode="decimal" → phím số có dấu phẩy; type="tel" hoặc inputmode="tel" → phím số điện thoại;
      còn lại → bàn phím chữ (có trang số và ký hiệu). Ô type="date", checkbox... không hiện bàn phím.
    - enterkeyhint (search, go, next) đổi nhãn phím xuống dòng; mặc định "Xong". Nút Xong trên thanh công cụ đóng bàn phím.
+   - Bấm nút (button) khi bàn phím đang mở thì ô nhập giữ focus, bàn phím không hạ xuống trước lúc nút nhận lần bấm.
    - Phím gõ vào ô bằng setRangeText và bắn "input", nên các JS lắng nghe ô nhập vẫn chạy. Phím xoá giữ để lặp.
    - Đặt inputmode="none" lên ô để bàn phím hệ điều hành không hiện cùng lúc. Bàn phím gõ thật vẫn dùng được.
    - [data-arg-kb-static="num|decimal|tel|alpha"] vẽ bản tĩnh để minh hoạ. Bắn "arg:keyboard" ({ open, mode }) trên document. */
@@ -109,6 +110,8 @@
       setTimeout(function () { if (!eligible(document.activeElement)) close(); else if (document.activeElement !== cur) open(document.activeElement); }, 0);
     });
     kb.addEventListener('mousedown', function (e) { e.preventDefault(); });
+    /* Bấm một nút khi bàn phím đang mở không làm ô nhập mất focus (như iOS): nếu mất focus, bàn phím hạ xuống, hộp chứa nút tụt theo và lần bấm đầu bị nuốt. */
+    document.addEventListener('mousedown', function (e) { if (cur && e.target.closest && e.target.closest('button, [role="button"]') && !e.target.closest('input, textarea')) e.preventDefault(); });
     kb.addEventListener('pointerdown', function (e) {
       var k = e.target.closest('.arg-kb__key, .arg-kb__done'); if (!k) return;
       e.preventDefault();

@@ -12,3 +12,5 @@ Xác nhận hoặc nhập liệu ngắn cần chặn thao tác phía sau.
 | `[data-arg-close]` | Nút đóng |
 ## JS
 `modal.js`: Esc và bấm nền để đóng, giữ focus trong hộp thoại, trả focus về nút mở, khoá cuộn nền. `ARG.openLayer(el)` và `ARG.closeLayer(el)`. Bắn `arg:open` và `arg:close`.
+
+Mở lớp phủ bằng `ARG.openLayer` thì focus vào phần tử `[data-arg-autofocus]` nếu có (ví dụ ô nhập tên danh sách, bàn phím mô phỏng hiện luôn), không thì vào phần tử nhập đầu tiên. Nhấn xuống trong hộp rồi nhả ra ngoài hộp không đóng hộp.

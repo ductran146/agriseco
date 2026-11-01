@@ -15,3 +15,7 @@ Vùng `[data-arg-watch]` chứa các khung `[data-arg-pane]` (xem Listbar), kh�
 - Mã thêm mới nối cuối danh sách và giữ kiểu sắp xếp đang chọn.
 ## Phụ thuộc
 Quote (`__fav`), Listbar, Offcanvas, Modal, Badge, Button, Input.
+
+## Tạo danh sách mới
+`#watch-new` (Offcanvas bottom) có ô `[data-arg-newlist-input]` (tự focus, bàn phím mô phỏng hiện lên) và nút `[data-arg-newlist-ok]` (tắt cho đến khi nhập tên). Bấm Xác nhận: thêm option vào select, dựng khung `[data-arg-pane]` từ `<template data-arg-pane-tpl>`, chọn danh sách mới (đang trống nên hiện khối gợi ý), đóng sheet và hiện toast thành công. Mở từ mục "Thêm danh sách yêu thích" của menu ba chấm.
+Dòng trong danh sách yêu thích có nút kéo đổi thứ tự (xem Reorder).

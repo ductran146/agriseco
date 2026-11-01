@@ -8,17 +8,17 @@
     {
       "ok": true,
       "name": "Class trong ví dụ đều có CSS",
-      "detail": "625 class dùng, thiếu: không"
+      "detail": "642 class dùng, thiếu: không"
     },
     {
       "ok": true,
       "name": "Icon Solar được dùng đều có trong sprite",
-      "detail": "95 icon dùng / 95 trong sprite, thiếu: không"
+      "detail": "96 icon dùng / 96 trong sprite, thiếu: không"
     },
     {
       "ok": true,
       "name": "Mỗi component có ví dụ HTML và tài liệu",
-      "detail": "86 component, thiếu tài liệu: không"
+      "detail": "89 component, thiếu tài liệu: không"
     },
     {
       "ok": true,

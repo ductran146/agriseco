@@ -1,5 +1,6 @@
 """Markup cho các tab Tin tức, Sự kiện, Tài chính, Doanh nghiệp, Kỹ thuật của trang thông tin mã, dựng từ component ARG:
 title (thu gọn khối), news, events, accordion, kv, statgrid, tabs, fchart, donut, dtable, badge, gauge. Dữ liệu mẫu trong company.py."""
+import ring as RING
 import detail_parts as DP
 from company import Company, verdict, vnf, pct, dong, WEEK, RANGE
 
@@ -92,15 +93,18 @@ def fchart(periods, s1, fmt1, legend, s2=None, fmt2=None, line=None, fmt_line=No
     lo, hi = min(0, min(vals)), max(0, max(vals)); span = (hi - lo) or 1
     y = lambda v: 6 + (hi - v) / span * 90
     rects = ''
+    def bar(cls, x, v, bw):
+        # cột HTML (không co giãn theo khung) để bo góc đúng bán kính; cột âm bo phía dưới
+        return f'<span class="arg-fchart__bar {cls}{" arg-fchart__bar--neg" if v < 0 else ""}" style="left:{x:.2f}%;top:{min(y(v), y(0)):.2f}%;width:{bw:.2f}%;height:{max(.6, abs(y(v) - y(0))):.2f}%"></span>'
     for i, v in enumerate(s1):
         if s2 is None:
             bw = w * .42; x = i * w + (w - bw) / 2
             cls = kinds[i] if kinds else ('pos' if v >= 0 else 'neg') if pn else 's1'
-            rects += f'<rect class="{cls}" x="{x:.2f}" y="{min(y(v), y(0)):.2f}" width="{bw:.2f}" height="{max(.6, abs(y(v) - y(0))):.2f}"/>'
+            rects += bar(cls, x, v, bw)
         else:
             bw = w * .3
             for cls, vv, x in (('s1', v, i * w + w / 2 - bw - .5), ('s2', s2[i], i * w + w / 2 + .5)):
-                rects += f'<rect class="{cls}" x="{x:.2f}" y="{min(y(vv), y(0)):.2f}" width="{bw:.2f}" height="{max(.6, abs(y(vv) - y(0))):.2f}"/>'
+                rects += bar(cls, x, vv, bw)
     poly, dots = '', ''
     if line:
         pts = [(i, v) for i, v in enumerate(line) if v is not None]
@@ -109,7 +113,7 @@ def fchart(periods, s1, fmt1, legend, s2=None, fmt2=None, line=None, fmt_line=No
             ly = lambda v: 14 + (lhi - v) / ls * 72
             poly = '<polyline class="line" points="' + ' '.join(f'{(i + .5) * w:.2f},{ly(v):.2f}' for i, v in pts) + '"/>'
             dots = ''.join(f'<span class="arg-fchart__dot" style="left:{(i + .5) * w:.2f}%;top:{ly(v):.2f}%"></span>' for i, v in pts)
-    svg = (f'<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line class="base" x1="0" y1="{y(0):.2f}" x2="100" y2="{y(0):.2f}"/>{rects}{poly}</svg>')
+    svg = (f'<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line class="base" x1="0" y1="{y(0):.2f}" x2="100" y2="{y(0):.2f}"/>{poly}</svg>')
     cols = ''
     for i, per in enumerate(periods):
         cell = f'<span class="arg-fchart__period">{per}</span><b>{fmt1(s1[i])}</b>'
@@ -122,7 +126,7 @@ def fchart(periods, s1, fmt1, legend, s2=None, fmt2=None, line=None, fmt_line=No
     keys = {'k1': '<i class="arg-fchart__key"></i>', 'k2': '<i class="arg-fchart__key" style="--c:var(--arg-viz-2)"></i>', 'line': '<i class="arg-fchart__key arg-fchart__key--line"></i>',
             'pos': '<i class="arg-fchart__key" style="--c:var(--arg-trading-up-light-increase)"></i>', 'neg': '<i class="arg-fchart__key" style="--c:var(--arg-trading-down-light-increase)"></i>'}
     leg = ('<ul class="arg-fchart__legend">' + ''.join(f'<li>{keys[k]}{t}</li>' for t, k in legend) + '</ul>') if legend else ''
-    return (f'<div class="arg-fchart{" arg-fchart--bins" if bins else ""}" style="--n:{n}" role="img" aria-label="{label}"><div class="arg-fchart__plot">{svg}{dots}</div>'
+    return (f'<div class="arg-fchart{" arg-fchart--bins" if bins else ""}" style="--n:{n}" role="img" aria-label="{label}"><div class="arg-fchart__plot">{svg}{rects}{dots}</div>'
             f'<div class="arg-fchart__cols">{cols}</div>{leg}</div>')
 
 
@@ -162,9 +166,8 @@ VIZ = ['var(--arg-viz-1)', 'var(--arg-viz-2)', 'var(--arg-viz-3)', 'var(--arg-vi
 def donut(rows, label, side=False):
     """rows: [(tên, %, số CP hoặc chuỗi phụ)] theo thứ tự lớn đến nhỏ; side: biểu đồ bên trái, chú giải bên phải."""
     seg, off = '', 0
-    for k, (_, pc, _) in enumerate(rows):
-        dash = max(.1, pc - .6)
-        seg += f'<circle class="seg" style="--c:{VIZ[k]}" cx="21" cy="21" r="15.915" pathLength="100" stroke-dasharray="{dash:.2f} {100 - dash:.2f}" stroke-dashoffset="{-off:.2f}"/>'
+    for k, (nm, pc, _) in enumerate(rows):
+        seg += RING.seg(VIZ[k], off, pc, nm, vnf(pc, 1) + '%')
         off += pc
     top = rows[0]
     leg = ''.join(f'<li style="--c:{VIZ[k]}"><i class="arg-donut__key"></i><span class="arg-donut__name">{n}</span><span class="arg-donut__pct">{vnf(pc)}%</span>'

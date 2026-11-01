@@ -1,0 +1,11 @@
+/* ARG UI · reorder (nút kéo đổi thứ tự dòng trong danh sách) */
+.arg-handle { position: relative; z-index: 1; display: grid; place-items: center; width: 20px; height: 28px; padding: 0; border: 0; border-radius: var(--arg-radius-xs); background: transparent; color: var(--arg-ui-text-on-bright-text-read-only); cursor: grab; touch-action: none; -webkit-user-select: none; user-select: none; }
+.arg-handle .i { width: 20px; height: 20px; color: inherit; }
+.arg-handle:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: 1px; }
+.arg-handle:active { cursor: grabbing; }
+/* Dòng đang kéo: nổi lên trên các dòng khác, bám theo con trỏ */
+[data-arg-reorder] > li { position: relative; }
+[data-arg-reorder] > li.is-dragging { z-index: 5; background: var(--arg-ui-background-surface); border-radius: var(--arg-radius-sm); box-shadow: var(--arg-shadow-soft-shadow); cursor: grabbing; }
+[data-arg-reorder].is-sorting { -webkit-user-select: none; user-select: none; }
+[data-arg-reorder].is-sorting > li:not(.is-dragging) { transition: transform .15s ease; }
+@media (prefers-reduced-motion: reduce) { [data-arg-reorder].is-sorting > li:not(.is-dragging) { transition: none; } }

@@ -1,5 +1,6 @@
 """Markup màn Thị trường, dựng từ component ARG: appbar, tabs (--lg, --pill), chip-tab, donut, fchart, hbars, share, flow, bars, statgrid,
 quote (--rank, --board, --fav), listbar, suggest, fab, dtable, kv. Dữ liệu mẫu trong market.py, stocks.py, account_parts.py."""
+import ring as RING
 import detail_parts as DP
 import info_parts as IP
 import account_parts as AP
@@ -26,8 +27,8 @@ def breadth(ex):
     rows = [('Tăng', up, 'var(--arg-trading-up-light-increase)'), ('Giảm', down, 'var(--arg-trading-down-light-increase)'), ('Đứng', ref, 'var(--arg-trading-flat-flat)')]
     seg, off = '', 0
     for n, c, col in rows:
-        p = c / total * 100; dash = max(.1, p - .6)
-        seg += f'<circle class="seg" style="--c:{col}" cx="21" cy="21" r="15.915" pathLength="100" stroke-dasharray="{dash:.2f} {100 - dash:.2f}" stroke-dashoffset="{-off:.2f}"/>'
+        p = c / total * 100
+        seg += RING.seg(col, off, p, n, f'{c} mã')
         off += p
     leg = ''.join(f'<li style="--c:{col}"><i class="arg-donut__key"></i><span class="arg-donut__name">{n}</span><span class="arg-donut__pct">{c} mã</span>'
                   f'<span class="arg-donut__sub">{vn(c / total * 100, 1)}% số mã</span></li>' for n, c, col in rows)
@@ -104,7 +105,14 @@ def distribution(ex):
     return ch + ratio
 
 
-def rank_list(rows, metric):
+def qhead(kind, mid, right, sub='% so với TC'):
+    """Hàng tiêu đề cột của danh sách giá (Quote head): kind 'board' | 'fav' | 'rank'; mid = tiêu đề cột giữa; right = tiêu đề giá trị, dòng dưới là sub."""
+    left = {'rank': '<span aria-hidden="true">#</span><span>Mã</span>', 'fav': '<span></span><span>Mã</span>'}.get(kind, '<span>Mã</span>')
+    return (f'<div class="arg-quote-head arg-quote-head--{kind}" aria-hidden="true">{left}' + (f'<span class="arg-quote-head__mid">{mid}</span>' if mid else '')
+            + f'<span class="arg-quote-head__val"><b>{right}</b><span>{sub}</span></span>' + ('<span></span>' if kind == 'fav' else '') + '</div>')
+
+
+def rank_list(rows, metric, title='Giá (nghìn đ)'):
     """metric(r) -> (chữ giá trị bên phải, lớp màu hoặc None để dùng màu giá)."""
     out = ''
     for k, r in enumerate(rows, 1):
@@ -114,18 +122,18 @@ def rank_list(rows, metric):
         price = (f'<div class="arg-quote__price"><b>{val}</b>' if cls is None else f'<div class="arg-quote__price arg-quote__price--metric"><b class="{cls}">{val}</b>')
         out += (f'<li class="arg-quote arg-quote--{r.kind} arg-quote--rank{" arg-quote--link" if r.go else ""}"><span class="arg-quote__rank">{k}</span>{idt}'
                 f'{price}<span class="arg-badge arg-badge--{r.kind}">{sg(r.pct)}%</span></div></li>')
-    return f'<ul class="arg-quote-list arg-quote-list--plain">{out}</ul>'
+    return qhead('rank', '', title) + f'<ul class="arg-quote-list arg-quote-list--card">{out}</ul>'
 
 
 def top_lists(ex, n=5):
     rows = universe(ex)
-    pick = [('Khối lượng', sorted(rows, key=lambda r: -r.vol), lambda r: (f'{vn(r.vol, 1)} tr', '')),
-            ('Tăng giá', sorted([r for r in rows if r.pct > 0], key=lambda r: -r.pct), lambda r: (vn(r.price), None)),
-            ('Giảm giá', sorted([r for r in rows if r.pct < 0], key=lambda r: r.pct), lambda r: (vn(r.price), None)),
-            ('NN mua ròng', sorted([r for r in rows if r.fnet > 0], key=lambda r: -r.fnet), lambda r: (f'{sg(r.fnet)} tỷ', 'arg-up')),
-            ('NN bán ròng', sorted([r for r in rows if r.fnet < 0], key=lambda r: r.fnet), lambda r: (f'{sg(r.fnet)} tỷ', 'arg-down'))]
-    chips = ''.join(f'<button class="arg-chip-tab" role="tab" type="button" aria-selected="{"true" if i == 0 else "false"}">{t}</button>' for i, (t, _, _) in enumerate(pick))
-    panels = ''.join(f'<div class="arg-tabpanel" role="tabpanel"{"" if i == 0 else " hidden"}>{rank_list(rs[:n], m)}</div>' for i, (_, rs, m) in enumerate(pick))
+    pick = [('Khối lượng', sorted(rows, key=lambda r: -r.vol), lambda r: (f'{vn(r.vol, 1)} tr', ''), 'KL khớp (triệu CP)'),
+            ('Tăng giá', sorted([r for r in rows if r.pct > 0], key=lambda r: -r.pct), lambda r: (vn(r.price), None), 'Giá (nghìn đ)'),
+            ('Giảm giá', sorted([r for r in rows if r.pct < 0], key=lambda r: r.pct), lambda r: (vn(r.price), None), 'Giá (nghìn đ)'),
+            ('NN mua ròng', sorted([r for r in rows if r.fnet > 0], key=lambda r: -r.fnet), lambda r: (f'{sg(r.fnet)} tỷ', 'arg-up'), 'Mua ròng (tỷ đ)'),
+            ('NN bán ròng', sorted([r for r in rows if r.fnet < 0], key=lambda r: r.fnet), lambda r: (f'{sg(r.fnet)} tỷ', 'arg-down'), 'Bán ròng (tỷ đ)')]
+    chips = ''.join(f'<button class="arg-chip-tab" role="tab" type="button" aria-selected="{"true" if i == 0 else "false"}">{t}</button>' for i, (t, _, _, _) in enumerate(pick))
+    panels = ''.join(f'<div class="arg-tabpanel" role="tabpanel"{"" if i == 0 else " hidden"}>{rank_list(rs[:n], m, ttl)}</div>' for i, (_, rs, m, ttl) in enumerate(pick))
     return f'<div class="arg-chip-tabs arg-chip-tabs--sm" data-arg-tabs><div class="arg-chip-tabs__list" role="tablist" aria-label="Tiêu chí">{chips}</div>{panels}</div>'
 
 
@@ -209,8 +217,9 @@ def board_row(r, fav=False):
            else f'<div class="arg-quote__id"><b>{r.code}</b><span>{r.name}</span></div>')
     star = (f'<button class="arg-fav" type="button" aria-pressed="true" aria-label="Bỏ {r.code} khỏi danh mục theo dõi">'
              f'<span class="arg-fav__on">{I("star-fill")}</span><span class="arg-fav__off">{I("star")}</span></button>') if fav else ''
+    grip = (f'<button class="arg-handle" type="button" data-arg-handle aria-label="Đổi thứ tự {r.code}: nhấn giữ rồi kéo, hoặc dùng mũi tên lên xuống">{I("hamburger-menu")}</button>') if fav else ''
     return (f'<li class="arg-quote arg-quote--{k} arg-quote--board{" arg-quote--fav" if fav else ""}{" arg-quote--link" if r.go else ""}" data-code="{r.code}" data-pct="{r.pct}" data-price="{r.price}" data-vol="{r.vol}">'
-            f'{idt}{spark(k, "pb-" + r.code, flat=True)}<div class="arg-quote__price"><b>{vn(r.price)}</b><span class="arg-badge arg-badge--{k}">{sg(r.pct)}%</span></div>'
+            f'{grip}{idt}{spark(k, "pb-" + r.code, flat=True)}<div class="arg-quote__price"><b>{vn(r.price)}</b><span class="arg-badge arg-badge--{k}">{sg(r.pct)}%</span></div>'
             f'<span class="arg-quote__vol">{vn(r.vol, 1)} tr</span>{star}</li>')
 
 
@@ -218,11 +227,9 @@ def priceboard():
     opts = ''.join(f'<option value="{ex}">{n}</option>' for ex, n in EXCHANGES)
     bar = (f'<div class="arg-listbar" data-arg-listbar><div class="arg-listbar__main"><div class="arg-control arg-select"><select class="arg-select-native" data-arg-pane-select aria-label="Sàn giao dịch">{opts}</select>{I("caret-down")}</div></div>'
            f'<div class="arg-listbar__tools">{sort_tool()}</div></div>')
-    panes = ''.join(f'<div data-arg-pane="{ex}"{"" if i == 0 else " hidden"}><ul class="arg-quote-list arg-quote-list--plain" data-arg-sortable>'
+    panes = ''.join(f'<div data-arg-pane="{ex}"{"" if i == 0 else " hidden"}>{qhead("board", "Xu hướng", "Giá (nghìn đ)")}<ul class="arg-quote-list arg-quote-list--card" data-arg-sortable>'
                     f'{"".join(board_row(r) for r in sorted(universe(ex), key=lambda r: r.code))}</ul></div>' for i, (ex, _) in enumerate(EXCHANGES))
-    fab = (f'<div class="arg-fab-wrap"><button class="arg-fab" type="button" data-arg-fab data-arg-target=".arg-quote-list" data-arg-class="arg-quote-list--vol" aria-pressed="false" aria-label="Xem khối lượng thay cho biểu đồ">'
-           f'<span class="arg-fab__on">{I("arrows-out-simple")}</span><span class="arg-fab__off">{I("arrows-in-simple")}</span></button></div>')
-    return f'<div class="arg-page__block" data-arg-listbar-scope>{bar}{panes}{fab}</div>'
+    return f'<div class="arg-page__block" data-arg-listbar-scope>{bar}{panes}</div>'
 
 
 def plain_text(t):
@@ -234,11 +241,11 @@ def watch(lists):
     hose = universe('hose'); by = {r.code: r for r in hose}
     opts = ''.join(f'<option value="w{i}">{n}</option>' for i, (n, _) in enumerate(lists))
     menu = (f'<div class="arg-dropdown" data-arg-dropdown><button class="arg-listbar__tool" type="button" aria-haspopup="menu" aria-expanded="false" aria-label="Tuỳ chọn danh mục">{I("dots-three")}</button>'
-            f'<div class="arg-menu arg-menu--end" role="menu" hidden><button class="arg-menu__item" role="menuitem" type="button" data-arg-open="watch-add">{I("plus")}Thêm mã</button><div class="arg-menu__sep"></div>'
-            f'<button class="arg-menu__item arg-menu__item--danger" role="menuitem" type="button" data-arg-open="watch-clear">{I("trash")}Xoá hết mã</button></div></div>')
+            f'<div class="arg-menu arg-menu--end arg-droplist" role="menu" hidden><button class="arg-menu__item arg-droplist__item" role="menuitem" type="button" data-arg-open="watch-new">{I("plus")}Thêm danh sách yêu thích</button><div class="arg-menu__sep"></div>'
+            f'<button class="arg-menu__item arg-menu__item--danger arg-droplist__item" role="menuitem" type="button" data-arg-open="watch-clear">{I("trash")}Xoá hết mã</button></div></div>')
     bar = (f'<div class="arg-listbar" data-arg-listbar><div class="arg-listbar__main"><div class="arg-control arg-select"><select class="arg-select-native" data-arg-pane-select aria-label="Danh mục theo dõi">{opts}</select>{I("caret-down")}</div>{menu}</div>'
            f'<div class="arg-listbar__tools">{sort_tool()}<button class="arg-listbar__tool" type="button" data-arg-open="watch-add" aria-label="Thêm mã">{I("plus-circle")}</button></div></div>')
-    panes = ''.join(f'<div data-arg-pane="w{i}"{"" if i == 0 else " hidden"}><ul class="arg-quote-list arg-quote-list--plain" data-arg-sortable>{"".join(board_row(by[c], True) for c in codes)}</ul></div>' for i, (_, codes) in enumerate(lists))
+    panes = ''.join(f'<div data-arg-pane="w{i}"{"" if i == 0 else " hidden"}>{qhead("fav", "Xu hướng", "Giá (nghìn đ)")}<ul class="arg-quote-list arg-quote-list--card" data-arg-sortable data-arg-reorder>{"".join(board_row(by[c], True) for c in codes)}</ul></div>' for i, (_, codes) in enumerate(lists))
     cards = ''.join(f'<label class="arg-suggest__card arg-suggest__card--{by[c].kind}"><input type="checkbox" value="{c}"{" checked" if i < 2 else ""}><span class="arg-suggest__code">{c}</span>'
                     f'<span class="arg-suggest__tick">{I("check-circle-fill")}</span><span class="arg-suggest__name">{FULL[c]}</span>'
                     f'<span class="arg-suggest__price"><b>{vn(by[c].price)}</b><span class="arg-badge arg-badge--{by[c].kind}">{sg(by[c].pct)}%</span></span></label>' for i, c in enumerate(('VCB', 'HPG', 'CTG', 'BID')))
@@ -254,11 +261,16 @@ def watch(lists):
              f'<div class="arg-modal__header"><h4 class="arg-modal__title" id="watch-add-t">Thêm mã vào danh mục</h4><button class="arg-icon-btn" type="button" data-arg-close aria-label="Đóng">{I("x", "i--20")}</button></div>'
              f'<div class="arg-modal__body"><div class="arg-control">{I("magnifying-glass")}<input class="arg-input" type="search" enterkeyhint="search" placeholder="Tìm mã, tên công ty" aria-label="Tìm mã" data-arg-suggest-search></div>'
              f'<ul class="arg-suggest__results">{results}</ul><p class="arg-note" data-arg-suggest-none hidden>Không có mã phù hợp.</p></div></aside></div>')
+    ptpl = f'<template data-arg-pane-tpl>{qhead("fav", "Xu hướng", "Giá (nghìn đ)")}<ul class="arg-quote-list arg-quote-list--card" data-arg-sortable data-arg-reorder></ul></template>'
+    newsheet = (f'<div class="arg-offcanvas-wrap" id="watch-new" hidden data-arg-offcanvas><aside class="arg-offcanvas arg-offcanvas--bottom arg-offcanvas--auto" role="dialog" aria-modal="true" aria-labelledby="watch-new-t">'
+                f'<div class="arg-modal__header"><h4 class="arg-modal__title" id="watch-new-t">Tạo danh sách yêu thích mới</h4><button class="arg-icon-btn" type="button" data-arg-close aria-label="Đóng">{I("x", "i--20")}</button></div>'
+                f'<div class="arg-modal__body arg-newlist"><label class="arg-field"><span class="arg-label">Tên danh sách</span><div class="arg-control"><input class="arg-input" type="text" enterkeyhint="done" maxlength="30" placeholder="Nhập tên danh sách" aria-label="Tên danh sách" data-arg-newlist-input data-arg-autofocus></div></label>'
+                f'<button class="arg-btn arg-btn--primary arg-btn--xl arg-btn--block" type="button" data-arg-newlist-ok disabled>Xác nhận</button></div></aside></div>')
     clear = ('<div class="arg-overlay" id="watch-clear" hidden data-arg-modal><div class="arg-modal arg-modal--sm" role="alertdialog" aria-modal="true" aria-labelledby="watch-clear-t">'
              '<div class="arg-modal__header"><h4 class="arg-modal__title" id="watch-clear-t">Xoá hết mã khỏi danh mục?</h4></div>'
              '<div class="arg-modal__body"><span>Tất cả mã trong danh mục đang chọn sẽ bị bỏ. Bạn có thể thêm lại bất cứ lúc nào.</span></div>'
              '<div class="arg-modal__footer"><button class="arg-btn arg-btn--tertiary" type="button" data-arg-close>Giữ lại</button><button class="arg-btn arg-btn--sell" type="button" data-arg-watch-clear>Xoá hết</button></div></div></div>')
-    return f'<div class="arg-page__block arg-watch" data-arg-watch data-arg-listbar-scope>{bar}{panes}{suggest}{tpl}{sheet}{clear}</div>'
+    return f'<div class="arg-page__block arg-watch" data-arg-watch data-arg-listbar-scope>{bar}{panes}{suggest}{tpl}{ptpl}{sheet}{newsheet}{clear}</div>'
 
 
 SUBS = [  # tiểu khoản mẫu: (id, số tài khoản, loại, {mã: (khối lượng, giá vốn)}, tiền mặt, số danh mục người dùng tạo)
@@ -378,7 +390,7 @@ def indexes(index_rows):
 
 
 def screen(tabbar_html, watch_lists, index_rows):
-    tabs = [('Tổng quan', overview()), ('Bảng giá', priceboard()), ('Danh mục', portfolio()), ('Theo dõi', watch(watch_lists)),
+    tabs = [('Tổng quan', overview()), ('Bảng giá', priceboard()), ('Danh mục', portfolio()), ('Yêu thích', watch(watch_lists)),
             ('Top cổ phiếu', top_tab()), ('Chủ đề', themes()), ('Chỉ số', indexes(index_rows))]
     head = ''.join(f'<button class="arg-tab" role="tab" type="button" aria-selected="{"true" if i == 0 else "false"}">{t}</button>' for i, (t, _) in enumerate(tabs))
     panels = ''.join(f'<div class="arg-tabpanel" role="tabpanel"{"" if i == 0 else " hidden"}>{h}</div>' for i, (_, h) in enumerate(tabs))
@@ -386,7 +398,7 @@ def screen(tabbar_html, watch_lists, index_rows):
 <header class="arg-appbar arg-appbar--sticky"><h1 class="arg-appbar__title">Thị trường</h1><div class="arg-appbar__tools"><button class="arg-appbar__tool" type="button" data-arg-go="search" aria-label="Tìm kiếm">{I('magnifying-glass')}</button></div></header>
 <main class="arg-page__main">
   <div class="arg-page__tabbed" data-arg-tabs>
-    <div class="arg-page__block"><div class="arg-tabs arg-tabs--lg"><div class="arg-tablist" role="tablist" aria-label="Thị trường">{head}</div></div></div>
+    <div class="arg-page__block arg-page__block--sticky"><div class="arg-tabs arg-tabs--lg"><div class="arg-tablist" role="tablist" aria-label="Thị trường">{head}</div></div></div>
     {panels}
   </div>
 </main>

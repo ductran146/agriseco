@@ -4,6 +4,7 @@ Dữ liệu mẫu (không phải số thật), thời điểm 10:15 ngày 29/10/
 - Tiền = tiền có thể rút + lệnh mua chưa khớp + tiền ứng trước khả dụng + tiền đã ứng + khác; số dư cuối kỳ sao kê tiền tại công ty bằng tiền này.
 - Tổng tài sản = giá trị cổ phiếu + tiền; tài sản ròng = tổng tài sản - tổng dư nợ.
 - Lãi lỗ sao kê = chuỗi ngày sinh theo seed; lãi, lỗ, chênh lệch cộng đúng; phí và thuế bằng khối Phí và thuế của tab Tài sản."""
+import ring as RING
 import random
 from datetime import date, timedelta
 from detail_parts import vn
@@ -116,9 +117,9 @@ def donut(parts, label, uid):
     big = max(parts, key=lambda p: p[1])
     for i, (n, v) in enumerate(parts):
         p = v / tot * 100
-        segs += f'<circle class="seg" style="--c:var(--arg-viz-{i + 1})" cx="21" cy="21" r="15.915" pathLength="100" stroke-dasharray="{p:.2f} {100 - p:.2f}" stroke-dashoffset="{-off:.2f}"/>'
+        segs += RING.seg(f'var(--arg-viz-{i + 1})', off, p, n, f'{vn(p, 1)}%')
         leg += f'<li style="--c:var(--arg-viz-{i + 1})"><i class="arg-donut__key"></i><span class="arg-donut__name">{n}</span><span class="arg-donut__pct">{vn(p, 1)}%</span><span class="arg-donut__sub"{SEC}>{tr(v)}</span></li>'
-        off += p + 0.6
+        off += p
     return (f'<div class="arg-donut"><div class="arg-donut__chart" role="img" aria-label="{label}"><svg viewBox="0 0 42 42" aria-hidden="true"><circle class="bg" cx="21" cy="21" r="15.915" pathLength="100"/>{segs}</svg>'
             f'<div class="arg-donut__center"><b>{vn(big[1] / tot * 100, 1)}%</b><span>{big[0]}</span></div></div><ul class="arg-donut__legend">{leg}</ul></div>')
 

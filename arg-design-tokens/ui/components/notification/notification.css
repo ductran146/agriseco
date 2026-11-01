@@ -18,3 +18,8 @@
 .arg-noti__body { flex: 1; min-width: 0; display: grid; gap: 2px; }
 .arg-noti__title { color: var(--arg-ui-text-on-bright-text-title); font-weight: var(--arg-font-font-weight-medium); }
 .arg-noti__time { font-size: var(--arg-font-font-size-label-1); color: var(--arg-ui-text-on-bright-text-read-only); }
+/* Toast thành công: icon trắng (nền trắng, dấu tick màu nền toast) để rõ trên nền tối thay cho vòng xanh lá */
+.arg-toast--success .arg-toast__icon { background: var(--arg-ui-text-on-dim-text-title); color: var(--arg-action-noti-toast-fill); }
+/* Toast một dòng (--single): chỉ có tiêu đề, căn giữa theo chiều dọc, không xuống dòng */
+.arg-toast--single { align-items: center; }
+.arg-toast--single .arg-toast__title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

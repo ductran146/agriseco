@@ -20,7 +20,7 @@ MARKET = [
     ('.arg-tabs--lg', 'l', 'Tabs --lg: 7 mục cuộn ngang, đệm trên 0, sát thanh đầu.'),
     ('.arg-chip-tabs--sm', 'r', 'Chip tabs --sm: cao 32px, bo 12px; đổi góc nhìn thị trường.'),
     ('.arg-tabpanel .arg-tabs--pill', 'l', 'Tabs --pill: HOSE, HNX, UPCoM; giữ lựa chọn khi đổi góc nhìn.'),
-    ('.arg-donut', 'r', 'Donut: số mã tăng, giảm, đứng; giữa vòng là tổng số mã.'),
+    ('.arg-donut', 'r', 'Donut: số mã tăng, giảm, đứng; giữa vòng là tổng số mã. Rê chuột hoặc nhấn giữ 250ms một cung: cung phóng to 7%, cung khác mờ, giữa vòng hiện số liệu của cung.'),
     TAB,
 ]
 
@@ -97,7 +97,7 @@ ASSET = [
     ('.arg-assetcard', 'l', 'Assetcard: tổng tài sản Header 3; nút mắt ẩn mọi số có data-arg-secret trong tab.'),
     ('.arg-metric-row', 'r', 'Metric: 4 thẻ 2 cột; lãi xanh, lỗ đỏ theo token giao dịch.'),
     ('.arg-debtcard', 'l', 'Debtcard: nền, viền màu lỗi 8% và 24%; nút Trả nợ Button primary xl.'),
-    ('.arg-donut', 'r', 'Donut: cổ phiếu và tiền; phần lớn nhất giữa vòng, màu --arg-viz.'),
+    ('.arg-donut', 'r', 'Donut: cổ phiếu và tiền; phần lớn nhất giữa vòng, màu --arg-viz. Rê chuột hoặc nhấn giữ 250ms một cung: cung phóng to 7%, cung khác mờ, giữa vòng hiện số liệu của cung.'),
     ('.arg-breakdown', 'l', 'Breakdown: dòng tổng, thanh 8px chia đoạn, chấm màu; dòng có mũi tên mở thành phần con (Collapse).'),
     ('.arg-asset-actions', 'r', 'Rút tiền (Button outline xl) và Nộp tiền (primary xl) chia đôi hàng.'),
     ('.arg-kv--lines', 'l', 'Kv --lines: dư nợ margin, hàng 44px; Tổng nợ trong ngày màu giảm.'),
@@ -119,11 +119,19 @@ MODIFY = [
     ('[data-om-submit]', 'l', 'Button --primary --xl: khoá cho đến khi giá hoặc khối lượng khác lệnh gốc. Bấm mở hộp xác nhận Sửa lệnh (giá, KL, loại lệnh, giá trị ước tính), Xác nhận sửa thì báo thành công.'),
 ]
 
+MORE = [
+    ('.arg-empty__art', 'l', 'Empty state: hình thư mục trống rộng 200px (SVG do chủ dự án cung cấp, không thuộc bộ icon Solar), căn giữa màn.'),
+    ('.arg-empty__title', 'r', 'Tiêu đề Title 2 đậm và đoạn giải thích Body 4 màu phụ, tối đa 300px: nói rõ mục chưa có trong bản demo lần này.'),
+    ('.arg-empty .arg-btn', 'l', 'Button --primary --xl: Về trang chủ.'),
+    TAB,
+]
+
 
 def specs_for(sid):
     """Danh sách đặc tả của màn hình có id sid."""
     if sid == 'home': return HOME
     if sid == 'market': return MARKET
+    if sid == 'more': return MORE
     if sid == 'orderbook': return ORDERBOOK
     if sid == 'search': return SEARCH
     if sid == 'asset': return ASSET

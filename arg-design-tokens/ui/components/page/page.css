@@ -87,3 +87,14 @@
 .arg-screen--sections:has(> .arg-tabbar) .arg-page__main > :last-child:not(.arg-page__tabbed), .arg-screen--sections:has(> .arg-tabbar) .arg-page__cols:last-child > .arg-page__block,
 .arg-screen--sections:has(> .arg-tabbar) .arg-page__main > .arg-page__tabbed:last-child > [role="tabpanel"] > .arg-page__block:last-child { padding-bottom: var(--arg-space-5x); }
 .arg-screen:not(.arg-screen--sections):not(.arg-screen--plain):has(> .arg-tabbar) > .arg-page__main { padding-bottom: var(--arg-space-5x); }
+/* Khối tab dính dưới thanh đầu (ví dụ dải tab của màn Thị trường). Để thanh đầu và dải tab là MỘT lớp nền mờ liền mạch (nền mờ 85% + làm nhoè như thanh đầu thường),
+   khối tab kéo lên phủ cả vùng thanh đầu (margin âm, đệm trên bù lại) và mang nền mờ chung; thanh đầu trong suốt, nằm trên khối tab. */
+.arg-screen--sections:has(.arg-page__block--sticky) > .arg-appbar--sticky { background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.arg-screen--sections .arg-page__main > .arg-page__tabbed > .arg-page__block--sticky:first-child, .arg-screen--sections .arg-page__main > .arg-page__block--sticky { --bar: calc(var(--arg-space-14x) + var(--arg-safe-top, 0px)); position: sticky; top: 0; z-index: 9; margin-top: calc(var(--bar) * -1); padding-top: var(--bar);
+  background: color-mix(in srgb, var(--arg-ui-background-surface) 85%, transparent); -webkit-backdrop-filter: blur(20px) saturate(1.4); backdrop-filter: blur(20px) saturate(1.4); }
+/* Màn chia mục: nội dung ngắn thì khối cuối (nền trắng) kéo dài phủ hết chiều cao màn hình, không để lộ nền xám phía dưới. Khung main, khối tab và tabpanel đang hiện xếp theo cột, phần tử cuối của mỗi cấp giãn ra. */
+.arg-screen--sections .arg-page__main { display: flex; flex-direction: column; }
+.arg-screen--sections .arg-page__main > :last-child { flex: 1 0 auto; }
+.arg-screen--sections .arg-page__tabbed { display: flex; flex-direction: column; }
+.arg-screen--sections .arg-page__tabbed > [role="tabpanel"]:not([hidden]) { display: flex; flex-direction: column; flex: 1 0 auto; }
+.arg-screen--sections .arg-page__tabbed > [role="tabpanel"] > :last-child { flex: 1 0 auto; }

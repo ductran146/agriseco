@@ -1,0 +1,6 @@
+/* ARG UI · emptystate (trạng thái trống: hình minh hoạ, tiêu đề, giải thích, nút hành động) */
+.arg-empty { display: grid; justify-items: center; align-content: center; gap: var(--arg-space-3x); min-height: 62vh; padding: var(--arg-space-6x) var(--arg-space-4x); text-align: center; }
+.arg-empty__art { display: block; width: 200px; height: auto; margin: calc(var(--arg-space-4x) * -1) 0 calc(var(--arg-space-6x) * -1); }
+.arg-empty__title { margin: 0; font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-title-2)/var(--arg-font-line-height-title-2) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-empty__text { max-width: 300px; margin: 0; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-empty .arg-btn { margin-top: var(--arg-space-3x); min-width: 200px; }

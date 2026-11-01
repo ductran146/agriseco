@@ -1,7 +1,7 @@
 /* ARG UI modal + offcanvas (shared layer handling).
    Open:  [data-arg-open="layerId"]   Layer: .arg-overlay[data-arg-modal] or .arg-offcanvas-wrap[data-arg-offcanvas]
    Close: [data-arg-close], Esc, or a click on the backdrop. Focus is trapped inside and returned to the opener.
-   API: ARG.openLayer(el), ARG.closeLayer(el). Fires "arg:open" / "arg:close". */
+   API: ARG.openLayer(el), ARG.closeLayer(el). Khi mở, focus vào phần tử [data-arg-autofocus] (nếu có), không thì phần tử nhập đầu tiên. Fires "arg:open" / "arg:close". */
 (function () {
   'use strict';
   var lastOpener = null;
@@ -12,7 +12,7 @@
     el.hidden = false;
     document.documentElement.style.overflow = 'hidden';
     requestAnimationFrame(function () { el.classList.add('is-open'); });
-    var first = ARG.$('input, select, textarea, button:not([data-arg-close]), [data-arg-close]', el);
+    var first = ARG.$('[data-arg-autofocus]', el) || ARG.$('input, select, textarea, button:not([data-arg-close]), [data-arg-close]', el);
     (first || el).focus();
     el.dispatchEvent(new CustomEvent('arg:open', { bubbles: true }));
   };
@@ -28,13 +28,16 @@
     else done();
   };
 
+  /* Nhấn xuống trong hộp rồi nhả ra ngoài (ví dụ bàn phím mô phỏng đẩy hộp lên giữa lúc bấm) không được tính là bấm nền để đóng hộp. */
+  var downIn = false;
+  document.addEventListener('pointerdown', function (e) { downIn = !!e.target.closest('.arg-modal, .arg-offcanvas'); }, true);
   document.addEventListener('click', function (e) {
     var op = e.target.closest('[data-arg-open]');
     if (op) { ARG.openLayer(document.getElementById(op.getAttribute('data-arg-open')), op); return; }
     var layer = e.target.closest(SEL);
     if (!layer) return;
     var inside = e.target.closest('.arg-modal, .arg-offcanvas');
-    if (e.target.closest('[data-arg-close]') || !inside) ARG.closeLayer(layer);
+    if (e.target.closest('[data-arg-close]') || (!inside && !downIn)) ARG.closeLayer(layer);
   });
   document.addEventListener('keydown', function (e) {
     var layer = ARG.$$(SEL).filter(function (l) { return !l.hidden; })[0];

@@ -53,6 +53,10 @@
       "title": "Dropdowns"
     },
     {
+      "id": "droplist",
+      "title": "Droplist"
+    },
+    {
       "id": "grid",
       "title": "Grid"
     },
@@ -83,6 +87,10 @@
     {
       "id": "quote",
       "title": "Quote list"
+    },
+    {
+      "id": "reorder",
+      "title": "Reorder"
     },
     {
       "id": "holding",
@@ -329,6 +337,10 @@
       "title": "Placeholders"
     },
     {
+      "id": "emptystate",
+      "title": "Empty state"
+    },
+    {
       "id": "progress",
       "title": "Progress"
     },
@@ -358,6 +370,7 @@
     "components/card/card.css",
     "components/carousel/carousel.css",
     "components/dropdown/dropdown.css",
+    "components/droplist/droplist.css",
     "components/grid/grid.css",
     "components/image/image.css",
     "components/tabs/tabs.css",
@@ -366,6 +379,7 @@
     "components/trend/trend.css",
     "components/index/index.css",
     "components/quote/quote.css",
+    "components/reorder/reorder.css",
     "components/holding/holding.css",
     "components/theme/theme.css",
     "components/hero/hero.css",
@@ -431,6 +445,7 @@
     "components/tabbar/tabbar.css",
     "components/fab/fab.css",
     "components/actionbar/actionbar.css",
+    "components/emptystate/emptystate.css",
     "components/page/page.css",
     "components/keyboard/keyboard.css"
   ]

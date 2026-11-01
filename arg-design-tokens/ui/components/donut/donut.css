@@ -3,9 +3,12 @@
 .arg-donut__chart { position: relative; width: 168px; height: 168px; }
 .arg-donut__chart > svg { display: block; width: 100%; height: 100%; transform: rotate(-90deg); }
 .arg-donut__chart circle { fill: none; stroke-width: 6; }
+.arg-donut__chart .bg { display: none; } /* không dùng đường nền: các cung nối thành vòng, khe để lộ nền trang */
 .arg-donut__chart .bg { stroke: var(--arg-ui-background-lv-3); }
-.arg-donut__chart .seg { stroke: var(--c); }
-.arg-donut__center { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; text-align: center; padding: var(--arg-space-6x); }
+/* Cung là hình quạt rỗng bo góc (path); trường hợp một cung 100% là vòng tròn (circle) */
+.arg-donut__chart path.seg { fill: var(--c); stroke: var(--c); stroke-width: 1.8; stroke-linejoin: round; }
+.arg-donut__chart circle.seg { stroke: var(--c); }
+.arg-donut__center { pointer-events: none; position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; text-align: center; padding: var(--arg-space-6x); }
 .arg-donut__center b { font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-title-2)/var(--arg-font-line-height-title-2) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); font-variant-numeric: tabular-nums; }
 .arg-donut__center span { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
 .arg-donut__legend { display: grid; gap: var(--arg-space-3x); width: 100%; margin: 0; padding: 0; list-style: none; }
@@ -20,3 +23,9 @@
 .arg-donut--side .arg-donut__center b { font-size: var(--arg-font-font-size-body-1); line-height: var(--arg-font-line-height-body-1); }
 .arg-donut--side .arg-donut__legend { gap: var(--arg-space-2x); }
 @media (min-width: 600px) { .arg-donut { grid-template-columns: 168px minmax(0, 1fr); align-items: center; justify-items: stretch; } }
+/* Rê chuột hoặc nhấn giữ một cung: cung phóng to quanh tâm vòng, các cung khác mờ; chữ giữa vòng đổi theo cung */
+.arg-donut__chart path.seg { transform-origin: 21px 21px; transition: transform .18s ease, opacity .18s ease; cursor: pointer; }
+.arg-donut__chart.is-active path.seg { opacity: .4; }
+.arg-donut__chart.is-active path.seg.is-on { opacity: 1; transform: scale(1.07); }
+.arg-donut__chart { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+@media (prefers-reduced-motion: reduce) { .arg-donut__chart path.seg { transition: none; } }
