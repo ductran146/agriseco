@@ -42,7 +42,7 @@ def locked_type():
 def kv(st, px, qty, side, lite=False):
     sell = side == 'sell'
     cap = (st.hold[0] if st.hold else qty) if sell else st.max_qty
-    return ('<dl class="arg-kv"><div class="arg-kv__row"><dt>Sức mua<button class="arg-icon-btn" type="button" aria-label="Giải thích sức mua">' + I('info') + f'</button></dt><dd>{num(BUYING_POWER)}</dd></div>'
+    return ('<dl class="arg-kv"><div class="arg-kv__row"><dt>Sức mua<button class="arg-icon-btn" type="button" data-arg-open="ord-power" aria-haspopup="dialog" aria-label="Thông tin sức mua">' + I('info') + f'</button></dt><dd>{num(BUYING_POWER)}</dd></div>'
             + ('' if lite else '<div class="arg-kv__row"><dt>Tỷ lệ ký quỹ</dt><dd>50%</dd></div>')
             + ('' if lite else f'<div class="arg-kv__row"><dt>KL {"bán" if sell else "mua"} tối đa</dt><dd>{num(cap)}</dd></div>')
             + f'<div class="arg-kv__row arg-kv__row--total"><dt>Giá trị ước tính</dt><dd data-arg-order-total>{num(round(px * qty * 1000))}</dd></div></dl>')
@@ -97,4 +97,5 @@ def screen(o):
 </main>
 <div class="arg-actionbar arg-actionbar--fixed"><button class="arg-btn arg-btn--tertiary arg-btn--xl" type="button" data-arg-back>Huỷ</button><button class="arg-btn arg-btn--primary arg-btn--xl" type="button" data-om-submit disabled>Sửa lệnh</button></div>
 {MODAL}
+{TP.power_sheet()}
 </div>'''

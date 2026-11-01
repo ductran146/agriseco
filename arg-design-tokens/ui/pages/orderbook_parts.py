@@ -64,9 +64,10 @@ def detail_screen(o):
   <dl class="arg-kv arg-kv--lines">{rows}</dl>
 </main>
 <div class="arg-actionbar arg-actionbar--fixed">{bar}</div>
-<div class="arg-overlay" id="od-cancel" hidden data-arg-modal data-od-modal><div class="arg-modal arg-modal--sm" role="alertdialog" aria-modal="true" aria-labelledby="od-cancel-t">
-  <div class="arg-modal__body" style="padding-top:var(--arg-space-6x);justify-items:center;text-align:center"><span class="arg-modal__icon">{I('trash')}</span><h4 class="arg-modal__title" id="od-cancel-t">Huỷ lệnh này?</h4><span>Lệnh {"mua" if side == "buy" else "bán"} {code} sẽ bị huỷ và không thể khôi phục.</span></div>
-  <div class="arg-modal__footer arg-ordermodal__actions"><button class="arg-btn arg-btn--tertiary arg-btn--xl" type="button" data-arg-close>Giữ lại</button><button class="arg-btn arg-btn--sell arg-btn--xl" type="button" data-od-ok>Huỷ lệnh</button></div></div></div>
+<div class="arg-overlay" id="od-cancel" hidden data-arg-modal data-od-modal><div class="arg-modal arg-modal--sm arg-ordermodal" role="alertdialog" aria-modal="true" aria-labelledby="od-cancel-t">
+  <div class="arg-modal__header"><h4 class="arg-modal__title" id="od-cancel-t">Huỷ lệnh {"mua" if side == "buy" else "bán"} {code}</h4></div>
+  <div class="arg-modal__body"><p class="arg-ordermodal__lead">Bạn có chắc muốn huỷ lệnh này?</p><dl class="arg-kv arg-kv--lines"><div class="arg-kv__row"><dt>Giá</dt><dd>{vn(px) if px else "Thị trường"}</dd></div><div class="arg-kv__row"><dt>Khối lượng</dt><dd>{num(qty)}</dd></div></dl></div>
+  <div class="arg-modal__footer arg-ordermodal__actions"><button class="arg-btn arg-btn--tertiary arg-btn--xl" type="button" data-arg-close>Giữ lại</button><button class="arg-btn arg-btn--primary arg-btn--xl" type="button" data-od-ok>Xác nhận</button></div></div></div>
 </div>'''
 
 

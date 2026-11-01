@@ -7,7 +7,7 @@
 .arg-kv dt .arg-icon-btn .i { width: 16px; height: 16px; }
 .arg-kv__row--total { margin-top: var(--arg-space-1x); }
 .arg-kv__row--total dt { color: var(--arg-ui-text-on-bright-text-title); font-weight: var(--arg-font-font-weight-medium); }
-.arg-kv__row--total dd { font-size: var(--arg-font-font-size-title-2); line-height: var(--arg-font-line-height-title-2); font-weight: var(--arg-font-font-weight-bold); }
+.arg-kv__row--total dd { font-size: var(--arg-font-font-size-title-3); line-height: var(--arg-font-line-height-title-3); font-weight: var(--arg-font-font-weight-bold); }
 /* Danh sách kẻ dòng (thông tin niêm yết, chỉ số tài chính, chi tiết sự kiện): mỗi dòng cao tối thiểu 44px, ngăn cách bằng đường kẻ */
 .arg-kv--lines { gap: 0; }
 .arg-kv--lines .arg-kv__row { min-height: 44px; padding: var(--arg-space-2x) 0; }

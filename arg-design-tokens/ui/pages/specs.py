@@ -60,7 +60,7 @@ TRADE = [
     ('.arg-trade--pro .arg-selectsheet', 'r', 'Select sheet: bấm mở bảng LO, MP, ATO, ATC; chữ căn giữa trục ô Giá, KL.'),
     ('.arg-trade--pro [data-arg-field="price"]', 'r', 'Stepper: bước giá HOSE 0,01 / 0,05 / 0,10; nút − và + thẳng hàng.'),
     ('.arg-trade--pro [data-arg-field="qty"]', 'r', 'Stepper: bước 100 cổ phiếu; đổi giá, KL thì tính lại giá trị ước tính.'),
-    ('.arg-trade--pro .arg-kv', 'r', 'Kv: giá trị ước tính = giá × KL × 1.000, nằm đáy cột.'),
+    ('.arg-trade--pro .arg-kv', 'r', 'Kv: giá trị ước tính = giá × KL × 1.000, nằm đáy cột. Icon info cạnh Sức mua mở Offcanvas bottom: 5 dòng Kv --lines (sức mua, tiền có thể rút, ứng trước, phong toả, tạm giữ).'),
     ('.arg-trade--pro [data-arg-order-cta]', 'l', 'Button --xl cao 44px: mở hộp xác nhận lệnh; cách khối trên 16px.'),
     ('.arg-trade--lite .arg-lite__group', 'l', 'Lite: chip Sàn, TC, Trần cho giá; 25%, 50%, 75%, Tối đa cho KL.'),
     TAB,

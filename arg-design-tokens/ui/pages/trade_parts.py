@@ -138,7 +138,7 @@ def type_sheet():
 
 
 def _kv(st, margin=True):
-    return ('<dl class="arg-kv"><div class="arg-kv__row"><dt>Sức mua<button class="arg-icon-btn" type="button" aria-label="Giải thích sức mua">' + I('info') + f'</button></dt><dd>{num(BUYING_POWER)}</dd></div>'
+    return ('<dl class="arg-kv"><div class="arg-kv__row"><dt>Sức mua<button class="arg-icon-btn" type="button" data-arg-open="ord-power" aria-haspopup="dialog" aria-label="Thông tin sức mua">' + I('info') + f'</button></dt><dd>{num(BUYING_POWER)}</dd></div>'
             + ('<div class="arg-kv__row"><dt>Tỷ lệ ký quỹ</dt><dd>50%</dd></div>' if margin else '') +
             f'<div class="arg-kv__row"><dt>KL mua tối đa</dt><dd>{num(st.max_qty)}</dd></div>'
             f'<div class="arg-kv__row arg-kv__row--total"><dt>Giá trị ước tính</dt><dd data-arg-order-total>{num(round(st.last * 100 * 1000))}</dd></div></dl>')
@@ -211,3 +211,15 @@ def depth_sheet(st=VCB, n=10):
     return (f'<div class="arg-offcanvas-wrap" id="ord-depth" hidden data-arg-offcanvas><aside class="arg-offcanvas arg-offcanvas--bottom arg-offcanvas--auto" role="dialog" aria-modal="true" aria-labelledby="ord-depth-t">'
             f'<div class="arg-modal__header"><h4 class="arg-modal__title" id="ord-depth-t">Bước giá {st.code}</h4><button class="arg-icon-btn" type="button" data-arg-close aria-label="Đóng">{I("x", "i--20")}</button></div>'
             f'<div class="arg-modal__body">{SP.depth(st, bids, asks, limits=True)}</div></aside></div>')
+
+
+# Thông tin sức mua của tiểu khoản (số mẫu): sức mua = tiền có thể rút, không có tiền ứng trước và phong toả
+POWER_ROWS = [('Sức mua', BUYING_POWER), ('Tổng tiền có thể rút', BUYING_POWER), ('Số tiền có thể ứng trước', 0), ('Tổng tiền phong toả', 0), ('Tổng tiền tạm giữ', 2_203_094)]
+
+
+def power_sheet():
+    """Bảng trượt từ dưới lên: thông tin sức mua (bấm icon info cạnh Sức mua ở màn đặt lệnh, sửa lệnh)."""
+    rows = ''.join(f'<div class="arg-kv__row"><dt>{k}</dt><dd>{num(v)}</dd></div>' for k, v in POWER_ROWS)
+    return (f'<div class="arg-offcanvas-wrap" id="ord-power" hidden data-arg-offcanvas><aside class="arg-offcanvas arg-offcanvas--bottom arg-offcanvas--auto" role="dialog" aria-modal="true" aria-labelledby="ord-power-t">'
+            f'<div class="arg-modal__header"><h4 class="arg-modal__title" id="ord-power-t">Thông tin sức mua</h4><button class="arg-icon-btn" type="button" data-arg-close aria-label="Đóng">{I("x", "i--20")}</button></div>'
+            f'<div class="arg-modal__body"><dl class="arg-kv arg-kv--lines">{rows}</dl></div></aside></div>')

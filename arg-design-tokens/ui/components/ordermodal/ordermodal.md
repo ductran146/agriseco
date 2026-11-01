@@ -5,6 +5,7 @@ Luồng đặt lệnh trên màn Giao dịch: xác nhận lệnh trước khi g�
 |---|---|
 | `.arg-ordermodal` | Thêm vào `.arg-modal--sm`: tiêu đề có đường kẻ dưới, chân không có đường kẻ trên |
 | `__actions` | Chân hộp thoại: các nút chia đều chiều ngang; `--stack` xếp dọc (hộp báo thành công) |
+| `__lead` | Câu hỏi xác nhận căn giữa phía trên danh sách thông tin (hộp huỷ một lệnh) |
 | `--done` | Hộp báo thành công: nội dung căn giữa, icon `.arg-modal__icon--success.arg-modal__icon--lg`, nền hộp `.arg-overlay--blur` |
 Hàng thông tin dùng Kv (`.arg-kv--lines`); nút dùng Button (`--buy` hoặc `--sell`, `--tertiary`, `--primary`).
 ## Hành vi (JS)

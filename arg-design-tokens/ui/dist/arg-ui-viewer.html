@@ -2051,7 +2051,7 @@
 .arg-check input:disabled + .box { background: var(--arg-ui-background-lv-3); border-color: var(--arg-ui-divider-stroke); opacity: .6; }
 .arg-check:has(input:disabled) { cursor: not-allowed; color: var(--arg-ui-text-on-bright-text-disable); }
 .arg-switch .track { flex: none; width: 40px; height: 24px; border-radius: 12px; background: var(--arg-ui-state-layer-on-bright-extra); position: relative; transition: .15s; }
-.arg-switch .track::after { content: ""; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; border-radius: 50%; background: var(--arg-p-grayscale-100); box-shadow: var(--arg-shadow-shadow); transition: transform .15s; }
+.arg-switch .track::after { content: ""; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; border-radius: 50%; background: var(--arg-p-grayscale-100); box-shadow: 0 0 3px 0 var(--arg-effect-black-8pct), 0 0 1px 0 var(--arg-effect-black-5pct); /* bóng đối xứng, không lệch xuống (bóng token Shadow đổ xuống 2px làm nút nhìn như tụt xuống ở nền tối) */ transition: transform .15s; }
 .arg-switch input { position: absolute; opacity: 0; width: 40px; height: 24px; margin: 0; cursor: inherit; }
 .arg-switch input:checked + .track { background-color: var(--arg-p-brand-header-start); background-image: var(--arg-gradient-primary-button); }
 .arg-switch input:checked + .track::after { transform: translateX(16px); }
@@ -2454,6 +2454,7 @@
 .arg-ordermodal__actions--stack > .arg-btn { flex: none; width: 100%; }
 .arg-ordermodal--done .arg-modal__body { justify-items: center; text-align: center; padding-top: var(--arg-space-6x); }
 .arg-ordermodal--done .arg-modal__title { font-size: var(--arg-font-font-size-title-3); line-height: var(--arg-font-line-height-title-3); }
+.arg-ordermodal__lead { margin: 0; padding-bottom: var(--arg-space-2x); text-align: center; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-body-3)/var(--arg-font-line-height-body-3) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); }
 
 /* ARG UI · orderrow (một lệnh trong sổ lệnh: chiều lệnh, mã, giá × khối lượng, trạng thái, thanh tiến độ khớp, mũi tên chỉ dẫn; bấm mở màn chi tiết lệnh) */
 .arg-orderrow-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--arg-space-2x); }
@@ -3250,7 +3251,7 @@ a.arg-hbars__code:focus-visible { outline: 2px solid var(--arg-action-text-butto
 .arg-kv dt .arg-icon-btn .i { width: 16px; height: 16px; }
 .arg-kv__row--total { margin-top: var(--arg-space-1x); }
 .arg-kv__row--total dt { color: var(--arg-ui-text-on-bright-text-title); font-weight: var(--arg-font-font-weight-medium); }
-.arg-kv__row--total dd { font-size: var(--arg-font-font-size-title-2); line-height: var(--arg-font-line-height-title-2); font-weight: var(--arg-font-font-weight-bold); }
+.arg-kv__row--total dd { font-size: var(--arg-font-font-size-title-3); line-height: var(--arg-font-line-height-title-3); font-weight: var(--arg-font-font-weight-bold); }
 /* Danh sách kẻ dòng (thông tin niêm yết, chỉ số tài chính, chi tiết sự kiện): mỗi dòng cao tối thiểu 44px, ngăn cách bằng đường kẻ */
 .arg-kv--lines { gap: 0; }
 .arg-kv--lines .arg-kv__row { min-height: 44px; padding: var(--arg-space-2x) 0; }
@@ -5310,7 +5311,7 @@ code { font-family: var(--mono); font-size: 12px; background: var(--arg-ui-backg
       <details class="spec"><summary>Tài liệu: class, trạng thái, JS</summary><div class="spec__body"><h3>Dùng khi</h3>
 <p>Luồng đặt lệnh trên màn Giao dịch: xác nhận lệnh trước khi gửi, rồi báo kết quả.</p>
 <h3>Class</h3>
-<div class="tbl-scroll"><table><thead><tr><th scope="col">Class</th><th scope="col">Mô tả</th></tr></thead><tbody><tr><td><code>.arg-ordermodal</code></td><td>Thêm vào <code>.arg-modal--sm</code>: tiêu đề có đường kẻ dưới, chân không có đường kẻ trên</td></tr><tr><td><code>__actions</code></td><td>Chân hộp thoại: các nút chia đều chiều ngang; <code>--stack</code> xếp dọc (hộp báo thành công)</td></tr><tr><td><code>--done</code></td><td>Hộp báo thành công: nội dung căn giữa, icon <code>.arg-modal__icon--success.arg-modal__icon--lg</code>, nền hộp <code>.arg-overlay--blur</code></td></tr></tbody></table></div>
+<div class="tbl-scroll"><table><thead><tr><th scope="col">Class</th><th scope="col">Mô tả</th></tr></thead><tbody><tr><td><code>.arg-ordermodal</code></td><td>Thêm vào <code>.arg-modal--sm</code>: tiêu đề có đường kẻ dưới, chân không có đường kẻ trên</td></tr><tr><td><code>__actions</code></td><td>Chân hộp thoại: các nút chia đều chiều ngang; <code>--stack</code> xếp dọc (hộp báo thành công)</td></tr><tr><td><code>__lead</code></td><td>Câu hỏi xác nhận căn giữa phía trên danh sách thông tin (hộp huỷ một lệnh)</td></tr><tr><td><code>--done</code></td><td>Hộp báo thành công: nội dung căn giữa, icon <code>.arg-modal__icon--success.arg-modal__icon--lg</code>, nền hộp <code>.arg-overlay--blur</code></td></tr></tbody></table></div>
 <p>Hàng thông tin dùng Kv (<code>.arg-kv--lines</code>); nút dùng Button (<code>--buy</code> hoặc <code>--sell</code>, <code>--tertiary</code>, <code>--primary</code>).</p>
 <h3>Hành vi (JS)</h3>
 <div class="tbl-scroll"><table><thead><tr><th scope="col">Thuộc tính</th><th scope="col">Việc làm</th></tr></thead><tbody><tr><td><code>[data-arg-confirm]</code> trên overlay</td><td>Hộp xác nhận của màn. Bấm <code>[data-arg-order-cta]</code> trong form <code>[data-arg-order]</code> thì điền các ô `[data-ord="title</td><td>symbol</td><td>type</td><td>price</td><td>qty</td><td>value"]<code>, đổi nút </code>[data-ord="ok"]` thành Mua hoặc Bán (đổi màu theo chiều lệnh) rồi mở. Khối lượng hoặc giá bằng 0 thì không mở</td></tr><tr><td><code>[data-arg-confirm-ok]</code></td><td>Đóng hộp xác nhận, mở hộp <code>[data-arg-done]</code>, điền <code>[data-ord="done"]</code>; bắn <code>arg:order</code> ({ side, symbol, price, qty })</td></tr></tbody></table></div>
@@ -5725,7 +5726,7 @@ code { font-family: var(--mono); font-size: 12px; background: var(--arg-ui-backg
   </div>
 </div>
 
-<script id="build-report" type="application/json">{"checks": [{"ok": true, "name": "Token CSS được dùng đều tồn tại", "detail": "212 biến dùng, thiếu: không"}, {"ok": true, "name": "Class trong ví dụ đều có CSS", "detail": "625 class dùng, thiếu: không"}, {"ok": true, "name": "Icon Solar được dùng đều có trong sprite", "detail": "95 icon dùng / 95 trong sprite, thiếu: không"}, {"ok": true, "name": "Mỗi component có ví dụ HTML và tài liệu", "detail": "86 component, thiếu tài liệu: không"}, {"ok": true, "name": "Token chiều cao điều khiển (32 / 40 / 44 / 48)", "detail": "height-small, height-normal, height-xl, height-xxl"}, {"ok": true, "name": "Gradient nút chính theo header web Agriseco", "detail": "--arg-gradient-primary-button: linear-gradient(90deg, var(--arg-p-brand-header-start) 0%, var(--arg-p-brand-header-end) 100%);"}]}</script>
+<script id="build-report" type="application/json">{"checks": [{"ok": true, "name": "Token CSS được dùng đều tồn tại", "detail": "214 biến dùng, thiếu: không"}, {"ok": true, "name": "Class trong ví dụ đều có CSS", "detail": "625 class dùng, thiếu: không"}, {"ok": true, "name": "Icon Solar được dùng đều có trong sprite", "detail": "95 icon dùng / 95 trong sprite, thiếu: không"}, {"ok": true, "name": "Mỗi component có ví dụ HTML và tài liệu", "detail": "86 component, thiếu tài liệu: không"}, {"ok": true, "name": "Token chiều cao điều khiển (32 / 40 / 44 / 48)", "detail": "height-small, height-normal, height-xl, height-xxl"}, {"ok": true, "name": "Gradient nút chính theo header web Agriseco", "detail": "--arg-gradient-primary-button: linear-gradient(90deg, var(--arg-p-brand-header-start) 0%, var(--arg-p-brand-header-end) 100%);"}]}</script>
 <script>
 /* ===== dist/arg-ui.js ===== */
 /* ARG UI behaviour. Generated by ui/build.py from ui/components/*. */
