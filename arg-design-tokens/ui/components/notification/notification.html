@@ -1,0 +1,22 @@
+<section id="notification">
+        <h2>Notifications</h2>
+        <p class="sec-desc">Toast tự tắt sau 4 giây (nút đóng để tắt sớm) và danh sách thông báo trong ứng dụng.</p>
+        <div class="demo">
+          <div class="group"><h3>Toast</h3>
+            <div class="row">
+              <button class="arg-btn arg-btn--outline" type="button" data-arg-toast="success"><i data-arg-icon="check-circle"></i>Thành công</button>
+              <button class="arg-btn arg-btn--outline" type="button" data-arg-toast="error"><i data-arg-icon="warning-circle"></i>Lỗi</button>
+              <button class="arg-btn arg-btn--outline" type="button" data-arg-toast="warning"><i data-arg-icon="warning"></i>Cảnh báo</button>
+              <button class="arg-btn arg-btn--outline" type="button" data-arg-toast="info"><i data-arg-icon="info"></i>Thông tin</button>
+            </div></div>
+          <div class="group"><h3>Danh sách thông báo</h3>
+            <div class="arg-card arg-card--outline" style="max-width:480px">
+              <div class="arg-card__header"><h4 class="arg-card__title">Thông báo <span class="arg-count" style="margin-left:6px">2</span></h4><button class="arg-btn arg-btn--link arg-btn--sm" type="button" data-arg-mark-read="#notilist">Đọc tất cả</button></div>
+              <div class="arg-notilist" id="notilist">
+                <div class="arg-noti is-unread" style="--bg:var(--arg-ui-label-weak-success);--c:var(--arg-action-noti-toast-success)"><span class="arg-noti__icon"><i data-arg-icon="check-circle"></i></span><div class="arg-noti__body"><span class="arg-noti__title">Lệnh mua AGR đã khớp</span><span class="arg-muted">1.000 cổ phiếu giá 19,75</span><span class="arg-noti__time">2 phút trước</span></div></div>
+                <div class="arg-noti is-unread" style="--bg:var(--arg-ui-label-weak-warning);--c:var(--arg-ui-label-strong-warning)"><span class="arg-noti__icon"><i data-arg-icon="bell-ringing"></i></span><div class="arg-noti__body"><span class="arg-noti__title">VCB chạm giá cảnh báo 93,00</span><span class="arg-muted">Giá hiện tại 93,20</span><span class="arg-noti__time">15 phút trước</span></div></div>
+                <div class="arg-noti" style="--bg:var(--arg-ui-label-weak-blue);--c:var(--arg-ui-label-strong-blue)"><span class="arg-noti__icon"><i data-arg-icon="info"></i></span><div class="arg-noti__body"><span class="arg-noti__title">Bản tin thị trường 08:30</span><span class="arg-muted">VN-Index mở cửa tăng nhẹ</span><span class="arg-noti__time">Hôm nay</span></div></div>
+              </div>
+            </div></div>
+        </div>
+      </section>

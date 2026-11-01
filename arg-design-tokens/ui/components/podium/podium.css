@@ -1,0 +1,10 @@
+/* ARG UI · podium (top 3, hạng 1 ở giữa) */
+.arg-podium { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; gap: var(--arg-space-2x); }
+.arg-podium__item { --h: 40px; --c: var(--arg-trading-up-light-increase); display: grid; justify-items: center; gap: var(--arg-space-1x); text-align: center; }
+.arg-podium__item--1 { --h: 88px; } .arg-podium__item--2 { --h: 56px; } .arg-podium__item--3 { --h: 40px; }
+.arg-podium__rank { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: color-mix(in srgb, var(--c) 12%, transparent); color: var(--c); }
+.arg-podium__rank .i { width: 20px; height: 20px; }
+.arg-podium__code { font-size: var(--arg-font-font-size-body-3); line-height: var(--arg-font-line-height-body-3); font-weight: var(--arg-font-font-weight-bold); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-podium__pct { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); font-variant-numeric: tabular-nums; }
+.arg-podium__bar { width: 100%; height: var(--h); margin-top: var(--arg-space-2x); border-radius: var(--arg-radius-xs) var(--arg-radius-xs) 0 0; background: color-mix(in srgb, var(--c) 45%, var(--arg-ui-background-surface)); }
+.arg-podium__item--1 .arg-podium__bar { background: var(--c); }

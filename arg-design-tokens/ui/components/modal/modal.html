@@ -1,0 +1,44 @@
+<section id="modal">
+        <h2>Modals</h2>
+        <p class="sec-desc">Hộp thoại giữa màn hình. Khoá cuộn nền, đóng bằng Esc hoặc bấm nền, trả focus về nút đã mở.</p>
+        <div class="demo">
+          <div class="row">
+            <button class="arg-btn arg-btn--primary" type="button" data-arg-open="m-confirm">Xác nhận lệnh</button>
+            <button class="arg-btn arg-btn--outline" type="button" data-arg-open="m-form">Thêm tài khoản</button>
+            <button class="arg-btn arg-btn--secondary" type="button" data-arg-open="m-danger">Huỷ lệnh</button>
+          </div>
+        </div>
+        <div class="arg-overlay" id="m-confirm" hidden data-arg-modal>
+          <div class="arg-modal arg-modal--sm" role="dialog" aria-modal="true" aria-labelledby="m-confirm-t">
+            <div class="arg-modal__header"><h4 class="arg-modal__title" id="m-confirm-t">Xác nhận lệnh mua</h4><button class="arg-icon-btn" type="button" data-arg-close aria-label="Đóng"><i data-arg-icon="x" class="i--20"></i></button></div>
+            <div class="arg-modal__body">
+              <div class="row" style="justify-content:space-between"><span>Mã</span><b>AGR</b></div>
+              <div class="row" style="justify-content:space-between"><span>Khối lượng</span><b style="font-variant-numeric:tabular-nums">1.000</b></div>
+              <div class="row" style="justify-content:space-between"><span>Giá</span><b style="font-variant-numeric:tabular-nums">19,75</b></div>
+              <div class="row" style="justify-content:space-between"><span>Giá trị</span><b style="font-variant-numeric:tabular-nums">19.750.000 đ</b></div>
+            </div>
+            <div class="arg-modal__footer"><button class="arg-btn arg-btn--tertiary" type="button" data-arg-close>Quay lại</button><button class="arg-btn arg-btn--buy" type="button" data-arg-close data-arg-toast="success">Mua</button></div>
+          </div>
+        </div>
+        <div class="arg-overlay" id="m-form" hidden data-arg-modal>
+          <div class="arg-modal" role="dialog" aria-modal="true" aria-labelledby="m-form-t">
+            <div class="arg-modal__header"><h4 class="arg-modal__title" id="m-form-t">Thêm tài khoản ngân hàng</h4><button class="arg-icon-btn" type="button" data-arg-close aria-label="Đóng"><i data-arg-icon="x" class="i--20"></i></button></div>
+            <div class="arg-modal__body">
+              <div class="arg-field"><label class="arg-label" for="mf1">Ngân hàng</label><div class="arg-control arg-control--xl arg-select"><select class="arg-select-native" id="mf1"><option>Agribank</option><option>Vietcombank</option><option>BIDV</option></select><i data-arg-icon="caret-down"></i></div></div>
+              <div class="arg-field"><label class="arg-label" for="mf2">Số tài khoản</label><div class="arg-control arg-control--xl"><input class="arg-input" id="mf2" inputmode="numeric" placeholder="Nhập số tài khoản"></div></div>
+              <div class="arg-field"><label class="arg-label" for="mf3">Tên chủ tài khoản</label><div class="arg-control arg-control--xl"><input class="arg-input" id="mf3" placeholder="NGUYEN VAN AN"></div></div>
+            </div>
+            <div class="arg-modal__footer"><button class="arg-btn arg-btn--tertiary arg-btn--xl" type="button" data-arg-close>Huỷ</button><button class="arg-btn arg-btn--primary arg-btn--xl" type="button" data-arg-close data-arg-toast="success">Lưu</button></div>
+          </div>
+        </div>
+        <div class="arg-overlay" id="m-danger" hidden data-arg-modal>
+          <div class="arg-modal arg-modal--sm" role="alertdialog" aria-modal="true" aria-labelledby="m-danger-t">
+            <div class="arg-modal__body" style="padding-top:var(--arg-space-6x);justify-items:center;text-align:center">
+              <span class="arg-modal__icon"><i data-arg-icon="trash"></i></span>
+              <h4 class="arg-modal__title" id="m-danger-t">Huỷ lệnh này?</h4>
+              <span>Lệnh mua AGR 1.000 cổ phiếu sẽ bị huỷ và không thể khôi phục.</span>
+            </div>
+            <div class="arg-modal__footer" style="justify-content:stretch;border:0"><button class="arg-btn arg-btn--tertiary arg-btn--xl arg-btn--block" type="button" data-arg-close>Giữ lệnh</button><button class="arg-btn arg-btn--sell arg-btn--xl arg-btn--block" type="button" data-arg-close data-arg-toast="error">Huỷ lệnh</button></div>
+          </div>
+        </div>
+      </section>

@@ -1,0 +1,7 @@
+/* ARG UI · tabbar (bottom navigation) */
+.arg-tabbar { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; padding: var(--arg-space-2x) var(--arg-space-2x) calc(var(--arg-space-2x) + max(env(safe-area-inset-bottom, 0px), var(--arg-safe-bottom, 0px))); background: color-mix(in srgb, var(--arg-ui-background-background) 85%, transparent); -webkit-backdrop-filter: blur(20px) saturate(1.4); backdrop-filter: blur(20px) saturate(1.4); box-shadow: var(--arg-shadow-bottommenu); }
+.arg-tabbar--fixed { position: sticky; bottom: 0; z-index: 20; }
+.arg-tabbar__item { display: grid; justify-items: center; gap: 2px; padding: var(--arg-space-1x) 0; color: var(--arg-ui-text-on-bright-text-read-only); text-decoration: none; font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); font-weight: var(--arg-font-font-weight-medium); }
+.arg-tabbar__item .i { width: 24px; height: 24px; }
+.arg-tabbar__item[aria-current="page"] { color: var(--arg-action-text-button-link-text-button); font-weight: var(--arg-font-font-weight-semibold); }
+.arg-tabbar__item:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: -2px; border-radius: var(--arg-radius-sm); }

@@ -1,0 +1,45 @@
+/* ARG UI · title (Title Module) */
+.arg-title { display: flex; align-items: center; gap: var(--arg-space-5x); padding: var(--arg-space-2x) var(--arg-gutter); min-height: 44px; box-sizing: border-box; background: var(--arg-ui-background-surface); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-title--lg { min-height: 48px; }
+.arg-title--border { border-bottom: 1px solid var(--arg-ui-divider-stroke); }
+.arg-title__left { display: flex; align-items: center; gap: var(--arg-space-3x); flex: 1 1 auto; min-width: 0; }
+.arg-title__right { display: flex; align-items: center; justify-content: flex-end; gap: var(--arg-space-3x); flex: none; }
+.arg-title__main { display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+.arg-title__row { display: flex; align-items: center; gap: var(--arg-space-2x); min-width: 0; }
+.arg-title__text { margin: 0; font-size: var(--arg-font-font-size-title-2); line-height: var(--arg-font-line-height-title-2); font-weight: var(--arg-font-font-weight-bold); color: var(--arg-ui-text-on-bright-text-title); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.arg-title__label { font-size: var(--arg-font-font-size-body-4); line-height: var(--arg-font-line-height-body-4); font-weight: var(--arg-font-font-weight-semibold); color: var(--arg-ui-text-on-bright-text-content); white-space: nowrap; }
+.arg-title__sub { font-size: var(--arg-font-font-size-body-4); line-height: var(--arg-font-line-height-body-4); font-weight: var(--arg-font-font-weight-regular); color: var(--arg-ui-text-on-bright-text-content-lv2); white-space: nowrap; }
+.arg-title__meta { font-size: var(--arg-font-font-size-body-4); line-height: var(--arg-font-line-height-body-4); color: var(--arg-ui-text-on-bright-text-placeholder); white-space: nowrap; }
+.arg-title__icon { flex: none; display: inline-grid; place-items: center; width: 24px; height: 24px; color: var(--arg-ui-text-on-bright-text-title); }
+.arg-title__icon .i { width: 24px; height: 24px; }
+.arg-title__back { flex: none; display: inline-grid; place-items: center; width: 24px; height: 24px; padding: 0; border: 0; background: transparent; color: var(--arg-ui-text-on-bright-text-title); cursor: pointer; border-radius: var(--arg-radius-xs); }
+.arg-title__back .i { width: 24px; height: 24px; }
+.arg-title__back:hover { background: var(--arg-ui-state-layer-on-bright-hovered); }
+.arg-title__flag { flex: none; width: 24px; height: 19.2px; border-radius: 2.4px; background: var(--arg-ui-background-lv-3); object-fit: cover; display: inline-block; }
+.arg-title__chip { display: inline-flex; align-items: center; gap: var(--arg-space-2x); padding: 2px var(--arg-space-2x) 2px 2px; height: 22px; border-radius: 80px; background: var(--arg-ui-background-lv-3); font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); color: var(--arg-ui-text-on-bright-text-content); white-space: nowrap; }
+.arg-title__drop { flex: none; display: inline-grid; place-items: center; width: 20px; height: 20px; padding: 0; border: 0; background: transparent; color: var(--arg-ui-text-on-bright-text-content-lv2); cursor: pointer; }
+.arg-title__drop .i { width: 20px; height: 20px; }
+.arg-title__action { display: inline-flex; align-items: center; justify-content: center; gap: var(--arg-space-1x); height: 32px; padding: 6px 0; border: 0; background: transparent; cursor: pointer; font: inherit; font-size: var(--arg-font-font-size-body-4); line-height: var(--arg-font-line-height-body-4); font-weight: var(--arg-font-font-weight-medium); color: var(--arg-action-text-button-link-text-button); white-space: nowrap; }
+.arg-title__action .i { width: 16px; height: 16px; }
+.arg-title__action--underline { text-decoration: underline; text-underline-offset: 3px; }
+.arg-title__action:disabled { color: var(--arg-action-text-button-link-text-button-disable); cursor: not-allowed; }
+.arg-title__tool { flex: none; display: inline-grid; place-items: center; width: 24px; height: 24px; padding: 0; border: 0; background: transparent; color: var(--arg-ui-text-on-bright-text-content); cursor: pointer; border-radius: var(--arg-radius-xs); }
+.arg-title__tool:hover { background: var(--arg-ui-state-layer-on-bright-hovered); }
+.arg-title__tool .i { width: 24px; height: 24px; }
+.arg-title__right .arg-control { width: 110px; }
+/* kích cỡ chữ tiêu đề */
+.arg-title--md .arg-title__text { font-size: var(--arg-font-font-size-title-3); line-height: var(--arg-font-line-height-title-3); }
+.arg-title--sm .arg-title__text { font-size: var(--arg-font-font-size-body-3); line-height: var(--arg-font-line-height-body-3); font-weight: var(--arg-font-font-weight-semibold); }
+.arg-title--sm { min-height: 40px; padding-block: var(--arg-space-1x); }
+/* tiêu đề + dòng phụ bên dưới */
+.arg-title--stacked .arg-title__main { gap: 0; }
+.arg-title--stacked { min-height: 56px; }
+/* nền nhấn */
+.arg-title--muted { background: var(--arg-ui-background-lv-3); }
+.arg-title--brand { background-color: var(--arg-p-brand-header-start); background-image: var(--arg-gradient-primary-button); color: #fff; }
+.arg-title--brand .arg-title__text, .arg-title--brand .arg-title__icon, .arg-title--brand .arg-title__back, .arg-title--brand .arg-title__tool, .arg-title--brand .arg-title__action { color: #fff; }
+.arg-title--brand .arg-title__back:hover, .arg-title--brand .arg-title__tool:hover { background: rgba(255, 255, 255, .16); }
+.arg-title--brand .arg-title__sub, .arg-title--brand .arg-title__meta { color: rgba(255, 255, 255, .8); }
+.arg-title--center .arg-title__left { justify-content: center; }
+/* Tiêu đề dài (tên công ty): xuống dòng thay vì cắt bớt */
+.arg-title--wrap .arg-title__text { white-space: normal; overflow: visible; }

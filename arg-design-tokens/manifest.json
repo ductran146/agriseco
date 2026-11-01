@@ -1,0 +1,47 @@
+{
+  "name": "ARG Design Tokens",
+  "collections": {
+    "Spacing": {
+      "modes": {
+        "Mode 1": [
+          "Spacing.Mode 1.tokens.json"
+        ]
+      }
+    },
+    "Typography": {
+      "modes": {
+        "Pretendard": [
+          "Typography.Pretendard.tokens.json"
+        ]
+      }
+    },
+    "ARG-Color": {
+      "modes": {
+        "Mode 1": [
+          "ARG-Color.Mode 1.tokens.json"
+        ]
+      }
+    },
+    "Theme": {
+      "modes": {
+        "ARG_Lightmode": [
+          "Theme.ARG_Lightmode.tokens.json"
+        ],
+        "ARG_Darkmode": [
+          "Theme.ARG_Darkmode.tokens.json"
+        ]
+      }
+    }
+  },
+  "styles": {
+    "text": [
+      "text.styles.tokens.json"
+    ],
+    "effect": [
+      "effect.styles.tokens.json"
+    ],
+    "color": [
+      "color.styles.tokens.json"
+    ]
+  }
+}

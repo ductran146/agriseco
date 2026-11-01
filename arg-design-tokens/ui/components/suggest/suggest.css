@@ -1,0 +1,36 @@
+/* ARG UI · suggest (trạng thái trống của danh mục theo dõi: gợi ý cổ phiếu chọn được, và bảng thêm mã) */
+.arg-suggest { display: grid; gap: var(--arg-space-5x); padding-block: var(--arg-space-6x) var(--arg-space-2x); min-width: 0; }
+.arg-suggest[hidden] { display: none; }
+.arg-suggest__head { display: grid; gap: var(--arg-space-1-5x); justify-items: center; text-align: center; }
+.arg-suggest__title { margin: 0; font-size: var(--arg-font-font-size-body-2); line-height: var(--arg-font-line-height-body-2); font-weight: var(--arg-font-font-weight-bold); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-suggest__text { margin: 0; max-width: 280px; font-size: var(--arg-font-font-size-body-4); line-height: var(--arg-font-line-height-body-4); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-suggest__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--arg-space-3x); }
+.arg-suggest__card { --k: var(--arg-trading-flat-flat); position: relative; display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: var(--arg-space-2x); row-gap: var(--arg-space-2x); align-content: start; padding: var(--arg-space-3x); border-radius: var(--arg-radius-lg); background: var(--arg-ui-background-surface); box-shadow: var(--arg-shadow-shadow); cursor: pointer; min-width: 0; }
+.arg-suggest__card--up { --k: var(--arg-trading-up-light-increase); } .arg-suggest__card--down { --k: var(--arg-trading-down-light-increase); }
+.arg-suggest__card--ceil { --k: var(--arg-trading-ceiling-purple-flat); } .arg-suggest__card--floor { --k: var(--arg-trading-floor-cyan-flat); }
+.arg-suggest__card input { position: absolute; opacity: 0; pointer-events: none; }
+.arg-suggest__card:has(input:focus-visible) { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: 2px; }
+.arg-suggest__code { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--arg-ui-divider-stroke); background: var(--arg-ui-background-surface); font-size: var(--arg-font-font-size-label-1); line-height: 1; font-weight: var(--arg-font-font-weight-bold); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-suggest__tick { grid-column: 2; justify-self: end; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--arg-ui-divider-stroke); box-sizing: border-box; color: var(--arg-action-noti-toast-success); }
+.arg-suggest__tick .i { display: none; width: 24px; height: 24px; margin: -1.5px; }
+.arg-suggest__card input:checked ~ .arg-suggest__tick { border-color: transparent; }
+.arg-suggest__card input:checked ~ .arg-suggest__tick .i { display: block; }
+.arg-suggest__name { grid-column: 1 / -1; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; min-height: calc(2 * var(--arg-font-line-height-label-1)); font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-suggest__price { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: var(--arg-space-2x); }
+.arg-suggest__price b { font-size: var(--arg-font-font-size-body-3); line-height: var(--arg-font-line-height-body-3); font-weight: var(--arg-font-font-weight-semibold); font-variant-numeric: tabular-nums; color: var(--k); }
+.arg-suggest__actions { display: flex; align-items: center; justify-content: space-between; gap: var(--arg-space-3x); padding-top: var(--arg-space-2x); }
+.arg-suggest__actions .arg-btn--primary { flex: 1 1 auto; max-width: 200px; }
+/* Bảng thêm mã (offcanvas từ dưới): ô tìm và danh sách mã có nút Thêm */
+.arg-offcanvas.arg-suggest__sheet { height: min(560px, 86%); }
+.arg-suggest__sheet .arg-modal__body { flex: 1 1 auto; align-content: start; min-height: 0; }
+.arg-suggest__results { list-style: none; margin: 0; padding: 0; }
+.arg-suggest__results li { display: flex; align-items: center; justify-content: space-between; gap: var(--arg-space-3x); padding: var(--arg-space-2-5x) 0; }
+.arg-suggest__results li + li { border-top: 1px solid var(--arg-ui-divider-separator); }
+.arg-suggest__results li[hidden] { display: none; }
+.arg-suggest__who { display: grid; min-width: 0; }
+.arg-suggest__who b { font-size: var(--arg-font-font-size-body-3); line-height: var(--arg-font-line-height-body-3); font-weight: var(--arg-font-font-weight-bold); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-suggest__who span { font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-suggest__results .arg-btn { flex: none; min-width: 92px; }
+.arg-suggest__results .arg-suggest__on, .arg-suggest__results .arg-btn:disabled .arg-suggest__off { display: none; }
+.arg-suggest__results .arg-btn:disabled .arg-suggest__on { display: inline-flex; }
+.arg-suggest__on, .arg-suggest__off { align-items: center; gap: var(--arg-space-1x); display: inline-flex; }

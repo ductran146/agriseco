@@ -1,0 +1,67 @@
+<meta charset="utf-8">
+<title>ARG Base UI</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+@font-face {
+  font-family: "Pretendard";
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+  src: url(data:font/woff2;base64,{{FONT}}) format("woff2-variations");
+}
+/* ===== tokens (dist/arg-tokens.css) ===== */
+{{TOKENS}}
+/* ===== components (dist/arg-ui.css) ===== */
+{{CSS}}
+/* ===== viewer shell (ui/viewer/shell.css) ===== */
+{{SHELL_CSS}}
+</style>
+
+<div class="app arg-ui" id="app" data-mode="light">
+  <aside class="side" id="side" aria-label="Danh mục component">
+    <a class="brand" href="#top"><img src="data:image/svg+xml;base64,{{LOGO}}" alt="Logo Agriseco"><div><b>ARG</b><span>Base UI</span></div></a>
+    <div class="nav-group">
+      <button type="button" id="grp-btn" aria-expanded="true" aria-controls="nav"><i data-arg-icon="stack" class="i--20"></i>Base UI<i data-arg-icon="caret-down" class="chev i--16"></i></button>
+      <nav class="nav" id="nav">
+{{NAV}}
+      </nav>
+    </div>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+
+  <div class="main">
+    <header class="top">
+      <button class="arg-btn arg-btn--text-strong arg-btn--icon menu-btn" type="button" id="menu-btn" aria-label="Mở danh mục"><i data-arg-icon="sidebar-simple" class="i--20"></i></button>
+      <h1 id="top-title">Base UI</h1>
+      <div class="seg" role="group" aria-label="Chế độ hiển thị">
+        <button type="button" data-mode="light" aria-pressed="true">Sáng</button>
+        <button type="button" data-mode="dark" aria-pressed="false">Tối</button>
+      </div>
+    </header>
+
+    <main class="content" id="top">
+      <div class="intro">
+        <h2>Base UI</h2>
+        <p class="sec-desc">Trang này ghép trực tiếp các file trong <code>ui/components/*</code>. CSS lấy từ <code>dist/arg-ui.css</code>, JS từ <code>dist/arg-ui.js</code>, ví dụ lấy từ <code>&lt;tên&gt;.html</code>, tài liệu lấy từ <code>&lt;tên&gt;.md</code>. Trang không có CSS hay JS riêng cho component. Nút, input, select cao 40px mặc định, 44px (xl), 48px (xxl), 32px (sm).</p>
+      </div>
+
+      <section id="checks">
+        <h2>Kiểm tra</h2>
+        <p class="sec-desc">Phần đầu do <code>build.py</code> kiểm khi build. Phần sau chạy trên trang này khi mở.</p>
+        <div class="demo"><div class="tbl-scroll"><table class="checks-table" id="checks-table"><thead><tr><th scope="col">Kiểm tra</th><th scope="col">Kết quả</th><th scope="col">Chi tiết</th></tr></thead><tbody></tbody></table></div></div>
+      </section>
+
+{{SECTIONS}}
+    </main>
+  </div>
+</div>
+
+<script id="build-report" type="application/json">{{REPORT}}</script>
+<script>
+/* ===== dist/arg-ui.js ===== */
+{{JS}}
+</script>
+<script>
+/* ===== viewer shell (ui/viewer/shell.js) ===== */
+{{SHELL_JS}}
+</script>

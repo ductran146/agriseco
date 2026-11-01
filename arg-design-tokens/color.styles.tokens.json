@@ -1,0 +1,123 @@
+{
+  "Gradient": {
+    "Ceiling - Purple": {
+      "$type": "gradient",
+      "$value": {
+        "type": "linear",
+        "angle": 180,
+        "stops": [
+          {
+            "color": "{P3_Trading_Color.Ceiling-Purple.Flat}",
+            "position": 0
+          },
+          {
+            "color": "{P7_Gradient.Empty_Color}",
+            "position": 1
+          }
+        ]
+      }
+    },
+    "Floor - Cyan": {
+      "$type": "gradient",
+      "$value": {
+        "type": "linear",
+        "angle": 180,
+        "stops": [
+          {
+            "color": "{P3_Trading_Color.Floor-Cyan.Flat}",
+            "position": 0
+          },
+          {
+            "color": "{P7_Gradient.Empty_Color}",
+            "position": 1
+          }
+        ]
+      }
+    },
+    "Up - Green": {
+      "$type": "gradient",
+      "$value": {
+        "type": "linear",
+        "angle": 180,
+        "stops": [
+          {
+            "color": "{P3_Trading_Color.Up-Light.Increase}",
+            "position": 0
+          },
+          {
+            "color": "{P7_Gradient.Empty_Color}",
+            "position": 1
+          }
+        ]
+      }
+    },
+    "Ref - Yellow": {
+      "$type": "gradient",
+      "$value": {
+        "type": "linear",
+        "angle": 180,
+        "stops": [
+          {
+            "color": "{P3_Trading_Color.Flat.Flat}",
+            "position": 0
+          },
+          {
+            "color": "{P7_Gradient.Empty_Color}",
+            "position": 1
+          }
+        ]
+      }
+    },
+    "Down - Red": {
+      "$type": "gradient",
+      "$value": {
+        "type": "linear",
+        "angle": 180,
+        "stops": [
+          {
+            "color": "{P3_Trading_Color.Down-Light.Increase}",
+            "position": 0
+          },
+          {
+            "color": "{P7_Gradient.Empty_Color}",
+            "position": 1
+          }
+        ]
+      }
+    },
+    "Loading": {
+      "$type": "gradient",
+      "$value": {
+        "type": "linear",
+        "angle": 90,
+        "stops": [
+          {
+            "color": "{P2_UI_Color.Skeleton.Start}",
+            "position": 0
+          },
+          {
+            "color": "{P2_UI_Color.Skeleton.End}",
+            "position": 1
+          }
+        ]
+      }
+    },
+    "Primary Button - Header gradient": {
+      "$type": "gradient",
+      "$value": {
+        "type": "linear",
+        "angle": 90,
+        "stops": [
+          {
+            "color": "{p--Brand.Header_Start}",
+            "position": 0
+          },
+          {
+            "color": "{p--Brand.Header_End}",
+            "position": 1
+          }
+        ]
+      }
+    }
+  }
+}

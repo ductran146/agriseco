@@ -1,0 +1,22 @@
+/* ARG UI · donut (biểu đồ tròn rỗng nhiều phần kèm chú giải: cơ cấu sở hữu, cổ đông lớn) */
+.arg-donut { display: grid; gap: var(--arg-space-5x); justify-items: center; min-width: 0; }
+.arg-donut__chart { position: relative; width: 168px; height: 168px; }
+.arg-donut__chart > svg { display: block; width: 100%; height: 100%; transform: rotate(-90deg); }
+.arg-donut__chart circle { fill: none; stroke-width: 6; }
+.arg-donut__chart .bg { stroke: var(--arg-ui-background-lv-3); }
+.arg-donut__chart .seg { stroke: var(--c); }
+.arg-donut__center { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; text-align: center; padding: var(--arg-space-6x); }
+.arg-donut__center b { font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-title-2)/var(--arg-font-line-height-title-2) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); font-variant-numeric: tabular-nums; }
+.arg-donut__center span { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-donut__legend { display: grid; gap: var(--arg-space-3x); width: 100%; margin: 0; padding: 0; list-style: none; }
+.arg-donut__legend li { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; column-gap: var(--arg-space-2x); row-gap: 2px; align-items: center; }
+.arg-donut__key { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+.arg-donut__name { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-donut__pct { font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); font-variant-numeric: tabular-nums; }
+.arg-donut__sub { grid-column: 2 / -1; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); font-variant-numeric: tabular-nums; }
+/* --side: biểu đồ nhỏ bên trái, chú giải bên phải, dùng cho màn hẹp */
+.arg-donut--side { grid-template-columns: 128px minmax(0, 1fr); gap: var(--arg-space-5x); align-items: center; justify-items: stretch; }
+.arg-donut--side .arg-donut__chart { width: 128px; height: 128px; } .arg-donut--side .arg-donut__center { padding: var(--arg-space-4x); }
+.arg-donut--side .arg-donut__center b { font-size: var(--arg-font-font-size-body-1); line-height: var(--arg-font-line-height-body-1); }
+.arg-donut--side .arg-donut__legend { gap: var(--arg-space-2x); }
+@media (min-width: 600px) { .arg-donut { grid-template-columns: 168px minmax(0, 1fr); align-items: center; justify-items: stretch; } }

@@ -1,0 +1,4 @@
+/* ARG UI · select */
+.arg-select-native { appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: var(--arg-space-6x); }
+.arg-select > .i:last-child { position: absolute; right: var(--arg-space-3x); pointer-events: none; }
+.arg-select .arg-select-native option { color: #101013; background: #ffffff; }

@@ -1,0 +1,38 @@
+/* ARG UI · chart (biểu đồ nến kèm khối lượng, tooltip, thanh chọn khoảng thời gian) */
+.arg-chart { --c: var(--arg-trading-flat-flat); --g: url(#arg-grad-ref); display: grid; }
+.arg-chart--up { --c: var(--arg-trading-up-light-increase); --g: url(#arg-grad-up); }
+.arg-chart--down { --c: var(--arg-trading-down-light-increase); --g: url(#arg-grad-down); }
+.arg-chart--ref { --c: var(--arg-trading-flat-flat); --g: url(#arg-grad-ref); }
+.arg-chart__plot { --ph: 160px; --vh: 40px; box-sizing: border-box; height: calc(var(--arg-space-1x) + var(--ph) + var(--arg-space-2x) + var(--vh)); align-content: start; touch-action: pan-y; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; position: relative; display: grid; gap: var(--arg-space-2x); padding-top: var(--arg-space-1x); }
+.arg-chart__price { display: block; width: 100%; height: var(--ph); overflow: visible; }
+.arg-chart__vol { display: block; width: 100%; height: var(--vh); }
+.arg-chart .up { color: var(--arg-trading-up-light-increase); } .arg-chart .down { color: var(--arg-trading-down-light-increase); }
+.arg-chart g.up line, .arg-chart g.down line { stroke: currentColor; stroke-width: 1; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+/* Bo góc thân nến và cột khối lượng: SVG co giãn không đều nên viền cùng màu nét 2px, nối tròn, không co giãn (rx sẽ méo) */
+.arg-chart g.up rect, .arg-chart g.down rect { fill: currentColor; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.arg-chart__vol rect { fill: currentColor; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; vector-effect: non-scaling-stroke; opacity: .5; }
+.arg-chart:not(.is-active) .cur { visibility: hidden; }
+.arg-chart__tip[hidden], .arg-chart__tag[hidden] { display: none; }
+.arg-chart .cur { stroke: var(--arg-ui-text-on-bright-text-read-only); stroke-width: 1; stroke-dasharray: 3 3; vector-effect: non-scaling-stroke; }
+.arg-chart__tag { position: absolute; left: 0; transform: translateY(-50%); padding: 1px var(--arg-space-1-5x); border-radius: var(--arg-radius-xs); background: var(--arg-ui-text-on-bright-text-title); color: #fff; font: var(--arg-font-font-weight-medium) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); font-variant-numeric: tabular-nums; }
+.arg-chart__tip { position: absolute; top: calc(var(--arg-space-2x) * -1); z-index: 1; display: grid; gap: var(--arg-space-1x); padding: var(--arg-space-2x) var(--arg-space-3x); border: .5px solid var(--arg-ui-divider-stroke); border-radius: var(--arg-radius-xs); background: var(--arg-ui-background-surface); box-shadow: var(--arg-shadow-shadow); font-size: 10px; line-height: 14px; color: var(--arg-ui-text-on-bright-text-content-lv2); pointer-events: none; }
+.arg-chart__tip b { font-weight: var(--arg-font-font-weight-medium); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-chart__tip dt, .arg-chart__tip dd { white-space: nowrap; }
+.arg-chart__tip dl { display: grid; grid-template-columns: auto auto auto auto; gap: 0 var(--arg-space-2x); margin: 0; }
+.arg-chart__tip dd { margin: 0; text-align: right; color: var(--arg-ui-text-on-bright-text-title); font-variant-numeric: tabular-nums; }
+.arg-chart__range { display: flex; align-items: center; justify-content: space-between; gap: var(--arg-space-3x); margin-top: var(--arg-space-3x); }
+.arg-chart__range .arg-chip-tabs { min-width: 0; }
+.arg-chart__tools { display: inline-flex; gap: var(--arg-space-3x); flex: none; }
+.arg-chart__tools .arg-icon-btn .i { width: 24px; height: 24px; }
+.arg-chart__line { display: none; }
+.arg-chart__line polygon { fill: var(--g); opacity: .22; }
+.arg-chart__line polyline { fill: none; stroke: var(--c); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.arg-chart--line .arg-chart__line { display: inline; }
+.arg-chart--line .arg-chart__candles, .arg-chart--line .arg-chart__vol { display: none; }
+.arg-chart__dot { position: absolute; z-index: 1; width: 10px; height: 10px; margin: -5px 0 0 -5px; border: 2px solid var(--arg-ui-background-surface); border-radius: 50%; background: var(--c); box-shadow: 0 0 0 1px var(--c); pointer-events: none; }
+.arg-chart__dot[hidden] { display: none; }
+.arg-chart:not(.arg-chart--line) .arg-chart__dot { display: none; }
+.arg-chart--line .arg-chart__tip { min-width: 112px; text-align: center; padding: var(--arg-space-2x) var(--arg-space-4x); border-radius: var(--arg-radius-sm); }
+.arg-chart__tip--line { display: grid; justify-items: center; gap: 2px; color: var(--arg-ui-text-on-bright-text-read-only); }
+.arg-chart__tip--line b { font-size: var(--arg-font-font-size-body-3); line-height: var(--arg-font-line-height-body-3); font-weight: var(--arg-font-font-weight-bold); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-chart--line .arg-chart__price { height: calc(var(--ph) + var(--arg-space-2x) + var(--vh)); }

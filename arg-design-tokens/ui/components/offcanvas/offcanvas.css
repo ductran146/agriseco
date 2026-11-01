@@ -1,0 +1,9 @@
+/* ARG UI · offcanvas */
+.arg-offcanvas-wrap { position: fixed; inset: 0; z-index: 100; background: var(--arg-ui-background-bg-overlay); animation: arg-fade .15s ease; }
+.arg-offcanvas-wrap[hidden] { display: none; }
+.arg-offcanvas { position: absolute; display: flex; flex-direction: column; background: var(--arg-ui-background-bg-pop-function); box-shadow: var(--arg-shadow-soft-shadow); color: var(--arg-ui-text-on-bright-text-content); transition: transform .25s ease; }
+.arg-offcanvas--end { top: 0; right: 0; bottom: 0; width: min(400px, 100%); transform: translateX(100%); }
+.arg-offcanvas--start { top: 0; left: 0; bottom: 0; width: min(320px, 100%); transform: translateX(-100%); }
+.arg-offcanvas--bottom { left: 0; right: 0; bottom: 0; height: min(320px, 80%); transform: translateY(100%); border-radius: var(--arg-radius-lg) var(--arg-radius-lg) 0 0; }
+.arg-offcanvas-wrap.is-open .arg-offcanvas { transform: none; }
+.arg-offcanvas--bottom.arg-offcanvas--auto { height: auto; max-height: 90%; padding-bottom: max(env(safe-area-inset-bottom, 0px), var(--arg-safe-bottom, 0px)); }

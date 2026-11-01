@@ -1,0 +1,11 @@
+/* ARG UI · fab (nút nổi tròn góc phải dưới, dính phía trên thanh tab dưới) */
+.arg-fab-wrap { position: sticky; bottom: calc(var(--arg-space-8x) + 56px + var(--arg-safe-bottom, 0px)); z-index: 15; height: 0; display: flex; justify-content: flex-end; padding-inline: var(--arg-gutter); pointer-events: none; }
+.arg-fab { pointer-events: auto; display: grid; place-items: center; width: 56px; height: 56px; padding: 0; border: 0; border-radius: 50%; transform: translateY(-100%); background: var(--arg-ui-background-surface); color: var(--arg-ui-text-on-bright-text-title); box-shadow: var(--arg-shadow-soft-shadow); cursor: pointer; }
+.arg-fab .i { width: 28px; height: 28px; color: inherit; }
+.arg-fab:hover { background: color-mix(in srgb, var(--arg-ui-background-surface) 92%, var(--arg-ui-text-on-bright-text-title)); }
+.arg-fab:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: 2px; }
+.arg-fab .arg-fab__off, .arg-fab[aria-pressed="true"] .arg-fab__on { display: none; }
+.arg-fab[aria-pressed="true"] .arg-fab__off { display: grid; }
+.arg-fab__on { display: grid; }
+/* Trong khối lưới có khoảng cách (.arg-page__block) vùng dính không chiếm chỗ: bù khoảng cách hàng */
+.arg-page__block > .arg-fab-wrap { margin-top: calc(var(--arg-space-3x) * -1); }

@@ -1,0 +1,9 @@
+/* ARG UI · input */
+.arg-input:read-only:not(:disabled) { color: var(--arg-ui-text-on-bright-text-read-only); }
+.arg-control { --px: var(--arg-space-3x); }
+.arg-control--xl, .arg-control--xxl { --px: var(--arg-space-4x); }
+.arg-addon { flex: none; align-self: stretch; display: flex; align-items: center; padding: 0 var(--arg-space-3x); color: var(--arg-ui-text-on-bright-text-content-lv2); background: var(--arg-ui-background-lv-3); border-right: 1px solid var(--arg-ui-divider-stroke); margin-left: calc(var(--px) * -1); white-space: nowrap; }
+.arg-addon + .arg-input { margin-left: var(--arg-space-1x); }
+.arg-addon--end { border-right: 0; border-left: 1px solid var(--arg-ui-divider-stroke); margin-left: 0; margin-right: calc(var(--px) * -1); }
+.arg-textarea { height: auto; min-height: 96px; padding: var(--arg-space-2-5x) 0; resize: vertical; }
+.arg-control--area { height: auto; align-items: stretch; }

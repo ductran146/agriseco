@@ -1,0 +1,9 @@
+/* ARG UI · stepper (ô số có nút trừ, cộng hai bên) */
+.arg-stepper { gap: var(--arg-space-1x); padding: 0 var(--arg-space-3x); }
+.arg-stepper .arg-input { flex: 1 1 auto; min-width: 0; text-align: center; font-variant-numeric: tabular-nums; }
+.arg-stepper .arg-icon-btn { flex: none; }
+.arg-stepper .arg-icon-btn .i { width: 20px; height: 20px; }
+/* Nhãn cùng độ rộng (36px) trong form đặt lệnh để nút trừ, ô nhập, nút cộng và giá trị loại lệnh thẳng hàng giữa các dòng */
+.arg-order .arg-stepper .arg-control__label, .arg-order .arg-selectsheet .arg-control__label { flex: none; width: 36px; }
+/* Giá trị loại lệnh căn giữa đúng trục với số ở các ô Giá, KL: chừa bên trái bằng nút trừ (24px) và bên phải sát nút cộng, như ô nhập của Stepper */
+.arg-order .arg-selectsheet .arg-select-native { padding-left: 24px; padding-right: 2px; }

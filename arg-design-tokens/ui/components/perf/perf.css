@@ -1,0 +1,6 @@
+/* ARG UI · perf (hiệu suất theo kỳ: 7 ngày, 1 tháng, 1 năm) */
+.arg-perf-row { display: flex; gap: var(--arg-space-3x); overflow-x: auto; scrollbar-width: none; scroll-snap-type: x proximity; scroll-padding-inline: var(--arg-gutter); padding: 0 var(--arg-gutter); margin: 0 calc(var(--arg-gutter) * -1); }
+.arg-perf-row::-webkit-scrollbar { display: none; }
+.arg-perf { flex: none; scroll-snap-align: start; display: grid; gap: var(--arg-space-1x); justify-items: start; min-width: 88px; padding: var(--arg-space-2x) var(--arg-space-3x); border-radius: var(--arg-radius-sm); background: var(--arg-ui-background-surface); }
+.arg-perf__label { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-perf .arg-badge .i { width: 10px; height: 10px; }

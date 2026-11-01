@@ -1,0 +1,28 @@
+/* ARG UI base: scope reset, shared keyframes, reduced motion. Load first. */
+/* ARG Base UI — components built only from --arg-* tokens (arg-tokens.css).
+   Control heights: sm 32 · default 40 · xl 44 · xxl 48.
+   Icons: Solar (https://icones.js.org/collection/solar, CC BY 4.0), 24 grid, currentColor. */
+:root {
+  --arg-gutter: var(--arg-space-5x); --arg-safe-top: 0px; --arg-safe-bottom: 0px;
+  /* Bo góc: mốc 13px cho điều khiển cao 40px (button, input, select); các thành phần khác tính theo mốc này */
+  --arg-radius: 13px;
+  --arg-radius-xs: calc(var(--arg-radius) * .5);   /* 6.5 · chip nhỏ, thành phần phụ */
+  --arg-radius-sm: calc(var(--arg-radius) * .75);  /* ~10 · mục trong danh sách, tab, thanh dưới */
+  --arg-radius-lg: calc(var(--arg-radius) * 1.5);  /* 19.5 · thẻ, modal, panel */
+  --arg-radius-control: calc(var(--h, 40px) * .325); /* điều khiển theo chiều cao: 32→10.4 · 40→13 · 44→14.3 · 48→15.6 */
+  /* Bảng màu phân loại cho biểu đồ (không phải token Figma: P5_Chart trong Figma đang để trống). Tông Agriseco: cam đỏ thương hiệu dẫn đầu, kế đến vàng hổ phách, đỏ đậm, rồi xám trung tính; không dùng xanh dương của TradeX cũ, tránh xanh lá và đỏ của tăng giảm */
+  --arg-viz-1: var(--arg-p-brand-header-start); --arg-viz-2: var(--arg-p-brand-amber); --arg-viz-3: var(--arg-p-primary-agri-red-600-m);
+  --arg-viz-4: var(--arg-p-neutral-500); --arg-viz-5: var(--arg-p-primary-agri-red-200); --arg-viz-6: var(--arg-p-neutral-300);
+} /* lề trái phải chuẩn so với mép thiết bị: 20px */
+.arg-ui, .arg-ui * { box-sizing: border-box; }
+.arg-ui {
+  font-family: var(--arg-font-family-family);
+  font-size: var(--arg-font-font-size-body-4);
+  line-height: var(--arg-font-line-height-body-4);
+  color: var(--arg-ui-text-on-bright-text-content);
+}
+@keyframes arg-fade { from { opacity: 0; } }
+@keyframes arg-pop { from { opacity: 0; transform: translateY(8px) scale(.98); } }
+@media (prefers-reduced-motion: reduce) {
+  .arg-ui *, .arg-ui *::before, .arg-ui *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+}

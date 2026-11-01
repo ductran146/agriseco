@@ -1,0 +1,16 @@
+/* ARG UI · carousel */
+.arg-carousel { position: relative; border-radius: var(--arg-radius); overflow: hidden; background: var(--arg-ui-background-lv-3); }
+.arg-carousel__track { display: flex; transition: transform .45s ease; }
+.arg-carousel__slide { flex: 0 0 100%; min-width: 0; min-height: 220px; padding: var(--arg-space-8x) var(--arg-space-14x); display: grid; align-content: center; gap: var(--arg-space-2x); color: #fff; }
+.arg-carousel__slide h4 { margin: 0; font-size: var(--arg-font-font-size-title-1); line-height: var(--arg-font-line-height-title-1); font-weight: var(--arg-font-font-weight-bold); text-wrap: balance; }
+.arg-carousel__slide p { margin: 0; max-width: 56ch; opacity: .95; }
+.arg-carousel__nav { position: absolute; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; display: grid; place-items: center; border: 0; border-radius: 50%; background: rgba(0,0,0,.28); color: #fff; cursor: pointer; padding: 0; }
+.arg-carousel__nav:hover { background: rgba(0,0,0,.45); }
+.arg-carousel__nav:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.arg-carousel__nav--prev { left: var(--arg-space-3x); }
+.arg-carousel__nav--next { right: var(--arg-space-3x); }
+.arg-carousel__dots { position: absolute; left: 0; right: 0; bottom: var(--arg-space-3x); display: flex; justify-content: center; gap: var(--arg-space-1-5x); }
+.arg-carousel__dots button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 4px; background: rgba(255,255,255,.5); cursor: pointer; transition: width .2s, background .2s; }
+.arg-carousel__dots button[aria-current="true"] { width: 24px; background: #fff; }
+.arg-carousel__dots button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+@media (max-width: 900px) { .arg-carousel__slide { padding: var(--arg-space-6x) var(--arg-space-12x); min-height: 200px; } }

@@ -1,0 +1,24 @@
+/* ARG UI · badge */
+.arg-badge { --c: var(--arg-ui-text-on-bright-text-content-lv2); --bg: var(--arg-ui-label-weak-gray); display: inline-flex; align-items: center; gap: var(--arg-space-1x); padding: 0 var(--arg-space-2x); height: 22px; border-radius: var(--arg-radius-xs); background: var(--bg); color: var(--c); font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); font-weight: var(--arg-font-font-weight-semibold); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.arg-badge .i { width: 12px; height: 12px; }
+.arg-badge--pill { border-radius: 11px; padding-inline: var(--arg-space-2-5x); }
+.arg-badge--orange { --c: var(--arg-ui-label-strong-orange); --bg: var(--arg-ui-label-weak-orange); }
+.arg-badge--blue { --c: var(--arg-ui-label-strong-blue); --bg: var(--arg-ui-label-weak-blue); }
+.arg-badge--purple { --c: var(--arg-ui-label-strong-purple); --bg: var(--arg-ui-label-weak-purple); }
+.arg-badge--yellow { --c: var(--arg-ui-label-strong-warning); --bg: var(--arg-ui-label-weak-warning); }
+.arg-badge--success { --c: var(--arg-ui-label-strong-success); --bg: var(--arg-ui-label-weak-success); }
+.arg-badge--error { --c: var(--arg-ui-label-strong-error); --bg: var(--arg-ui-label-weak-error); }
+.arg-badge--solid { background: var(--c); color: #fff; }
+.arg-badge--brand { background-color: var(--arg-p-brand-header-start); background-image: var(--arg-gradient-primary-button); color: #fff; }
+.arg-badge--outline { background: transparent; box-shadow: inset 0 0 0 1px var(--c); }
+.arg-badge--up { --c: var(--arg-trading-up-light-increase); --bg: var(--arg-trading-up-light-soft-increase); }
+.arg-badge--down { --c: var(--arg-trading-down-light-increase); --bg: var(--arg-trading-down-light-soft-increase); }
+.arg-badge--ref { --c: var(--arg-trading-flat-flat); --bg: var(--arg-trading-flat-soft-flat); }
+.arg-badge--ceil { --c: var(--arg-trading-ceiling-purple-flat); --bg: var(--arg-trading-ceiling-purple-soft-flat); }
+.arg-badge--floor { --c: var(--arg-trading-floor-cyan-flat); --bg: var(--arg-trading-floor-cyan-soft-flat); }
+.arg-badge--buy { --c: var(--arg-action-buy-button-button-buy); --bg: color-mix(in srgb, var(--arg-action-buy-button-button-buy) 12%, transparent); }
+.arg-badge--sell { --c: var(--arg-action-sell-button-button-sell); --bg: color-mix(in srgb, var(--arg-action-sell-button-button-sell) 12%, transparent); }
+.arg-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.arg-count { display: inline-grid; place-items: center; min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--arg-action-noti-toast-error); color: #fff; font-size: 11px; line-height: 14px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.arg-indicator { position: relative; display: inline-flex; }
+.arg-indicator .arg-count { position: absolute; top: -6px; right: -6px; box-shadow: 0 0 0 2px var(--arg-ui-background-surface); }

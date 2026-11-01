@@ -1,0 +1,31 @@
+/* ARG UI · datepicker (ô chọn ngày: bấm ô thì bảng lịch trượt từ dưới lên) */
+.arg-datepicker__field { cursor: pointer; }
+.arg-datepicker__field > .arg-input { min-width: 0; cursor: pointer; font-variant-numeric: tabular-nums; }
+/* Ô chỉ để hiển thị ngày đã chọn nên giữ màu chữ thường thay vì chữ xám của ô chỉ đọc */
+.arg-datepicker__field > .arg-input:read-only:not(:disabled) { color: var(--arg-ui-text-on-bright-text-content); }
+.arg-datepicker__field > .i { flex: none; pointer-events: none; }
+.arg-datepicker__field:has(.arg-input:disabled) { cursor: not-allowed; }
+/* Bảng lịch (offcanvas từ dưới) */
+.arg-offcanvas.arg-datepicker { height: auto; max-height: 92%; }
+.arg-datepicker__body { display: grid; gap: var(--arg-space-2x); padding: var(--arg-space-1x) var(--arg-gutter) var(--arg-space-3x); }
+.arg-datepicker__nav { display: grid; grid-template-columns: 40px minmax(0, 1fr) 40px; align-items: center; }
+.arg-datepicker__nav button { display: grid; place-items: center; height: 40px; padding: 0; border: 0; border-radius: var(--arg-radius-sm); background: transparent; color: var(--arg-ui-text-on-bright-text-title); cursor: pointer; }
+.arg-datepicker__nav button:hover { background: var(--arg-ui-state-layer-on-bright-hovered); }
+.arg-datepicker__nav button:disabled { opacity: .35; cursor: default; background: transparent; }
+.arg-datepicker__nav .i { width: 20px; height: 20px; color: inherit; }
+.arg-datepicker__title { display: inline-flex !important; grid-auto-flow: column; justify-content: center; align-items: center; gap: var(--arg-space-1x); font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-body-3)/var(--arg-font-line-height-body-3) var(--arg-font-family-family); }
+.arg-datepicker__title .i { width: 16px; height: 16px; }
+.arg-datepicker__grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); grid-auto-rows: 44px; justify-items: center; align-items: center; }
+.arg-datepicker__grid--month { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 52px; gap: var(--arg-space-1x); }
+.arg-datepicker__wd { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); justify-items: center; font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); font-weight: var(--arg-font-font-weight-medium); color: var(--arg-ui-text-on-bright-text-read-only); }
+.arg-datepicker__wd[hidden] { display: none; }
+.arg-datepicker__wd span:last-child { color: var(--arg-trading-down-light-increase); }
+.arg-datepicker__day, .arg-datepicker__month { display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--arg-ui-text-on-bright-text-content); font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-body-4)/1 var(--arg-font-family-family); font-variant-numeric: tabular-nums; cursor: pointer; }
+.arg-datepicker__month { width: 100%; max-width: 96px; border-radius: var(--arg-radius-sm); height: 44px; }
+.arg-datepicker__day:hover:not(:disabled):not([aria-pressed="true"]), .arg-datepicker__month:hover:not([aria-pressed="true"]) { background: var(--arg-ui-state-layer-on-bright-hovered); }
+.arg-datepicker__day:focus-visible, .arg-datepicker__month:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: 1px; }
+.arg-datepicker__day[aria-current="date"], .arg-datepicker__month[aria-current="date"] { box-shadow: inset 0 0 0 1px var(--arg-action-text-button-link-text-button); color: var(--arg-action-text-button-link-text-button); font-weight: var(--arg-font-font-weight-semibold); }
+.arg-datepicker__day[aria-pressed="true"], .arg-datepicker__month[aria-pressed="true"] { background-color: var(--arg-p-brand-header-start); background-image: var(--arg-gradient-primary-button); color: #fff; font-weight: var(--arg-font-font-weight-semibold); box-shadow: none; }
+.arg-datepicker__day:disabled { color: var(--arg-ui-text-on-bright-text-disable); cursor: not-allowed; }
+.arg-datepicker__foot { align-items: center; }
+.arg-datepicker__foot .arg-datepicker__today { margin-right: auto; }

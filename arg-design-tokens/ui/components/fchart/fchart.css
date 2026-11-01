@@ -1,0 +1,23 @@
+/* ARG UI · fchart (biểu đồ tài chính theo kỳ: cột một hoặc hai chuỗi, cột âm dương, đường % theo trục riêng, nhãn số dưới từng kỳ) */
+.arg-fchart { display: grid; gap: var(--arg-space-3x); min-width: 0; font-variant-numeric: tabular-nums; }
+.arg-fchart__plot { position: relative; height: 160px; }
+.arg-fchart__plot > svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.arg-fchart__plot .base { stroke: var(--arg-ui-divider-stroke); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.arg-fchart__plot rect { stroke-width: 2; stroke-linejoin: round; vector-effect: non-scaling-stroke; } /* bo góc cột bằng viền cùng màu, không co giãn */
+.arg-fchart__plot .s1 { fill: var(--arg-viz-1); stroke: var(--arg-viz-1); } .arg-fchart__plot .s2 { fill: var(--arg-viz-2); stroke: var(--arg-viz-2); }
+.arg-fchart__plot .pos { fill: var(--arg-trading-up-light-increase); stroke: var(--arg-trading-up-light-increase); } .arg-fchart__plot .neg { fill: var(--arg-trading-down-light-increase); stroke: var(--arg-trading-down-light-increase); }
+.arg-fchart__plot .line { fill: none; stroke: var(--arg-viz-3); stroke-width: 2; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.arg-fchart__dot { position: absolute; width: 8px; height: 8px; margin: -4px 0 0 -4px; border-radius: 50%; border: 2px solid var(--arg-viz-3); background: var(--arg-ui-background-surface); box-sizing: border-box; }
+.arg-fchart__cols { display: grid; grid-template-columns: repeat(var(--n, 5), minmax(0, 1fr)); text-align: center; }
+.arg-fchart__col { display: grid; gap: 2px; min-width: 0; font: var(--arg-font-font-weight-medium) var(--arg-font-font-size-label-2)/var(--arg-font-line-height-label-2) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); white-space: nowrap; }
+.arg-fchart__period { color: var(--arg-ui-text-on-bright-text-content-lv2); font-weight: var(--arg-font-font-weight-regular); }
+.arg-fchart__col .s2 { color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-fchart__legend { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--arg-space-1x) var(--arg-space-4x); margin: 0; padding: 0; list-style: none; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-fchart__legend li { display: inline-flex; align-items: center; gap: var(--arg-space-1-5x); }
+.arg-fchart__key { width: 10px; height: 10px; border-radius: 2px; background: var(--c, var(--arg-viz-1)); }
+.arg-fchart__key--line { width: 14px; height: 2px; border-radius: 1px; background: var(--arg-viz-3); }
+/* Cột tô theo màu giao dịch từng cột (ví dụ phân bổ dòng tiền tăng, giảm, đứng) */
+.arg-fchart__plot .up { fill: var(--arg-trading-up-light-increase); stroke: var(--arg-trading-up-light-increase); } .arg-fchart__plot .down { fill: var(--arg-trading-down-light-increase); stroke: var(--arg-trading-down-light-increase); } .arg-fchart__plot .ref { fill: var(--arg-trading-flat-flat); stroke: var(--arg-trading-flat-flat); }
+/* Nhiều cột hẹp (phân bố theo khoảng %): số lên trên, nhãn khoảng xoay 45° xuống dưới */
+.arg-fchart--bins .arg-fchart__col { gap: var(--arg-space-1x); }
+.arg-fchart--bins .arg-fchart__period { order: 2; height: 34px; writing-mode: vertical-rl; transform: rotate(180deg); justify-self: center; text-align: left; font-size: var(--arg-font-font-size-label-3); line-height: var(--arg-font-line-height-label-3); }

@@ -1,0 +1,397 @@
+{
+  "components": [
+    {
+      "id": "icon",
+      "title": "Icons"
+    },
+    {
+      "id": "colors",
+      "title": "Colors"
+    },
+    {
+      "id": "alert",
+      "title": "Alerts"
+    },
+    {
+      "id": "badge",
+      "title": "Badges"
+    },
+    {
+      "id": "button",
+      "title": "Buttons"
+    },
+    {
+      "id": "input",
+      "title": "Input fields"
+    },
+    {
+      "id": "datepicker",
+      "title": "Datepicker"
+    },
+    {
+      "id": "select",
+      "title": "Select box"
+    },
+    {
+      "id": "selectsheet",
+      "title": "Select sheet"
+    },
+    {
+      "id": "checkbox",
+      "title": "Checkbox, Radio, Switch"
+    },
+    {
+      "id": "card",
+      "title": "Cards"
+    },
+    {
+      "id": "carousel",
+      "title": "Carousel"
+    },
+    {
+      "id": "dropdown",
+      "title": "Dropdowns"
+    },
+    {
+      "id": "grid",
+      "title": "Grid"
+    },
+    {
+      "id": "image",
+      "title": "Images"
+    },
+    {
+      "id": "tabs",
+      "title": "Tabs"
+    },
+    {
+      "id": "chip-tab",
+      "title": "Chip tabs"
+    },
+    {
+      "id": "title",
+      "title": "Title Module"
+    },
+    {
+      "id": "trend",
+      "title": "Trend, Sparkline"
+    },
+    {
+      "id": "index",
+      "title": "Market card"
+    },
+    {
+      "id": "quote",
+      "title": "Quote list"
+    },
+    {
+      "id": "holding",
+      "title": "Holding card"
+    },
+    {
+      "id": "theme",
+      "title": "Theme"
+    },
+    {
+      "id": "hero",
+      "title": "Hero"
+    },
+    {
+      "id": "stockrow",
+      "title": "Stock row"
+    },
+    {
+      "id": "splitbar",
+      "title": "Split bar"
+    },
+    {
+      "id": "listbar",
+      "title": "Listbar"
+    },
+    {
+      "id": "suggest",
+      "title": "Suggest"
+    },
+    {
+      "id": "fab",
+      "title": "Floating button"
+    },
+    {
+      "id": "keyboard",
+      "title": "Keyboard"
+    },
+    {
+      "id": "appbar",
+      "title": "App bar, Promo"
+    },
+    {
+      "id": "promo",
+      "title": "Promo"
+    },
+    {
+      "id": "account",
+      "title": "Account card"
+    },
+    {
+      "id": "service",
+      "title": "Service tile"
+    },
+    {
+      "id": "news",
+      "title": "News list"
+    },
+    {
+      "id": "rating",
+      "title": "Rating"
+    },
+    {
+      "id": "reco",
+      "title": "Khuyến nghị"
+    },
+    {
+      "id": "screen",
+      "title": "Screen"
+    },
+    {
+      "id": "pricehead",
+      "title": "Price head"
+    },
+    {
+      "id": "chart",
+      "title": "Chart"
+    },
+    {
+      "id": "perf",
+      "title": "Perf"
+    },
+    {
+      "id": "breadth",
+      "title": "Breadth"
+    },
+    {
+      "id": "dtable",
+      "title": "Data table"
+    },
+    {
+      "id": "bars",
+      "title": "Bars"
+    },
+    {
+      "id": "fchart",
+      "title": "Financial chart"
+    },
+    {
+      "id": "donut",
+      "title": "Donut"
+    },
+    {
+      "id": "gauge",
+      "title": "Gauge"
+    },
+    {
+      "id": "hbars",
+      "title": "Bar list"
+    },
+    {
+      "id": "share",
+      "title": "Share bar"
+    },
+    {
+      "id": "flow",
+      "title": "Flow line"
+    },
+    {
+      "id": "heatmap",
+      "title": "Heatmap"
+    },
+    {
+      "id": "podium",
+      "title": "Podium"
+    },
+    {
+      "id": "acctsel",
+      "title": "Account select"
+    },
+    {
+      "id": "symbol",
+      "title": "Symbol bar"
+    },
+    {
+      "id": "statrow",
+      "title": "Stat row"
+    },
+    {
+      "id": "statgrid",
+      "title": "Stat grid"
+    },
+    {
+      "id": "metric",
+      "title": "Metric card"
+    },
+    {
+      "id": "kv",
+      "title": "Key-value"
+    },
+    {
+      "id": "book",
+      "title": "Order book"
+    },
+    {
+      "id": "depth",
+      "title": "Price depth"
+    },
+    {
+      "id": "events",
+      "title": "Events"
+    },
+    {
+      "id": "side",
+      "title": "Side toggle"
+    },
+    {
+      "id": "stepper",
+      "title": "Stepper"
+    },
+    {
+      "id": "tabbar",
+      "title": "Tab bar"
+    },
+    {
+      "id": "actionbar",
+      "title": "Action bar"
+    },
+    {
+      "id": "page",
+      "title": "Page layout"
+    },
+    {
+      "id": "accordion",
+      "title": "Accordion & Collapse"
+    },
+    {
+      "id": "modal",
+      "title": "Modals"
+    },
+    {
+      "id": "ordermodal",
+      "title": "Order modal"
+    },
+    {
+      "id": "orderrow",
+      "title": "Order row"
+    },
+    {
+      "id": "orderbook",
+      "title": "Order book"
+    },
+    {
+      "id": "orderdetail",
+      "title": "Order detail"
+    },
+    {
+      "id": "offcanvas",
+      "title": "Offcanvas"
+    },
+    {
+      "id": "placeholder",
+      "title": "Placeholders"
+    },
+    {
+      "id": "progress",
+      "title": "Progress"
+    },
+    {
+      "id": "notification",
+      "title": "Notifications"
+    },
+    {
+      "id": "media",
+      "title": "Media object"
+    },
+    {
+      "id": "embed",
+      "title": "Embed Video"
+    }
+  ],
+  "css": [
+    "base/base.css",
+    "components/icon/icon.css",
+    "components/button/button.css",
+    "components/field/field.css",
+    "components/input/input.css",
+    "components/select/select.css",
+    "components/checkbox/checkbox.css",
+    "components/alert/alert.css",
+    "components/badge/badge.css",
+    "components/card/card.css",
+    "components/carousel/carousel.css",
+    "components/dropdown/dropdown.css",
+    "components/grid/grid.css",
+    "components/image/image.css",
+    "components/tabs/tabs.css",
+    "components/chip-tab/chip-tab.css",
+    "components/title/title.css",
+    "components/trend/trend.css",
+    "components/index/index.css",
+    "components/quote/quote.css",
+    "components/holding/holding.css",
+    "components/theme/theme.css",
+    "components/hero/hero.css",
+    "components/stockrow/stockrow.css",
+    "components/splitbar/splitbar.css",
+    "components/listbar/listbar.css",
+    "components/accordion/accordion.css",
+    "components/modal/modal.css",
+    "components/ordermodal/ordermodal.css",
+    "components/orderrow/orderrow.css",
+    "components/orderbook/orderbook.css",
+    "components/orderdetail/orderdetail.css",
+    "components/offcanvas/offcanvas.css",
+    "components/selectsheet/selectsheet.css",
+    "components/datepicker/datepicker.css",
+    "components/suggest/suggest.css",
+    "components/placeholder/placeholder.css",
+    "components/progress/progress.css",
+    "components/notification/notification.css",
+    "components/media/media.css",
+    "components/embed/embed.css",
+    "components/appbar/appbar.css",
+    "components/promo/promo.css",
+    "components/account/account.css",
+    "components/service/service.css",
+    "components/news/news.css",
+    "components/rating/rating.css",
+    "components/reco/reco.css",
+    "components/screen/screen.css",
+    "components/pricehead/pricehead.css",
+    "components/chart/chart.css",
+    "components/perf/perf.css",
+    "components/breadth/breadth.css",
+    "components/dtable/dtable.css",
+    "components/bars/bars.css",
+    "components/fchart/fchart.css",
+    "components/donut/donut.css",
+    "components/gauge/gauge.css",
+    "components/hbars/hbars.css",
+    "components/share/share.css",
+    "components/flow/flow.css",
+    "components/heatmap/heatmap.css",
+    "components/podium/podium.css",
+    "components/acctsel/acctsel.css",
+    "components/symbol/symbol.css",
+    "components/statrow/statrow.css",
+    "components/statgrid/statgrid.css",
+    "components/metric/metric.css",
+    "components/kv/kv.css",
+    "components/book/book.css",
+    "components/depth/depth.css",
+    "components/events/events.css",
+    "components/side/side.css",
+    "components/stepper/stepper.css",
+    "components/tabbar/tabbar.css",
+    "components/fab/fab.css",
+    "components/actionbar/actionbar.css",
+    "components/page/page.css",
+    "components/keyboard/keyboard.css"
+  ]
+}

@@ -1,0 +1,20 @@
+/* ARG UI · notification */
+.arg-toasts { position: fixed; z-index: 120; right: max(var(--arg-space-4x), env(safe-area-inset-right, 0px)); bottom: calc(var(--arg-space-4x) + env(safe-area-inset-bottom, 0px)); display: grid; gap: var(--arg-space-2x); width: min(380px, calc(100% - var(--arg-space-8x))); pointer-events: none; }
+.arg-toast { pointer-events: auto; display: flex; align-items: flex-start; gap: var(--arg-space-3x); padding: var(--arg-space-3x) var(--arg-space-3x) var(--arg-space-3x) var(--arg-space-4x); border-radius: var(--arg-radius-sm); background: var(--arg-action-noti-toast-fill); color: var(--arg-ui-text-on-dim-text-content); box-shadow: var(--arg-shadow-toast-shadow); animation: arg-pop .2s ease; }
+.arg-toast__icon { flex: none; width: 20px; height: 20px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--c, var(--arg-ui-label-strong-blue)); }
+.arg-toast__icon .i { width: 12px; height: 12px; }
+.arg-toast__body { flex: 1; min-width: 0; display: grid; gap: 2px; }
+.arg-toast__title { font-weight: var(--arg-font-font-weight-semibold); color: var(--arg-ui-text-on-dim-text-title); }
+.arg-toast__text { color: var(--arg-ui-text-on-dim-text-content-lv2); font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); }
+.arg-toast .arg-icon-btn { color: var(--arg-ui-text-on-dim-text-content-lv2); }
+.arg-toast .arg-icon-btn:hover { background: var(--arg-ui-state-layer-on-dim-hovered); color: var(--arg-ui-text-on-dim-text-title); }
+.arg-notilist { display: grid; }
+.arg-noti { display: flex; gap: var(--arg-space-3x); padding: var(--arg-space-3x) var(--arg-space-4x); border-bottom: 1px solid var(--arg-ui-divider-table-line); position: relative; }
+.arg-noti:last-child { border-bottom: 0; }
+.arg-noti.is-unread { background: var(--arg-ui-table-even-row); }
+.arg-noti.is-unread::before { content: ""; position: absolute; left: var(--arg-space-1x); top: 50%; width: 6px; height: 6px; margin-top: -3px; border-radius: 50%; background: var(--arg-action-noti-toast-error); }
+.arg-noti__icon { flex: none; width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; background: var(--bg); color: var(--c); }
+.arg-noti__icon .i { width: 18px; height: 18px; }
+.arg-noti__body { flex: 1; min-width: 0; display: grid; gap: 2px; }
+.arg-noti__title { color: var(--arg-ui-text-on-bright-text-title); font-weight: var(--arg-font-font-weight-medium); }
+.arg-noti__time { font-size: var(--arg-font-font-size-label-1); color: var(--arg-ui-text-on-bright-text-read-only); }

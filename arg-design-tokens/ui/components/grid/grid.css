@@ -1,0 +1,11 @@
+/* ARG UI · grid */
+.arg-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--arg-space-4x); }
+.arg-grid--gap-sm { gap: var(--arg-space-2x); }
+.arg-grid--gap-lg { gap: var(--arg-space-6x); }
+.arg-col-1 { grid-column: span 1; } .arg-col-2 { grid-column: span 2; } .arg-col-3 { grid-column: span 3; }
+.arg-col-4 { grid-column: span 4; } .arg-col-5 { grid-column: span 5; } .arg-col-6 { grid-column: span 6; }
+.arg-col-7 { grid-column: span 7; } .arg-col-8 { grid-column: span 8; } .arg-col-9 { grid-column: span 9; }
+.arg-col-10 { grid-column: span 10; } .arg-col-11 { grid-column: span 11; } .arg-col-12 { grid-column: span 12; }
+@media (max-width: 1024px) { .arg-grid > [class*="arg-col-"]:not(.arg-col-keep) { grid-column: span 6; } }
+@media (max-width: 640px)  { .arg-grid > [class*="arg-col-"]:not(.arg-col-keep) { grid-column: span 12; } }
+.arg-cell { display: grid; place-items: center; min-height: 48px; padding: var(--arg-space-2x); border-radius: var(--arg-radius-sm); background: var(--arg-ui-label-weak-orange); color: var(--arg-ui-label-strong-orange); font-family: ui-monospace, Menlo, monospace; font-size: 12px; font-weight: 600; }

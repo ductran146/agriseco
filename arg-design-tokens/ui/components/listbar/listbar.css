@@ -1,0 +1,16 @@
+/* ARG UI · listbar (thanh công cụ đầu danh sách: chọn nhóm bên trái, nút công cụ bên phải) */
+.arg-listbar { display: flex; align-items: center; justify-content: space-between; gap: var(--arg-space-3x); min-width: 0; }
+.arg-listbar__main, .arg-listbar__tools { display: flex; align-items: center; gap: var(--arg-space-2x); min-width: 0; }
+.arg-listbar__main .arg-control { width: 158px; flex: none; }
+.arg-listbar__tools { flex: none; gap: var(--arg-space-1x); }
+/* Kiểu chip (danh mục người dùng tạo): dải chip chiếm phần còn lại và cuộn ngang, nút công cụ cố định bên phải; còn chip khuất thì mép phải mờ dần */
+.arg-listbar__main > .arg-chip-tabs { flex: 1 1 auto; min-width: 0; }
+.arg-listbar__main[data-more] .arg-chip-tabs__list { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 48px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 48px), transparent); }
+.arg-listbar__main:has(> .arg-chip-tabs) { flex: 1 1 auto; }
+.arg-listbar__tool { display: grid; place-items: center; flex: none; width: var(--arg-border-height-size-height-normal); height: var(--arg-border-height-size-height-normal); padding: 0; border: 0; border-radius: var(--arg-radius-sm); background: transparent; color: var(--arg-ui-text-on-bright-text-title); cursor: pointer; }
+.arg-listbar__tool .i { width: 24px; height: 24px; color: inherit; }
+.arg-listbar__tool:hover { background: var(--arg-ui-state-layer-on-bright-hovered); }
+.arg-listbar__tool:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: -2px; }
+.arg-listbar .arg-dropdown { display: block; }
+.arg-listbar .arg-menu { min-width: 200px; z-index: 40; }
+[data-arg-pane][hidden] { display: none; }

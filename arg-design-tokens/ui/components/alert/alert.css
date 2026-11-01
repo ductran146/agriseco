@@ -1,0 +1,11 @@
+/* ARG UI · alert */
+.arg-alert { --c: var(--arg-ui-text-on-bright-text-content-lv2); --bg: var(--arg-ui-label-weak-gray); display: flex; gap: var(--arg-space-3x); align-items: flex-start; padding: var(--arg-space-3x) var(--arg-space-4x); border-radius: var(--arg-radius-sm); background: var(--bg); color: var(--arg-ui-text-on-bright-text-content); border: 1px solid transparent; }
+.arg-alert > .i { width: 20px; height: 20px; margin-top: 0; color: var(--c); }
+.arg-alert__body { flex: 1; min-width: 0; display: grid; gap: var(--arg-space-0-5x); }
+.arg-alert__title { font-weight: var(--arg-font-font-weight-semibold); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-alert--success { --c: var(--arg-action-noti-toast-success); --bg: var(--arg-ui-label-weak-success); }
+.arg-alert--error   { --c: var(--arg-action-noti-toast-error); --bg: var(--arg-ui-label-weak-error); }
+.arg-alert--warning { --c: var(--arg-ui-label-strong-warning); --bg: var(--arg-ui-label-weak-warning); }
+.arg-alert--info    { --c: var(--arg-ui-label-strong-blue); --bg: var(--arg-ui-label-weak-blue); }
+.arg-alert--solid { background: var(--c); border-color: transparent; color: #fff; }
+.arg-alert--solid > .i, .arg-alert--solid .arg-alert__title { color: #fff; }

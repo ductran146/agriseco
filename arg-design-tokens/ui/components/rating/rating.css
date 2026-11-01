@@ -1,0 +1,8 @@
+/* ARG UI · rating (nhãn khuyến nghị B/G/M, chú thích) */
+.arg-rating { --c: var(--arg-trading-flat-flat); flex: none; display: inline-grid; place-items: center; width: var(--arg-space-8x); height: var(--arg-space-8x); border-radius: var(--arg-radius-xs); background: color-mix(in srgb, var(--c) 10%, transparent); color: var(--c); font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-body-4)/1 var(--arg-font-family-family); }
+.arg-rating--sm { width: var(--arg-space-5x); height: var(--arg-space-5x); border-radius: calc(var(--arg-radius-xs) * .6); font-size: var(--arg-font-font-size-label-1); }
+.arg-rating--buy { --c: var(--arg-trading-up-light-increase); }
+.arg-rating--sell { --c: var(--arg-trading-down-light-increase); }
+.arg-rating--hold { --c: var(--arg-trading-flat-flat); }
+.arg-rating-legend { display: flex; flex-wrap: nowrap; gap: var(--arg-space-4x); margin: 0; padding: 0; list-style: none; color: var(--arg-ui-text-on-bright-text-content); font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); white-space: nowrap; }
+.arg-rating-legend li { display: inline-flex; align-items: center; gap: var(--arg-space-1-5x); }

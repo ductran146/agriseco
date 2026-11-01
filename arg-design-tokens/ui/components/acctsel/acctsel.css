@@ -1,0 +1,25 @@
+/* ARG UI · acctsel (nút chọn tài khoản: số tài khoản và loại) */
+.arg-acctsel { display: grid; justify-items: start; gap: 2px; min-width: 0; padding: 0; border: 0; background: transparent; color: var(--arg-ui-text-on-bright-text-title); text-align: left; cursor: pointer; }
+.arg-acctsel__row { display: inline-flex; align-items: center; gap: var(--arg-space-2x); }
+.arg-acctsel__no { font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-title-3)/var(--arg-font-line-height-title-3) var(--arg-font-family-family); font-variant-numeric: tabular-nums; }
+.arg-acctsel__row .i { width: 20px; height: 20px; flex: none; }
+.arg-acctsel__type { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-acctsel:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: 2px; border-radius: var(--arg-radius-xs); }
+/* Chọn tiểu khoản: dùng Select gốc (.arg-control.arg-select.arg-control--sm), đặt ở bên phải tiêu đề khối; .arg-acct-select chỉ đặt độ rộng 125px */
+.arg-control.arg-acct-select { width: 125px; min-width: 125px; flex: none; }
+[data-arg-acct-pane][hidden] { display: none; }
+/* Chọn tiểu khoản trên thanh đầu: nút .arg-acctsel (số tiểu khoản kèm mũi tên, loại ở dòng dưới) làm trigger của Dropdown [data-arg-acct-menu].
+   Danh sách xổ toàn chiều ngang ngay dưới thanh đầu (thanh đầu phải là phần tử định vị, ví dụ .arg-appbar--sticky): mỗi hàng một tiểu khoản (số ở trên, loại ở dưới), hàng đang chọn nền xám */
+.arg-acctsel[aria-expanded="true"] .arg-acctsel__row .i { transform: rotate(180deg); }
+.arg-dropdown[data-arg-acct-menu] { position: static; display: block; min-width: 0; max-width: 100%; }
+.arg-dropdown[data-arg-acct-menu] .arg-acctsel { max-width: 100%; } .arg-dropdown[data-arg-acct-menu] .arg-acctsel__no { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.arg-dropdown[data-arg-acct-menu] .arg-menu { top: 100%; left: 0; right: 0; z-index: 40; min-width: 0; padding: 0; border-radius: 0 0 var(--arg-radius) var(--arg-radius); background: var(--arg-ui-background-surface); box-shadow: var(--arg-shadow-sharp-shadow); border-width: 0 0 1px; gap: 0; }
+.arg-dropdown[data-arg-acct-menu] .arg-menu__item:first-child { border-top-color: transparent; }
+.arg-dropdown[data-arg-acct-menu] .arg-menu__item { flex-direction: column; align-items: flex-start; justify-content: center; gap: 2px; height: auto; min-height: 60px; padding: var(--arg-space-2x) var(--arg-gutter); border-radius: 0; border-top: 1px solid var(--arg-ui-divider-separator); font-variant-numeric: tabular-nums; white-space: nowrap; text-align: left; }
+.arg-dropdown[data-arg-acct-menu] .arg-menu__item b { font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-body-3)/var(--arg-font-line-height-body-3) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-dropdown[data-arg-acct-menu] .arg-menu__item span { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-dropdown[data-arg-acct-menu] .arg-menu__item[aria-checked="true"] { background: var(--arg-ui-background-background); font-weight: var(--arg-font-font-weight-semibold); }
+/* Nền mờ như hộp thoại khi danh sách mở: phủ phần nội dung và thanh tab dưới thanh đầu; thanh đầu được nâng lên trên thanh tab. Bấm nền để đóng (acctsel.js) */
+.arg-appbar:has([data-arg-acct-menu] .arg-menu:not([hidden])) { z-index: 30; }
+.arg-dropdown[data-arg-acct-menu]:has(.arg-menu:not([hidden]))::after { content: ""; position: absolute; z-index: 39; top: 100%; left: 0; right: 0; height: 100vh; background: var(--arg-ui-background-bg-overlay); backdrop-filter: blur(2px); animation: arg-fade .15s ease; }
+@media (prefers-reduced-motion: reduce) { .arg-dropdown[data-arg-acct-menu]::after { animation: none; } }

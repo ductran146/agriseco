@@ -1,0 +1,14 @@
+/* ARG UI · orderbook (màn sổ lệnh: ô tìm mã, chip trạng thái kèm số lệnh, lọc chiều lệnh, chế độ chọn nhiều và thanh huỷ lệnh) */
+.arg-orderbook__search { display: grid; grid-template-columns: minmax(0, 1fr); }
+.arg-orderbook__chips .arg-chip-tabs__list { margin-inline: calc(var(--arg-gutter) * -1); padding-inline: var(--arg-gutter); scroll-padding-inline: var(--arg-gutter); }
+.arg-orderbook__head { display: flex; align-items: center; justify-content: space-between; gap: var(--arg-space-3x); }
+.arg-orderbook__count { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-orderbook__head .arg-tabs { gap: 0; }
+/* Chế độ chọn nhiều: thanh tab dưới nhường chỗ cho thanh huỷ lệnh (Action bar) */
+.arg-screen[data-select] > .arg-tabbar { display: none; }
+.arg-screen:not([data-select]) > .arg-actionbar[data-ob-bar] { display: none; }
+.arg-actionbar[data-ob-bar] { grid-auto-flow: row; grid-template-columns: auto minmax(0, 1fr); align-items: center; }
+.arg-actionbar[data-ob-bar] .arg-check { padding-right: var(--arg-space-2x); font: var(--arg-font-font-weight-medium) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-actionbar[data-ob-bar] .arg-btn:disabled { opacity: .4; }
+.arg-orderbook__empty { margin: 0; padding: var(--arg-space-8x) 0; text-align: center; color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-orderbook__empty[hidden] { display: none; }

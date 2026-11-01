@@ -1,0 +1,21 @@
+<section id="suggest">
+        <h2>Suggest</h2>
+        <p class="sec-desc">Trạng thái trống của danh mục theo dõi: thẻ gợi ý cổ phiếu chọn được. Chọn thẻ rồi bấm nút chính để thêm vào danh sách.</p>
+        <div class="demo">
+          <div class="group"><h3>Khối gợi ý <code>.arg-suggest</code></h3>
+            <div class="phone" style="padding:var(--arg-space-3x) var(--arg-gutter)" data-arg-watch data-arg-listbar-scope>
+              <select hidden data-arg-pane-select><option value="d">Demo</option></select>
+              <div data-arg-pane="d"><ul class="arg-quote-list arg-quote-list--plain" data-arg-sortable></ul></div>
+              <div class="arg-suggest" data-arg-suggest>
+                <div class="arg-suggest__head"><h3 class="arg-suggest__title">Chưa biết bắt đầu từ đâu?</h3><p class="arg-suggest__text">Chúng tôi chọn sẵn các cổ phiếu blue-chip phổ biến để bạn tham khảo</p></div>
+                <div class="arg-suggest__grid">
+                  <label class="arg-suggest__card arg-suggest__card--up"><input type="checkbox" value="VCB" checked><span class="arg-suggest__code">VCB</span><span class="arg-suggest__tick"><i data-arg-icon="check-circle-fill"></i></span><span class="arg-suggest__name">Ngân hàng TMCP Ngoại thương Việt Nam</span><span class="arg-suggest__price"><b>91,80</b><span class="arg-badge arg-badge--up">+1,04%</span></span></label>
+                  <label class="arg-suggest__card arg-suggest__card--down"><input type="checkbox" value="CTG"><span class="arg-suggest__code">CTG</span><span class="arg-suggest__tick"><i data-arg-icon="check-circle-fill"></i></span><span class="arg-suggest__name">Ngân hàng TMCP Công thương Việt Nam</span><span class="arg-suggest__price"><b>34,50</b><span class="arg-badge arg-badge--down">-1,04%</span></span></label>
+                </div>
+                <div class="arg-suggest__actions"><button class="arg-btn arg-btn--text-strong" type="button">Thêm mã khác</button><button class="arg-btn arg-btn--primary" type="button" data-arg-suggest-add><i data-arg-icon="plus-circle"></i>Thêm vào danh mục<span data-arg-count></span></button></div>
+              </div>
+              <template data-arg-row="VCB"><li class="arg-quote arg-quote--up" data-code="VCB" data-pct="1.04" data-price="91.8" data-vol="2.6"><div class="arg-quote__id"><b>VCB</b><span>Vietcombank</span></div><span></span><div class="arg-quote__price"><b>91,80</b><span class="arg-badge arg-badge--up">+1,04%</span></div><span class="arg-quote__vol"></span></li></template>
+              <template data-arg-row="CTG"><li class="arg-quote arg-quote--down" data-code="CTG" data-pct="-1.04" data-price="34.5" data-vol="3.1"><div class="arg-quote__id"><b>CTG</b><span>VietinBank</span></div><span></span><div class="arg-quote__price"><b>34,50</b><span class="arg-badge arg-badge--down">-1,04%</span></div><span class="arg-quote__vol"></span></li></template>
+            </div></div>
+        </div>
+      </section>

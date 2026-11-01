@@ -1,0 +1,10 @@
+/* ARG UI · screen (chuyển màn hình trong một trang) */
+.arg-screen { flex: 1 1 auto; display: flex; flex-direction: column; min-height: 100vh; }
+.arg-screen[hidden] { display: none; }
+.arg-screen--in-fwd { animation: arg-screen-fwd .28s cubic-bezier(.4, 0, .2, 1); }
+.arg-screen--in-fade { animation: arg-screen-fade .2s ease; }
+.arg-screen--in-back { animation: arg-screen-back .28s cubic-bezier(.4, 0, .2, 1); }
+@keyframes arg-screen-fade { from { opacity: 0; } }
+@keyframes arg-screen-fwd { from { opacity: 0; transform: translateX(24px); } }
+@keyframes arg-screen-back { from { opacity: 0; transform: translateX(-24px); } }
+@media (prefers-reduced-motion: reduce) { .arg-screen--in-fwd, .arg-screen--in-back, .arg-screen--in-fade { animation: none; } }

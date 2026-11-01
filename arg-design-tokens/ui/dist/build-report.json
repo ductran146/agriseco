@@ -1,0 +1,34 @@
+{
+  "checks": [
+    {
+      "ok": true,
+      "name": "Token CSS được dùng đều tồn tại",
+      "detail": "211 biến dùng, thiếu: không"
+    },
+    {
+      "ok": true,
+      "name": "Class trong ví dụ đều có CSS",
+      "detail": "577 class dùng, thiếu: không"
+    },
+    {
+      "ok": true,
+      "name": "Icon Solar được dùng đều có trong sprite",
+      "detail": "95 icon dùng / 95 trong sprite, thiếu: không"
+    },
+    {
+      "ok": true,
+      "name": "Mỗi component có ví dụ HTML và tài liệu",
+      "detail": "78 component, thiếu tài liệu: không"
+    },
+    {
+      "ok": true,
+      "name": "Token chiều cao điều khiển (32 / 40 / 44 / 48)",
+      "detail": "height-small, height-normal, height-xl, height-xxl"
+    },
+    {
+      "ok": true,
+      "name": "Gradient nút chính theo header web Agriseco",
+      "detail": "--arg-gradient-primary-button: linear-gradient(90deg, var(--arg-p-brand-header-start) 0%, var(--arg-p-brand-header-end) 100%);"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+/* ARG UI · media */
+.arg-media { display: flex; gap: var(--arg-space-4x); align-items: flex-start; min-width: 0; }
+.arg-media--center { align-items: center; }
+.arg-media--end { flex-direction: row-reverse; text-align: right; }
+.arg-media__body { flex: 1; min-width: 0; display: grid; gap: var(--arg-space-1x); }
+.arg-media__title { margin: 0; font-size: var(--arg-font-font-size-body-3); font-weight: var(--arg-font-font-weight-semibold); color: var(--arg-ui-text-on-bright-text-title); display: flex; gap: var(--arg-space-2x); align-items: baseline; flex-wrap: wrap; }
+.arg-media__title small { font-weight: 400; font-size: var(--arg-font-font-size-label-1); color: var(--arg-ui-text-on-bright-text-read-only); }
+.arg-media__text { margin: 0; color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-media .arg-media { margin-top: var(--arg-space-4x); }
+.arg-media__actions { display: flex; gap: var(--arg-space-3x); font-size: var(--arg-font-font-size-label-1); color: var(--arg-ui-text-on-bright-text-read-only); }
+.arg-media__thumb { flex: none; width: 96px; aspect-ratio: 4 / 3; border-radius: var(--arg-radius-sm); background: var(--arg-gradient-primary-button); display: grid; place-items: center; color: #fff; }

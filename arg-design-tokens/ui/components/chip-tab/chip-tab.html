@@ -1,0 +1,38 @@
+<section id="chip-tab">
+        <h2>Chip tabs</h2>
+        <p class="sec-desc">Tab dạng chip bo tròn để lọc nội dung, cao 40px mặc định (sm 32px). Chip đang chọn nền tối, chữ trắng. Dùng cùng script của Tabs: phím mũi tên, Home, End.</p>
+        <div class="demo">
+          <div class="group"><h3>Mặc định (40px)</h3>
+          <div class="arg-chip-tabs" data-arg-tabs>
+            <div class="arg-chip-tabs__list" role="tablist" aria-label="Nhóm danh mục"><button class="arg-chip-tab" role="tab" type="button" aria-selected="true">Của tôi</button><button class="arg-chip-tab" role="tab" type="button" aria-selected="false">Xây dựng</button><button class="arg-chip-tab" role="tab" type="button" aria-selected="false">Tài chính</button></div>
+            <div class="arg-tabpanel" role="tabpanel">Danh mục của tôi: AGR, HPG, VIC.</div>
+            <div class="arg-tabpanel" role="tabpanel" hidden>Nhóm xây dựng: CTD, HBC, VCG.</div>
+            <div class="arg-tabpanel" role="tabpanel" hidden>Nhóm tài chính: VCB, CTG, SSI.</div>
+          </div></div>
+          <div class="group"><h3>Nhỏ (32px)</h3>
+          <div class="arg-chip-tabs arg-chip-tabs--sm" data-arg-tabs>
+            <div class="arg-chip-tabs__list" role="tablist" aria-label="Khoảng thời gian"><button class="arg-chip-tab" role="tab" type="button" aria-selected="true">1 ngày</button><button class="arg-chip-tab" role="tab" type="button" aria-selected="false">1 tuần</button><button class="arg-chip-tab" role="tab" type="button" aria-selected="false">1 tháng</button><button class="arg-chip-tab" role="tab" type="button" aria-selected="false">1 năm</button></div>
+            <div class="arg-tabpanel" role="tabpanel">Biểu đồ 1 ngày.</div>
+            <div class="arg-tabpanel" role="tabpanel" hidden>Biểu đồ 1 tuần.</div>
+            <div class="arg-tabpanel" role="tabpanel" hidden>Biểu đồ 1 tháng.</div>
+            <div class="arg-tabpanel" role="tabpanel" hidden>Biểu đồ 1 năm.</div>
+          </div></div>
+          <div class="group"><h3>Viết tắt, cỡ 28px <code>--xs</code></h3>
+          <div class="arg-chip-tabs arg-chip-tabs--xs" data-arg-tabs><div class="arg-chip-tabs__list" role="tablist" aria-label="Khoảng thời gian"><button class="arg-chip-tab" role="tab" type="button" aria-label="1 ngày" aria-selected="true">1N</button><button class="arg-chip-tab" role="tab" type="button" aria-label="1 tuần" aria-selected="false">1T</button><button class="arg-chip-tab" role="tab" type="button" aria-label="1 tháng" aria-selected="false">1Th</button><button class="arg-chip-tab" role="tab" type="button" aria-label="3 tháng" aria-selected="false">3Th</button><button class="arg-chip-tab" role="tab" type="button" aria-label="1 năm" aria-selected="false">1Nm</button><button class="arg-chip-tab" role="tab" type="button" aria-label="5 năm" aria-selected="false">5Nm</button></div></div></div>
+          <div class="group"><h3>Có chip vô hiệu</h3>
+          <div class="arg-chip-tabs" data-arg-tabs>
+            <div class="arg-chip-tabs__list" role="tablist" aria-label="Loại tài khoản"><button class="arg-chip-tab" role="tab" type="button" aria-selected="true">X1</button><button class="arg-chip-tab" role="tab" type="button" aria-selected="false">M1</button><button class="arg-chip-tab" role="tab" type="button" aria-selected="false">D1</button><button class="arg-chip-tab" role="tab" type="button" aria-selected="false" disabled>Ảo</button></div>
+            <div class="arg-tabpanel" role="tabpanel">Tài khoản X1.</div>
+            <div class="arg-tabpanel" role="tabpanel" hidden>Tài khoản M1.</div>
+            <div class="arg-tabpanel" role="tabpanel" hidden>Tài khoản D1.</div>
+            <div class="arg-tabpanel" role="tabpanel" hidden>Tài khoản Ảo.</div>
+          </div></div>
+          <div class="group"><h3>Chia đều chiều rộng</h3>
+          <div class="arg-chip-tabs arg-chip-tabs--fill" data-arg-tabs>
+            <div class="arg-chip-tabs__list" role="tablist" aria-label="Trạng thái lệnh"><button class="arg-chip-tab" role="tab" type="button" aria-selected="true">Tất cả</button><button class="arg-chip-tab" role="tab" type="button" aria-selected="false">Đã khớp</button><button class="arg-chip-tab" role="tab" type="button" aria-selected="false">Chờ khớp</button></div>
+            <div class="arg-tabpanel" role="tabpanel">Tất cả lệnh hôm nay.</div>
+            <div class="arg-tabpanel" role="tabpanel" hidden>Lệnh đã khớp.</div>
+            <div class="arg-tabpanel" role="tabpanel" hidden>Lệnh chờ khớp.</div>
+          </div></div>
+        </div>
+      </section>

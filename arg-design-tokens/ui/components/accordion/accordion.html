@@ -1,0 +1,25 @@
+<section id="accordion">
+        <h2>Accordion &amp; Collapse</h2>
+        <p class="sec-desc">Accordion chỉ mở một mục mỗi lần. Collapse là một vùng đóng mở độc lập.</p>
+        <div class="demo">
+          <div class="arg-accordion" data-arg-accordion>
+            <div class="arg-accordion__item">
+              <h3 class="arg-accordion__head" style="all:unset"><button class="arg-accordion__btn" type="button" aria-expanded="true" aria-controls="acc-p1" id="acc-b1">Phí giao dịch được tính thế nào?<i data-arg-icon="caret-down"></i></button></h3>
+              <div class="arg-collapse is-open" id="acc-p1" role="region" aria-labelledby="acc-b1"><div><div class="arg-collapse__inner">Phí tính theo giá trị khớp lệnh, theo biểu phí đang áp dụng cho từng loại tài khoản. Phí hiển thị trước khi bạn xác nhận lệnh.</div></div></div>
+            </div>
+            <div class="arg-accordion__item">
+              <h3 class="arg-accordion__head" style="all:unset"><button class="arg-accordion__btn" type="button" aria-expanded="false" aria-controls="acc-p2" id="acc-b2">Khi nào tiền bán về tài khoản?<i data-arg-icon="caret-down"></i></button></h3>
+              <div class="arg-collapse" id="acc-p2" role="region" aria-labelledby="acc-b2"><div><div class="arg-collapse__inner">Tiền bán chứng khoán về sau T+1 và dùng được để mua ngay trong ngày theo hạn mức sức mua.</div></div></div>
+            </div>
+            <div class="arg-accordion__item">
+              <h3 class="arg-accordion__head" style="all:unset"><button class="arg-accordion__btn" type="button" aria-expanded="false" aria-controls="acc-p3" id="acc-b3">Làm sao đổi hạn mức margin?<i data-arg-icon="caret-down"></i></button></h3>
+              <div class="arg-collapse" id="acc-p3" role="region" aria-labelledby="acc-b3"><div><div class="arg-collapse__inner">Vào Tài khoản, chọn Margin, rồi gửi yêu cầu điều chỉnh hạn mức. Yêu cầu được duyệt trong giờ làm việc.</div></div></div>
+            </div>
+          </div>
+          <div class="group"><h3>Collapse</h3>
+            <div><button class="arg-btn arg-btn--outline arg-collapse-toggle" type="button" aria-expanded="false" aria-controls="col-1" data-arg-collapse>Xem điều kiện áp dụng<i data-arg-icon="caret-down"></i></button>
+              <div class="arg-collapse" id="col-1"><div><div class="arg-collapse-box">Áp dụng cho tài khoản mở mới từ 01/11 đến 31/12. Không áp dụng cho giao dịch thoả thuận.</div></div></div></div></div>
+          <div class="group"><h3>Xem thêm / Thu gọn và đoạn văn rút gọn</h3>
+            <div class="phone" style="padding:var(--arg-space-3x) var(--arg-gutter)"><div class="arg-stack"><p class="arg-clamp" id="ex-clamp" style="--lines:3">Vietcombank là ngân hàng thương mại do Nhà nước nắm cổ phần chi phối, thành lập năm 1963. Ngân hàng cung cấp dịch vụ huy động vốn, cho vay, thanh toán quốc tế, kinh doanh ngoại tệ, thẻ và ngân hàng số cho khách hàng cá nhân và doanh nghiệp. Vietcombank có thế mạnh về tài trợ thương mại, thanh toán quốc tế và nền khách hàng doanh nghiệp lớn, đồng thời đẩy mạnh bán lẻ trên kênh số.</p><button class="arg-collapse-more" type="button" data-arg-collapse aria-controls="ex-clamp" aria-expanded="false"><span class="arg-collapse-more__open">Xem thêm</span><span class="arg-collapse-more__close">Thu gọn</span><i data-arg-icon="caret-down"></i></button></div></div></div>
+        </div>
+      </section>

@@ -1,0 +1,8 @@
+/* ARG UI · promo (thẻ quảng bá, có thể tắt) */
+.arg-promo { position: relative; display: flex; align-items: center; gap: var(--arg-space-3x); padding: var(--arg-space-3x) var(--arg-space-10x) var(--arg-space-3x) var(--arg-space-3x); border-radius: var(--arg-radius-lg); background: var(--arg-ui-background-lv-3); }
+.arg-promo__media { flex: none; display: grid; place-items: center; width: var(--arg-space-12x); height: var(--arg-space-12x); border-radius: var(--arg-radius); color: #fff; background-color: var(--arg-p-brand-header-start); background-image: var(--arg-gradient-primary-button); }
+.arg-promo__media .i { width: 24px; height: 24px; }
+.arg-promo__body { display: grid; min-width: 0; } .arg-promo__title { font-size: var(--arg-font-font-size-body-4); line-height: var(--arg-font-line-height-body-4); font-weight: var(--arg-font-font-weight-semibold); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-promo__text { font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-promo__close { position: absolute; top: var(--arg-space-2x); right: var(--arg-space-2x); display: grid; place-items: center; width: 24px; height: 24px; padding: 0; border: 0; background: transparent; color: var(--arg-ui-text-on-bright-text-read-only); cursor: pointer; border-radius: var(--arg-radius-xs); }
+.arg-promo__close:hover { background: var(--arg-ui-state-layer-on-bright-hovered); }

@@ -1,0 +1,9 @@
+/* ARG UI · symbol (thanh mã: tìm kiếm, mã, sàn, thông tin, trạng thái phiên) */
+.arg-symbol { display: flex; align-items: center; gap: var(--arg-space-2x); min-width: 0; }
+.arg-symbol__search { display: inline-grid; place-items: center; flex: none; color: var(--arg-ui-text-on-bright-text-read-only); }
+.arg-symbol__search .i { width: 24px; height: 24px; }
+.arg-symbol__code { font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-title-3)/var(--arg-font-line-height-title-3) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); white-space: nowrap; }
+.arg-live { display: inline-flex; align-items: center; gap: var(--arg-space-1-5x); margin-left: auto; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); white-space: nowrap; }
+.arg-live__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--arg-trading-up-light-increase); box-shadow: 0 0 0 3px color-mix(in srgb, var(--arg-trading-up-light-increase) 20%, transparent); }
+.arg-live--closed .arg-live__dot { background: var(--arg-trading-flat-flat); box-shadow: 0 0 0 3px color-mix(in srgb, var(--arg-trading-flat-flat) 20%, transparent); }
+.arg-symbol > .arg-tabs { margin-left: auto; }

@@ -1,0 +1,754 @@
+{
+  "Font Family": {
+    "Display 1": {
+      "Bold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Display_1}",
+          "fontWeight": 700,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Display_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Semibold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Display_1}",
+          "fontWeight": 600,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Display_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Medium": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Display_1}",
+          "fontWeight": 500,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Display_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Display_1}",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Display_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Display 2": {
+      "Bold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Display_2}",
+          "fontWeight": 700,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Display_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Semibold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Display_2}",
+          "fontWeight": 600,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Display_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Medium": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Display_2}",
+          "fontWeight": 500,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Display_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Display_2}",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Display_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Header 1": {
+      "Bold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Header_1}",
+          "fontWeight": 700,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Header_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Semibold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Header_1}",
+          "fontWeight": 600,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Header_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Medium": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Header_1}",
+          "fontWeight": 500,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Header_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Header_1}",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Header_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Header 2": {
+      "Bold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Header_2}",
+          "fontWeight": 700,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Header_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Semibold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Header_2}",
+          "fontWeight": 600,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Header_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Medium": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Header_2}",
+          "fontWeight": 500,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Header_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Header_2}",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Header_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Header 3": {
+      "Bold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Header_3}",
+          "fontWeight": 700,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Header_3}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Semibold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Header_3}",
+          "fontWeight": 600,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Header_3}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Medium": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Header_3}",
+          "fontWeight": 500,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Header_3}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Header_3}",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Header_3}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Title 1": {
+      "Bold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Title_1}",
+          "fontWeight": 700,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Title_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Semibold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Title_1}",
+          "fontWeight": 600,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Title_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Medium": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Title_1}",
+          "fontWeight": 500,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Title_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Title_1}",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Title_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Title 2": {
+      "Bold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Title_2}",
+          "fontWeight": 700,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Title_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Semibold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Title_2}",
+          "fontWeight": 600,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Title_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Medium": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Title_2}",
+          "fontWeight": 500,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Title_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Title_2}",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Title_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Title 3": {
+      "Bold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Title_3}",
+          "fontWeight": 700,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Title_3}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Semibold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Title_3}",
+          "fontWeight": 600,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Title_3}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Medium": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Title_3}",
+          "fontWeight": 500,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Title_3}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Title_3}",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Title_3}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Body 1": {
+      "Bold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Body_1}",
+          "fontWeight": 700,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Body_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Semibold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Body_1}",
+          "fontWeight": 600,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Body_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Medium": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Body_1}",
+          "fontWeight": 500,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Body_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Body_1}",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Body_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Body 2": {
+      "Bold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Body_2}",
+          "fontWeight": 700,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Body_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Semibold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Body_2}",
+          "fontWeight": 600,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Body_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Medium": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Body_2}",
+          "fontWeight": 500,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Body_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Body_2}",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Body_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Body 3": {
+      "Bold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Body_3}",
+          "fontWeight": 700,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Body_3}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Semibold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Body_3}",
+          "fontWeight": 600,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Body_3}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Medium": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Body_3}",
+          "fontWeight": 500,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Body_3}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Body_3}",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Body_3}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Body 4": {
+      "Bold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Body_4}",
+          "fontWeight": 700,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Body_4}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Semibold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Body_4}",
+          "fontWeight": 600,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Body_4}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Medium": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Body_4}",
+          "fontWeight": 500,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Body_4}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Body_4}",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Body_4}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Label 1": {
+      "Bold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Label_1}",
+          "fontWeight": 700,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Label_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Semibold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Label_1}",
+          "fontWeight": 600,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Label_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Medium": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Label_1}",
+          "fontWeight": 500,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Label_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Label_1}",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Label_1}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Label 2": {
+      "Bold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Label_2}",
+          "fontWeight": 700,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Label_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Semibold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Label_2}",
+          "fontWeight": 600,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Label_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Medium": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Label_2}",
+          "fontWeight": 500,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Label_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Label_2}",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Label_2}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    },
+    "Label 3": {
+      "Bold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Label_3}",
+          "fontWeight": 700,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Label_3}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Semibold": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Label_3}",
+          "fontWeight": 600,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Label_3}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Medium": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Label_3}",
+          "fontWeight": 500,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Label_3}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      },
+      "Regular": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "Pretendard",
+          "fontSize": "{Font.Font_Size.Label_3}",
+          "fontWeight": 400,
+          "letterSpacing": "0%",
+          "lineHeight": "{Font.Line_Height.Label_3}",
+          "textTransform": "none",
+          "textDecoration": "none"
+        }
+      }
+    }
+  }
+}

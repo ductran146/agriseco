@@ -1,0 +1,26 @@
+/* ARG UI · tabs */
+.arg-tabs { display: grid; gap: var(--arg-space-4x); }
+.arg-tablist { display: flex; gap: var(--arg-space-1x); overflow-x: auto; scrollbar-width: none; border-bottom: 1px solid var(--arg-ui-divider-separator); }
+.arg-tab { position: relative; flex: none; display: inline-flex; align-items: center; gap: var(--arg-space-2x); height: var(--arg-border-height-size-height-normal); padding: 0 var(--arg-space-4x); border: 0; background: transparent; color: var(--arg-ui-text-on-bright-text-content-lv2); font: var(--arg-font-font-weight-medium) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); cursor: pointer; }
+.arg-tab .i { width: 16px; height: 16px; }
+.arg-tab:hover { color: var(--arg-ui-text-on-bright-text-title); }
+.arg-tab[aria-selected="true"] { color: var(--arg-ui-text-on-bright-text-title); font-weight: var(--arg-font-font-weight-semibold); }
+.arg-tab[aria-selected="true"]::after { content: ""; position: absolute; left: var(--arg-space-3x); right: var(--arg-space-3x); bottom: -1px; height: 2px; border-radius: 2px; background: var(--arg-gradient-primary-button); }
+.arg-tab:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: -2px; border-radius: var(--arg-radius-sm); }
+.arg-tabs--pill .arg-tablist { border: 0; padding: var(--arg-space-0-5x); gap: var(--arg-space-0-5x); width: max-content; max-width: 100%; border-radius: var(--arg-radius-sm); background: var(--arg-action-tab-toggletab-intitle); }
+.arg-tabs--pill .arg-tab { height: var(--arg-border-height-size-height-small); padding: 0 var(--arg-space-3x); border-radius: var(--arg-radius-xs); }
+.arg-tabs--pill .arg-tab[aria-selected="true"] { background: var(--arg-action-tab-toggletab-intitle-active); box-shadow: var(--arg-shadow-shadow); }
+.arg-tabs--pill .arg-tab[aria-selected="true"]::after { display: none; }
+.arg-tabs--vertical { grid-template-columns: 200px minmax(0, 1fr); align-items: start; }
+.arg-tabs--vertical .arg-tablist { flex-direction: column; border-bottom: 0; border-right: 1px solid var(--arg-ui-divider-separator); overflow: visible; }
+.arg-tabs--vertical .arg-tab { justify-content: flex-start; padding: 0 var(--arg-space-4x); }
+.arg-tabs--vertical .arg-tab[aria-selected="true"]::after { left: auto; right: -1px; top: var(--arg-space-2x); bottom: var(--arg-space-2x); width: 2px; height: auto; }
+.arg-tabpanel { color: var(--arg-ui-text-on-bright-text-content); }
+.arg-tabpanel[hidden] { display: none; }
+@media (max-width: 640px) { .arg-tabs--vertical { grid-template-columns: 1fr; } .arg-tabs--vertical .arg-tablist { flex-direction: row; border-right: 0; border-bottom: 1px solid var(--arg-ui-divider-separator); overflow-x: auto; } }
+.arg-tabs--lg .arg-tablist { gap: var(--arg-space-6x); }
+.arg-tabs--lg .arg-tab { height: var(--arg-border-height-size-height-xxl); padding: 0; font-size: var(--arg-font-font-size-title-3); line-height: var(--arg-font-line-height-title-3); font-weight: var(--arg-font-font-weight-bold); }
+.arg-tabs--lg .arg-tab[aria-selected="true"]::after { left: 0; right: 0; }
+.arg-tabs--fill .arg-tablist { width: 100%; box-sizing: border-box; }
+.arg-tabs--fill .arg-tab { flex: 1 1 0; justify-content: center; }
+.arg-tab .i { flex: none; }

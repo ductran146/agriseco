@@ -1,0 +1,4 @@
+/* ARG UI · placeholder */
+.arg-ph { display: block; border-radius: var(--arg-radius-xs); background: var(--arg-gradient-loading); background-size: 200% 100%; animation: arg-shimmer 1.4s linear infinite; min-height: 12px; }
+.arg-ph--circle { border-radius: 50%; }
+@keyframes arg-shimmer { from { background-position: 100% 0; } to { background-position: -100% 0; } }

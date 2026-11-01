@@ -1,0 +1,13 @@
+/* ARG UI · theme (một chủ đề trong danh sách: ảnh vuông, tên, số mã tăng, % trung bình; và dòng tên + thay đổi đầu trang chi tiết) */
+.arg-theme-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--arg-space-4x); }
+.arg-theme { position: relative; display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; align-items: center; gap: var(--arg-space-3x); }
+.arg-theme__img { display: block; width: 64px; height: 64px; border-radius: var(--arg-radius); object-fit: cover; background: var(--tint, var(--arg-ui-background-lv-3)); }
+.arg-theme__id { display: grid; gap: 2px; min-width: 0; color: inherit; text-decoration: none; }
+.arg-theme__id::after { content: ""; position: absolute; inset: 0; } /* vùng bấm phủ cả hàng */
+.arg-theme__name { font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-body-3)/var(--arg-font-line-height-body-3) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.arg-theme__sub { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-theme .arg-badge { font-variant-numeric: tabular-nums; } .arg-theme .arg-badge .i { width: 12px; height: 12px; }
+/* Đầu trang chi tiết: tên chủ đề, thay đổi trung bình và số mã */
+.arg-theme-head { display: grid; gap: var(--arg-space-2x); }
+.arg-theme-head__meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--arg-space-1x) var(--arg-space-4x); font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); font-variant-numeric: tabular-nums; }
+.arg-theme-head__chg { display: inline-flex; align-items: center; gap: var(--arg-space-1x); font-weight: var(--arg-font-font-weight-semibold); } .arg-theme-head__chg .i { width: 16px; height: 16px; }

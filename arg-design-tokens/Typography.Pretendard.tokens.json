@@ -1,0 +1,152 @@
+{
+  "Font_Family": {
+    "Family": {
+      "$type": "string",
+      "$value": "Pretendard"
+    }
+  },
+  "Font": {
+    "Font_Weight": {
+      "Bold": {
+        "$type": "dimension",
+        "$value": "700"
+      },
+      "Semibold": {
+        "$type": "dimension",
+        "$value": "600"
+      },
+      "Medium": {
+        "$type": "dimension",
+        "$value": "500"
+      },
+      "Regular": {
+        "$type": "dimension",
+        "$value": "400"
+      }
+    },
+    "Font_Size": {
+      "Display_1": {
+        "$type": "dimension",
+        "$value": "56px"
+      },
+      "Display_2": {
+        "$type": "dimension",
+        "$value": "44px"
+      },
+      "Header_1": {
+        "$type": "dimension",
+        "$value": "36px"
+      },
+      "Header_2": {
+        "$type": "dimension",
+        "$value": "32px"
+      },
+      "Header_3": {
+        "$type": "dimension",
+        "$value": "28px"
+      },
+      "Title_1": {
+        "$type": "dimension",
+        "$value": "24px"
+      },
+      "Title_2": {
+        "$type": "dimension",
+        "$value": "20px"
+      },
+      "Title_3": {
+        "$type": "dimension",
+        "$value": "18px"
+      },
+      "Body_1": {
+        "$type": "dimension",
+        "$value": "17px"
+      },
+      "Body_2": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "Body_3": {
+        "$type": "dimension",
+        "$value": "15px"
+      },
+      "Body_4": {
+        "$type": "dimension",
+        "$value": "14px"
+      },
+      "Label_1": {
+        "$type": "dimension",
+        "$value": "13px"
+      },
+      "Label_2": {
+        "$type": "dimension",
+        "$value": "11px"
+      },
+      "Label_3": {
+        "$type": "dimension",
+        "$value": "11px"
+      }
+    },
+    "Line_Height": {
+      "Display_1": {
+        "$type": "dimension",
+        "$value": "72px"
+      },
+      "Display_2": {
+        "$type": "dimension",
+        "$value": "56px"
+      },
+      "Header_1": {
+        "$type": "dimension",
+        "$value": "44px"
+      },
+      "Header_2": {
+        "$type": "dimension",
+        "$value": "40px"
+      },
+      "Header_3": {
+        "$type": "dimension",
+        "$value": "36px"
+      },
+      "Title_1": {
+        "$type": "dimension",
+        "$value": "32px"
+      },
+      "Title_2": {
+        "$type": "dimension",
+        "$value": "28px"
+      },
+      "Title_3": {
+        "$type": "dimension",
+        "$value": "26px"
+      },
+      "Body_1": {
+        "$type": "dimension",
+        "$value": "24px"
+      },
+      "Body_2": {
+        "$type": "dimension",
+        "$value": "24px"
+      },
+      "Body_3": {
+        "$type": "dimension",
+        "$value": "22px"
+      },
+      "Body_4": {
+        "$type": "dimension",
+        "$value": "20px"
+      },
+      "Label_1": {
+        "$type": "dimension",
+        "$value": "18px"
+      },
+      "Label_2": {
+        "$type": "dimension",
+        "$value": "16px"
+      },
+      "Label_3": {
+        "$type": "dimension",
+        "$value": "14px"
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+/* ARG UI · keyboard (mô phỏng bàn phím điện thoại: bàn phím số và bàn phím chữ, trượt lên khi bấm vào ô nhập)
+   Màu và kích thước theo bản vẽ bàn phím iOS (375 × 291, thanh công cụ 48px phía trên), không thuộc token ARG nên khai báo --kb-* ngay trong component. */
+:root { --arg-kb-h: 339px; }
+.arg-kb {
+  --kb-bg: rgba(209, 213, 219, .94); --kb-key: #ffffff; --kb-fn: #acb3be; --kb-text: #000000; --kb-shadow: rgba(20, 20, 20, .45); --kb-pop: #ffffff;
+  --kb-bar-bg: rgba(255, 255, 255, .94); --kb-bar-line: rgba(19, 45, 40, .12); --kb-bar-text: rgba(7, 11, 16, .78); --kb-home: #2f364e;
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 200; width: min(100%, 768px); margin-inline: auto; box-sizing: border-box;
+  transform: translateY(100%); transition: transform .25s cubic-bezier(.4, 0, .2, 1); user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent;
+  font-family: -apple-system, 'SF Pro Display', var(--arg-font-family-family), system-ui, sans-serif;
+}
+.arg-kb[hidden] { display: none; }
+.arg-kb.is-open { transform: none; }
+@media (prefers-reduced-motion: reduce) { .arg-kb { transition: none; } }
+[data-theme="dark"] .arg-kb { --kb-bg: rgba(43, 43, 46, .94); --kb-key: #6b6b6f; --kb-fn: #3d3d40; --kb-text: #ffffff; --kb-shadow: rgba(0, 0, 0, .6); --kb-pop: #6b6b6f; --kb-bar-bg: rgba(30, 30, 32, .94); --kb-bar-line: rgba(255, 255, 255, .12); --kb-bar-text: rgba(255, 255, 255, .85); --kb-home: #ffffff; }
+.arg-kb__bar { display: flex; justify-content: flex-end; align-items: center; box-sizing: border-box; height: 48px; padding: 8px 20px; background: var(--kb-bar-bg); border-top: 1px solid var(--kb-bar-line); -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px); }
+.arg-kb__done { display: flex; align-items: center; justify-content: center; gap: 6px; width: 60px; height: 32px; padding: 0; border: 0; background: transparent; color: var(--kb-bar-text); font: 500 14px/20px var(--arg-font-family-family); cursor: pointer; }
+.arg-kb__done .i { width: 20px; height: 20px; color: inherit; }
+.arg-kb__body { box-sizing: border-box; height: 270px; padding: 6px 6px 0; background: var(--kb-bg); -webkit-backdrop-filter: blur(13.6px); backdrop-filter: blur(13.6px); }
+.arg-kb__home { position: relative; height: 21px; background: var(--kb-bg); }
+.arg-kb__home::after { content: ""; position: absolute; left: 50%; top: 8px; width: 135px; height: 5px; margin-left: -67.5px; border-radius: 2.5px; background: var(--kb-home); }
+.arg-kb__key { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 0; height: 100%; padding: 0; border: 0; border-radius: 5px; background: var(--kb-key); box-shadow: 0 1px 0 var(--kb-shadow); color: var(--kb-text); font: 400 25px/30px -apple-system, 'SF Pro Display', var(--arg-font-family-family), system-ui, sans-serif; letter-spacing: .29px; cursor: pointer; touch-action: manipulation; }
+.arg-kb__key:active { filter: brightness(.82); }
+.arg-kb__key .i { width: 24px; height: 24px; color: inherit; }
+.arg-kb__key--fn { background: var(--kb-fn); font-size: 16px; line-height: 20px; letter-spacing: 0; }
+.arg-kb__key--bare { background: transparent; box-shadow: none; }
+.arg-kb__key--bare:active { filter: none; opacity: .5; }
+.arg-kb__key.is-on { background: var(--kb-key); } .arg-kb__key--fn.is-on .i { fill: currentColor; }
+/* Bàn phím số: lưới 3 cột × 4 hàng, phím cao 46px, cách nhau 6px ngang, 7px dọc */
+.arg-kb__num { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 46.5px; gap: 7.2px 6px; }
+.arg-kb__num .arg-kb__key { justify-content: flex-start; padding-top: 1px; }
+.arg-kb__num .arg-kb__key--c { justify-content: center; padding-top: 0; }
+.arg-kb__num .arg-kb__key--bare { justify-content: center; padding-top: 0; }
+.arg-kb__sub { font: 700 10px/12px -apple-system, 'SF Pro Text', var(--arg-font-family-family), system-ui, sans-serif; letter-spacing: 2px; text-indent: 2px; }
+.arg-kb__glyph { font: 400 17px/20px -apple-system, 'SF Pro Text', var(--arg-font-family-family), system-ui, sans-serif; letter-spacing: 7px; text-indent: 7px; }
+/* Bàn phím chữ: lưới 20 cột, mỗi phím chữ chiếm 2 cột */
+.arg-kb__alpha { display: grid; grid-template-columns: repeat(20, minmax(0, 1fr)); grid-auto-rows: 42px; gap: 11px 5px; padding-top: 5px; }
+.arg-kb__alpha .arg-kb__key { grid-column: span 2; font-size: 22px; letter-spacing: 0; }
+.arg-kb__alpha .arg-kb__key--off { grid-column: 2 / span 2; }
+.arg-kb__alpha .arg-kb__key--w3 { grid-column: span 3; } .arg-kb__alpha .arg-kb__key--w5 { grid-column: span 5; font-size: 16px; } .arg-kb__alpha .arg-kb__key--w10 { grid-column: span 10; font-size: 16px; }
+/* Bong bóng chữ khi nhấn phím chữ */
+.arg-kb__key[data-k]:active::after { content: attr(data-k); position: absolute; left: 50%; bottom: 100%; z-index: 2; display: grid; place-items: center; width: 140%; height: 56px; margin: 0 0 -4px -70%; border-radius: 8px; background: var(--kb-pop); box-shadow: 0 1px 0 var(--kb-shadow); font: 400 32px/36px -apple-system, 'SF Pro Display', var(--arg-font-family-family), system-ui, sans-serif; color: var(--kb-text); filter: none; }
+/* Khi bàn phím mở: trang chừa chỗ, bảng trượt từ dưới nổi lên trên bàn phím */
+.arg-kb-open .arg-page { padding-bottom: var(--arg-kb-h); }
+.arg-kb-open .arg-offcanvas--bottom { bottom: var(--arg-kb-h); max-height: calc(100% - var(--arg-kb-h) - var(--arg-space-6x)); }
+/* Bản tĩnh để minh hoạ trong tài liệu */
+.arg-kb--static { position: relative; z-index: auto; transform: none; width: 375px; max-width: 100%; margin: 0; }

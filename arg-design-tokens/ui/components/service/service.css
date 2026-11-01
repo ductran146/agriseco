@@ -1,0 +1,9 @@
+/* ARG UI · service */
+.arg-service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--arg-space-3x); }
+.arg-service { display: grid; justify-items: center; align-content: start; gap: var(--arg-space-2x); padding: var(--arg-space-2x) 0; border-radius: var(--arg-radius); color: var(--arg-ui-text-on-bright-text-content); text-decoration: none; text-align: center; transition: transform .15s; }
+.arg-service:hover { transform: translateY(-2px); } .arg-service:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: 2px; }
+.arg-service__icon { display: grid; place-items: center; width: var(--arg-space-12x); height: var(--arg-space-12x); border-radius: var(--arg-radius); background-color: var(--arg-p-brand-header-start); background-image: var(--arg-gradient-primary-button); color: #fff; } .arg-service__icon .i { width: 24px; height: 24px; }
+.arg-service__label { font-size: var(--arg-font-font-size-body-4); line-height: var(--arg-font-line-height-body-4); font-weight: var(--arg-font-font-weight-medium); }
+@media (min-width: 720px) { .arg-service-grid--auto { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); } }
+/* Lưới nằm trong thẻ trắng, tiêu đề mục nằm ngoài thẻ như các mục khác */
+.arg-service-grid--card { padding: var(--arg-space-3x) var(--arg-space-4x); border-radius: var(--arg-radius-lg); background: var(--arg-ui-background-surface); box-shadow: var(--arg-shadow-shadow); }

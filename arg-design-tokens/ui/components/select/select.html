@@ -1,0 +1,31 @@
+<section id="select">
+        <h2>Select box</h2>
+        <p class="sec-desc">Dùng thẻ <code>&lt;select&gt;</code> gốc để giữ bàn phím và trình đọc màn hình. Cùng chiều cao với input.</p>
+        <div class="demo">
+          <div class="cols">
+            <div class="arg-field"><label class="arg-label" for="se1">Loại lệnh</label><div class="arg-control arg-select"><select class="arg-select-native" id="se1"><option>Lệnh LO</option><option>Lệnh MP</option><option>Lệnh ATO</option><option>Lệnh ATC</option></select><i data-arg-icon="caret-down"></i></div><span class="arg-help">Mặc định, cao 40px</span></div>
+            <div class="arg-field"><label class="arg-label" for="se2">Sàn giao dịch</label><div class="arg-control arg-select"><i data-arg-icon="squares-four"></i><select class="arg-select-native" id="se2"><option>HOSE</option><option>HNX</option><option>UPCOM</option></select><i data-arg-icon="caret-down"></i></div><span class="arg-help">Có icon bên trái</span></div>
+            <div class="arg-field is-error"><label class="arg-label" for="se3">Tài khoản <span class="req">*</span></label><div class="arg-control arg-select"><select class="arg-select-native" id="se3"><option value="">Chọn tài khoản</option><option>068C123456 · Thường</option><option>068C123457 · Margin</option></select><i data-arg-icon="caret-down"></i></div><span class="arg-help"><i data-arg-icon="warning-circle" class="i--16"></i>Chọn một tài khoản.</span></div>
+            <div class="arg-field"><label class="arg-label" for="se4">Kỳ hạn</label><div class="arg-control arg-select"><select class="arg-select-native" id="se4" disabled><option>Trong ngày</option></select><i data-arg-icon="caret-down"></i></div><span class="arg-help">Vô hiệu</span></div>
+          </div>
+          <div class="group"><h3>Kích thước</h3>
+            <div class="cols">
+              <div class="arg-field"><label class="arg-label" for="se5">Mặc định · 40px</label><div class="arg-control arg-select"><select class="arg-select-native" id="se5"><option>Tất cả sàn</option><option>HOSE</option></select><i data-arg-icon="caret-down"></i></div></div>
+              <div class="arg-field"><label class="arg-label" for="se6">xl · 44px</label><div class="arg-control arg-control--xl arg-select"><select class="arg-select-native" id="se6"><option>Tất cả sàn</option><option>HOSE</option></select><i data-arg-icon="caret-down"></i></div></div>
+              <div class="arg-field"><label class="arg-label" for="se7">xxl · 48px</label><div class="arg-control arg-control--xxl arg-select"><select class="arg-select-native" id="se7"><option>Tất cả sàn</option><option>HOSE</option></select><i data-arg-icon="caret-down"></i></div></div>
+              <div class="arg-field"><label class="arg-label" for="se8">sm · 32px</label><div class="arg-control arg-control--sm arg-select"><select class="arg-select-native" id="se8"><option>Tất cả sàn</option><option>HOSE</option></select><i data-arg-icon="caret-down"></i></div></div>
+            </div></div>
+          <div class="group"><h3>Chọn bằng menu tuỳ biến</h3>
+            <div class="row">
+              <div class="arg-dropdown" data-arg-dropdown data-arg-select>
+                <button class="arg-btn arg-btn--outline" type="button" aria-haspopup="listbox" aria-expanded="false" style="min-width:200px;justify-content:space-between"><span data-arg-label>HOSE</span><i data-arg-icon="caret-down"></i></button>
+                <div class="arg-menu" role="listbox" hidden>
+                  <button class="arg-menu__item" role="option" aria-checked="true" type="button">HOSE<i data-arg-icon="check" class="end"></i></button>
+                  <button class="arg-menu__item" role="option" aria-checked="false" type="button">HNX<i data-arg-icon="check" class="end" style="visibility:hidden"></i></button>
+                  <button class="arg-menu__item" role="option" aria-checked="false" type="button">UPCOM<i data-arg-icon="check" class="end" style="visibility:hidden"></i></button>
+                </div>
+              </div>
+              <span class="cap">Dùng khi cần icon hoặc nhiều dòng trong từng lựa chọn.</span>
+            </div></div>
+        </div>
+      </section>

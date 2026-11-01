@@ -1,0 +1,12 @@
+/* ARG UI · share (thanh tỷ lệ nhiều phần: tăng, đứng, giảm hoặc tổng điểm kéo lên, kéo xuống) */
+.arg-share { display: grid; gap: var(--arg-space-1-5x); font-variant-numeric: tabular-nums; }
+.arg-share__bar { display: flex; gap: 2px; height: 20px; }
+.arg-share__seg { --w: 0; --c: var(--arg-trading-flat-flat); flex: var(--w) 1 0; min-width: 4px; display: flex; align-items: center; padding: 0 var(--arg-space-2x); background: var(--c); color: #fff; font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-label-1)/1 var(--arg-font-family-family); white-space: nowrap; overflow: hidden; }
+.arg-share__seg:first-child { border-radius: 10px 0 0 10px; } .arg-share__seg:last-child { border-radius: 0 10px 10px 0; justify-content: flex-end; } .arg-share__seg:only-child { border-radius: 10px; }
+.arg-share__seg--up { --c: var(--arg-trading-up-light-increase); } .arg-share__seg--down { --c: var(--arg-trading-down-light-increase); } .arg-share__seg--ref { --c: var(--arg-trading-flat-flat); }
+/* Thanh mảnh 6px, nhãn nằm dưới */
+.arg-share--thin .arg-share__bar { height: 6px; }
+.arg-share--thin .arg-share__seg { padding: 0; }
+.arg-share--thin .arg-share__seg:first-child { border-radius: 3px 0 0 3px; } .arg-share--thin .arg-share__seg:last-child { border-radius: 0 3px 3px 0; }
+.arg-share__legend { display: flex; justify-content: space-between; gap: var(--arg-space-3x); margin: 0; padding: 0; list-style: none; font: var(--arg-font-font-weight-medium) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); }
+.arg-share__legend li { white-space: nowrap; }

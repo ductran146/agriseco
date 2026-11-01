@@ -1,0 +1,39 @@
+<section id="offcanvas">
+        <h2>Offcanvas</h2>
+        <p class="sec-desc">Panel trượt từ mép màn hình: phải, trái hoặc dưới.</p>
+        <div class="demo">
+          <div class="row">
+            <button class="arg-btn arg-btn--outline" type="button" data-arg-open="oc-end"><i data-arg-icon="arrow-left"></i>Từ bên phải</button>
+            <button class="arg-btn arg-btn--outline" type="button" data-arg-open="oc-start">Từ bên trái<i data-arg-icon="arrow-right"></i></button>
+            <button class="arg-btn arg-btn--outline" type="button" data-arg-open="oc-bottom"><i data-arg-icon="caret-up"></i>Từ bên dưới</button>
+          </div>
+        </div>
+        <div class="arg-offcanvas-wrap" id="oc-end" hidden data-arg-offcanvas>
+          <aside class="arg-offcanvas arg-offcanvas--end" role="dialog" aria-modal="true" aria-labelledby="oc-end-t">
+            <div class="arg-modal__header" style="border-bottom:1px solid var(--arg-ui-divider-separator)"><h4 class="arg-modal__title" id="oc-end-t">Bộ lọc sổ lệnh</h4><button class="arg-icon-btn" type="button" data-arg-close aria-label="Đóng"><i data-arg-icon="x" class="i--20"></i></button></div>
+            <div class="arg-modal__body" style="flex:1">
+              <div class="arg-field"><label class="arg-label" for="of1">Mã chứng khoán</label><div class="arg-control"><i data-arg-icon="magnifying-glass"></i><input class="arg-input" id="of1" placeholder="Tìm mã"></div></div>
+              <div class="arg-field"><label class="arg-label" for="of2">Trạng thái</label><div class="arg-control arg-select"><select class="arg-select-native" id="of2"><option>Tất cả</option><option>Đã khớp</option><option>Chờ khớp</option></select><i data-arg-icon="caret-down"></i></div></div>
+              <label class="arg-check"><input type="checkbox" checked><span class="box"><i data-arg-icon="check"></i></span>Chỉ lệnh hôm nay</label>
+            </div>
+            <div class="arg-modal__footer"><button class="arg-btn arg-btn--tertiary" type="button" data-arg-close>Đặt lại</button><button class="arg-btn arg-btn--primary" type="button" data-arg-close>Áp dụng</button></div>
+          </aside>
+        </div>
+        <div class="arg-offcanvas-wrap" id="oc-start" hidden data-arg-offcanvas>
+          <aside class="arg-offcanvas arg-offcanvas--start" role="dialog" aria-modal="true" aria-labelledby="oc-start-t">
+            <div class="arg-modal__header"><h4 class="arg-modal__title" id="oc-start-t">Menu</h4><button class="arg-icon-btn" type="button" data-arg-close aria-label="Đóng"><i data-arg-icon="x" class="i--20"></i></button></div>
+            <div class="arg-menu" style="position:static;box-shadow:none;border:0;background:transparent">
+              <button class="arg-menu__item" type="button"><i data-arg-icon="house"></i>Trang chủ</button>
+              <button class="arg-menu__item" type="button"><i data-arg-icon="trend-up"></i>Bảng giá</button>
+              <button class="arg-menu__item" type="button"><i data-arg-icon="wallet"></i>Tài sản</button>
+              <button class="arg-menu__item" type="button"><i data-arg-icon="gear"></i>Cài đặt</button>
+            </div>
+          </aside>
+        </div>
+        <div class="arg-offcanvas-wrap" id="oc-bottom" hidden data-arg-offcanvas>
+          <aside class="arg-offcanvas arg-offcanvas--bottom" role="dialog" aria-modal="true" aria-labelledby="oc-bottom-t">
+            <div class="arg-modal__header"><h4 class="arg-modal__title" id="oc-bottom-t">Chia sẻ</h4><button class="arg-icon-btn" type="button" data-arg-close aria-label="Đóng"><i data-arg-icon="x" class="i--20"></i></button></div>
+            <div class="arg-modal__body"><div class="row"><button class="arg-btn arg-btn--outline" type="button"><i data-arg-icon="copy"></i>Chép liên kết</button><button class="arg-btn arg-btn--outline" type="button"><i data-arg-icon="envelope-simple"></i>Email</button><button class="arg-btn arg-btn--outline" type="button"><i data-arg-icon="paper-plane-right"></i>Gửi</button></div></div>
+          </aside>
+        </div>
+      </section>

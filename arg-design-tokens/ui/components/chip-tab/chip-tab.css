@@ -1,0 +1,18 @@
+/* ARG UI · chip tabs */
+.arg-chip-tabs { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--arg-space-4x); }
+.arg-chip-tabs__list { --h: var(--arg-border-height-size-height-normal); --r: var(--arg-border-radius-rounded-lg); display: flex; gap: var(--arg-space-2x); overflow-x: auto; scrollbar-width: none; }
+.arg-chip-tabs__list::-webkit-scrollbar { display: none; }
+.arg-chip-tab { flex: none; display: inline-flex; align-items: center; justify-content: center; gap: var(--arg-space-2x); height: var(--h); padding: 0 var(--arg-space-5x); border: 0; border-radius: var(--r); background: var(--arg-ui-background-lv-3); color: var(--arg-ui-text-on-bright-text-content-lv2); font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); white-space: nowrap; cursor: pointer; }
+.arg-chip-tab .i { width: 16px; height: 16px; }
+.arg-chip-tab:hover { color: var(--arg-ui-text-on-bright-text-title); }
+/* chữ theo màu nền trang để đủ tương phản ở cả chế độ sáng (chữ trắng) và tối (chữ tối trên nền sáng) */
+.arg-chip-tab[aria-selected="true"], .arg-chip-tab[aria-pressed="true"] { background: var(--arg-ui-text-on-bright-text-content); color: var(--arg-ui-background-surface); }
+.arg-chip-tab:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: 2px; }
+.arg-chip-tab:disabled { opacity: .4; cursor: not-allowed; }
+.arg-chip-tabs--sm .arg-chip-tabs__list { --h: var(--arg-border-height-size-height-small); --r: var(--arg-border-radius-rounded-lg); }
+.arg-chip-tabs--sm .arg-chip-tab { padding: 0 var(--arg-space-4x); }
+.arg-chip-tabs--wrap .arg-chip-tabs__list { flex-wrap: wrap; overflow: visible; }
+.arg-chip-tabs--fill .arg-chip-tab { flex: 1 1 0; }
+.arg-chip-tabs .arg-tabpanel[hidden] { display: none; }
+.arg-chip-tabs--xs .arg-chip-tabs__list { --h: var(--arg-space-7x); --r: var(--arg-border-radius-radius-md); gap: var(--arg-space-1x); }
+.arg-chip-tabs--xs .arg-chip-tab { min-width: var(--h); padding: 0 var(--arg-space-2x); font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); }

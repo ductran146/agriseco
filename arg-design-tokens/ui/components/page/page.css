@@ -1,0 +1,80 @@
+/* ARG UI · page (khung trang mobile / tablet) */
+.arg-page { --arg-tabbar-h: 68px; /* chiều cao thanh tab dưới chưa tính vùng an toàn, dùng để đặt Fab và nút hành động dính phía trên thanh */ min-height: 100vh; display: flex; flex-direction: column; background: var(--arg-ui-background-background); color: var(--arg-ui-text-on-bright-text-content); font-family: var(--arg-font-family-family); }
+.arg-page__main { flex: 1 1 auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--arg-space-8x); width: 100%; max-width: 1040px; margin: 0 auto; padding: var(--arg-space-2x) var(--arg-gutter) calc(var(--arg-space-8x) + var(--arg-safe-bottom, 0px)); box-sizing: border-box; align-content: start; }
+.arg-page__block { display: grid; gap: var(--arg-space-3x); min-width: 0; align-content: start; }
+.arg-page__block > .arg-title { padding-inline: 0; background: transparent; }
+.arg-page__cols { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--arg-space-8x); }
+@media (min-width: 720px) {
+  .arg-page__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--arg-space-8x); align-items: start; }
+  .arg-page .arg-index-row { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(92px, 1fr); overflow: visible; }
+  .arg-page .arg-index { width: auto; }
+}
+.arg-stack { display: grid; gap: var(--arg-space-4x); }
+.arg-note { margin: 0; font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+/* Kiểu mục nền trắng: mỗi mục là một khối trắng tràn mép, cách nhau 10px bằng màu nền xám của trang */
+.arg-screen--sections { --pad: max(var(--arg-gutter), calc((100% - 1040px) / 2 + var(--arg-gutter))); background: var(--arg-ui-background-background); }
+.arg-screen--sections > .arg-appbar--sticky { background: color-mix(in srgb, var(--arg-ui-background-surface) 85%, transparent); }
+.arg-screen--sections .arg-page__main { max-width: none; gap: 10px; padding: 0; }
+.arg-screen--sections .arg-page__cols { gap: 10px; }
+.arg-screen--sections .arg-page__main > .arg-page__block, .arg-screen--sections .arg-page__cols > .arg-page__block { padding: var(--arg-space-5x) var(--arg-gutter) var(--arg-space-6x); background: var(--arg-ui-background-surface); align-content: start; }
+.arg-screen--sections .arg-page__main > .arg-page__block { padding-inline: max(var(--arg-gutter), calc((100vw - 1040px) / 2 + var(--arg-gutter))); }
+.arg-screen--sections .arg-page__main > :last-child, .arg-screen--sections .arg-page__cols:last-child > .arg-page__block { padding-bottom: calc(var(--arg-space-6x) + var(--arg-safe-bottom, 0px)); }
+.arg-screen--sections .arg-perf { background: var(--arg-ui-background-background); }
+.arg-screen--sections .arg-dtable:not(.arg-dtable--plain) { box-shadow: none; border: .5px solid var(--arg-ui-divider-stroke); }
+/* Khối có tab chia mục: .arg-page__tabbed[data-arg-tabs] gồm khối đầu chứa dải tab, sau đó mỗi tabpanel chứa nhiều khối */
+.arg-page__tabbed { display: grid; gap: var(--arg-space-4x); min-width: 0; }
+.arg-page__tabbed > [role="tabpanel"] { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--arg-space-8x); min-width: 0; }
+.arg-page__tabbed > [role="tabpanel"][hidden] { display: none; }
+.arg-screen--sections .arg-page__tabbed { gap: 0; }
+.arg-screen--sections .arg-page__tabbed > [role="tabpanel"] { gap: 10px; }
+.arg-screen--sections .arg-page__tabbed > .arg-page__block, .arg-screen--sections .arg-page__tabbed > [role="tabpanel"] > .arg-page__block { padding: var(--arg-space-5x) max(var(--arg-gutter), calc((100vw - 1040px) / 2 + var(--arg-gutter))) var(--arg-space-6x); background: var(--arg-ui-background-surface); }
+.arg-screen--sections .arg-page__tabbed > .arg-page__block:first-child { padding-bottom: 0; }
+/* Dải tab ngoài cùng sát thanh tiêu đề (đệm trên 0); dải lồng bên trong (chip chế độ xem, chọn sàn) cách dải phía trên 12px */
+.arg-screen--sections .arg-page__main > .arg-page__tabbed > .arg-page__block:first-child { padding-top: 0; }
+.arg-screen--sections .arg-page__tabbed .arg-page__tabbed > .arg-page__block:first-child { padding-top: var(--arg-space-3x); }
+/* Dải chip tab đầu khối có tab tràn mép để cuộn ngang */
+.arg-page__tabbed > .arg-page__block:first-child > .arg-chip-tabs > .arg-chip-tabs__list { margin-inline: calc(var(--arg-gutter) * -1); padding-inline: var(--arg-gutter); scroll-padding-inline: var(--arg-gutter); }
+.arg-screen--sections .arg-page__tabbed > [role="tabpanel"] > .arg-page__block:first-child { padding-top: var(--arg-space-4x); }
+.arg-screen--sections .arg-page__main > .arg-page__tabbed:last-child { padding-bottom: 0; }
+.arg-screen--sections .arg-page__main > .arg-page__tabbed:last-child > [role="tabpanel"] > .arg-page__block:last-child { padding-bottom: calc(var(--arg-space-6x) + var(--arg-safe-bottom, 0px)); }
+/* Màn có thanh dính đáy (Action bar): thanh đã chừa vùng an toàn, khối cuối chỉ giữ đệm thường */
+.arg-screen--sections:has(> .arg-actionbar) .arg-page__main > .arg-page__block:last-child, .arg-screen--sections:has(> .arg-actionbar) .arg-page__main > .arg-page__tabbed:last-child > [role="tabpanel"] > .arg-page__block:last-child { padding-bottom: var(--arg-space-6x); }
+/* Màn nền trắng liền khối (ví dụ đặt lệnh): header cũng nền trắng, các phần cách nhau theo gap của main */
+.arg-screen--plain { background: var(--arg-ui-background-surface); }
+.arg-screen--plain > .arg-appbar--sticky { background: color-mix(in srgb, var(--arg-ui-background-surface) 85%, transparent); }
+.arg-screen--plain .arg-page__main { background: var(--arg-ui-background-surface); }
+.arg-page__main--dense { gap: var(--arg-space-4x); }
+.arg-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.1fr); gap: var(--arg-space-3x); align-items: start; }
+.arg-split > * { display: grid; gap: var(--arg-space-3x); align-content: start; min-width: 0; }
+.arg-page__main--fit { gap: var(--arg-space-3x); padding-bottom: var(--arg-space-3x); }
+/* Màn đặt lệnh: hai cột (sổ lệnh trái, form phải) giãn hết chỗ còn lại, đáy cách nút Mua, Bán đúng 16px; hàng đầu và hàng cuối hai cột thẳng nhau.
+   Cột phải giữ khoảng cách cố định 8px giữa các trường (để trường đầu thẳng với mức giá đầu của sổ lệnh), phần dư dồn thành khoảng trống giữa nhóm thông tin (Sức mua, Tỷ lệ ký quỹ, KL mua tối đa, nằm sát ô nhập) và dòng Giá trị ước tính ở đáy. Cột trái dàn đều các mức giá. */
+.arg-page__main--fit .arg-order:has(> .arg-split) > .arg-split { flex: 1 1 auto; min-height: 0; align-items: stretch; }
+.arg-page__main--fit .arg-order:has(> .arg-split) > [data-arg-order-cta] { margin-top: var(--arg-space-2x); } /* cộng khoảng cách 8px của form = 16px */
+.arg-page__main--fit .arg-split > *, .arg-page__main--fit .arg-order { gap: var(--arg-space-2x); }
+.arg-page__main--fit .arg-split > div:first-child { grid-template-rows: minmax(0, 1fr); } /* cột trái chỉ có một khối (công tắc + sổ lệnh), cho nó lấp đầy chiều cao cột */
+.arg-page__main--fit .arg-split > div:last-child { display: flex; flex-direction: column; }
+.arg-page__main--fit .arg-split > div:last-child > .arg-kv { display: flex; flex-direction: column; flex: 1 1 auto; } /* các dòng thông tin sát ô nhập và sát nhau (8px), riêng dòng Giá trị ước tính dồn xuống đáy */
+.arg-page__main--fit .arg-split > div:last-child > .arg-kv > .arg-kv__row--total { margin-top: auto; }
+.arg-page__main--fit .arg-split > div > .arg-tabs { grid-template-rows: auto minmax(0, 1fr); height: 100%; gap: var(--arg-space-2x); }
+.arg-page__main--fit .arg-split > div > .arg-tabs > .arg-tablist { min-height: 40px; align-items: center; }
+.arg-page__main--fit .arg-split .arg-tabpanel:not([hidden]) { display: flex; flex-direction: column; justify-content: space-between; min-height: 0; }
+.arg-page__main--fit .arg-split .arg-tabpanel .arg-book { flex: 1; align-content: space-between; }
+.arg-page__main--fit .arg-split .arg-tabpanel .arg-book__more { margin-top: var(--arg-space-4x); } /* nút Xem đầy đủ cách khối Sàn 16px */
+.arg-page__main--fit .arg-split .arg-tabpanel .arg-book--list { display: flex; flex-direction: column; }
+.arg-page__main--fit .arg-split .arg-book--list .arg-book__scroll { flex: 1 1 0; min-height: 96px; max-height: none; }
+/* Màn đặt lệnh: hàng cuối (panel Lite hoặc Pro) lấy hết phần còn lại, nút Mua, Bán luôn nằm sát đáy, ngay trên thanh tab dưới, dù Lite hay Pro */
+.arg-page__main--fit { align-content: stretch; grid-template-rows: auto auto auto minmax(0, 1fr); }
+.arg-page__main--fit .arg-order { display: flex; flex-direction: column; min-height: 100%; }
+.arg-page__main--fit .arg-order > [data-arg-order-cta] { margin-top: auto; flex: none; }
+.arg-order { display: grid; gap: var(--arg-space-3x); }
+.arg-order .arg-btn--link { justify-self: end; }
+.arg-order .arg-btn--buy, .arg-order .arg-btn--sell { margin-top: var(--arg-space-2x); }
+
+[data-mode="lite"] .arg-trade--pro, [data-mode="pro"] .arg-trade--lite { display: none; }
+.arg-lite { gap: var(--arg-space-3x); }
+.arg-lite__group { display: grid; gap: var(--arg-space-2x); }
+/* Dải tab lớn đầu màn (ví dụ Thị trường): tràn mép để cuộn ngang, gạch chân dải nằm sát mép khối */
+.arg-page__block > .arg-tabs--lg > .arg-tablist { margin-inline: calc(var(--arg-gutter) * -1); padding-inline: var(--arg-gutter); scroll-padding-inline: var(--arg-gutter); }
+/* Tiêu đề khối có dòng phụ dài: cho dòng phụ xuống dòng thay vì tràn */
+.arg-page__block > .arg-title--stacked .arg-title__sub { white-space: normal; }

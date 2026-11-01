@@ -1,0 +1,10 @@
+/* ARG UI · statgrid (lưới ô chỉ số: nhãn trên, giá trị dưới, 3 cột; phần thêm thu gọn được) */
+.arg-statgrid { --tile: var(--arg-ui-background-background); display: grid; min-width: 0; }
+.arg-statgrid__grid { display: grid; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); gap: var(--arg-space-2x); margin: 0; }
+.arg-statgrid .arg-collapse > div > .arg-statgrid__grid { padding-top: var(--arg-space-2x); }
+.arg-statgrid__item { display: grid; gap: 2px; min-width: 0; padding: var(--arg-space-2x) var(--arg-space-3x); border-radius: var(--arg-radius-sm); background: var(--tile); }
+.arg-statgrid dt { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* :where giữ độ ưu tiên thấp để lớp màu .arg-up, .arg-down, .arg-ref, .arg-ceil, .arg-floor trên dd thắng */
+:where(.arg-statgrid) dd { margin: 0; font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.arg-statgrid__more { justify-self: center; width: 48px; margin-top: var(--arg-space-2x); }
+.arg-statgrid__more .i { width: 20px; height: 20px; }

@@ -1,0 +1,27 @@
+/* ARG UI · orderrow (một lệnh trong sổ lệnh: chiều lệnh, mã, giá × khối lượng, trạng thái, thanh tiến độ khớp, mũi tên chỉ dẫn; bấm mở màn chi tiết lệnh) */
+.arg-orderrow-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--arg-space-2x); }
+.arg-orderrow-list > li[hidden] { display: none; }
+.arg-orderrow { --c: var(--arg-action-buy-button-button-buy); display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; overflow: hidden; border: 1px solid color-mix(in srgb, var(--c) 22%, transparent); border-radius: var(--arg-radius); background: linear-gradient(100deg, color-mix(in srgb, var(--c) 5%, var(--arg-ui-background-surface)) 0%, var(--arg-ui-background-surface) 60%); }
+.arg-orderrow[data-side="sell"] { --c: var(--arg-action-sell-button-button-sell); }
+/* Ô chọn: căn giữa dọc với dòng đầu (mã, giờ, trạng thái): đệm 12px + nửa chênh lệch cao dòng 22px và ô 20px */
+.arg-orderrow__pick { grid-column: 1; align-self: start; display: none; margin-top: calc(var(--arg-space-3x) + 1px); padding-left: var(--arg-space-3x); }
+[data-select] .arg-orderrow[data-cancelable] .arg-orderrow__pick { display: inline-flex; }
+[data-select] .arg-orderrow[data-cancelable] .arg-orderrow__go { display: none; } /* chế độ chọn nhiều: bấm là chọn, bỏ mũi tên để đủ chỗ */
+.arg-orderrow__main { grid-column: 2; display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; grid-template-areas: "side id status go" "side px fill go"; column-gap: var(--arg-space-3x); row-gap: var(--arg-space-2x); align-items: center; width: 100%; min-width: 0; padding: var(--arg-space-3x); border: 0; background: transparent; color: inherit; font: inherit; text-align: left; text-decoration: none; cursor: pointer; border-radius: inherit; }
+.arg-orderrow__main:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: -2px; }
+.arg-orderrow__side { grid-area: side; align-self: start; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: color-mix(in srgb, var(--c) 14%, transparent); color: var(--c); font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-label-1)/1 var(--arg-font-family-family); }
+.arg-orderrow__id { grid-area: id; display: flex; align-items: baseline; gap: var(--arg-space-2x); min-width: 0; }
+.arg-orderrow__id b { font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-body-3)/var(--arg-font-line-height-body-3) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-orderrow__id span { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); white-space: nowrap; }
+.arg-orderrow__main > .arg-badge { grid-area: status; justify-self: end; }
+/* Mũi tên chỉ dẫn (disclosure) trần, không nền tròn, màu xám nhạt */
+.arg-orderrow__go { grid-area: go; display: grid; place-items: center; margin-left: calc(var(--arg-space-1x) * -1); color: var(--arg-ui-text-on-bright-text-placeholder); }
+.arg-orderrow__go .i { width: 16px; height: 16px; }
+.arg-orderrow__px { grid-area: px; white-space: nowrap; font: var(--arg-font-font-weight-medium) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); font-variant-numeric: tabular-nums; }
+.arg-orderrow__px span { font-weight: var(--arg-font-font-weight-regular); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-orderrow__fill { grid-area: fill; justify-self: end; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); font-variant-numeric: tabular-nums; }
+.arg-orderrow__fill b { font-weight: var(--arg-font-font-weight-semibold); color: var(--arg-ui-text-on-bright-text-title); } /* khối lượng đã khớp in đậm */
+/* Thanh tiến độ khớp sát đáy thẻ (thẻ cắt theo bo góc) */
+.arg-orderrow__bar { grid-column: 1 / -1; height: 3px; margin: 0; background: color-mix(in srgb, var(--c) 14%, transparent); overflow: hidden; }
+.arg-orderrow__bar::before { content: ""; display: block; width: calc(var(--v, 0) * 1%); height: 100%; border-radius: inherit; background: var(--c); }
+.arg-orderrow[data-status="cancelled"] .arg-orderrow__px, .arg-orderrow[data-status="cancelled"] .arg-orderrow__id b { color: var(--arg-ui-text-on-bright-text-content-lv2); }

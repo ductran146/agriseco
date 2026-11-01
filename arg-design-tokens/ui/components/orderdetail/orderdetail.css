@@ -1,0 +1,8 @@
+/* ARG UI · orderdetail (màn chi tiết một lệnh: chiều lệnh và trạng thái, mã, danh sách thông tin, chân màn có Huỷ lệnh) */
+.arg-orderdetail__head { --c: var(--arg-action-buy-button-button-buy); display: grid; gap: var(--arg-space-1x); }
+.arg-orderdetail__head[data-side="sell"] { --c: var(--arg-action-sell-button-button-sell); }
+.arg-orderdetail__row { display: flex; align-items: center; gap: var(--arg-space-3x); }
+.arg-orderdetail__side { font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-title-2)/var(--arg-font-line-height-title-2) var(--arg-font-family-family); color: var(--c); }
+.arg-orderdetail__code { font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-title-1)/var(--arg-font-line-height-title-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-orderdetail__head + .arg-kv { margin-top: var(--arg-space-2x); }
+.arg-actionbar--fixed .arg-btn[hidden] { display: none; }

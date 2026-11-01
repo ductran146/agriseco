@@ -1,0 +1,10 @@
+/* ARG UI · stockrow (một mã trong danh sách của chủ đề: mã và tên, giá kèm %, khối lượng, nút ngôi sao yêu thích) */
+.arg-stockrow-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--arg-space-2x); }
+.arg-stockrow { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto 56px 28px; align-items: center; gap: var(--arg-space-3x); padding: var(--arg-space-3x) var(--arg-space-4x); border-radius: var(--arg-radius); background: var(--arg-ui-background-background); }
+.arg-stockrow__id { display: grid; min-width: 0; color: inherit; text-decoration: none; }
+.arg-stockrow__id::after { content: ""; position: absolute; inset: 0; border-radius: inherit; } /* vùng bấm phủ cả hàng; nút sao nằm trên (z-index 1) */
+.arg-stockrow__id b { font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-body-3)/var(--arg-font-line-height-body-3) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-stockrow__id span { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.arg-stockrow__price { display: grid; justify-items: end; gap: 2px; font-variant-numeric: tabular-nums; }
+.arg-stockrow__price b { font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-body-3)/var(--arg-font-line-height-body-3) var(--arg-font-family-family); } /* màu bằng .arg-up .arg-down .arg-ref .arg-ceil .arg-floor */
+.arg-stockrow__vol { text-align: right; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content); font-variant-numeric: tabular-nums; }

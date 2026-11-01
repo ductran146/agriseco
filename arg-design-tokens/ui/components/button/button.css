@@ -1,0 +1,73 @@
+/* ARG UI · button */
+.arg-btn {
+  --h: var(--arg-border-height-size-height-normal);
+  --px: var(--arg-space-4x);
+  --layer: var(--arg-ui-state-layer-on-bright-hovered);
+  --layer-press: var(--arg-ui-state-layer-on-bright-pressed);
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--arg-space-2x);
+  height: var(--h); min-width: var(--h);
+  padding: 0 var(--px);
+  border: 1px solid transparent;
+  border-radius: var(--arg-radius-control);
+  font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family);
+  white-space: nowrap; text-decoration: none; cursor: pointer;
+  background-color: transparent; color: var(--arg-ui-text-on-bright-text-content);
+  transition: background-color .15s, border-color .15s, box-shadow .15s;
+}
+.arg-btn:hover:not(:disabled):not([aria-disabled="true"]) { background-image: linear-gradient(var(--layer), var(--layer)); }
+.arg-btn:active:not(:disabled):not([aria-disabled="true"]) { background-image: linear-gradient(var(--layer-press), var(--layer-press)); }
+.arg-btn:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: 2px; }
+.arg-btn:disabled, .arg-btn[aria-disabled="true"] { cursor: not-allowed; }
+
+.arg-btn--sm  { --h: var(--arg-border-height-size-height-small); --px: var(--arg-space-3x); font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); }
+.arg-btn--xl  { --h: var(--arg-border-height-size-height-xl); --px: var(--arg-space-5x); font-size: var(--arg-font-font-size-body-3); }
+.arg-btn--xxl { --h: var(--arg-border-height-size-height-xxl); --px: var(--arg-space-6x); font-size: var(--arg-font-font-size-body-2); line-height: var(--arg-font-line-height-body-2); }
+.arg-btn--block { display: flex; width: 100%; }
+.arg-btn--icon { padding: 0; width: var(--h); }
+.arg-btn--sm .i, .arg-btn--md .i { width: 16px; height: 16px; }
+.arg-btn .i { width: 18px; height: 18px; }
+.arg-btn--sm .i { width: 16px; height: 16px; }
+.arg-btn--xxl .i { width: 20px; height: 20px; }
+
+/* Primary: Agriseco orange gradient (header of agriseco.com.vn) */
+.arg-btn--primary {
+  background-color: var(--arg-p-brand-header-start);
+  background-image: var(--arg-gradient-primary-button);
+  color: var(--arg-action-primary-button-text-button-main);
+  --layer: var(--arg-ui-state-layer-on-dim-hovered);
+  --layer-press: var(--arg-ui-state-layer-on-dim-pressed);
+}
+.arg-btn--primary:hover:not(:disabled):not([aria-disabled="true"]) { background-image: linear-gradient(var(--layer), var(--layer)), var(--arg-gradient-primary-button); }
+.arg-btn--primary:active:not(:disabled):not([aria-disabled="true"]) { background-image: linear-gradient(var(--layer-press), var(--layer-press)), var(--arg-gradient-primary-button); }
+.arg-btn--primary:disabled, .arg-btn--primary[aria-disabled="true"] { opacity: .4; }
+
+.arg-btn--secondary { background-color: var(--arg-action-secondary-button-button-secondary); color: var(--arg-action-secondary-button-text-button-secondary); }
+.arg-btn--secondary:disabled { background-color: var(--arg-action-secondary-button-button-secondary-disable); color: var(--arg-action-secondary-button-text-button-secondary-disable); }
+.arg-btn--tertiary { background-color: var(--arg-action-tertiary-button-button-lv3); color: var(--arg-action-tertiary-button-text-button-tertiary); }
+.arg-btn--tertiary:disabled { background-color: var(--arg-action-tertiary-button-button-lv3-disable); color: var(--arg-action-tertiary-button-text-button-disable); }
+.arg-btn--outline { background-color: var(--arg-action-outline-button-outline-button-fill); border-color: var(--arg-action-outline-button-outline-button-border); color: var(--arg-action-outline-button-text-button-outline); }
+.arg-btn--outline:disabled { border-color: var(--arg-action-outline-button-outline-button-border-disable); color: var(--arg-ui-text-on-bright-text-disable); }
+.arg-btn--outline2 { background-color: var(--arg-action-outline-button-lv2-outline-button-fill); border-color: var(--arg-action-outline-button-lv2-outline-button-border); color: var(--arg-action-outline-button-lv2-text-button-outline); }
+.arg-btn--outline2:disabled { border-color: var(--arg-action-outline-button-lv2-outline-button-border-disable); color: var(--arg-ui-text-on-bright-text-disable); }
+.arg-btn--text { color: var(--arg-action-text-button-text-button); }
+.arg-btn--text:disabled { color: var(--arg-action-text-button-text-button-disable); }
+.arg-btn--text-strong { color: var(--arg-action-text-button-emphasize-text-button); }
+.arg-btn--text-strong:disabled { color: var(--arg-action-text-button-emphasize-text-button-disable); }
+.arg-btn--link { color: var(--arg-action-text-button-link-text-button); padding-inline: var(--arg-space-1x); text-decoration: underline; text-underline-offset: 3px; }
+.arg-btn--link:disabled { color: var(--arg-action-text-button-link-text-button-disable); }
+.arg-btn--buy { background-color: var(--arg-action-buy-button-button-buy); color: var(--arg-action-buy-button-text-button-buy); --layer: var(--arg-ui-state-layer-on-dim-hovered); --layer-press: var(--arg-ui-state-layer-on-dim-pressed); }
+.arg-btn--buy:disabled { background-color: var(--arg-action-buy-button-button-buy-disable); color: var(--arg-action-buy-button-text-button-buy-disable); }
+.arg-btn--sell { background-color: var(--arg-action-sell-button-button-sell); color: var(--arg-action-sell-button-text-button-sell); --layer: var(--arg-ui-state-layer-on-dim-hovered); --layer-press: var(--arg-ui-state-layer-on-dim-pressed); }
+.arg-btn--sell:disabled { background-color: var(--arg-action-sell-button-button-sell-disable); color: var(--arg-action-sell-button-text-button-sell-disable); }
+
+.arg-btn-group { display: inline-flex; }
+.arg-btn-group .arg-btn { border-radius: 0; }
+.arg-btn-group .arg-btn + .arg-btn { margin-left: -1px; }
+.arg-btn-group .arg-btn:first-child { border-radius: var(--arg-radius-control) 0 0 var(--arg-radius-control); }
+.arg-btn-group .arg-btn:last-child { border-radius: 0 var(--arg-radius-control) var(--arg-radius-control) 0; }
+.arg-btn-group .arg-btn[aria-pressed="true"] { background-color: var(--arg-ui-state-layer-on-bright-pressed); color: var(--arg-ui-text-on-bright-text-title); }
+
+.arg-icon-btn { display: grid; place-items: center; width: 24px; height: 24px; border: 0; border-radius: var(--arg-radius-xs); background: transparent; color: var(--arg-ui-text-on-bright-text-read-only); cursor: pointer; padding: 0; }
+.arg-icon-btn:hover { background: var(--arg-ui-state-layer-on-bright-hovered); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-icon-btn:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); }

@@ -1,0 +1,33 @@
+<section id="input">
+        <h2>Input fields</h2>
+        <p class="sec-desc">Cao 40px mặc định, <code>.arg-control--xl</code> 44, <code>--xxl</code> 48, <code>--sm</code> 32. Trạng thái lỗi và thành công đặt trên <code>.arg-field.is-error | is-success</code>.</p>
+        <div class="demo">
+          <div class="cols">
+            <div class="arg-field"><label class="arg-label" for="in1">Mã chứng khoán</label><div class="arg-control"><input class="arg-input" id="in1" placeholder="Nhập mã, ví dụ AGR"></div><span class="arg-help">Mặc định, cao 40px</span></div>
+            <div class="arg-field"><label class="arg-label" for="in2">Họ và tên</label><div class="arg-control"><i data-arg-icon="user"></i><input class="arg-input" id="in2" value="Nguyễn Văn An"></div><span class="arg-help">Có icon bên trái</span></div>
+            <div class="arg-field"><label class="arg-label" for="in3">Tìm kiếm</label><div class="arg-control"><i data-arg-icon="magnifying-glass"></i><input class="arg-input" id="in3" type="search" placeholder="Tìm mã, tên công ty"><button class="arg-icon-btn" type="button" aria-label="Xoá"><i data-arg-icon="x" class="i--16"></i></button></div><span class="arg-help">Có nút xoá</span></div>
+            <div class="arg-field"><label class="arg-label" for="in4">Mật khẩu</label><div class="arg-control"><i data-arg-icon="lock"></i><input class="arg-input" id="in4" type="password" value="matkhau123"><button class="arg-icon-btn" type="button" data-arg-password aria-label="Hiện mật khẩu"><i data-arg-icon="eye" class="i--16"></i></button></div><span class="arg-help">Bấm mắt để hiện hoặc ẩn</span></div>
+            <div class="arg-field"><label class="arg-label" for="in5">Giá đặt</label><div class="arg-control"><input class="arg-input" id="in5" inputmode="decimal" value="19,75" style="text-align:right;font-variant-numeric:tabular-nums"><span class="arg-addon arg-addon--end">nghìn đồng</span></div><span class="arg-help">Có hậu tố đơn vị</span></div>
+            <div class="arg-field"><label class="arg-label" for="in6">Khối lượng</label><div class="arg-control"><span class="arg-addon">KL</span><input class="arg-input" id="in6" inputmode="numeric" value="1.000" style="font-variant-numeric:tabular-nums"></div><span class="arg-help">Có tiền tố</span></div>
+          </div>
+          <hr class="hr">
+          <div class="group"><h3>Trạng thái</h3>
+            <div class="cols">
+              <div class="arg-field is-error"><label class="arg-label" for="in7">Số điện thoại <span class="req">*</span></label><div class="arg-control"><i data-arg-icon="warning-circle" style="color:var(--arg-action-noti-toast-error)"></i><input class="arg-input" id="in7" value="0912 345"></div><span class="arg-help"><i data-arg-icon="warning-circle" class="i--16"></i>Số điện thoại cần đủ 10 chữ số.</span></div>
+              <div class="arg-field is-success"><label class="arg-label" for="in8">Email</label><div class="arg-control"><i data-arg-icon="check-circle" style="color:var(--arg-action-noti-toast-success)"></i><input class="arg-input" id="in8" value="an.nguyen@agriseco.vn"></div><span class="arg-help"><i data-arg-icon="check" class="i--16"></i>Email hợp lệ.</span></div>
+              <div class="arg-field"><label class="arg-label" for="in9">Số tài khoản</label><div class="arg-control"><input class="arg-input" id="in9" value="068C123456" readonly></div><span class="arg-help">Chỉ đọc</span></div>
+              <div class="arg-field"><label class="arg-label" for="in10">Ghi chú</label><div class="arg-control"><input class="arg-input" id="in10" placeholder="Không thể nhập" disabled></div><span class="arg-help">Vô hiệu</span></div>
+            </div></div>
+          <div class="group"><h3>Kích thước</h3>
+            <div class="cols">
+              <div class="arg-field"><label class="arg-label" for="in11">Mặc định · 40px</label><div class="arg-control"><i data-arg-icon="magnifying-glass"></i><input class="arg-input" id="in11" placeholder="Tìm kiếm"></div></div>
+              <div class="arg-field"><label class="arg-label" for="in12">xl · 44px</label><div class="arg-control arg-control--xl"><i data-arg-icon="magnifying-glass"></i><input class="arg-input" id="in12" placeholder="Tìm kiếm"></div></div>
+              <div class="arg-field"><label class="arg-label" for="in13">xxl · 48px</label><div class="arg-control arg-control--xxl"><i data-arg-icon="magnifying-glass"></i><input class="arg-input" id="in13" placeholder="Tìm kiếm"></div></div>
+              <div class="arg-field"><label class="arg-label" for="in14">sm · 32px</label><div class="arg-control arg-control--sm"><i data-arg-icon="magnifying-glass"></i><input class="arg-input" id="in14" placeholder="Tìm kiếm"></div></div>
+            </div></div>
+          <div class="group"><h3>Textarea</h3>
+            <div class="cols">
+              <div class="arg-field"><label class="arg-label" for="ta1">Lý do huỷ lệnh</label><div class="arg-control arg-control--area"><textarea class="arg-textarea" id="ta1" placeholder="Nhập lý do"></textarea></div></div>
+            </div></div>
+        </div>
+      </section>

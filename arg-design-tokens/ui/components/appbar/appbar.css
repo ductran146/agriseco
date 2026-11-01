@@ -1,0 +1,21 @@
+/* ARG UI · appbar (thanh điều hướng đầu trang) */
+.arg-appbar { display: flex; align-items: center; justify-content: space-between; gap: var(--arg-space-3x); min-height: var(--arg-space-14x); }
+.arg-appbar--sticky { position: sticky; top: 0; z-index: 10; box-sizing: border-box; min-height: calc(var(--arg-space-14x) + var(--arg-safe-top, 0px)); padding: var(--arg-safe-top, 0px) max(var(--arg-gutter), calc((100% - 1040px) / 2 + var(--arg-gutter))) 0; background: color-mix(in srgb, var(--arg-ui-background-background) 85%, transparent); -webkit-backdrop-filter: blur(20px) saturate(1.4); backdrop-filter: blur(20px) saturate(1.4); }
+.arg-appbar > .arg-appbar__tool:first-child { margin-left: calc(var(--arg-space-2x) * -1); }
+.arg-appbar__title { flex: 1 1 auto; margin: 0; min-width: 0; font-size: var(--arg-font-font-size-title-2); line-height: var(--arg-font-line-height-title-2); font-weight: var(--arg-font-font-weight-bold); color: var(--arg-ui-text-on-bright-text-title); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.arg-appbar__info { display: grid; min-width: 0; }
+.arg-appbar__name { font-size: var(--arg-font-font-size-body-3); line-height: var(--arg-font-line-height-body-3); font-weight: var(--arg-font-font-weight-semibold); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-appbar__quote { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--arg-space-1x) var(--arg-space-2x); font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); font-variant-numeric: tabular-nums; }
+.arg-appbar__quote b { font-size: var(--arg-font-font-size-body-4); }
+.arg-appbar__tools { display: flex; gap: var(--arg-space-1x); flex: none; }
+.arg-appbar__tool { display: inline-grid; place-items: center; width: var(--arg-space-10x); height: var(--arg-space-10x); padding: 0; border: 0; border-radius: var(--arg-radius); background: transparent; color: var(--arg-ui-text-on-bright-text-title); cursor: pointer; }
+.arg-appbar__tool[aria-pressed="true"] { color: var(--arg-p-brand-yellow); } .arg-appbar__tool[aria-pressed="true"] .arg-fav__on { display: grid; } .arg-appbar__tool[aria-pressed="true"] .arg-fav__off { display: none; }
+.arg-appbar__tool:hover { background: var(--arg-ui-state-layer-on-bright-hovered); } .arg-appbar__tool .i { width: 24px; height: 24px; }
+.arg-appbar__stack { position: relative; flex: 1 1 auto; min-width: 0; display: grid; }
+.arg-appbar--condense { --p: 0; }
+.arg-appbar__stack > * { grid-area: 1 / 1; align-self: center; will-change: transform, opacity; }
+.arg-appbar__stack > .arg-appbar__title { opacity: max(0, calc(1 - var(--p) * 2.4)); transform: translateY(calc(var(--p) * -14px)); }
+.arg-appbar__stack > .arg-appbar__info { opacity: min(1, max(0, calc((var(--p) - .4) * 2.2))); transform: translateY(calc((1 - var(--p)) * 18px)) scale(calc(.9 + var(--p) * .1)); transform-origin: left center; pointer-events: none; }
+.arg-appbar__quote .i { width: 10px; height: 10px; }
+.arg-appbar__logo { flex: 1 1 auto; display: flex; align-items: center; margin: 0; min-width: 0; }
+.arg-appbar__logo .arg-logo { display: block; width: auto; height: var(--arg-space-9x); }

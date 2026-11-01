@@ -1,0 +1,6 @@
+/* ARG UI · hero (vùng đầu trang chi tiết: ảnh minh hoạ giữa nền màu của ảnh, nút quay lại và tìm kiếm ở trên) */
+.arg-hero { --tint: var(--arg-ui-background-lv-3); display: grid; justify-items: center; padding: var(--arg-safe-top, 0px) var(--arg-gutter) var(--arg-space-4x); background: var(--tint); }
+.arg-hero__bar { display: flex; align-items: center; justify-content: space-between; justify-self: stretch; min-height: 56px; }
+.arg-hero__bar > .arg-appbar__tool:first-child { margin-left: calc(var(--arg-space-2x) * -1); }
+.arg-hero__bar > .arg-appbar__tool:last-child { margin-right: calc(var(--arg-space-2x) * -1); }
+.arg-hero__img { display: block; width: 168px; height: 168px; object-fit: contain; }

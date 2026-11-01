@@ -1,0 +1,15 @@
+/* ARG UI · index (market card chỉ số) */
+.arg-index-row { display: flex; gap: var(--arg-space-3x); overflow-x: auto; scrollbar-width: none; scroll-snap-type: x proximity; scroll-padding-inline: var(--arg-gutter); padding: var(--arg-space-6x) var(--arg-gutter) var(--arg-space-12x); margin: calc(var(--arg-space-6x) * -1 + var(--arg-space-1x)) calc(var(--arg-gutter) * -1) calc(var(--arg-space-12x) * -1 + var(--arg-space-2x)); position: relative; z-index: 1; pointer-events: none; }
+/* Market card: 92×120, bo 20px, viền 0.5px, bóng mềm. Ba trạng thái: --up (tăng), --down (giảm), --ref (giữ nguyên) */
+.arg-index { pointer-events: auto; text-decoration: none; color: inherit; --c: var(--arg-trading-flat-flat); --g: url(#arg-grad-ref); flex: none; scroll-snap-align: start; position: relative; display: flex; flex-direction: column; align-items: center; width: 92px; height: 120px; box-sizing: border-box; overflow: hidden; border: .5px solid var(--arg-ui-divider-stroke); border-radius: var(--arg-radius-lg); background: var(--arg-ui-background-surface); box-shadow: var(--arg-shadow-soft-shadow); }
+.arg-index--up { --c: var(--arg-trading-up-light-increase); --g: url(#arg-grad-up); }
+.arg-index--down { --c: var(--arg-trading-down-light-increase); --g: url(#arg-grad-down); }
+.arg-index--ref { --c: var(--arg-trading-flat-flat); --g: url(#arg-grad-ref); }
+.arg-index__head { display: flex; flex-direction: column; align-items: center; width: 100%; padding: var(--arg-space-1x); box-sizing: border-box; }
+.arg-index__name { padding: var(--arg-space-1-5x) 0; font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); font-weight: var(--arg-font-font-weight-medium); color: var(--arg-ui-text-on-bright-text-content); text-align: center; white-space: nowrap; }
+.arg-index__value { font-size: var(--arg-font-font-size-title-3); line-height: var(--arg-font-line-height-title-3); font-weight: var(--arg-font-font-weight-bold); color: var(--c); font-variant-numeric: tabular-nums; text-align: center; white-space: nowrap; }
+.arg-index__badge { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 2px var(--arg-space-2x); box-sizing: border-box; border-radius: var(--arg-radius-sm); background: var(--c); color: var(--arg-ui-text-on-dim-text-content); font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); font-weight: var(--arg-font-font-weight-medium); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.arg-index .arg-spark { position: absolute; left: -2.14%; bottom: 0; width: 104.28%; height: 32px; color: var(--c); }
+.arg-index .arg-spark polygon { fill: var(--g); opacity: 1; }
+.arg-index .arg-spark polyline { stroke-width: 1; }
+.arg-index .arg-spark .ref { display: block; }

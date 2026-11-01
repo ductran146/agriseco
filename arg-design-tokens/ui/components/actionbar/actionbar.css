@@ -1,0 +1,5 @@
+/* ARG UI · actionbar (thanh nút hành động dính đáy màn, ví dụ Mua / Bán) */
+.arg-actionbar { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: var(--arg-space-3x); padding: var(--arg-space-3x) var(--arg-gutter) calc(var(--arg-space-3x) + max(env(safe-area-inset-bottom, 0px), var(--arg-safe-bottom, 0px))); background: color-mix(in srgb, var(--arg-ui-background-surface) 85%, transparent); -webkit-backdrop-filter: blur(20px) saturate(1.4); backdrop-filter: blur(20px) saturate(1.4); box-shadow: var(--arg-shadow-bottommenu); }
+.arg-actionbar--fixed { position: sticky; bottom: 0; z-index: 20; }
+.arg-actionbar > .arg-btn { width: 100%; }
+@media (min-width: 720px) { .arg-actionbar { padding-inline: max(var(--arg-gutter), calc((100% - 1040px) / 2 + var(--arg-gutter))); } }

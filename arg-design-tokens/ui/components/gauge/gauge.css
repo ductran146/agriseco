@@ -1,0 +1,19 @@
+/* ARG UI · gauge (đồng hồ tín hiệu kỹ thuật: 5 vùng Bán mạnh đến Mua mạnh, kim theo --v từ 0 đến 1, kết luận và số chỉ báo) */
+.arg-gauge { --buy: var(--arg-action-buy-button-button-buy); --sell: var(--arg-action-sell-button-button-sell); display: grid; justify-items: center; gap: var(--arg-space-3x); }
+.arg-gauge__dial { display: block; width: 100%; max-width: 320px; height: auto; overflow: visible; }
+.arg-gauge__dial .zone { fill: none; stroke-width: 10; }
+.arg-gauge__dial .z1 { stroke: var(--sell); } .arg-gauge__dial .z2 { stroke: color-mix(in srgb, var(--sell) 40%, transparent); }
+.arg-gauge__dial .z3 { stroke: var(--arg-ui-background-lv-3); }
+.arg-gauge__dial .z4 { stroke: color-mix(in srgb, var(--buy) 40%, transparent); } .arg-gauge__dial .z5 { stroke: var(--buy); }
+.arg-gauge__dial text { font-family: var(--arg-font-family-family); font-size: 12px; fill: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-gauge__needle { transform-box: view-box; transform-origin: 160px 140px; transform: rotate(calc(var(--v, .5) * 180deg - 90deg)); transition: transform .4s ease; }
+.arg-gauge__needle line { stroke: var(--arg-ui-text-on-bright-text-title); stroke-width: 2.5; stroke-linecap: round; }
+.arg-gauge__needle circle { fill: var(--arg-ui-background-surface); stroke: var(--arg-ui-text-on-bright-text-title); stroke-width: 2; }
+.arg-gauge__verdict { margin-top: calc(var(--arg-space-2x) * -1); font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-title-3)/var(--arg-font-line-height-title-3) var(--arg-font-family-family); letter-spacing: .02em; color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-gauge__verdict.arg-buy { color: var(--buy); } .arg-gauge__verdict.arg-sell { color: var(--sell); }
+.arg-gauge__counts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; max-width: 320px; margin: 0; text-align: center; }
+.arg-gauge__counts > div { display: grid; gap: 2px; }
+.arg-gauge__counts dd { order: -1; margin: 0; font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-title-3)/var(--arg-font-line-height-title-3) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); font-variant-numeric: tabular-nums; }
+.arg-gauge__counts dt { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-gauge__counts dd.arg-buy { color: var(--buy); } .arg-gauge__counts dd.arg-sell { color: var(--sell); }
+@media (prefers-reduced-motion: reduce) { .arg-gauge__needle { transition: none; } }

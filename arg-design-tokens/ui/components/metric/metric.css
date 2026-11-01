@@ -1,0 +1,17 @@
+/* ARG UI · metric (thẻ chỉ số nổi bật: nhãn, giá trị lớn, dòng phụ; lãi hoặc lỗ có viền và nền chuyển màu nhạt từ trái) */
+.arg-metric-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--arg-space-3x); margin: 0; }
+.arg-metric { --c: var(--arg-ui-text-on-bright-text-title); position: relative; isolation: isolate; display: grid; gap: var(--arg-space-1x); min-width: 0; margin: 0; box-sizing: border-box; padding: var(--arg-space-4x); border: 1px solid var(--arg-ui-divider-separator); border-radius: var(--arg-radius); background: var(--arg-ui-background-surface); }
+.arg-metric--wide { grid-column: 1 / -1; }
+/* --inline: ba thẻ trên một hàng (màn hẹp): đệm 12px, giá trị cỡ Title 3, dòng phụ ngắn */
+.arg-metric-row--inline { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--arg-space-2x); }
+.arg-metric-row--inline .arg-metric { padding: var(--arg-space-3x); }
+.arg-metric-row--inline .arg-metric__value { font-size: var(--arg-font-font-size-title-3); line-height: var(--arg-font-line-height-title-3); }
+.arg-metric-row--inline .arg-metric dt, .arg-metric-row--inline .arg-metric__sub { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.arg-metric--up { --c: var(--arg-trading-up-light-increase); } .arg-metric--down { --c: var(--arg-trading-down-light-increase); }
+/* Lãi hoặc lỗ: viền màu trạng thái 30% và nền chuyển từ màu trạng thái 12% ở bên trái sang trắng; thẻ trung tính (không --up, --down) giữ viền xám, nền trắng */
+.arg-metric--up, .arg-metric--down { border-color: color-mix(in srgb, var(--c) 30%, transparent); background: linear-gradient(100deg, color-mix(in srgb, var(--c) 12%, var(--arg-ui-background-surface)) 0%, var(--arg-ui-background-surface) 70%); }
+.arg-metric dt { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-metric dd { margin: 0; font-variant-numeric: tabular-nums; }
+.arg-metric__value { font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-title-2)/var(--arg-font-line-height-title-2) var(--arg-font-family-family); color: var(--c); white-space: nowrap; }
+.arg-metric--wide .arg-metric__value { color: var(--arg-ui-text-on-bright-text-title); }
+.arg-metric__sub { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }

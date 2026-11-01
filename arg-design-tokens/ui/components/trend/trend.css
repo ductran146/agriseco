@@ -1,0 +1,8 @@
+/* ARG UI · trend (màu tăng/giảm/tham chiếu, sparkline) */
+.arg-up { color: var(--arg-trading-up-light-increase); } .arg-down { color: var(--arg-trading-down-light-increase); } .arg-ref { color: var(--arg-trading-flat-flat); } .arg-ceil { color: var(--arg-trading-ceiling-purple-flat); } .arg-floor { color: var(--arg-trading-floor-cyan-flat); }
+.arg-spark { display: block; width: 100%; height: 32px; color: var(--arg-trading-flat-flat); }
+.arg-spark--up { color: var(--arg-trading-up-light-increase); } .arg-spark--down { color: var(--arg-trading-down-light-increase); } .arg-spark--flat, .arg-spark--ref { color: var(--arg-trading-flat-flat); }
+.arg-spark--ceil { color: var(--arg-trading-ceiling-purple-flat); } .arg-spark--floor { color: var(--arg-trading-floor-cyan-flat); }
+.arg-spark polyline { fill: none; stroke: currentColor; stroke-width: 1.5; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+.arg-spark polygon { fill: currentColor; opacity: .14; }
+.arg-spark .ref { display: none; stroke: var(--arg-ui-divider-stroke); stroke-width: 1; stroke-dasharray: 3 3; vector-effect: non-scaling-stroke; }

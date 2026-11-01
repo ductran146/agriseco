@@ -1,0 +1,20 @@
+/* ARG UI · depth (bước giá hai bên: dư mua trái, dư bán phải, thanh khối lượng tỏa ra từ giữa) */
+.arg-depth { --buy: var(--arg-action-buy-button-button-buy); --sell: var(--arg-action-sell-button-button-sell); display: grid; gap: var(--arg-space-1x); min-width: 0; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); font-variant-numeric: tabular-nums; color: var(--arg-ui-text-on-bright-text-content); }
+.arg-depth__head { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--arg-space-1x); }
+.arg-depth__side { display: grid; gap: 2px; padding: var(--arg-space-2x) var(--arg-space-3x); border-radius: var(--arg-radius-sm); }
+.arg-depth__side--bid { background: color-mix(in srgb, var(--buy) 10%, transparent); }
+.arg-depth__side--ask { background: color-mix(in srgb, var(--sell) 10%, transparent); text-align: right; }
+.arg-depth__side b { font-weight: var(--arg-font-font-weight-semibold); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-depth__side span { font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-depth__ratio { --v: 50; height: 4px; margin: var(--arg-space-1x) 0; border-radius: 2px; background: linear-gradient(90deg, var(--buy) 0 calc(var(--v) * 1% - 1px), transparent calc(var(--v) * 1% - 1px) calc(var(--v) * 1% + 1px), var(--sell) calc(var(--v) * 1% + 1px) 100%); }
+.arg-depth__row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--arg-space-1x); }
+.arg-depth__half { --w: 0; display: flex; align-items: center; justify-content: space-between; gap: var(--arg-space-2x); min-height: 28px; padding: 0 var(--arg-space-2x); }
+.arg-depth__half--bid { background: linear-gradient(color-mix(in srgb, var(--buy) 16%, transparent), color-mix(in srgb, var(--buy) 16%, transparent)) right / calc(var(--w) * 1%) 100% no-repeat; border-radius: var(--arg-radius-xs) 0 0 var(--arg-radius-xs); }
+.arg-depth__half--ask { background: linear-gradient(color-mix(in srgb, var(--sell) 16%, transparent), color-mix(in srgb, var(--sell) 16%, transparent)) left / calc(var(--w) * 1%) 100% no-repeat; border-radius: 0 var(--arg-radius-xs) var(--arg-radius-xs) 0; }
+.arg-depth__price { font-weight: var(--arg-font-font-weight-semibold); }
+.arg-depth__vol { color: var(--arg-ui-text-on-bright-text-content); }
+/* __limits: hàng Sàn (trái, dưới phía mua) và Trần (phải, dưới phía bán) ở cuối bảng bước giá đầy đủ */
+.arg-depth__limits { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--arg-space-1x); margin-top: var(--arg-space-1x); }
+.arg-depth__limit { --c: var(--arg-trading-floor-cyan-flat); display: flex; align-items: center; justify-content: center; gap: var(--arg-space-1-5x); min-height: 36px; border-radius: var(--arg-radius-xs); background: color-mix(in srgb, var(--c) 10%, transparent); color: var(--c); }
+.arg-depth__limit b { font-weight: var(--arg-font-font-weight-semibold); }
+.arg-depth__limit--ceil { --c: var(--arg-trading-ceiling-purple-flat); }

@@ -1,0 +1,41 @@
+/* ARG UI · quote (danh sách dòng giá) */
+.arg-quote-list { list-style: none; margin: 0; padding: 0 var(--arg-space-4x); background: var(--arg-ui-background-surface); border-radius: var(--arg-radius-lg); box-shadow: var(--arg-shadow-shadow); }
+.arg-quote { display: grid; grid-template-columns: minmax(0, 1fr) 72px auto 56px; align-items: center; gap: var(--arg-space-3x); padding: var(--arg-space-3x) 0; }
+.arg-quote + .arg-quote { border-top: 1px solid var(--arg-ui-divider-separator); }
+.arg-quote__id { display: grid; min-width: 0; } .arg-quote__id b { font-size: var(--arg-font-font-size-body-3); line-height: var(--arg-font-line-height-body-3); font-weight: var(--arg-font-font-weight-bold); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-quote__id span { font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); color: var(--arg-ui-text-on-bright-text-content-lv2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.arg-quote__price { display: grid; justify-items: end; gap: 2px; } .arg-quote__price b { font-size: var(--arg-font-font-size-body-3); line-height: var(--arg-font-line-height-body-3); font-weight: var(--arg-font-font-weight-semibold); font-variant-numeric: tabular-nums; }
+.arg-quote--up .arg-quote__price b { color: var(--arg-trading-up-light-increase); } .arg-quote--down .arg-quote__price b { color: var(--arg-trading-down-light-increase); } .arg-quote--ref .arg-quote__price b { color: var(--arg-trading-flat-flat); }
+.arg-quote__vol { text-align: right; font-size: var(--arg-font-font-size-body-4); color: var(--arg-ui-text-on-bright-text-content); font-variant-numeric: tabular-nums; }
+@media (max-width: 380px) { .arg-quote { grid-template-columns: minmax(0, 1fr) 56px auto; } .arg-quote__vol { display: none; } }
+/* Dòng bấm được: mã là liên kết, vùng bấm phủ cả dòng */
+.arg-quote--link { position: relative; }
+.arg-quote--link .arg-quote__id { color: inherit; text-decoration: none; outline: 0; }
+.arg-quote--link .arg-quote__id::after { content: ""; position: absolute; inset: 0; }
+.arg-quote--link:focus-within { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: 2px; border-radius: var(--arg-radius-xs); }
+/* Bảng xếp hạng: số thứ tự, mã và tên, giá và phần trăm (không sparkline, không khối lượng) */
+.arg-quote--rank { grid-template-columns: 20px minmax(0, 1fr) auto; }
+.arg-quote__rank { font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-action-text-button-link-text-button); text-align: center; font-variant-numeric: tabular-nums; }
+.arg-quote-list--plain { padding: 0; border-radius: 0; box-shadow: none; background: transparent; }
+/* Cột phải là chỉ tiêu khác giá (khối lượng, mua bán ròng): chữ màu thường, hoặc .arg-up / .arg-down */
+.arg-quote .arg-quote__price--metric b { color: var(--arg-ui-text-on-bright-text-title); }
+.arg-quote .arg-quote__price--metric b.arg-up { color: var(--arg-trading-up-light-increase); } .arg-quote .arg-quote__price--metric b.arg-down { color: var(--arg-trading-down-light-increase); }
+/* Trạng thái trần (tím) và sàn (xanh ngọc) */
+.arg-quote--ceil .arg-quote__price b { color: var(--arg-trading-ceiling-purple-flat); } .arg-quote--floor .arg-quote__price b { color: var(--arg-trading-floor-cyan-flat); }
+/* Bảng giá --board: mã và tên, sparkline có đường tham chiếu nét đứt, giá và Badge phần trăm rộng đều; không hiện khối lượng */
+.arg-quote--board { grid-template-columns: minmax(0, 1fr) 80px 72px; }
+.arg-quote--board .arg-spark .ref { display: block; }
+.arg-quote--board .arg-quote__vol { display: none; }
+.arg-quote--board .arg-quote__price .arg-badge { min-width: 64px; justify-content: center; }
+/* --fav: thêm cột nút ngôi sao (yêu thích) cuối dòng (danh mục theo dõi) */
+.arg-quote--fav { grid-template-columns: minmax(0, 1fr) 72px 72px 28px; }
+.arg-fav { position: relative; z-index: 1; display: grid; place-items: center; width: 28px; height: 28px; padding: 0; border: 0; border-radius: var(--arg-radius-xs); background: transparent; color: var(--arg-ui-text-on-bright-text-read-only); cursor: pointer; }
+.arg-fav .i { width: 24px; height: 24px; color: inherit; }
+.arg-fav__on { display: none; } .arg-fav__off { display: grid; }
+.arg-fav[aria-pressed="true"] { color: var(--arg-p-brand-yellow); } .arg-fav[aria-pressed="true"] .arg-fav__on { display: grid; } .arg-fav[aria-pressed="true"] .arg-fav__off { display: none; }
+.arg-fav:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: 1px; }
+/* Xem khối lượng (.arg-quote-list--vol): thay sparkline bằng cột khối lượng */
+.arg-quote-list--vol .arg-quote--board .arg-spark { display: none; }
+.arg-quote-list--vol .arg-quote--board .arg-quote__vol { display: block; order: 2; }
+.arg-quote-list--vol .arg-quote--board .arg-quote__price { order: 3; }
+.arg-quote-list--vol .arg-quote--board .arg-fav { order: 4; }

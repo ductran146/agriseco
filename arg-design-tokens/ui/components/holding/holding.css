@@ -1,0 +1,10 @@
+/* ARG UI · holding (thẻ cổ phiếu đang nắm giữ, gọn hai dòng: trái là mã, giá hiện tại, khối lượng và giá vốn; phải là kết quả lãi/lỗ) */
+.arg-holding-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--arg-space-2x); }
+.arg-holding { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: var(--arg-space-3x); padding: var(--arg-space-3x) var(--arg-space-4x); border-radius: var(--arg-radius); background: var(--arg-ui-background-background); }
+.arg-holding__id { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: baseline; column-gap: var(--arg-space-2x); row-gap: 2px; min-width: 0; color: inherit; text-decoration: none; }
+.arg-holding__id::after { content: ""; position: absolute; inset: 0; border-radius: inherit; } /* vùng bấm phủ cả thẻ */
+.arg-holding__id b { font-size: var(--arg-font-font-size-body-3); line-height: var(--arg-font-line-height-body-3); font-weight: var(--arg-font-font-weight-bold); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-holding__last { font-size: var(--arg-font-font-size-body-4); line-height: var(--arg-font-line-height-body-4); font-weight: var(--arg-font-font-weight-semibold); font-variant-numeric: tabular-nums; } /* giá hiện tại: màu bằng .arg-up .arg-down .arg-ref theo biến động trong phiên */
+.arg-holding__meta { grid-column: 1 / -1; font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); color: var(--arg-ui-text-on-bright-text-content-lv2); font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.arg-holding__pl { display: grid; justify-items: end; gap: 2px; font-variant-numeric: tabular-nums; }
+.arg-holding__pl b { font-size: var(--arg-font-font-size-body-3); line-height: var(--arg-font-line-height-body-3); font-weight: var(--arg-font-font-weight-semibold); } /* lãi/lỗ: màu bằng .arg-up .arg-down .arg-ref */

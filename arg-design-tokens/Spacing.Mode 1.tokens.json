@@ -1,0 +1,164 @@
+{
+  "d--spacing": {
+    "0x": {
+      "$type": "dimension",
+      "$value": "0px"
+    },
+    "px": {
+      "$type": "dimension",
+      "$value": "1px"
+    },
+    "0,5x": {
+      "$type": "dimension",
+      "$value": "2px"
+    },
+    "1x": {
+      "$type": "dimension",
+      "$value": "4px"
+    },
+    "1,5x": {
+      "$type": "dimension",
+      "$value": "6px"
+    },
+    "2x": {
+      "$type": "dimension",
+      "$value": "8px"
+    },
+    "2,5x": {
+      "$type": "dimension",
+      "$value": "10px"
+    },
+    "3x": {
+      "$type": "dimension",
+      "$value": "12px"
+    },
+    "4x": {
+      "$type": "dimension",
+      "$value": "16px"
+    },
+    "5x": {
+      "$type": "dimension",
+      "$value": "20px"
+    },
+    "6x": {
+      "$type": "dimension",
+      "$value": "24px"
+    },
+    "7x": {
+      "$type": "dimension",
+      "$value": "28px"
+    },
+    "8x": {
+      "$type": "dimension",
+      "$value": "32px"
+    },
+    "9x": {
+      "$type": "dimension",
+      "$value": "36px"
+    },
+    "10x": {
+      "$type": "dimension",
+      "$value": "40px"
+    },
+    "11x": {
+      "$type": "dimension",
+      "$value": "44px"
+    },
+    "12x": {
+      "$type": "dimension",
+      "$value": "48px"
+    },
+    "13x": {
+      "$type": "dimension",
+      "$value": "52px"
+    },
+    "14x": {
+      "$type": "dimension",
+      "$value": "56px"
+    },
+    "16x": {
+      "$type": "dimension",
+      "$value": "64px"
+    },
+    "20x": {
+      "$type": "dimension",
+      "$value": "80px"
+    }
+  },
+  "d--breakpoints": {
+    "macos": {
+      "$type": "dimension",
+      "$value": "1512px"
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "1920px"
+    },
+    "middles": {
+      "$type": "dimension",
+      "$value": "1536px"
+    },
+    "tablet": {
+      "$type": "dimension",
+      "$value": "1024px"
+    }
+  },
+  "d--borders": {
+    "radius": {
+      "rounded-none": {
+        "$type": "dimension",
+        "$value": "{d--spacing.0x}"
+      },
+      "rounded-sm": {
+        "$type": "dimension",
+        "$value": "{d--spacing.0,5x}"
+      },
+      "rounded": {
+        "$type": "dimension",
+        "$value": "{d--spacing.1x}"
+      },
+      "rounded-md": {
+        "$type": "dimension",
+        "$value": "{d--spacing.1,5x}"
+      },
+      "radius-md": {
+        "$type": "dimension",
+        "$value": "{d--spacing.2x}"
+      },
+      "rounded-lg": {
+        "$type": "dimension",
+        "$value": "{d--spacing.3x}"
+      },
+      "rounded-2xl": {
+        "$type": "dimension",
+        "$value": "{d--spacing.4x}"
+      }
+    },
+    "height-size": {
+      "x-small": {
+        "$type": "dimension",
+        "$value": "{d--spacing.7x}"
+      },
+      "height-small": {
+        "$type": "dimension",
+        "$value": "{d--spacing.8x}"
+      },
+      "height-normal": {
+        "$type": "dimension",
+        "$value": "{d--spacing.10x}"
+      },
+      "height-large": {
+        "$type": "dimension",
+        "$value": "{d--spacing.13x}"
+      },
+      "height-xl": {
+        "$type": "dimension",
+        "$value": "{d--spacing.11x}"
+      },
+      "height-xxl": {
+        "$type": "dimension",
+        "$value": "{d--spacing.12x}"
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+/* ARG UI · bars (cột dương âm quanh đường 0, ví dụ giá trị mua ròng theo phiên) */
+.arg-bars { display: grid; grid-template-columns: repeat(var(--n, 5), minmax(0, 1fr)); height: 220px; font-variant-numeric: tabular-nums; }
+.arg-bar { display: grid; grid-template-rows: 1fr 1fr auto; justify-items: center; min-width: 0; }
+.arg-bar__half { display: flex; flex-direction: column; align-items: center; width: 100%; min-height: 0; }
+.arg-bar__half--pos { justify-content: flex-end; }
+.arg-bar__half--neg { justify-content: flex-start; border-top: 1px solid var(--arg-ui-divider-separator); }
+.arg-bar__fill { width: 28px; height: calc(var(--v) * .8%); background: var(--arg-trading-up-light-increase); }
+.arg-bar__fill--up { border-radius: var(--arg-radius-xs) var(--arg-radius-xs) 0 0; background: var(--arg-trading-up-light-increase); }
+.arg-bar__fill--down { border-radius: 0 0 var(--arg-radius-xs) var(--arg-radius-xs); background: var(--arg-trading-down-light-increase); }
+.arg-bar__val { padding: 2px 0; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); }
+.arg-bar__date { padding-top: var(--arg-space-2x); font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-read-only); }
+/* Nhiều cột (8 đến 10 phiên): thân cột hẹp 16px */
+.arg-bars--dense .arg-bar__fill { width: 16px; }
+.arg-bars--dense .arg-bar__val, .arg-bars--dense .arg-bar__date { font-size: var(--arg-font-font-size-label-2); line-height: var(--arg-font-line-height-label-2); white-space: nowrap; }

@@ -1,0 +1,6 @@
+/* ARG UI · heatmap (bản đồ nhiệt các mã, màu theo trạng thái giá) */
+.arg-heat { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: repeat(8, minmax(0, 1fr)); gap: 2px; height: 280px; overflow: hidden; border-radius: var(--arg-radius); }
+.arg-heat__tile { --c: var(--arg-trading-flat-flat); border-radius: var(--arg-radius-xs); display: grid; align-content: center; justify-items: center; gap: 0; min-width: 0; padding: 2px; overflow: hidden; text-align: center; background: var(--c); color: #fff; font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); }
+.arg-heat__tile span { font-weight: var(--arg-font-font-weight-regular); }
+.arg-heat__tile--up { --c: var(--arg-trading-up-light-increase); } .arg-heat__tile--down { --c: var(--arg-trading-down-light-increase); } .arg-heat__tile--ref { --c: var(--arg-trading-flat-flat); }
+.arg-heat__tile--ceil { --c: var(--arg-trading-ceiling-purple-flat); } .arg-heat__tile--floor { --c: var(--arg-trading-floor-cyan-flat); }

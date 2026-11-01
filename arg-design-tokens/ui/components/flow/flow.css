@@ -1,0 +1,20 @@
+/* ARG UI · flow (đường giá trị trong phiên quanh mốc 0: phần dương xanh, phần âm đỏ, tô nhạt dưới đường; trục giá trị và giờ) */
+.arg-flow { display: grid; gap: var(--arg-space-2x); min-width: 0; font-variant-numeric: tabular-nums; }
+.arg-flow__body { display: grid; grid-template-columns: 40px minmax(0, 1fr); column-gap: var(--arg-space-2x); }
+.arg-flow__y { position: relative; height: 160px; margin: 0; padding: 0; list-style: none; }
+.arg-flow__y li, .arg-flow__x li { position: absolute; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-2)/var(--arg-font-line-height-label-2) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-read-only); white-space: nowrap; }
+.arg-flow__y li { right: 0; transform: translateY(-50%); }
+.arg-flow__plot { position: relative; height: 160px; }
+.arg-flow__plot > svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.arg-flow__plot .grid { stroke: var(--arg-ui-divider-separator); stroke-width: 1; stroke-dasharray: 2 3; vector-effect: non-scaling-stroke; }
+.arg-flow__plot .zero { stroke: var(--arg-ui-divider-stroke); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.arg-flow__plot .area-up { fill: color-mix(in srgb, var(--arg-trading-up-light-increase) 16%, transparent); }
+.arg-flow__plot .area-down { fill: color-mix(in srgb, var(--arg-trading-down-light-increase) 16%, transparent); }
+.arg-flow__plot .line-up, .arg-flow__plot .line-down { fill: none; stroke-width: 1.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.arg-flow__plot .line-up { stroke: var(--arg-trading-up-light-increase); } .arg-flow__plot .line-down { stroke: var(--arg-trading-down-light-increase); }
+.arg-flow__x { position: relative; height: 16px; margin: 0 0 0 calc(40px + var(--arg-space-2x)); padding: 0; list-style: none; }
+.arg-flow__x li { top: 0; transform: translateX(-50%); }
+.arg-flow__legend { display: flex; justify-content: center; gap: var(--arg-space-4x); margin: 0; padding: 0; list-style: none; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-flow__legend li { display: inline-flex; align-items: center; gap: var(--arg-space-1-5x); }
+.arg-flow__legend i { width: 8px; height: 8px; border-radius: 50%; background: var(--arg-trading-up-light-increase); } .arg-flow__legend li + li i { background: var(--arg-trading-down-light-increase); }
+.arg-flow__note { margin: 0; text-align: center; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }

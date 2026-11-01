@@ -1,0 +1,10 @@
+/* ARG UI · embed */
+.arg-ratio { position: relative; width: 100%; aspect-ratio: var(--r, 16 / 9); border-radius: var(--arg-radius); overflow: hidden; background: var(--arg-p-grayscale-5); }
+.arg-ratio > iframe, .arg-ratio > video, .arg-ratio > embed, .arg-ratio > .arg-ratio__inner { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.arg-ratio--21x9 { --r: 21 / 9; } .arg-ratio--16x9 { --r: 16 / 9; } .arg-ratio--4x3 { --r: 4 / 3; } .arg-ratio--1x1 { --r: 1 / 1; }
+.arg-video { display: grid; place-items: center; background: radial-gradient(120% 120% at 20% 10%, var(--arg-p-brand-orange-red), transparent 55%), var(--arg-p-grayscale-5); color: #fff; }
+.arg-video__play { width: 64px; height: 64px; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--arg-p-grayscale-100); color: var(--arg-p-brand-orange-red); cursor: pointer; box-shadow: var(--arg-shadow-sharp-shadow); padding: 0; }
+.arg-video__play .i { width: 28px; height: 28px; fill: currentColor; margin-left: 3px; }
+.arg-video__play:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.arg-video__bar { position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: var(--arg-space-3x); padding: var(--arg-space-3x) var(--arg-space-4x); background: linear-gradient(transparent, rgba(0,0,0,.6)); font-size: var(--arg-font-font-size-label-1); font-variant-numeric: tabular-nums; }
+.arg-video__bar .arg-progress { flex: 1; background: rgba(255,255,255,.3); height: 4px; }

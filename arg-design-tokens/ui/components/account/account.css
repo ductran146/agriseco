@@ -1,0 +1,37 @@
+/* ARG UI · account (thẻ tài sản: phần đầu nền gradient thương hiệu, phân bổ cổ phiếu / tiền mặt, lãi/lỗ danh mục, ẩn hiện số dư) */
+.arg-account { overflow: hidden; border-radius: var(--arg-radius-lg); background: var(--arg-ui-background-surface); box-shadow: var(--arg-shadow-shadow); }
+/* Điểm nhấn: gradient header agriseco.com.vn (--arg-gradient-primary-button) phủ thêm quầng sáng trắng góc phải và quầng hổ phách (màu logo) góc trái dưới */
+.arg-account__head { position: relative; isolation: isolate; overflow: hidden; display: grid; gap: var(--arg-space-1x); padding: var(--arg-space-5x); color: #fff;
+  background-color: var(--arg-p-brand-header-start);
+  background-image: radial-gradient(120% 90% at 100% 0%, var(--arg-p-alpha-white-21) 0%, transparent 55%), radial-gradient(70% 80% at 0% 100%, color-mix(in srgb, var(--arg-p-brand-amber) 55%, transparent) 0%, transparent 70%), var(--arg-gradient-primary-button); }
+.arg-account__head::before, .arg-account__head::after { content: ""; position: absolute; z-index: -1; border-radius: 50%; pointer-events: none; }
+.arg-account__head::before { width: 220px; height: 220px; top: -96px; right: -72px; border: 28px solid var(--arg-p-alpha-white-8); }
+.arg-account__head::after { width: 120px; height: 120px; bottom: -64px; right: 72px; border: 16px solid var(--arg-p-alpha-white-5); }
+.arg-account__top { display: flex; align-items: center; justify-content: space-between; gap: var(--arg-space-3x); }
+.arg-account__label { display: inline-flex; align-items: center; gap: var(--arg-space-1-5x); font: var(--arg-font-font-weight-medium) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-p-alpha-white-86); }
+.arg-account__eye { display: grid; place-items: center; width: 24px; height: 24px; padding: 0; border: 0; border-radius: var(--arg-radius-xs); background: transparent; color: #fff; cursor: pointer; }
+.arg-account__eye:hover { background: var(--arg-p-alpha-white-16); }
+.arg-account__eye:focus-visible { outline: 2px solid #fff; outline-offset: 1px; }
+.arg-account__eye .i { width: 20px; height: 20px; }
+.arg-account__avatar { flex: none; display: grid; place-items: center; width: var(--arg-space-10x); height: var(--arg-space-10x); border-radius: 50%; border: 2px solid var(--arg-p-alpha-white-61); background: var(--arg-p-alpha-white-21); font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-body-4)/1 var(--arg-font-family-family); }
+.arg-account__amount { font-size: var(--arg-font-font-size-header-3); line-height: var(--arg-font-line-height-header-3); font-weight: var(--arg-font-font-weight-bold); font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+.arg-account__delta { justify-self: start; display: inline-flex; align-items: center; gap: var(--arg-space-1x); padding: var(--arg-space-1x) var(--arg-space-2-5x); border-radius: var(--arg-radius-sm); background: var(--arg-p-alpha-white-16); font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.arg-account__delta b { font-weight: var(--arg-font-font-weight-semibold); }
+.arg-account__delta .i { width: 16px; height: 16px; }
+.arg-account__alloc { display: grid; gap: var(--arg-space-2-5x); margin-top: var(--arg-space-3x); }
+/* Thanh phân bổ: phần trắng đặc là cổ phiếu (--v %), phần trắng mờ là tiền mặt */
+.arg-account__bar { --v: 50; height: 6px; border-radius: 3px; background: linear-gradient(90deg, #fff 0 calc(var(--v) * 1% - 1px), transparent calc(var(--v) * 1% - 1px) calc(var(--v) * 1% + 1px), var(--arg-p-alpha-white-42) calc(var(--v) * 1% + 1px) 100%); }
+.arg-account__split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--arg-space-3x); margin: 0; }
+.arg-account__split > div { display: grid; gap: 2px; min-width: 0; }
+.arg-account__split dt { display: inline-flex; align-items: center; gap: var(--arg-space-1-5x); font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-p-alpha-white-86); white-space: nowrap; }
+.arg-account__split dd { margin: 0; font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-body-3)/var(--arg-font-line-height-body-3) var(--arg-font-family-family); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.arg-account__dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+.arg-account__dot--cash { background: var(--arg-p-alpha-white-42); }
+.arg-account__body { display: grid; gap: var(--arg-space-3x); padding: var(--arg-space-4x) var(--arg-space-5x) var(--arg-space-5x); }
+.arg-account__no { font-size: var(--arg-font-font-size-body-4); color: var(--arg-ui-text-on-bright-text-content-lv2); } .arg-account__no b { color: var(--arg-ui-text-on-bright-text-title); }
+.arg-account__foot { display: flex; align-items: center; justify-content: space-between; gap: var(--arg-space-3x); padding-top: var(--arg-space-3x); border-top: 1px solid var(--arg-ui-divider-separator); }
+.arg-account__pl { display: grid; gap: 2px; min-width: 0; }
+.arg-account__pl > span { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-account__pl > b { font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-body-3)/var(--arg-font-line-height-body-3) var(--arg-font-family-family); font-variant-numeric: tabular-nums; white-space: nowrap; }
+/* Đang ẩn số dư: các số [data-arg-secret] được thay bằng dấu chấm tròn (account.js) */
+.arg-account.is-hidden [data-arg-secret] { letter-spacing: .08em; }

@@ -1,0 +1,14 @@
+/* ARG UI · modal */
+.arg-overlay { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: var(--arg-space-4x); background: var(--arg-ui-background-bg-overlay); backdrop-filter: blur(2px); animation: arg-fade .15s ease; }
+.arg-overlay[hidden] { display: none; }
+.arg-modal { width: 100%; max-width: 480px; max-height: calc(100% - var(--arg-space-8x)); display: flex; flex-direction: column; background: var(--arg-ui-background-bg-pop-function); border-radius: var(--arg-radius-lg); box-shadow: var(--arg-shadow-soft-shadow); animation: arg-pop .18s ease; overflow: hidden; color: var(--arg-ui-text-on-bright-text-content); }
+.arg-modal--sm { max-width: 360px; } .arg-modal--lg { max-width: 720px; }
+.arg-modal__header { display: flex; align-items: center; justify-content: space-between; gap: var(--arg-space-3x); padding: var(--arg-space-5x) var(--arg-space-6x) var(--arg-space-3x); }
+.arg-modal__title { margin: 0; font-size: var(--arg-font-font-size-title-2); line-height: var(--arg-font-line-height-title-2); font-weight: var(--arg-font-font-weight-bold); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-modal__body { padding: var(--arg-space-2x) var(--arg-space-6x) var(--arg-space-5x); overflow: auto; display: grid; gap: var(--arg-space-4x); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-modal__footer { display: flex; justify-content: flex-end; gap: var(--arg-space-2x); padding: var(--arg-space-4x) var(--arg-space-6x); border-top: 1px solid var(--arg-ui-divider-separator); }
+.arg-modal__icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: var(--arg-ui-label-weak-error); color: var(--arg-action-noti-toast-error); }
+.arg-modal__icon .i { width: 24px; height: 24px; }
+.arg-modal__icon--success { background: color-mix(in srgb, var(--arg-action-noti-toast-success) 12%, transparent); color: var(--arg-action-noti-toast-success); }
+.arg-modal__icon--lg { width: 72px; height: 72px; } .arg-modal__icon--lg .i { width: 40px; height: 40px; }
+.arg-overlay--blur { backdrop-filter: blur(12px); }

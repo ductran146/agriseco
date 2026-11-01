@@ -1,0 +1,770 @@
+{
+  "P1_Basic": {
+    "Black": {
+      "$type": "color",
+      "$value": "{p--Grayscale.0}"
+    },
+    "White": {
+      "$type": "color",
+      "$value": "{p--Grayscale.100}"
+    }
+  },
+  "P2_UI_Color": {
+    "Text": {
+      "On_Bright": {
+        "Text-Title": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.99}"
+        },
+        "Text-Content": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.92}"
+        },
+        "Text-Content-Lv2": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.70}"
+        },
+        "Text-Read-Only": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.61}"
+        },
+        "Text-Placeholder": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.50}"
+        },
+        "Text-Disable": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.16}"
+        }
+      },
+      "On_Dim": {
+        "Text-Title": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.99}"
+        },
+        "Text-Content": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.92}"
+        },
+        "Text-Content-Lv2": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.70}"
+        },
+        "Text-Read-Only": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.61}"
+        },
+        "Text-Placeholder": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.50}"
+        },
+        "Text-Disable": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.16}"
+        }
+      }
+    },
+    "Background": {
+      "Surface": {
+        "$type": "color",
+        "$value": "#1a1a1a"
+      },
+      "Background": {
+        "$type": "color",
+        "$value": "#212121"
+      },
+      "Lv_3": {
+        "$type": "color",
+        "$value": "#303030"
+      },
+      "BG_Pop_Function": {
+        "$type": "color",
+        "$value": "#262626"
+      },
+      "BG_Overlay": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.8}"
+      }
+    },
+    "Divider": {
+      "Stroke": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.12}"
+      },
+      "Separator": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.8}"
+      },
+      "Table-Line": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.5}"
+      }
+    },
+    "State-Layer": {
+      "On_Bright": {
+        "Hovered": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.2}"
+        },
+        "Focused": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.5}"
+        },
+        "Pressed": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.8}"
+        },
+        "Extra": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.12}"
+        }
+      },
+      "On_Dim": {
+        "Hovered": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.5}"
+        },
+        "Focused": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.8}"
+        },
+        "Pressed": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.12}"
+        },
+        "Extra": {
+          "$type": "color",
+          "$value": "{p--Alpha.White.16}"
+        }
+      }
+    },
+    "Table": {
+      "Header_Table": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.2}"
+      },
+      "Text_Title_Table": {
+        "$type": "color",
+        "$value": "{P2_UI_Color.Text.On_Bright.Text-Content-Lv2}"
+      },
+      "Text_Default_Table": {
+        "$type": "color",
+        "$value": "{P2_UI_Color.Text.On_Bright.Text-Content}"
+      },
+      "Text_Up": {
+        "$type": "color",
+        "$value": "{P3_Trading_Color.Up-Light.Increase}"
+      },
+      "Text_Down": {
+        "$type": "color",
+        "$value": "{P3_Trading_Color.Down-Light.Increase}"
+      },
+      "Text_Ceiling": {
+        "$type": "color",
+        "$value": "{P3_Trading_Color.Ceiling-Purple.Flat}"
+      },
+      "Text_Floor": {
+        "$type": "color",
+        "$value": "{P3_Trading_Color.Floor-Cyan.Flat}"
+      },
+      "Text_Flat": {
+        "$type": "color",
+        "$value": "{P3_Trading_Color.Flat.Flat}"
+      },
+      "Table-Line": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.8}"
+      },
+      "Row_Primary": {
+        "$type": "color",
+        "$value": "{P2_UI_Color.Background.Surface}"
+      },
+      "Even_Row": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.2}"
+      },
+      "Row_Emphasize": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.5}"
+      }
+    },
+    "Label": {
+      "Weak": {
+        "Gray": {
+          "$type": "color",
+          "$value": "{p--Grayscale.5}"
+        },
+        "Blue": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.A.Dark.95}"
+        },
+        "Purple": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.E.Dark.95}"
+        },
+        "Violet": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.I.Dark.95}"
+        },
+        "Lilac": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.M.Dark.95}"
+        },
+        "Pink": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.B.Dark.95}"
+        },
+        "Coral": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.F.Dark.95}"
+        },
+        "Red": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.J.Dark.95}"
+        },
+        "Orange": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.N.Dark.95}"
+        },
+        "Mandarin": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.C.Dark.95}"
+        },
+        "Yellow": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.G.Dark.95}"
+        },
+        "Olive": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.K.Dark.95}"
+        },
+        "YellowGreen": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.O.Dark.95}"
+        },
+        "LeafGreen": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.D.Dark.95}"
+        },
+        "Mint": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.H.Dark.95}"
+        },
+        "Cyan": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.L.Dark.95}"
+        },
+        "BlueSky": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.P.Dark.95}"
+        },
+        "Error": {
+          "$type": "color",
+          "$value": "{p--Emotional.Error.0}"
+        },
+        "Success": {
+          "$type": "color",
+          "$value": "{p--Emotional.Success.10}"
+        },
+        "Warning": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.G.Dark.95}"
+        }
+      },
+      "Medium": {
+        "Gray": {
+          "$type": "color",
+          "$value": "{p--Grayscale.5}"
+        },
+        "Blue": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.A.Dark.30}"
+        },
+        "Purple": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.E.Dark.30}"
+        },
+        "Violet": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.I.Dark.30}"
+        },
+        "Lilac": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.M.Dark.30}"
+        },
+        "Pink": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.B.Dark.30}"
+        },
+        "Coral": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.F.Dark.30}"
+        },
+        "Red": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.J.Dark.30}"
+        },
+        "Orange": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.N.Dark.30}"
+        },
+        "Mandarin": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.C.Dark.30}"
+        },
+        "Yellow": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.G.Dark.30}"
+        },
+        "Olive": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.K.Dark.30}"
+        },
+        "YellowGreen": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.O.Dark.30}"
+        },
+        "LeafGreen": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.D.Dark.30}"
+        },
+        "Mint": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.H.Dark.30}"
+        },
+        "Cyan": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.L.Dark.30}"
+        },
+        "BlueSky": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.P.Dark.30}"
+        },
+        "Error": {
+          "$type": "color",
+          "$value": "{p--Emotional.Error.40}"
+        },
+        "Success": {
+          "$type": "color",
+          "$value": "{p--Emotional.Success.40}"
+        },
+        "Warning": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.G.Dark.30}"
+        }
+      },
+      "Strong": {
+        "Gray": {
+          "$type": "color",
+          "$value": "{p--Grayscale.5}"
+        },
+        "Blue": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.A.Dark.40}"
+        },
+        "Purple": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.E.Dark.40}"
+        },
+        "Violet": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.I.Dark.40}"
+        },
+        "Lilac": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.M.Dark.40}"
+        },
+        "Pink": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.B.Dark.40}"
+        },
+        "Coral": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.F.Dark.40}"
+        },
+        "Red": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.J.Dark.40}"
+        },
+        "Orange": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.N.Dark.40}"
+        },
+        "Mandarin": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.C.Dark.40}"
+        },
+        "Yellow": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.G.Dark.40}"
+        },
+        "Olive": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.K.Dark.40}"
+        },
+        "YellowGreen": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.O.Dark.40}"
+        },
+        "LeafGreen": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.D.Dark.40}"
+        },
+        "Mint": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.H.Dark.40}"
+        },
+        "Cyan": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.L.Dark.40}"
+        },
+        "BlueSky": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.P.Dark.40}"
+        },
+        "Error": {
+          "$type": "color",
+          "$value": "{p--Emotional.Error.60}"
+        },
+        "Success": {
+          "$type": "color",
+          "$value": "{p--Emotional.Success.60}"
+        },
+        "Warning": {
+          "$type": "color",
+          "$value": "{p--Chart-color.Single.G.Dark.40}"
+        }
+      }
+    },
+    "Skeleton": {
+      "Start": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.2}"
+      },
+      "End": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.8}"
+      }
+    }
+  },
+  "P3_Trading_Color": {
+    "Up-Light": {
+      "Increase": {
+        "$type": "color",
+        "$value": "{p--Market_Trading.Dark.Green_Up.50}"
+      },
+      "Soft-Increase": {
+        "$type": "color",
+        "$value": "{p--Market_Trading.Dark.Green_Up.80}"
+      },
+      "Outline-Increase": {
+        "$type": "color",
+        "$value": "{p--Market_Trading.Dark.Green_Up.70}"
+      }
+    },
+    "Down-Light": {
+      "Increase": {
+        "$type": "color",
+        "$value": "{p--Market_Trading.Dark.Red_Down.50}"
+      },
+      "Soft-Increase": {
+        "$type": "color",
+        "$value": "{p--Market_Trading.Dark.Red_Down.80}"
+      },
+      "Outline-Increase": {
+        "$type": "color",
+        "$value": "{p--Market_Trading.Dark.Red_Down.70}"
+      }
+    },
+    "Flat": {
+      "Flat": {
+        "$type": "color",
+        "$value": "{p--Market_Trading.Dark.Yellow_Ref.50}"
+      },
+      "Soft-Flat": {
+        "$type": "color",
+        "$value": "{p--Market_Trading.Dark.Yellow_Ref.80}"
+      },
+      "Outline-Flat": {
+        "$type": "color",
+        "$value": "{p--Market_Trading.Dark.Yellow_Ref.70}"
+      }
+    },
+    "Ceiling-Purple": {
+      "Flat": {
+        "$type": "color",
+        "$value": "{p--Market_Trading.Dark.Purple_Ceiling.50}"
+      },
+      "Soft-Flat": {
+        "$type": "color",
+        "$value": "{p--Market_Trading.Dark.Purple_Ceiling.80}"
+      },
+      "Outline-Flat": {
+        "$type": "color",
+        "$value": "{p--Market_Trading.Dark.Purple_Ceiling.70}"
+      }
+    },
+    "Floor-Cyan": {
+      "Flat": {
+        "$type": "color",
+        "$value": "{p--Market_Trading.Dark.Cyan_Floor.50}"
+      },
+      "Soft-Flat": {
+        "$type": "color",
+        "$value": "{p--Market_Trading.Dark.Cyan_Floor.80}"
+      },
+      "Outline-Flat": {
+        "$type": "color",
+        "$value": "{p--Market_Trading.Dark.Cyan_Floor.70}"
+      }
+    }
+  },
+  "P4_Action": {
+    "Primary_Button": {
+      "Button-Main": {
+        "$type": "color",
+        "$value": "{p--Primary.Agri_Red.600-M}"
+      },
+      "Button-Main-Disable": {
+        "$type": "color",
+        "$value": "{p--Alpha.Primary.16}"
+      },
+      "Text_Button-Main": {
+        "$type": "color",
+        "$value": "{p--Grayscale.100}"
+      },
+      "Text_Button-Disable": {
+        "$type": "color",
+        "$value": "{P2_UI_Color.Text.On_Bright.Text-Disable}"
+      }
+    },
+    "Secondary_Button": {
+      "Button-Secondary": {
+        "$type": "color",
+        "$value": "{p--Alpha.Primary.29}"
+      },
+      "Button-Secondary-Disable": {
+        "$type": "color",
+        "$value": "{p--Alpha.Primary.5}"
+      },
+      "Text_Button-Secondary": {
+        "$type": "color",
+        "$value": "{p--Primary.Agri_Red.400}"
+      },
+      "Text_Button-Secondary-Disable": {
+        "$type": "color",
+        "$value": "{P2_UI_Color.Text.On_Bright.Text-Disable}"
+      }
+    },
+    "Tertiary_Button": {
+      "Button-Lv3": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.5}"
+      },
+      "Button-Lv3-Disable": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.5}"
+      },
+      "Text-Button_Tertiary": {
+        "$type": "color",
+        "$value": "{P2_UI_Color.Text.On_Bright.Text-Content}"
+      },
+      "Text-Button-Disable": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.21}"
+      }
+    },
+    "Outline_Button": {
+      "Text_Button-Outline": {
+        "$type": "color",
+        "$value": "{p--Primary.Agri_Red.400}"
+      },
+      "Outline-Button-Fill": {
+        "$type": "color",
+        "$value": "{p--Alpha.Black.21}"
+      },
+      "Outline-Button-Border": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.12}"
+      },
+      "Outline-Button-Border-Disable": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.5}"
+      }
+    },
+    "Outline_Button_Lv2": {
+      "Text_Button-Outline": {
+        "$type": "color",
+        "$value": "{P2_UI_Color.Text.On_Bright.Text-Content-Lv2}"
+      },
+      "Outline-Button-Fill": {
+        "$type": "color",
+        "$value": "{p--Alpha.Black.21}"
+      },
+      "Outline-Button-Border": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.12}"
+      },
+      "Outline-Button-Border-Disable": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.5}"
+      }
+    },
+    "Text_Button": {
+      "Text_Button": {
+        "$type": "color",
+        "$value": "{P2_UI_Color.Text.On_Bright.Text-Content-Lv2}"
+      },
+      "Text-Button-Disable": {
+        "$type": "color",
+        "$value": "{P2_UI_Color.Text.On_Bright.Text-Disable}"
+      }
+    },
+    "Text_Button_Emphasize": {
+      "Text_Button": {
+        "$type": "color",
+        "$value": "{P2_UI_Color.Text.On_Bright.Text-Content}"
+      },
+      "Text-Button-Disable": {
+        "$type": "color",
+        "$value": "{P2_UI_Color.Text.On_Bright.Text-Disable}"
+      }
+    },
+    "Text_Button_Link": {
+      "Text_Button": {
+        "$type": "color",
+        "$value": "{p--Primary.Agri_Red.400}"
+      },
+      "Text-Button-Disable": {
+        "$type": "color",
+        "$value": "{P2_UI_Color.Text.On_Bright.Text-Disable}"
+      }
+    },
+    "Tab": {
+      "Button-Tab": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.21}"
+      },
+      "Button-Tab-Inactive": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.5}"
+      },
+      "Text-Button-Tab": {
+        "$type": "color",
+        "$value": "{P2_UI_Color.Text.On_Bright.Text-Content}"
+      },
+      "ToggleTab_InTitle": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.5}"
+      },
+      "ToggleTab_InTitle_Active": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.5}"
+      }
+    },
+    "Noti": {
+      "Notice": {
+        "$type": "color",
+        "$value": "{p--Chart-color.Single.C.Dark.100}"
+      },
+      "Notice_Border": {
+        "$type": "color",
+        "$value": "{p--Chart-color.Single.G.Dark.50}"
+      },
+      "Toast_Fill": {
+        "$type": "color",
+        "$value": "{p--Alpha.White.12}"
+      },
+      "Toast_Success": {
+        "$type": "color",
+        "$value": "{p--Emotional.Success.40}"
+      },
+      "Toast_Error": {
+        "$type": "color",
+        "$value": "{p--Emotional.Error.50}"
+      },
+      "Toast_Error_Soft": {
+        "$type": "color",
+        "$value": "{p--Emotional.Error.0}"
+      }
+    },
+    "Buy_Button": {
+      "Button-Buy": {
+        "$type": "color",
+        "$value": "{P3_Trading_Color.Up-Light.Increase}"
+      },
+      "Button-Buy-Disable": {
+        "$type": "color",
+        "$value": "{P3_Trading_Color.Up-Light.Soft-Increase}"
+      },
+      "Text_Button-Buy": {
+        "$type": "color",
+        "$value": "{p--Grayscale.100}"
+      },
+      "Text_Button-Buy-Disable": {
+        "$type": "color",
+        "$value": "{P2_UI_Color.Text.On_Bright.Text-Disable}"
+      }
+    },
+    "Sell_Button": {
+      "Button-Sell": {
+        "$type": "color",
+        "$value": "{P3_Trading_Color.Down-Light.Increase}"
+      },
+      "Button-Sell-Disable": {
+        "$type": "color",
+        "$value": "{P3_Trading_Color.Down-Light.Soft-Increase}"
+      },
+      "Text_Button-Sell": {
+        "$type": "color",
+        "$value": "{p--Grayscale.100}"
+      },
+      "Text_Button-Sell-Disable": {
+        "$type": "color",
+        "$value": "{P2_UI_Color.Text.On_Bright.Text-Disable}"
+      }
+    }
+  },
+  "P5_Chart": {
+    "Text-Title": {
+      "$type": "color",
+      "$value": "#ffffff"
+    },
+    "Text-Content": {
+      "$type": "color",
+      "$value": "#ffffff"
+    },
+    "Text-Placeholder": {
+      "$type": "color",
+      "$value": "#ffffff"
+    }
+  },
+  "P6_Effect": {
+    "Black_8%": {
+      "$type": "color",
+      "$value": "{p--Alpha.Black.8}"
+    },
+    "Black_5%": {
+      "$type": "color",
+      "$value": "{p--Alpha.Black.5}"
+    },
+    "Secondary_Shadow": {
+      "$type": "color",
+      "$value": "{p--Alpha.Black.12}"
+    },
+    "eff_Separator": {
+      "$type": "color",
+      "$value": "{P2_UI_Color.Divider.Separator}"
+    }
+  },
+  "P7_Gradient": {
+    "Empty_Color": {
+      "$type": "color",
+      "$value": "{p--Alpha.Black.0}"
+    },
+    "Empty_Color_2": {
+      "$type": "color",
+      "$value": "#1a1a1afc"
+    }
+  }
+}

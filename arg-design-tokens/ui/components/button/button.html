@@ -1,0 +1,81 @@
+<section id="button">
+        <h2>Buttons</h2>
+        <p class="sec-desc">Mặc định cao 40px. Kích thước: <code>--sm</code> 32, mặc định 40, <code>--xl</code> 44, <code>--xxl</code> 48. Nút chính dùng gradient header của web Agriseco (cam đỏ, 90°); Mua và Bán có màu riêng.</p>
+        <div class="demo">
+          <div class="group"><h3>Kiểu nút</h3>
+            <div class="row">
+              <button class="arg-btn arg-btn--primary" type="button">Đặt lệnh</button>
+              <button class="arg-btn arg-btn--secondary" type="button">Xem chi tiết</button>
+              <button class="arg-btn arg-btn--tertiary" type="button">Bỏ qua</button>
+              <button class="arg-btn arg-btn--outline" type="button">Nạp tiền</button>
+              <button class="arg-btn arg-btn--outline2" type="button">Lọc</button>
+              <button class="arg-btn arg-btn--text" type="button">Huỷ</button>
+              <button class="arg-btn arg-btn--text-strong" type="button">Xem tất cả</button>
+              <button class="arg-btn arg-btn--link" type="button">Điều khoản</button>
+            </div></div>
+          <div class="group"><h3>Mua · Bán (token riêng, không dùng Primary)</h3>
+            <div class="row"><button class="arg-btn arg-btn--buy" type="button">Mua</button><button class="arg-btn arg-btn--sell" type="button">Bán</button><button class="arg-btn arg-btn--buy" type="button" disabled>Mua</button><button class="arg-btn arg-btn--sell" type="button" disabled>Bán</button></div></div>
+          <div class="group"><h3>Vô hiệu</h3>
+            <div class="row">
+              <button class="arg-btn arg-btn--primary" type="button" disabled>Đặt lệnh</button>
+              <button class="arg-btn arg-btn--secondary" type="button" disabled>Xem chi tiết</button>
+              <button class="arg-btn arg-btn--tertiary" type="button" disabled>Bỏ qua</button>
+              <button class="arg-btn arg-btn--outline" type="button" disabled>Nạp tiền</button>
+              <button class="arg-btn arg-btn--text" type="button" disabled>Huỷ</button>
+              <button class="arg-btn arg-btn--link" type="button" disabled>Điều khoản</button>
+            </div></div>
+          <div class="group"><h3>Chiều cao: nút, input, select cùng một thang</h3>
+            <div class="ruler">
+              <div class="ruler__label"><b>sm</b><span class="px">32px</span></div>
+              <div class="ruler__items">
+                <button class="arg-btn arg-btn--primary arg-btn--sm" type="button" data-h="32">Đặt lệnh</button>
+                <button class="arg-btn arg-btn--outline arg-btn--sm" type="button" data-h="32">Huỷ</button>
+                <div class="arg-control arg-control--sm" data-h="32"><input class="arg-input" aria-label="Ô nhập sm" placeholder="Input"></div>
+                <div class="arg-control arg-select arg-control--sm" style="width:160px" data-h="32"><select class="arg-select-native" aria-label="Chọn sm"><option>Select</option></select><i data-arg-icon="caret-down"></i></div>
+              </div>
+              <div class="ruler__label"><b>Mặc định</b><span class="px">40px</span></div>
+              <div class="ruler__items">
+                <button class="arg-btn arg-btn--primary " type="button" data-h="40">Đặt lệnh</button>
+                <button class="arg-btn arg-btn--outline " type="button" data-h="40">Huỷ</button>
+                <div class="arg-control " data-h="40"><input class="arg-input" aria-label="Ô nhập Mặc định" placeholder="Input"></div>
+                <div class="arg-control arg-select " style="width:160px" data-h="40"><select class="arg-select-native" aria-label="Chọn Mặc định"><option>Select</option></select><i data-arg-icon="caret-down"></i></div>
+              </div>
+              <div class="ruler__label"><b>xl</b><span class="px">44px</span></div>
+              <div class="ruler__items">
+                <button class="arg-btn arg-btn--primary arg-btn--xl" type="button" data-h="44">Đặt lệnh</button>
+                <button class="arg-btn arg-btn--outline arg-btn--xl" type="button" data-h="44">Huỷ</button>
+                <div class="arg-control arg-control--xl" data-h="44"><input class="arg-input" aria-label="Ô nhập xl" placeholder="Input"></div>
+                <div class="arg-control arg-select arg-control--xl" style="width:160px" data-h="44"><select class="arg-select-native" aria-label="Chọn xl"><option>Select</option></select><i data-arg-icon="caret-down"></i></div>
+              </div>
+              <div class="ruler__label"><b>xxl</b><span class="px">48px</span></div>
+              <div class="ruler__items">
+                <button class="arg-btn arg-btn--primary arg-btn--xxl" type="button" data-h="48">Đặt lệnh</button>
+                <button class="arg-btn arg-btn--outline arg-btn--xxl" type="button" data-h="48">Huỷ</button>
+                <div class="arg-control arg-control--xxl" data-h="48"><input class="arg-input" aria-label="Ô nhập xxl" placeholder="Input"></div>
+                <div class="arg-control arg-select arg-control--xxl" style="width:160px" data-h="48"><select class="arg-select-native" aria-label="Chọn xxl"><option>Select</option></select><i data-arg-icon="caret-down"></i></div>
+              </div>
+            </div>
+            <span class="cap">Số px là chiều cao mong đợi. Phần Kiểm tra ở đầu trang đo lại từng phần tử bằng offsetHeight.</span></div>
+          <div class="group"><h3>Có icon (Solar)</h3>
+            <div class="row">
+              <button class="arg-btn arg-btn--primary" type="button"><i data-arg-icon="plus"></i>Thêm lệnh</button>
+              <button class="arg-btn arg-btn--outline" type="button"><i data-arg-icon="download-simple"></i>Xuất báo cáo</button>
+              <button class="arg-btn arg-btn--secondary" type="button">Tiếp tục<i data-arg-icon="arrow-right"></i></button>
+              <button class="arg-btn arg-btn--tertiary" type="button"><i data-arg-icon="arrows-clockwise"></i>Làm mới</button>
+              <button class="arg-btn arg-btn--primary arg-btn--icon" type="button" aria-label="Thêm"><i data-arg-icon="plus"></i></button>
+              <button class="arg-btn arg-btn--outline arg-btn--icon" type="button" aria-label="Cài đặt"><i data-arg-icon="gear"></i></button>
+              <button class="arg-btn arg-btn--tertiary arg-btn--icon" type="button" aria-label="Thêm tuỳ chọn"><i data-arg-icon="dots-three"></i></button>
+            </div></div>
+          <div class="group"><h3>Đang xử lý · Toàn chiều rộng · Nhóm nút</h3>
+            <div class="row row--top">
+              <button class="arg-btn arg-btn--primary" type="button" aria-disabled="true"><i data-arg-icon="circle-notch" class="i--spin"></i>Đang gửi lệnh</button>
+              <div class="arg-btn-group" role="group" aria-label="Khung thời gian">
+                <button class="arg-btn arg-btn--outline" type="button" aria-pressed="false">1D</button>
+                <button class="arg-btn arg-btn--outline" type="button" aria-pressed="true">1W</button>
+                <button class="arg-btn arg-btn--outline" type="button" aria-pressed="false">1M</button>
+                <button class="arg-btn arg-btn--outline" type="button" aria-pressed="false">1Y</button>
+              </div>
+              <div style="flex:1 1 260px"><button class="arg-btn arg-btn--primary arg-btn--xl arg-btn--block" type="button">Đăng nhập</button></div>
+            </div></div>
+        </div>
+      </section>

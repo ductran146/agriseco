@@ -1,0 +1,19 @@
+/* ARG UI · dtable (bảng số liệu gọn cho mobile) */
+.arg-dtable { display: grid; overflow: hidden; border-radius: var(--arg-radius); background: var(--arg-ui-background-surface); box-shadow: var(--arg-shadow-soft-shadow); font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); font-variant-numeric: tabular-nums; color: var(--arg-ui-text-on-bright-text-title); }
+.arg-dtable__row { display: grid; grid-template-columns: var(--cols, repeat(4, 1fr)); align-items: center; column-gap: var(--arg-space-2x); min-height: 44px; padding: 0 var(--arg-space-4x); border-top: 1px solid var(--arg-ui-divider-separator); text-align: right; }
+.arg-dtable__row > :first-child { text-align: left; font-weight: var(--arg-font-font-weight-semibold); }
+.arg-dtable__row--head { min-height: 36px; border-top: 0; background: var(--arg-ui-background-background); color: var(--arg-ui-text-on-bright-text-read-only); font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); }
+.arg-dtable__row--head > :first-child { font-weight: var(--arg-font-font-weight-regular); }
+/* Bảng phẳng (ví dụ khớp lệnh): không khung thẻ, dòng 36px kẻ sọc xen kẽ, cột đầu chữ thường */
+.arg-dtable--plain { overflow: visible; border-radius: 0; background: transparent; box-shadow: none; }
+.arg-dtable--plain .arg-dtable__row { min-height: 36px; padding: 0 var(--arg-space-2x); border-top: 0; border-radius: var(--arg-radius-xs); }
+.arg-dtable--plain .arg-dtable__row:not(.arg-dtable__row--head):nth-child(odd) { background: var(--arg-ui-table-even-row); }
+.arg-dtable--plain .arg-dtable__row--head { min-height: 32px; background: transparent; }
+.arg-dtable--plain .arg-dtable__row > :first-child { font-weight: var(--arg-font-font-weight-regular); }
+/* Dòng phụ trong ô (chức vụ, khối lượng): xuống dòng, chữ nhỏ màu phụ */
+.arg-dtable__row small { display: block; margin-top: 2px; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-dtable--plain .arg-dtable__row:has(small) { padding-block: var(--arg-space-2x); }
+/* Mã hoặc tên trong ô là liên kết mở trang chi tiết */
+.arg-dtable__link { color: inherit; font-weight: var(--arg-font-font-weight-semibold); text-decoration: none; }
+.arg-dtable__link:hover { color: var(--arg-action-text-button-link-text-button); }
+.arg-dtable__link:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); border-radius: 2px; }
