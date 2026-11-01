@@ -71,7 +71,8 @@ ORDERBOOK = [
     ('.arg-orderbook__search', 'l', 'Input có icon: lọc ngay khi gõ.'),
     ('.arg-orderbook__chips', 'r', 'Chip tabs --sm: lọc trạng thái, kèm số lệnh, cuộn ngang.'),
     ('.arg-orderbook__head .arg-tabs', 'l', 'Tabs --pill: lọc Tất cả, Mua, Bán.'),
-    ('.arg-orderrow', 'r', 'Order row: viền và nền chuyển màu 5% theo chiều lệnh, tiến độ khớp 3px sát đáy, đệm 12px.'),
+    ('.arg-orderrow', 'r', 'Order row: viền và nền chuyển màu 5% theo chiều lệnh, đệm 12px, bấm mở chi tiết lệnh.'),
+    ('.arg-orderrow__bar', 'l', 'Thanh tiến độ khớp: cao 3px, sát đáy thẻ (cắt theo bo góc). --v = khối lượng khớp / khối lượng đặt (%). Màu theo chiều lệnh (Mua, Bán), phần chưa khớp nền 14%. Ẩn ở lệnh đã huỷ.'),
     ('.arg-tabbar', 'l', 'Tabbar; khi chọn nhiều được thay bằng thanh Huỷ lệnh (n).'),
 ]
 

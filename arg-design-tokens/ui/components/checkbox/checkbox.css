@@ -15,5 +15,6 @@
 .arg-switch input { position: absolute; opacity: 0; width: 40px; height: 24px; margin: 0; cursor: inherit; }
 .arg-switch input:checked + .track { background-color: var(--arg-p-brand-header-start); background-image: var(--arg-gradient-primary-button); }
 .arg-switch input:checked + .track::after { transform: translateX(16px); }
-.arg-switch input:focus-visible + .track { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: 2px; }
+/* Vòng focus bằng bóng đổ (bo theo hình viên thuốc ở mọi trình duyệt, đồng tâm với thanh trượt; màu thương hiệu để thấy được cả ở chế độ tối) */
+.arg-switch input:focus-visible + .track { outline: 0; box-shadow: 0 0 0 2px var(--arg-ui-background-surface), 0 0 0 4px var(--arg-p-brand-header-start); }
 .arg-switch input:disabled + .track { opacity: .5; }
