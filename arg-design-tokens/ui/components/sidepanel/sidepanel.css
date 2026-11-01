@@ -1,0 +1,13 @@
+/* ARG UI · sidepanel (panel trái của màn hai phần trên tablet: danh mục hoặc bộ lọc dạng danh sách dọc, nền xám, cao hết chiều cao màn hình; mục đang chọn cùng màu với Chip tabs đang chọn).
+   Kích thước dùng chung: --arg-sidepanel-w (không phải token Figma). Khoảng cách nội dung panel và nội dung bên phải 30px: đệm phải của panel 10px + đệm trái 20px (--arg-gutter) của khối nội dung. Từ 720px mới hiện dạng panel; mobile giữ nguyên bố cục gốc. */
+:root { --arg-sidepanel-w: 240px; }
+@media (min-width: 720px) {
+  .arg-sidepanel { box-sizing: border-box; width: var(--arg-sidepanel-w); min-height: calc(100vh - var(--arg-space-14x) - var(--arg-safe-top, 0px)); padding: var(--arg-space-4x) var(--arg-space-2-5x) var(--arg-space-4x) var(--arg-gutter); background: var(--arg-ui-background-background); display: grid; align-content: start; gap: var(--arg-space-4x); }
+  .arg-sidepanel .arg-sidepanel__item, .arg-sidepanel .arg-tab.arg-sidepanel__item { display: flex; align-items: center; justify-content: space-between; gap: var(--arg-space-2x); width: 100%; height: var(--arg-border-height-size-height-xl); padding: 0 var(--arg-space-3x); border: 0; border-radius: var(--arg-radius-sm); background: transparent; color: var(--arg-ui-text-on-bright-text-content); font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-body-3)/var(--arg-font-line-height-body-3) var(--arg-font-family-family); text-align: left; cursor: pointer; }
+  .arg-sidepanel .arg-sidepanel__item:hover { background: var(--arg-ui-state-layer-on-bright-hovered); }
+  .arg-sidepanel .arg-sidepanel__item[aria-selected="true"], .arg-sidepanel .arg-sidepanel__item[aria-pressed="true"] { background: var(--arg-ui-text-on-bright-text-content); color: var(--arg-ui-background-surface); }
+  .arg-sidepanel .arg-sidepanel__item[aria-selected="true"]::after { display: none; }
+  .arg-sidepanel .arg-sidepanel__item:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: -2px; }
+  .arg-sidepanel__list { display: grid; gap: 2px; margin: 0; padding: 0; overflow: visible; }
+  .arg-sidepanel .arg-chip-tabs__list { display: grid; gap: 2px; margin: 0; padding: 0; overflow: visible; }
+}

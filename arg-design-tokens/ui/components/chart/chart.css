@@ -10,6 +10,7 @@
 .arg-chart g.up line, .arg-chart g.down line { stroke: currentColor; stroke-width: 1; stroke-linecap: round; vector-effect: non-scaling-stroke; }
 /* Bo góc thân nến và cột khối lượng: SVG co giãn không đều nên viền cùng màu nét 2px, nối tròn, không co giãn (rx sẽ méo) */
 .arg-chart g.up rect, .arg-chart g.down rect { fill: currentColor; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+/* Không chỉ dựa vào màu: nến tăng đặc, nến giảm rỗng (nền thẻ, viền màu giảm) */
 .arg-chart__vol rect { fill: currentColor; stroke: currentColor; stroke-width: 2; stroke-linejoin: round; vector-effect: non-scaling-stroke; opacity: .5; }
 .arg-chart:not(.is-active) .cur { visibility: hidden; }
 .arg-chart__tip[hidden], .arg-chart__tag[hidden] { display: none; }

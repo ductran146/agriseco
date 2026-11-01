@@ -6,7 +6,7 @@ Chọn một ngày (lọc theo khoảng ngày, ngày giao dịch, ngày hiệu l
 | `.arg-control.arg-datepicker__field` | Khung ô nhập (cao 40px, xem Input) chứa `input.arg-input[data-arg-datepicker]` chỉ đọc và icon `calendar-blank` |
 | `.arg-datepicker` | Bảng lịch (Offcanvas từ dưới), tạo một lần bằng JS cho cả trang: `__nav` (tháng trước, tiêu đề, tháng sau), `__wd` (T2 đến CN), `__grid` |
 | `__day` `__month` | Ô ngày (tròn 40px) và ô tháng; `aria-pressed="true"` là ngày đang chọn (gradient nút chính), `aria-current="date"` là hôm nay (viền), `:disabled` là ngoài khoảng cho phép |
-| `__foot` | Chân bảng: "Hôm nay" bên trái, "Huỷ" và "Chọn" bên phải |
+| `__foot` | Chân bảng (bảng chừa thêm vùng an toàn đáy `--arg-safe-bottom` bên dưới để nút không sát thanh Home): "Hôm nay" bên trái, "Huỷ" và "Chọn" bên phải |
 ## Thuộc tính
 | Thuộc tính | Ý nghĩa |
 |---|---|

@@ -11,3 +11,7 @@
 | `[data-arg-acct-pane="id"]` | Khối của một tiểu khoản; khi đổi lựa chọn, khối của tiểu khoản khác bị ẩn (`hidden`); `[data-arg-acct-sub]` đổi chữ theo `data-sub` |
 ## JS
 Đổi lựa chọn hiện khối `data-arg-acct-pane` tương ứng trong cùng tabpanel; bắn `arg:acct` kèm `detail.id`.
+
+Danh sách xổ bo hai góc dưới `--arg-radius-lg` (19,5px) và cắt phần nền hàng được chọn theo góc bo.
+
+Hiệu ứng mở (smart animate): danh sách xoè xuống từ thanh đầu 0,3 giây, các hàng trượt vào lần lượt cách nhau 30ms, mũi tên xoay 180°, nền mờ hiện dần. Đóng chạy ngược 0,2 giây (`dropdown.js` gắn `.is-closing` rồi mới ẩn). Tắt khi bật giảm chuyển động.

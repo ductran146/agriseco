@@ -6,14 +6,22 @@
   var all = [];
 
   function parts(dd) { return { trigger: ARG.$('button[aria-haspopup]', dd), menu: ARG.$('.arg-menu', dd) }; }
+  /* Danh sách tài khoản ([data-arg-acct-menu]) có hiệu ứng đóng: gắn .is-closing để chạy animation ngược rồi mới ẩn (200ms). Giảm chuyển động thì ẩn ngay. */
   function close(dd) {
     var p = parts(dd);
-    p.menu.hidden = true;
     p.trigger.setAttribute('aria-expanded', 'false');
+    if (p.menu.hidden || p.menu.classList.contains('is-closing')) return;
+    if (dd.hasAttribute('data-arg-acct-menu') && !ARG.reducedMotion()) {
+      p.menu.classList.add('is-closing'); dd.classList.add('is-closing');
+      p.menu.__argT = setTimeout(function () { p.menu.hidden = true; p.menu.classList.remove('is-closing'); dd.classList.remove('is-closing'); }, 200);
+      return;
+    }
+    p.menu.hidden = true;
   }
   function open(dd) {
     all.forEach(function (o) { if (o !== dd) close(o); });
     var p = parts(dd);
+    clearTimeout(p.menu.__argT); p.menu.classList.remove('is-closing'); dd.classList.remove('is-closing');
     p.menu.hidden = false;
     p.trigger.setAttribute('aria-expanded', 'true');
   }
@@ -25,7 +33,7 @@
       var p = parts(dd);
       var items = function () { return ARG.$$('.arg-menu__item', p.menu); };
 
-      p.trigger.addEventListener('click', function () { p.menu.hidden ? open(dd) : close(dd); });
+      p.trigger.addEventListener('click', function () { (p.menu.hidden || p.menu.classList.contains('is-closing')) ? open(dd) : close(dd); });
       p.trigger.addEventListener('keydown', function (e) {
         if (e.key === 'ArrowDown') { e.preventDefault(); open(dd); var f = items()[0]; if (f) f.focus(); }
       });

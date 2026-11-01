@@ -10,7 +10,7 @@ Hiển thị giá theo thời gian của chỉ số hoặc mã.
 | `[data-arg-chart]` `__plot` | Vùng vẽ, mang `data-candles` (mảng [mở, cao, thấp, đóng, khối lượng] đã chuẩn hoá 0..1), `data-base`, `data-date`. Gồm `__price` (nến SVG, cao 160px), `__vol` (khối lượng, cao 40px), `__tip` (tooltip), `__tag` (nhãn giá ở đường gióng ngang) |
 | `data-span` `data-vol` `data-vol-unit` `data-start` `data-end` | Tuỳ chọn trên `__plot` cho tooltip: biên độ giá quanh `data-base` (mặc định 0,03, giá = base × (1 − span/2 + t × span)), hệ số và đơn vị khối lượng (274, tr), phút đầu và cuối của nến trong ngày (540 = 09:00, 885 = 14:45). Dùng để mã cổ phiếu hiện đúng giá, giờ và khối lượng trong phiên |
 | `.cur` `--x` `--y` | Đường gióng dọc (bám nến gần nhất) và ngang (theo điểm chạm), nét đứt |
-| `.up` `.down` | Nến và cột khối lượng tăng, giảm |
+| `.up` `.down` | Nến và cột khối lượng tăng, giảm. Cả nến tăng và giảm đều tô đặc (xanh, đỏ), phân biệt bằng màu; tooltip ghi ▲ hoặc ▼ cùng dấu +, - ở mục Thay đổi |
 | `__range` | Hàng chọn khoảng thời gian (Chip tabs `--xs` cao 28px, nhãn viết tắt 1N, 1T, 1Th, 3Th, 1Nm, 5Nm) và nút đổi dạng biểu đồ, toàn màn hình (`.arg-icon-btn` 24×24px, icon 24×24px, cách nhau 12px) |
 
 ## JS

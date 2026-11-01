@@ -14,3 +14,5 @@ Hàng thông tin dùng Kv (`.arg-kv--lines`); nút dùng Button (`--buy` hoặc 
 | `[data-arg-confirm]` trên overlay | Hộp xác nhận của màn. Bấm `[data-arg-order-cta]` trong form `[data-arg-order]` thì điền các ô `[data-ord="title|symbol|type|price|qty|value"]`, đổi nút `[data-ord="ok"]` thành Mua hoặc Bán (đổi màu theo chiều lệnh) rồi mở. Khối lượng hoặc giá bằng 0 thì không mở |
 | `[data-arg-confirm-ok]` | Đóng hộp xác nhận, mở hộp `[data-arg-done]`, điền `[data-ord="done"]`; bắn `arg:order` ({ side, symbol, price, qty }) |
 Phụ thuộc: Modal, Kv, Button, Side (form đặt lệnh).
+
+Bấm xác nhận lệnh: thiết bị rung nhẹ 15ms nếu trình duyệt hỗ trợ `navigator.vibrate` (iOS Safari chưa hỗ trợ). Hộp thành công có hình chìm lá lúa.

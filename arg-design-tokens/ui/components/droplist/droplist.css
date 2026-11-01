@@ -1,8 +1,6 @@
-/* ARG UI · droplist (menu hành động xổ từ nút ba chấm: rộng theo nội dung, mỗi mục một dòng, mục cao 44px cho cảm ứng; hành vi dùng chung Dropdown) */
-.arg-droplist { width: max-content; min-width: 240px; max-width: calc(100vw - var(--arg-gutter) * 2); padding: var(--arg-space-2x); }
-.arg-droplist__item { height: var(--arg-border-height-size-height-xl); padding: 0 var(--arg-space-3x); gap: var(--arg-space-3x); white-space: nowrap; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-body-3)/var(--arg-font-line-height-body-3) var(--arg-font-family-family); }
-.arg-droplist__item .i { flex: none; width: 20px; height: 20px; }
-.arg-droplist .arg-menu__sep { margin: var(--arg-space-1x) var(--arg-space-1x); }
-/* Trong thanh danh sách (Listbar) menu bám theo mép phải của cả thanh, không theo nút ba chấm ở giữa: nhờ vậy menu rộng theo nội dung không tràn ra ngoài màn hình */
-.arg-listbar { position: relative; }
-.arg-listbar .arg-dropdown:has(> .arg-droplist) { position: static; }
+/* ARG UI · droplist (menu hành động xổ từ nút ba chấm: rộng theo nội dung, mỗi mục một dòng kèm icon bên trái; cùng kích thước thu gọn với Dropdown `.arg-menu--compact`; hành vi dùng chung Dropdown) */
+.arg-droplist { width: max-content; min-width: 88px; max-width: calc(100vw - var(--arg-gutter) * 2); padding: var(--arg-space-1x); border-radius: var(--arg-radius-sm); }
+.arg-droplist__item { height: 28px; padding: 0 var(--arg-space-2-5x); gap: var(--arg-space-2-5x); white-space: nowrap; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); }
+.arg-droplist__item .i { flex: none; width: 16px; height: 16px; }
+.arg-droplist .arg-menu__sep { margin: var(--arg-space-1x) 0; }
+/* Menu căn cạnh trái của nút mở (mặc định của .arg-menu); thêm .arg-menu--end để căn cạnh phải của nút. Không bám mép thanh */

@@ -10,5 +10,8 @@
 .arg-menu__item[aria-checked="true"] { color: var(--arg-ui-text-on-bright-text-title); font-weight: var(--arg-font-font-weight-semibold); }
 .arg-menu__item--danger, .arg-menu__item--danger .i { color: var(--arg-action-noti-toast-error); }
 .arg-menu__item .end { margin-left: auto; }
+/* Menu thu gọn: danh sách ngắn (vài mã, vài tuỳ chọn), rộng tối thiểu 88px, mục cao 28px, chữ Label 1 */
+.arg-menu--compact { min-width: 88px; border-radius: var(--arg-radius-sm); }
+.arg-menu--compact .arg-menu__item { height: 28px; padding: 0 var(--arg-space-2-5x); font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); }
 .arg-menu__sep { height: 1px; margin: var(--arg-space-1x) 0; background: var(--arg-ui-divider-separator); }
 .arg-menu__label { padding: var(--arg-space-2x) var(--arg-space-3x) var(--arg-space-1x); font-size: var(--arg-font-font-size-label-2); line-height: var(--arg-font-line-height-label-2); letter-spacing: .06em; text-transform: uppercase; font-weight: 600; color: var(--arg-ui-text-on-bright-text-read-only); }

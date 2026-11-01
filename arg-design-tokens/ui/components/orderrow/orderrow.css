@@ -5,8 +5,8 @@
 .arg-orderrow[data-side="sell"] { --c: var(--arg-action-sell-button-button-sell); }
 /* Ô chọn: căn giữa dọc với dòng đầu (mã, giờ, trạng thái): đệm 12px + nửa chênh lệch cao dòng 22px và ô 20px */
 .arg-orderrow__pick { grid-column: 1; align-self: start; display: none; margin-top: calc(var(--arg-space-3x) + 1px); padding-left: var(--arg-space-3x); }
-[data-select] .arg-orderrow[data-cancelable] .arg-orderrow__pick { display: inline-flex; }
-[data-select] .arg-orderrow[data-cancelable] .arg-orderrow__go { display: none; } /* chế độ chọn nhiều: bấm là chọn, bỏ mũi tên để đủ chỗ */
+[data-select] .arg-orderrow .arg-orderrow__pick { display: inline-flex; }
+[data-select] .arg-orderrow .arg-orderrow__go { display: none; } /* chế độ chọn nhiều: bấm là chọn, bỏ mũi tên để đủ chỗ */
 .arg-orderrow__main { grid-column: 2; display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; grid-template-areas: "side id status go" "side px fill go"; column-gap: var(--arg-space-3x); row-gap: var(--arg-space-2x); align-items: center; width: 100%; min-width: 0; padding: var(--arg-space-3x); border: 0; background: transparent; color: inherit; font: inherit; text-align: left; text-decoration: none; cursor: pointer; border-radius: inherit; }
 .arg-orderrow__main:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: -2px; }
 .arg-orderrow__side { grid-area: side; align-self: start; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: color-mix(in srgb, var(--c) 14%, transparent); color: var(--c); font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-label-1)/1 var(--arg-font-family-family); }
@@ -25,3 +25,5 @@
 .arg-orderrow__bar { grid-column: 1 / -1; height: 3px; margin: 0; background: color-mix(in srgb, var(--c) 14%, transparent); overflow: hidden; }
 .arg-orderrow__bar::before { content: ""; display: block; width: calc(var(--v, 0) * 1%); height: 100%; border-radius: inherit; background: var(--c); }
 .arg-orderrow[data-status="cancelled"] .arg-orderrow__px, .arg-orderrow[data-status="cancelled"] .arg-orderrow__id b { color: var(--arg-ui-text-on-bright-text-content-lv2); }
+/* Tablet: danh sách lệnh hai cột, mỗi thẻ gọn hơn (không kéo giá và khối lượng ra hai đầu 700px) */
+@media (min-width: 720px) { .arg-orderrow-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

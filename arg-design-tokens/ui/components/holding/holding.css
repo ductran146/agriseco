@@ -8,3 +8,7 @@
 .arg-holding__meta { grid-column: 1 / -1; font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); color: var(--arg-ui-text-on-bright-text-content-lv2); font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .arg-holding__pl { display: grid; justify-items: end; gap: 2px; font-variant-numeric: tabular-nums; }
 .arg-holding__pl b { font-size: var(--arg-font-font-size-body-3); line-height: var(--arg-font-line-height-body-3); font-weight: var(--arg-font-font-weight-semibold); } /* lãi/lỗ: màu bằng .arg-up .arg-down .arg-ref */
+/* Tablet: danh sách nắm giữ hai cột */
+@media (min-width: 720px) { .arg-holding-list { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--arg-space-3x); } }
+/* Thị trường hai phần: phần nội dung hẹp, danh sách một cột */
+@media (min-width: 720px) { .arg-page__tabbed--side .arg-holding-list { grid-template-columns: minmax(0, 1fr); } }

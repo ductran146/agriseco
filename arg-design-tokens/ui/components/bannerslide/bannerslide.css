@@ -1,0 +1,11 @@
+/* ARG UI · bannerslide (dải banner ảnh quảng bá trượt ngang, dính từng ảnh; chấm chỉ vị trí, tự chuyển sau vài giây) */
+.arg-bslide { position: relative; min-width: 0; }
+.arg-bslide__track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; border-radius: var(--arg-radius-lg); box-shadow: var(--arg-shadow-shadow); }
+.arg-bslide__track::-webkit-scrollbar { display: none; }
+.arg-bslide__item { flex: none; width: 100%; scroll-snap-align: center; line-height: 0; }
+.arg-bslide__item img { display: block; width: 100%; height: auto; }
+.arg-bslide__track:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: 2px; }
+.arg-bslide__dots { position: absolute; left: 0; right: 0; bottom: var(--arg-space-2x); display: flex; justify-content: center; gap: var(--arg-space-1-5x); pointer-events: none; }
+.arg-bslide__dot { pointer-events: auto; width: 6px; height: 6px; padding: 0; border: 0; border-radius: 3px; background: var(--arg-p-alpha-white-61); cursor: pointer; transition: width .2s, background-color .2s; }
+.arg-bslide__dot[aria-current="true"] { width: 16px; background: #fff; }
+@media (prefers-reduced-motion: reduce) { .arg-bslide__dot { transition: none; } }

@@ -12,5 +12,28 @@
 .arg-actionbar[data-ob-bar] .arg-btn:disabled { opacity: .4; }
 .arg-orderbook__empty { margin: 0; padding: var(--arg-space-8x) 0; text-align: center; color: var(--arg-ui-text-on-bright-text-content-lv2); }
 .arg-orderbook__empty[hidden] { display: none; }
-/* Sổ lệnh: nội dung cuối cách thanh tab dưới 20px */
-.arg-screen[data-arg-orderbook] > .arg-page__main { padding-bottom: var(--arg-space-5x); }
+/* Màn Sổ lệnh có hai tab (Sổ lệnh, Lịch sử lệnh) và không có thanh tab dưới (màn con của Giao dịch). Nút Chọn chỉ dùng cho tab Sổ lệnh nên ẩn khi xem Lịch sử lệnh */
+.arg-screen[data-arg-orderbook] > .arg-page__main { padding-bottom: var(--arg-space-8x); }
+.arg-screen:has([data-ob-tab="history"][aria-selected="true"]) [data-ob-select] { visibility: hidden; }
+/* Tablet: tab ngang giữ nguyên; dưới tab chia hai phần như Thị trường. Trái là bảng điều khiển nền xám tràn mép (tìm mã, lọc dạng danh sách), phải là công tắc Tất cả/Mua/Bán và danh sách lệnh. Mobile: các lớp bọc không có hộp (display: contents) */
+.arg-orderbook__filters, .arg-orderbook__results { display: contents; }
+@media (min-width: 720px) {
+  .arg-orderbook__pane[data-ob-main]:not([hidden]), .arg-orderhist__panel { display: grid; grid-template-columns: var(--arg-sidepanel-w) minmax(0, 1fr); column-gap: 0; align-items: stretch; margin-inline: calc(var(--arg-gutter) * -1); min-height: calc(100vh - 175px); }
+  .arg-orderbook__filters.arg-sidepanel { display: grid; }
+  .arg-orderbook__results { display: grid; align-content: start; gap: var(--arg-space-3x); min-width: 0; padding: var(--arg-space-4x) var(--arg-gutter) var(--arg-space-4x) var(--arg-space-5x); }
+  .arg-orderbook__results .arg-orderrow-list { grid-template-columns: minmax(0, 1fr); }
+  .arg-orderbook__filters .arg-control { background: var(--arg-ui-background-surface); }
+  .arg-orderbook__filters .arg-orderhist__bar { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .arg-orderbook__filters .arg-orderhist__bar .arg-select { width: 100%; }
+  .arg-orderbook__filters .arg-orderhist__filter { width: 100%; justify-content: center; }
+  /* Panel trái sát dưới dải tab (liền mạch), ô ngày và thẻ tổng kết xếp một cột cho vừa 240px */
+  .arg-page__tabbed.arg-orderbook__tabbed { row-gap: 0; }
+  .arg-orderbook__tabbed > .arg-tabs { margin-bottom: 0; }
+  .arg-orderbook__filters .arg-asset-dates { grid-template-columns: minmax(0, 1fr); }
+  .arg-orderbook__filters .arg-orderhist__sum { display: grid; gap: var(--arg-space-2x); }
+}
+/* Chế độ chọn nhiều: lệnh không huỷ được hiện ô chọn bị vô hiệu (cùng cột với các ô khác); ô "Tất cả" ở thanh dưới thẳng hàng với cột ô chọn */
+.arg-actionbar[data-ob-bar] .arg-check { margin-left: calc(var(--arg-space-3x) + 1px); } /* 1px viền thẻ lệnh */
+@media (min-width: 720px) { .arg-actionbar[data-ob-bar] .arg-check { margin-left: calc(var(--arg-sidepanel-w) + var(--arg-space-5x) + var(--arg-space-3x) + 1px - var(--arg-gutter)); }
+  .arg-page__tabbed.arg-orderbook__tabbed > .arg-orderbook__pane[data-ob-main], .arg-orderhist .arg-orderhist__panel { column-gap: 0; }
+}

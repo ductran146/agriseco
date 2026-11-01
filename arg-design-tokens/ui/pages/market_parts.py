@@ -8,7 +8,7 @@ import stock_parts as SP
 import unicodedata
 import themes as TM
 from spark import spark
-from stocks import STOCKS
+from stocks import STOCKS, tick, up as step_up, down as step_down
 from market import EXCHANGES, EX, BINS, THEMES, DAYS, SESS, FULL, universe, times, netflow, net10
 
 I, vn = DP.I, DP.vn
@@ -108,7 +108,8 @@ def distribution(ex):
 def qhead(kind, mid, right, sub='% so với TC'):
     """Hàng tiêu đề cột của danh sách giá (Quote head): kind 'board' | 'fav' | 'rank'; mid = tiêu đề cột giữa; right = tiêu đề giá trị, dòng dưới là sub."""
     left = {'rank': '<span aria-hidden="true">#</span><span>Mã</span>', 'fav': '<span></span><span>Mã</span>'}.get(kind, '<span>Mã</span>')
-    return (f'<div class="arg-quote-head arg-quote-head--{kind}" aria-hidden="true">{left}' + (f'<span class="arg-quote-head__mid">{mid}</span>' if mid else '')
+    extra = ''.join(f'<span class="arg-quote-head__x arg-quote-head__x--{k}">{t}</span>' for k, t in (('ceil', 'Trần'), ('floor', 'Sàn'), ('ref', 'TC'), ('vol', 'KL (tr)'), ('val', 'GTGD (tỷ)'))) if kind in ('board', 'fav') else ''  # chỉ hiện ở tablet
+    return (f'<div class="arg-quote-head arg-quote-head--{kind}" aria-hidden="true">{left}' + (f'<span class="arg-quote-head__mid">{mid}</span>' if mid else '') + extra
             + f'<span class="arg-quote-head__val"><b>{right}</b><span>{sub}</span></span>' + ('<span></span>' if kind == 'fav' else '') + '</div>')
 
 
@@ -122,7 +123,7 @@ def rank_list(rows, metric, title='Giá (nghìn đ)'):
         price = (f'<div class="arg-quote__price"><b>{val}</b>' if cls is None else f'<div class="arg-quote__price arg-quote__price--metric"><b class="{cls}">{val}</b>')
         out += (f'<li class="arg-quote arg-quote--{r.kind} arg-quote--rank{" arg-quote--link" if r.go else ""}"><span class="arg-quote__rank">{k}</span>{idt}'
                 f'{price}<span class="arg-badge arg-badge--{r.kind}">{sg(r.pct)}%</span></div></li>')
-    return qhead('rank', '', title) + f'<ul class="arg-quote-list arg-quote-list--card">{out}</ul>'
+    return f'<div class="arg-quote-heads">{qhead("rank", "", title)}{qhead("rank", "", title)}</div>' + f'<ul class="arg-quote-list arg-quote-list--card">{out}</ul>'
 
 
 def top_lists(ex, n=5):
@@ -218,9 +219,14 @@ def board_row(r, fav=False):
     star = (f'<button class="arg-fav" type="button" aria-pressed="true" aria-label="Bỏ {r.code} khỏi danh mục theo dõi">'
              f'<span class="arg-fav__on">{I("star-fill")}</span><span class="arg-fav__off">{I("star")}</span></button>') if fav else ''
     grip = (f'<button class="arg-handle" type="button" data-arg-handle aria-label="Đổi thứ tự {r.code}: nhấn giữ rồi kéo, hoặc dùng mũi tên lên xuống">{I("hamburger-menu")}</button>') if fav else ''
+    # Tablet hiện thêm: giá trần, sàn, tham chiếu (theo biên độ và bước giá của sàn), khối lượng, giá trị giao dịch
+    ref = round(r.price - r.chg, 2); stp = tick(ref) if r.lim == 7 else 0.1
+    ceil = step_down(ref * (1 + r.lim / 100), stp); floor = step_up(ref * (1 - r.lim / 100), stp)
+    lim = lambda cls, v: f'<span class="arg-quote__lim arg-quote__lim--{cls}">{vn(v)}</span>'
     return (f'<li class="arg-quote arg-quote--{k} arg-quote--board{" arg-quote--fav" if fav else ""}{" arg-quote--link" if r.go else ""}" data-code="{r.code}" data-pct="{r.pct}" data-price="{r.price}" data-vol="{r.vol}">'
-            f'{grip}{idt}{spark(k, "pb-" + r.code, flat=True)}<div class="arg-quote__price"><b>{vn(r.price)}</b><span class="arg-badge arg-badge--{k}">{sg(r.pct)}%</span></div>'
-            f'<span class="arg-quote__vol">{vn(r.vol, 1)} tr</span>{star}</li>')
+            f'{grip}{idt}{spark(k, "pb-" + r.code, flat=True)}{lim("ceil", ceil)}{lim("floor", floor)}{lim("ref", ref)}'
+            f'<span class="arg-quote__vol">{vn(r.vol, 1)}</span><span class="arg-quote__val">{vn(r.vol * r.price, 1)}</span>'
+            f'<div class="arg-quote__price"><b>{vn(r.price)}</b><span class="arg-badge arg-badge--{k}">{sg(r.pct)}%</span></div>{star}</li>')
 
 
 def priceboard():
@@ -320,8 +326,9 @@ def portfolio():
     assets = IP.title('Tài sản của bạn', sub=f'<span data-arg-acct-sub>{SUBS[0][1]} · {SUBS[0][2].replace("Tiểu khoản ", "").capitalize()}</span>', right=acct_menu())
     stat = ''.join(f'<div class="arg-stack" data-arg-acct-pane="{SUBS[i][0]}"{"" if i == 0 else " hidden"}>{d[0]}</div>' for i, d in enumerate(done))
     held = ''.join(f'<div class="arg-stack" data-arg-acct-pane="{SUBS[i][0]}" data-arg-listbar-scope{"" if i == 0 else " hidden"}>{d[1]}</div>' for i, d in enumerate(done))
-    return (f'<div class="arg-page__block">{assets}{stat}</div>'
-            + IP.block('Cổ phiếu nắm giữ', held, sub='Giá nghìn đồng · Lãi/lỗ tính theo giá vốn, đơn vị đồng'))
+    out = (f'<div class="arg-page__block">{assets}{stat}</div>'
+           + IP.block('Cổ phiếu nắm giữ', held, sub='Giá nghìn đồng · Lãi/lỗ tính theo giá vốn, đơn vị đồng'))
+    return out.replace('class="arg-page__block"', 'class="arg-page__block arg-page__block--full"')  # hai khối khác chiều cao nhiều: xếp chồng, danh sách nắm giữ chia hai cột ở tablet
 
 
 def top_tab():
@@ -392,13 +399,13 @@ def indexes(index_rows):
 def screen(tabbar_html, watch_lists, index_rows):
     tabs = [('Tổng quan', overview()), ('Bảng giá', priceboard()), ('Danh mục', portfolio()), ('Yêu thích', watch(watch_lists)),
             ('Top cổ phiếu', top_tab()), ('Chủ đề', themes()), ('Chỉ số', indexes(index_rows))]
-    head = ''.join(f'<button class="arg-tab" role="tab" type="button" aria-selected="{"true" if i == 0 else "false"}">{t}</button>' for i, (t, _) in enumerate(tabs))
+    head = ''.join(f'<button class="arg-tab arg-sidepanel__item" role="tab" type="button" aria-selected="{"true" if i == 0 else "false"}">{t}</button>' for i, (t, _) in enumerate(tabs))
     panels = ''.join(f'<div class="arg-tabpanel" role="tabpanel"{"" if i == 0 else " hidden"}>{h}</div>' for i, (_, h) in enumerate(tabs))
     return f'''<div class="arg-screen arg-screen--sections" data-arg-screen="market" hidden>
 <header class="arg-appbar arg-appbar--sticky"><h1 class="arg-appbar__title">Thị trường</h1><div class="arg-appbar__tools"><button class="arg-appbar__tool" type="button" data-arg-go="search" aria-label="Tìm kiếm">{I('magnifying-glass')}</button></div></header>
 <main class="arg-page__main">
-  <div class="arg-page__tabbed" data-arg-tabs>
-    <div class="arg-page__block arg-page__block--sticky"><div class="arg-tabs arg-tabs--lg"><div class="arg-tablist" role="tablist" aria-label="Thị trường">{head}</div></div></div>
+  <div class="arg-page__tabbed arg-page__tabbed--side" data-arg-tabs>
+    <div class="arg-page__block arg-page__block--sticky arg-sidepanel"><div class="arg-tabs arg-tabs--lg"><div class="arg-tablist" role="tablist" aria-label="Thị trường">{head}</div></div></div>
     {panels}
   </div>
 </main>

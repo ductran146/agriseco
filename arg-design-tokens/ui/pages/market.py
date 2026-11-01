@@ -65,6 +65,7 @@ class Row:
     """Một mã trong bảng của sàn: giá, %, KL (triệu), điểm tác động, khối ngoại ròng, tự doanh ròng; go là id trang thông tin nếu có."""
     def __init__(s, code, name, price, pct, vol, impact, fnet, prop, go=None, lim=7):
         s.code, s.name, s.price, s.pct, s.vol, s.impact, s.fnet, s.prop, s.go = code, name, price, pct, vol, impact, fnet, prop, go
+        s.lim = lim
         s.kind = 'ceil' if pct >= lim else 'floor' if pct <= -lim else 'up' if pct > 0 else 'down' if pct < 0 else 'ref'   # lim: biên độ của sàn (HOSE 7, HNX 10, UPCoM 15)
         s.chg = round(price - price / (1 + pct / 100), 2)
 

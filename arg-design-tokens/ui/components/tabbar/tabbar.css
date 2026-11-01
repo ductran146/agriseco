@@ -5,3 +5,10 @@
 .arg-tabbar__item .i { width: 24px; height: 24px; }
 .arg-tabbar__item[aria-current="page"] { color: var(--arg-action-text-button-link-text-button); font-weight: var(--arg-font-font-weight-semibold); }
 .arg-tabbar__item:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: -2px; border-radius: var(--arg-radius-sm); }
+
+/* Mục đang chọn: vạch gradient thương hiệu 24×3px sát mép trên thanh tab */
+.arg-tabbar__item { position: relative; }
+.arg-tabbar__item[aria-current="page"]::before { content: ""; position: absolute; top: calc(var(--arg-space-2x) * -1); left: 50%; width: 24px; height: 3px; margin-left: -12px; border-radius: 0 0 3px 3px; background-color: var(--arg-p-brand-header-start); background-image: var(--arg-gradient-primary-button); }
+.arg-tabbar__item[aria-current="page"] .i { animation: arg-tab-pop .4s cubic-bezier(.2, .8, .2, 1); }
+@keyframes arg-tab-pop { 0% { transform: translateY(4px) scale(.85); } 60% { transform: translateY(-2px) scale(1.08); } 100% { transform: none; } }
+@media (prefers-reduced-motion: reduce) { .arg-tabbar__item[aria-current="page"] .i { animation: none; } }

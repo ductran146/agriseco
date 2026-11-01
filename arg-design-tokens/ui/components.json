@@ -137,6 +137,18 @@
       "title": "Promo"
     },
     {
+      "id": "splash",
+      "title": "Splash"
+    },
+    {
+      "id": "dragscroll",
+      "title": "Dragscroll"
+    },
+    {
+      "id": "brand",
+      "title": "Brand"
+    },
+    {
       "id": "account",
       "title": "Account card"
     },
@@ -289,8 +301,24 @@
       "title": "Order row"
     },
     {
+      "id": "bannerslide",
+      "title": "Banner slide"
+    },
+    {
+      "id": "sidenav",
+      "title": "Side nav"
+    },
+    {
+      "id": "sidepanel",
+      "title": "Side panel"
+    },
+    {
       "id": "orderbook",
       "title": "Order book"
+    },
+    {
+      "id": "orderhist",
+      "title": "Order history"
     },
     {
       "id": "search",
@@ -335,6 +363,14 @@
     {
       "id": "placeholder",
       "title": "Placeholders"
+    },
+    {
+      "id": "profile",
+      "title": "Profile"
+    },
+    {
+      "id": "navlist",
+      "title": "Navlist"
     },
     {
       "id": "emptystate",
@@ -390,7 +426,11 @@
     "components/modal/modal.css",
     "components/ordermodal/ordermodal.css",
     "components/orderrow/orderrow.css",
+    "components/sidepanel/sidepanel.css",
+    "components/bannerslide/bannerslide.css",
+    "components/sidenav/sidenav.css",
     "components/orderbook/orderbook.css",
+    "components/orderhist/orderhist.css",
     "components/search/search.css",
     "components/assetcard/assetcard.css",
     "components/debtcard/debtcard.css",
@@ -411,6 +451,9 @@
     "components/embed/embed.css",
     "components/appbar/appbar.css",
     "components/promo/promo.css",
+    "components/dragscroll/dragscroll.css",
+    "components/brand/brand.css",
+    "components/splash/splash.css",
     "components/account/account.css",
     "components/service/service.css",
     "components/news/news.css",
@@ -445,6 +488,8 @@
     "components/tabbar/tabbar.css",
     "components/fab/fab.css",
     "components/actionbar/actionbar.css",
+    "components/profile/profile.css",
+    "components/navlist/navlist.css",
     "components/emptystate/emptystate.css",
     "components/page/page.css",
     "components/keyboard/keyboard.css"

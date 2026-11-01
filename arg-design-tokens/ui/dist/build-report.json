@@ -3,22 +3,22 @@
     {
       "ok": true,
       "name": "Token CSS được dùng đều tồn tại",
-      "detail": "214 biến dùng, thiếu: không"
+      "detail": "215 biến dùng, thiếu: không"
     },
     {
       "ok": true,
       "name": "Class trong ví dụ đều có CSS",
-      "detail": "642 class dùng, thiếu: không"
+      "detail": "698 class dùng, thiếu: không"
     },
     {
       "ok": true,
       "name": "Icon Solar được dùng đều có trong sprite",
-      "detail": "96 icon dùng / 96 trong sprite, thiếu: không"
+      "detail": "115 icon dùng / 115 trong sprite, thiếu: không"
     },
     {
       "ok": true,
       "name": "Mỗi component có ví dụ HTML và tài liệu",
-      "detail": "89 component, thiếu tài liệu: không"
+      "detail": "98 component, thiếu tài liệu: không"
     },
     {
       "ok": true,

@@ -1,0 +1,13 @@
+/* ARG UI · splash (màn chào khi mở ứng dụng: logo trên nền gradient thương hiệu, hình chìm lá lúa) */
+.arg-splash { position: fixed; inset: 0; z-index: 100; display: grid; place-content: center; justify-items: center; gap: var(--arg-space-3x); overflow: hidden; isolation: isolate; color: #fff; text-align: center;
+  background-color: var(--arg-p-brand-header-start); background-image: radial-gradient(120% 80% at 100% 0%, var(--arg-p-alpha-white-21) 0%, transparent 55%), var(--arg-gradient-primary-button);
+  transition: opacity .4s ease, visibility .4s; }
+.arg-splash .arg-brandmark { position: absolute; z-index: -1; --size: 260px; --mark: var(--arg-p-alpha-white-12); right: -56px; bottom: 12%; transform: rotate(8deg); }
+.arg-splash__tile { display: grid; place-items: center; width: 96px; height: 96px; border-radius: var(--arg-radius-lg); background: #fff; box-shadow: var(--arg-shadow-soft-shadow); animation: arg-splash-in .6s cubic-bezier(.2, .8, .2, 1) both; }
+.arg-splash__tile .arg-logo { display: block; width: auto; height: 64px; }
+.arg-splash__name { margin: 0; font-size: var(--arg-font-font-size-title-2); line-height: var(--arg-font-line-height-title-2); font-weight: var(--arg-font-font-weight-bold); animation: arg-splash-in .6s .15s cubic-bezier(.2, .8, .2, 1) both; }
+.arg-splash__sub { margin: 0; font-size: var(--arg-font-font-size-body-4); line-height: var(--arg-font-line-height-body-4); color: var(--arg-p-alpha-white-86); animation: arg-splash-in .6s .25s cubic-bezier(.2, .8, .2, 1) both; }
+.arg-splash.is-leaving { opacity: 0; visibility: hidden; }
+.arg-splash--inline { position: relative; inset: auto; height: 320px; border-radius: var(--arg-radius-lg); }
+@keyframes arg-splash-in { from { opacity: 0; transform: translateY(12px) scale(.96); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .arg-splash, .arg-splash__tile, .arg-splash__name, .arg-splash__sub { animation: none; transition: none; } }

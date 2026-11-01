@@ -27,6 +27,7 @@
     if (yes && last) {
       var box = yes.closest('[data-arg-confirm]'), scope2 = yes.closest('[data-arg-screen]') || document, done = ARG.$('[data-arg-done]', scope2);
       ARG.closeLayer(box);
+      if (navigator.vibrate && !ARG.reducedMotion()) navigator.vibrate(15); /* rung nhẹ xác nhận lệnh (trình duyệt hỗ trợ, chủ yếu Android) */
       if (done) {
         put(done, 'done', 'Lệnh ' + (last.side === 'buy' ? 'mua' : 'bán') + ' ' + last.qty + ' ' + last.symbol + ' giá ' + last.price + ' đã được gửi. Bạn có thể xem trạng thái lệnh tại Sổ lệnh.');
         ARG.openLayer(done, last.form);

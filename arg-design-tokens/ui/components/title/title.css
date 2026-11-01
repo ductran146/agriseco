@@ -6,6 +6,8 @@
 .arg-title__right { display: flex; align-items: center; justify-content: flex-end; gap: var(--arg-space-3x); flex: none; }
 .arg-title__main { display: flex; flex-direction: column; justify-content: center; min-width: 0; }
 .arg-title__row { display: flex; align-items: center; gap: var(--arg-space-2x); min-width: 0; }
+/* Vạch nhấn thương hiệu trước tiêu đề mục chính (--sm, --brand, --center, --wrap không có): gradient header agriseco.com.vn */
+.arg-title:not(.arg-title--sm):not(.arg-title--brand):not(.arg-title--wrap):not(.arg-title--center) .arg-title__text::before { content: ""; display: inline-block; width: 4px; height: .9em; margin-right: var(--arg-space-2x); vertical-align: -.08em; border-radius: 2px; background-color: var(--arg-p-brand-header-start); background-image: linear-gradient(180deg, var(--arg-p-brand-header-start), var(--arg-p-brand-header-end)); }
 .arg-title__text { margin: 0; font-size: var(--arg-font-font-size-title-2); line-height: var(--arg-font-line-height-title-2); font-weight: var(--arg-font-font-weight-bold); color: var(--arg-ui-text-on-bright-text-title); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .arg-title__label { font-size: var(--arg-font-font-size-body-4); line-height: var(--arg-font-line-height-body-4); font-weight: var(--arg-font-font-weight-semibold); color: var(--arg-ui-text-on-bright-text-content); white-space: nowrap; }
 .arg-title__sub { font-size: var(--arg-font-font-size-body-4); line-height: var(--arg-font-line-height-body-4); font-weight: var(--arg-font-font-weight-regular); color: var(--arg-ui-text-on-bright-text-content-lv2); white-space: nowrap; }

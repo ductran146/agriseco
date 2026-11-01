@@ -6,6 +6,7 @@
 | `.arg-listbar` `[data-arg-listbar]` | Hàng ngang; đặt trong vùng `[data-arg-listbar-scope]` |
 | `__main` | Bên trái: select 158px (`.arg-control.arg-select`), có thể thêm nút `__tool` (ví dụ menu ba chấm) |
 | `__main` + `.arg-chip-tabs` | Kiểu chip: dải `.arg-chip-tab[data-arg-pane-tab="giá trị"]` thay select (danh mục người dùng tạo). Dải cuộn ngang, chip chọn tự cuộn vào giữa, khi còn chip khuất thì `__main[data-more]` làm mờ mép phải |
+| `__tool[aria-expanded="true"]` | Nút đang mở menu (ba chấm): nền `state-layer pressed`, icon đổi sang màu chữ vô hiệu (`text-disable`) |
 | `__tools` | Bên phải: các nút `__tool` vuông 40px, icon 24px |
 ## Hành vi (JS)
 | Thuộc tính | Việc làm |

@@ -1,0 +1,6 @@
+/* ARG UI · dragscroll (con trỏ kéo cho các dải cuộn ngang trên máy tính; hành vi ở dragscroll.js) */
+@media (hover: hover) and (pointer: fine) {
+  [data-arg-dragscroll] { cursor: grab; }
+  .is-dragging, .is-dragging * { cursor: grabbing !important; -webkit-user-select: none; user-select: none; }
+  .is-dragging a, .is-dragging img { pointer-events: none; }
+}

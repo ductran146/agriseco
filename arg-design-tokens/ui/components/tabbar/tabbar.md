@@ -9,3 +9,5 @@
 | `__item` | Mục gồm icon 24px và nhãn; `aria-current="page"` là mục đang chọn |
 
 Icon dùng kiểu Solar Bold Duotone (`house-duotone`, `chart-line-duotone`, `arrows-left-right-duotone`, `wallet-duotone`, `squares-four-duotone`). Phần nền icon mờ 20%, nét chính theo màu chữ của mục.
+
+Mục đang chọn có vạch gradient thương hiệu 24×3px sát mép trên thanh; icon nảy nhẹ khi vào màn (tắt khi giảm chuyển động).

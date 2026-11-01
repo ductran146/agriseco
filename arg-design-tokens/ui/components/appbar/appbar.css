@@ -18,4 +18,4 @@
 .arg-appbar__stack > .arg-appbar__info { opacity: min(1, max(0, calc((var(--p) - .4) * 2.2))); transform: translateY(calc((1 - var(--p)) * 18px)) scale(calc(.9 + var(--p) * .1)); transform-origin: left center; pointer-events: none; }
 .arg-appbar__quote .i { width: 10px; height: 10px; }
 .arg-appbar__logo { flex: 1 1 auto; display: flex; align-items: center; margin: 0; min-width: 0; }
-.arg-appbar__logo .arg-logo { display: block; width: auto; height: var(--arg-space-9x); }
+.arg-appbar__logo .arg-logo { display: block; width: auto; height: var(--arg-space-10x); }

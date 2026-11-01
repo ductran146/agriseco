@@ -1,5 +1,5 @@
 ## Dùng khi
-Màn sổ lệnh: xem các lệnh trong ngày, lọc theo trạng thái, chiều lệnh, mã; huỷ một hoặc nhiều lệnh còn hiệu lực.
+Màn Sổ lệnh có hai tab (Tabs `--lg`): Sổ lệnh và Lịch sử lệnh (xem Order history). Màn con của Giao dịch nên **không có thanh tab dưới**; Quay lại về Giao dịch. Tab Sổ lệnh: xem các lệnh trong ngày, lọc theo trạng thái, chiều lệnh, mã; huỷ một hoặc nhiều lệnh còn hiệu lực.
 ## Class
 | Class | Mô tả |
 |---|---|
@@ -7,11 +7,11 @@ Màn sổ lệnh: xem các lệnh trong ngày, lọc theo trạng thái, chiều
 | `__chips` | Dải chip trạng thái (Chip tabs `--sm`): Tất cả, Chờ khớp, Khớp một phần, Đã khớp, Đã huỷ, mỗi chip kèm số lệnh |
 | `__head` `__count` | Hàng đầu danh sách: "n lệnh" bên trái, công tắc Tất cả, Mua, Bán (Tabs `--pill`) bên phải |
 | `__empty` | Dòng thông báo khi bộ lọc không có lệnh |
-| `.arg-actionbar[data-ob-bar]` | Thanh huỷ lệnh ở chế độ chọn nhiều: ô "Chọn tất cả" và nút Huỷ lệnh (n); thay thanh tab dưới |
+| `.arg-actionbar[data-ob-bar]` | Thanh huỷ lệnh ở chế độ chọn nhiều: ô "Chọn tất cả" và nút Huỷ lệnh (n); hiện ở đáy màn khi chọn nhiều; nút Chọn chỉ hiện ở tab Sổ lệnh |
 ## Hành vi (JS)
 | Thuộc tính | Việc làm |
 |---|---|
-| `[data-arg-orderbook]` | Vùng chứa (thường là màn hình) |
+| `[data-arg-orderbook]` | Vùng chứa (thường là màn hình); các lệnh nằm trong `[data-arg-orderhist]` do Order history quản lý |
 | `[data-ob-status]` `[data-ob-side]` `[data-ob-search]` | Chip trạng thái, nút chiều lệnh, ô tìm mã; lọc ngay, `[data-ob-count]` và `[data-ob-empty]` cập nhật; số lệnh trong `[data-ob-n]` của chip |
 | `.arg-orderrow__main` | Liên kết `data-arg-go` mở màn chi tiết lệnh; ở chế độ chọn nhiều thì bấm là chọn lệnh (nếu còn huỷ được), không chuyển màn |
 | `[data-ob-select]` | Nút chữ (Button `--text`) đặt ở bên phải thanh đầu (navigation): bật hoặc tắt chế độ chọn nhiều (`data-select` trên vùng chứa), chữ đổi Chọn và Xong. Nhấn giữ khoảng nửa giây trên một lệnh còn huỷ được cũng bật chế độ này và chọn sẵn lệnh đó |

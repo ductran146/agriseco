@@ -1,0 +1,7 @@
+/* ARG UI · profile (thẻ người dùng: avatar, tên, số tài khoản) */
+.arg-profile { position: relative; isolation: isolate; overflow: hidden; display: flex; align-items: center; gap: var(--arg-space-4x); padding: var(--arg-space-4x); border-radius: var(--arg-radius-lg); background: color-mix(in srgb, var(--arg-p-brand-orange-red) 8%, var(--arg-ui-background-surface)); }
+.arg-profile__avatar { flex: none; display: grid; place-items: center; width: var(--arg-space-14x); height: var(--arg-space-14x); border-radius: 50%; color: #fff; background-color: var(--arg-p-brand-header-start); background-image: var(--arg-gradient-primary-button); font-size: var(--arg-font-font-size-title-2); line-height: var(--arg-font-line-height-title-2); font-weight: var(--arg-font-font-weight-bold); }
+.arg-profile__body { display: grid; gap: 2px; min-width: 0; }
+.arg-profile__name { margin: 0; font-size: var(--arg-font-font-size-title-2); line-height: var(--arg-font-line-height-title-2); font-weight: var(--arg-font-font-weight-bold); color: var(--arg-ui-text-on-bright-text-title); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.arg-profile__sub { margin: 0; font-size: var(--arg-font-font-size-body-4); line-height: var(--arg-font-line-height-body-4); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-profile__sub b { color: var(--arg-ui-text-on-bright-text-title); font-weight: var(--arg-font-font-weight-semibold); }

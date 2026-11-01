@@ -6,7 +6,7 @@
 .arg-datepicker__field > .i { flex: none; pointer-events: none; }
 .arg-datepicker__field:has(.arg-input:disabled) { cursor: not-allowed; }
 /* Bảng lịch (offcanvas từ dưới) */
-.arg-offcanvas.arg-datepicker { height: auto; max-height: 92%; }
+.arg-offcanvas.arg-datepicker { height: auto; max-height: 92%; padding-bottom: max(env(safe-area-inset-bottom, 0px), var(--arg-safe-bottom, 0px)); } /* chừa vùng an toàn đáy để nhóm nút (Hôm nay, Huỷ, Chọn) không sát thanh Home của điện thoại */
 .arg-datepicker__body { display: grid; gap: var(--arg-space-2x); padding: var(--arg-space-1x) var(--arg-gutter) var(--arg-space-3x); }
 .arg-datepicker__nav { display: grid; grid-template-columns: 40px minmax(0, 1fr) 40px; align-items: center; }
 .arg-datepicker__nav button { display: grid; place-items: center; height: 40px; padding: 0; border: 0; border-radius: var(--arg-radius-sm); background: transparent; color: var(--arg-ui-text-on-bright-text-title); cursor: pointer; }

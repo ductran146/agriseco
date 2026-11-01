@@ -41,11 +41,15 @@ def kv(rows):
 
 
 # ---------- Tin tức ----------
-THUMBS = ('chart-line', 'file-text', 'bank', 'trend-up', 'image')
+NEWS_IMGS = 10  # ảnh minh hoạ mẫu: pages/news/news-1.webp ... news-10.webp (ảnh stock miễn phí, chưa gắn với nội dung bài; xem news.md)
+
+
+def news_thumb(i=0):
+    return f'<img class="arg-news-item__img" src="assets/news/news-{i % NEWS_IMGS + 1}.webp" alt="" width="88" height="64" loading="lazy" decoding="async">'
 
 
 def news_item(t, dt, src, i=0, rank=None):
-    lead = f'<span class="arg-news-item__rank">{rank}</span>' if rank else f'<span class="arg-news-item__thumb">{I(THUMBS[i % len(THUMBS)], "i--24")}</span>'
+    lead = f'<span class="arg-news-item__rank">{rank}</span>' if rank else f'<span class="arg-news-item__thumb">{news_thumb(i)}</span>'
     cls = 'arg-news-item arg-news-item--rank' if rank else 'arg-news-item arg-news-item--thumb'
     return (f'<li><a class="{cls}" href="#">{lead}<span class="arg-news-item__body"><span class="arg-news-item__title">{t}</span>'
             f'<span class="arg-news-item__meta">{dt} · <b>{src}</b></span></span></a></li>')

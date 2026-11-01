@@ -71,3 +71,8 @@
 .arg-icon-btn { display: grid; place-items: center; width: 24px; height: 24px; border: 0; border-radius: var(--arg-radius-xs); background: transparent; color: var(--arg-ui-text-on-bright-text-read-only); cursor: pointer; padding: 0; }
 .arg-icon-btn:hover { background: var(--arg-ui-state-layer-on-bright-hovered); color: var(--arg-ui-text-on-bright-text-title); }
 .arg-icon-btn:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); }
+
+/* Phản hồi chạm: nút lún nhẹ khi nhấn */
+.arg-btn { transition: transform .12s ease; }
+.arg-btn:active:not(:disabled):not([aria-disabled="true"]) { transform: scale(.97); }
+@media (prefers-reduced-motion: reduce) { .arg-btn { transition: none; } .arg-btn:active:not(:disabled):not([aria-disabled="true"]) { transform: none; } }

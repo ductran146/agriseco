@@ -42,7 +42,7 @@
           tip.innerHTML = '<b>' + date + ' · ' + ('0' + Math.floor(m / 60)).slice(-2) + ':' + ('0' + m % 60).slice(-2) + '</b><dl>' +
           '<dt>Mở cửa</dt><dd>' + fmt(o, 2) + '</dd><dt>Cao nhất</dt><dd class="arg-up">' + fmt(pv(c[1]), 2) + '</dd>' +
           '<dt>Đóng cửa</dt><dd>' + fmt(cl, 2) + '</dd><dt>Thấp nhất</dt><dd class="arg-down">' + fmt(pv(c[2]), 2) + '</dd>' +
-          '<dt>KLGD</dt><dd>' + fmt(c[4] * vs, 1) + ' ' + vu + '</dd><dt>Thay đổi</dt><dd class="' + cls + '">' + (ch >= 0 ? '+' : '') + fmt(ch, 2) + '%</dd></dl>';
+          '<dt>KLGD</dt><dd>' + fmt(c[4] * vs, 1) + ' ' + vu + '</dd><dt>Thay đổi</dt><dd class="' + cls + '">' + (ch >= 0 ? '▲ +' : '▼ ') + fmt(ch, 2) + '%</dd></dl>';
         }
         chart.classList.add('is-active'); tip.hidden = false; tag.hidden = false;
         var px = r.left - p.left + vx / vb.width * r.width, w = tip.offsetWidth;

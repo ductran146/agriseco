@@ -1,0 +1,15 @@
+/* ARG UI · navlist (danh sách mục chức năng: ô icon, nhãn, ghi chú phụ, mũi tên) */
+.arg-navlist { display: grid; margin: 0; padding: 0; list-style: none; }
+.arg-navlist__item { display: flex; align-items: center; gap: var(--arg-space-3x); min-height: 56px; padding: var(--arg-space-2x) 0; box-sizing: border-box; border: 0; border-bottom: 1px solid var(--arg-ui-divider-separator); background: transparent; color: var(--arg-ui-text-on-bright-text-title); text-align: left; text-decoration: none; font: inherit; cursor: pointer; width: 100%; }
+.arg-navlist > li:last-child > .arg-navlist__item, .arg-navlist > .arg-navlist__item:last-child { border-bottom: 0; }
+.arg-navlist__item:active { background: var(--arg-ui-state-layer-on-bright-pressed); }
+.arg-navlist__item:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: -2px; border-radius: var(--arg-radius-sm); }
+.arg-navlist__icon { flex: none; display: grid; place-items: center; width: var(--arg-space-10x); height: var(--arg-space-10x); border-radius: var(--arg-radius); background-color: var(--arg-p-brand-header-start); background-image: var(--arg-gradient-primary-button); color: #fff; } /* cùng kiểu ô icon của Dịch vụ yêu thích (gradient nút chính, icon trắng duotone) */
+.arg-navlist__icon .i { width: 24px; height: 24px; }
+.arg-navlist__label { flex: 1 1 auto; min-width: 0; font-size: var(--arg-font-font-size-body-3); line-height: var(--arg-font-line-height-body-3); font-weight: var(--arg-font-font-weight-medium); }
+.arg-navlist__meta { flex: none; font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-navlist__go { flex: none; display: grid; place-items: center; color: var(--arg-ui-text-on-bright-text-read-only); }
+.arg-navlist__go .i { width: 20px; height: 20px; }
+/* Mục nguy hiểm (đăng xuất): chữ màu lỗi, ô icon cùng màu */
+.arg-navlist__item--danger { color: var(--arg-trading-down-light-increase); }
+.arg-navlist__item--danger .arg-navlist__icon { background-color: var(--arg-trading-down-light-increase); background-image: none; color: #fff; }

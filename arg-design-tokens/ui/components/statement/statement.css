@@ -12,3 +12,19 @@
 .arg-stmt > * + * { margin-top: var(--arg-space-3x); }
 .arg-stmt > .arg-collapse { margin-top: 0; }
 .arg-stmt > .arg-stmt__more { justify-self: center; margin-top: var(--arg-space-1x); margin-bottom: calc(var(--arg-space-2x) * -1); }
+/* Dạng hàng gọn (sao kê tiền): nội dung và số tiền ròng một dòng, ngày, loại và số dư một dòng; bấm để mở ghi có, ghi nợ, phí, thuế */
+.arg-stmt--compact { padding: 0; }
+.arg-stmt--compact > * + * { margin-top: 0; }
+.arg-stmt__main { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--arg-space-3x); row-gap: 2px; width: 100%; padding: var(--arg-space-3x) var(--arg-space-4x); border: 0; border-radius: inherit; background: transparent; text-align: left; cursor: pointer; font: inherit; color: inherit; }
+.arg-stmt__main:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: -2px; }
+.arg-stmt--compact .arg-stmt__title { color: var(--arg-ui-text-on-bright-text-title); }
+.arg-stmt__amt { justify-self: end; font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); font-variant-numeric: tabular-nums; }
+.arg-stmt__meta, .arg-stmt__bal { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); font-variant-numeric: tabular-nums; }
+.arg-stmt__bal { justify-self: end; }
+.arg-stmt--compact .arg-collapse > div > .arg-stmt__rows { margin: 0 var(--arg-space-4x); padding: var(--arg-space-3x) 0; border-top: 1px solid var(--arg-ui-divider-separator); }
+/* Thanh số dư đầu kỳ, cuối kỳ một hàng */
+.arg-cashsum { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: var(--arg-space-3x); margin: 0; padding: var(--arg-space-2-5x) var(--arg-space-4x); border-radius: var(--arg-radius); background: var(--arg-ui-background-lv-3); }
+.arg-cashsum dt { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-cashsum dd { margin: 0; font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-body-3)/var(--arg-font-line-height-body-3) var(--arg-font-family-family); font-variant-numeric: tabular-nums; color: var(--arg-ui-text-on-bright-text-title); }
+.arg-cashsum > div:last-child { text-align: right; }
+.arg-cashsum > i { display: grid; color: var(--arg-ui-text-on-bright-text-read-only); } .arg-cashsum > i .i { width: 16px; height: 16px; }

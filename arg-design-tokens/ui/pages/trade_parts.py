@@ -12,8 +12,7 @@ SYMBOL = 'VCB'
 
 
 # Tiểu khoản mẫu của tài khoản 039C101991 (số tài khoản và loại là dữ liệu mẫu)
-ACCOUNTS = [('039C101991 - 01', 'Chứng khoán cơ sở'), ('039C101991 - 02', 'Ký quỹ'), ('039C101991 - 03', 'Phái sinh'),
-            ('039C101991 - 05', 'Chứng khoán cơ sở'), ('039C101991 - 06', 'Tài khoản ảo')]
+ACCOUNTS = [('039C101991 - 01', 'Chứng khoán cơ sở'), ('039C101991 - 02', 'Ký quỹ')]
 
 
 def acctsel(accounts=ACCOUNTS):
@@ -54,6 +53,17 @@ def statrow(items):
 
 def stats(st=VCB):
     return statrow([('KL', num(st.vol), ''), ('TC', vn(st.ref), 'arg-ref'), ('Mở', vn(st.open), st.cls(st.open)), ('Cao', vn(st.high), st.cls(st.high)), ('Thấp', vn(st.low), st.cls(st.low))])
+
+
+def info_tiles(st=VCB):
+    """Ô thông tin thêm của mã (chỉ hiện ở tablet, chế độ Lite, cột trái): trần, tham chiếu, sàn, giá trung bình, giá trị giao dịch, vốn hoá, đỉnh đáy 52 tuần, khối ngoại mua ròng."""
+    t = lambda l, v, c='': f'<div class="arg-statgrid__item"><dt>{l}</dt><dd{f" class=\"{c}\"" if c else ""}>{v}</dd></div>'
+    fk = 'arg-up' if st.f_gnet > 0 else 'arg-down' if st.f_gnet < 0 else 'arg-ref'
+    return ('<section class="arg-statgrid arg-trade__info" aria-label="Thông tin thêm của mã"><dl class="arg-statgrid__grid">'
+            + t('Trần', vn(st.ceil), 'arg-ceil') + t('Tham chiếu', vn(st.ref), 'arg-ref') + t('Sàn', vn(st.floor), 'arg-floor')
+            + t('Trung bình', vn(st.avg)) + t('GTGD', f'{vn(st.turnover, 1)} tỷ') + t('Vốn hoá', f'{num(st.cap)} tỷ')
+            + t('Cao 52 tuần', vn(st.hi52)) + t('Thấp 52 tuần', vn(st.lo52)) + t('NN mua ròng', f'{vn(st.f_gnet, 2, True)} tỷ', fk)
+            + '</dl></section>')
 
 
 def view_switch(st=VCB):
@@ -179,6 +189,7 @@ ORDER_MODALS = '''<div class="arg-overlay" id="ord-confirm" hidden data-arg-moda
 </div>
 <div class="arg-overlay arg-overlay--blur" id="ord-done" hidden data-arg-modal data-arg-done>
   <div class="arg-modal arg-modal--sm arg-ordermodal arg-ordermodal--done" role="dialog" aria-modal="true" aria-labelledby="ord-done-t">
+    <i class="arg-brandmark arg-brandmark--soft arg-brandmark--corner" aria-hidden="true" style="--size:132px"></i>
     <div class="arg-modal__body">
       <span class="arg-modal__icon arg-modal__icon--success arg-modal__icon--lg"><i data-arg-icon="seal-check"></i></span>
       <h4 class="arg-modal__title" id="ord-done-t">Đặt lệnh thành công</h4>

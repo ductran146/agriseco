@@ -18,5 +18,6 @@ Hành động chính hoặc phụ trên một màn hình. Mỗi vùng chỉ mộ
 Mặc định, hover (lớp phủ State-Layer), pressed, focus-visible (viền 2px), disabled (`disabled` hoặc `aria-disabled="true"`), đang xử lý (icon `i--spin`).
 ## JS
 `button.js`: bấm nút trong `.arg-btn-group` chuyển `aria-pressed` và bắn `arg:change`. Chặn click trên `a.arg-btn[aria-disabled="true"]`.
+Nhấn nút: lún nhẹ còn 97% trong 0,12 giây (tắt khi bật giảm chuyển động).
 ## Phụ thuộc
 `base.css`, `icon.css`.

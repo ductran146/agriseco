@@ -13,7 +13,7 @@
 .arg-acctsel[aria-expanded="true"] .arg-acctsel__row .i { transform: rotate(180deg); }
 .arg-dropdown[data-arg-acct-menu] { position: static; display: block; min-width: 0; max-width: 100%; }
 .arg-dropdown[data-arg-acct-menu] .arg-acctsel { max-width: 100%; } .arg-dropdown[data-arg-acct-menu] .arg-acctsel__no { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
-.arg-dropdown[data-arg-acct-menu] .arg-menu { top: 100%; left: 0; right: 0; z-index: 40; min-width: 0; padding: 0; border-radius: 0 0 var(--arg-radius) var(--arg-radius); background: var(--arg-ui-background-surface); box-shadow: var(--arg-shadow-sharp-shadow); border-width: 0 0 1px; gap: 0; }
+.arg-dropdown[data-arg-acct-menu] .arg-menu { top: 100%; left: 0; right: 0; z-index: 40; min-width: 0; padding: 0; overflow: hidden; border-radius: 0 0 var(--arg-radius-lg) var(--arg-radius-lg); background: var(--arg-ui-background-surface); box-shadow: var(--arg-shadow-sharp-shadow); border-width: 0 0 1px; gap: 0; }
 .arg-dropdown[data-arg-acct-menu] .arg-menu__item:first-child { border-top-color: transparent; }
 .arg-dropdown[data-arg-acct-menu] .arg-menu__item { flex-direction: column; align-items: flex-start; justify-content: center; gap: 2px; height: auto; min-height: 60px; padding: var(--arg-space-2x) var(--arg-gutter); border-radius: 0; border-top: 1px solid var(--arg-ui-divider-separator); font-variant-numeric: tabular-nums; white-space: nowrap; text-align: left; }
 .arg-dropdown[data-arg-acct-menu] .arg-menu__item b { font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-body-3)/var(--arg-font-line-height-body-3) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); }
@@ -23,3 +23,20 @@
 .arg-appbar:has([data-arg-acct-menu] .arg-menu:not([hidden])) { z-index: 30; }
 .arg-dropdown[data-arg-acct-menu]:has(.arg-menu:not([hidden]))::after { content: ""; position: absolute; z-index: 39; top: 100%; left: 0; right: 0; height: 100vh; background: var(--arg-ui-background-bg-overlay); backdrop-filter: blur(2px); animation: arg-fade .15s ease; }
 @media (prefers-reduced-motion: reduce) { .arg-dropdown[data-arg-acct-menu]::after { animation: none; } }
+
+/* Smart animate khi mở/đóng danh sách tài khoản: danh sách xoè xuống từ thanh đầu (clip-path theo đúng góc bo), các hàng trượt vào lần lượt, mũi tên xoay, nền mờ hiện dần.
+   Đóng: chạy ngược trong 200ms (dropdown.js gắn .is-closing rồi mới ẩn). Giảm chuyển động: không animation. */
+.arg-acctsel__row .i { transition: transform .28s cubic-bezier(.2, .8, .2, 1); }
+.arg-dropdown[data-arg-acct-menu] .arg-menu:not([hidden]) { animation: arg-acct-open .3s cubic-bezier(.2, .8, .2, 1) both; }
+.arg-dropdown[data-arg-acct-menu] .arg-menu:not([hidden]) .arg-menu__item { animation: arg-acct-item .3s cubic-bezier(.2, .8, .2, 1) both; }
+.arg-dropdown[data-arg-acct-menu] .arg-menu__item:nth-child(2) { animation-delay: .03s; } .arg-dropdown[data-arg-acct-menu] .arg-menu__item:nth-child(3) { animation-delay: .06s; }
+.arg-dropdown[data-arg-acct-menu] .arg-menu__item:nth-child(4) { animation-delay: .09s; } .arg-dropdown[data-arg-acct-menu] .arg-menu__item:nth-child(5) { animation-delay: .12s; }
+.arg-dropdown[data-arg-acct-menu] .arg-menu__item:nth-child(n+6) { animation-delay: .15s; }
+.arg-dropdown[data-arg-acct-menu] .arg-menu.is-closing { animation: arg-acct-close .2s ease-in both; }
+.arg-dropdown[data-arg-acct-menu] .arg-menu.is-closing .arg-menu__item { animation: none; }
+.arg-dropdown[data-arg-acct-menu].is-closing::after { animation: arg-acct-fade-out .2s ease-in both; }
+@keyframes arg-acct-open { from { clip-path: inset(0 0 100% 0); transform: translateY(-10px); opacity: .4; } to { clip-path: inset(0 0 0 0 round 0 0 var(--arg-radius-lg) var(--arg-radius-lg)); transform: none; opacity: 1; } }
+@keyframes arg-acct-close { from { clip-path: inset(0 0 0 0 round 0 0 var(--arg-radius-lg) var(--arg-radius-lg)); transform: none; opacity: 1; } to { clip-path: inset(0 0 100% 0); transform: translateY(-10px); opacity: .4; } }
+@keyframes arg-acct-item { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+@keyframes arg-acct-fade-out { from { opacity: 1; } to { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .arg-acctsel__row .i { transition: none; } .arg-dropdown[data-arg-acct-menu] .arg-menu, .arg-dropdown[data-arg-acct-menu] .arg-menu__item { animation: none !important; } }

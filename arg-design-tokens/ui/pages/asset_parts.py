@@ -9,6 +9,7 @@ import random
 from datetime import date, timedelta
 from detail_parts import vn
 import info_parts as IP
+from account_parts import LOGO as _WM
 import market_parts as MP
 import trade_parts as TP
 from stocks import STOCKS, BUYING_POWER
@@ -22,8 +23,8 @@ SEC = ' data-arg-secret'
 
 HELD = {'HPG': (3000, 26.00), 'VCB': (500, 90.00), 'AGR': (5000, 18.20), 'NVL': (4000, 15.60)}
 BY = {s.code: s for s in STOCKS}
-# tiểu khoản ký quỹ đứng đầu; tạm bỏ tiểu khoản phái sinh (màn Tài sản chưa có số liệu phái sinh)
-ACCOUNTS = [TP.ACCOUNTS[1]] + [a for i, a in enumerate(TP.ACCOUNTS) if i != 1 and a[1] != 'Phái sinh']
+# tiểu khoản ký quỹ đứng đầu (demo chỉ có chứng khoán cơ sở: thường và ký quỹ, không có phái sinh)
+ACCOUNTS = [TP.ACCOUNTS[1]] + [a for i, a in enumerate(TP.ACCOUNTS) if i != 1]
 
 # Tiền (đồng): thành phần và thành phần con
 CASH = dict(withdraw=18_000_000, buy=12_000_000, adv=(5_000_000, 6_000_000, 4_000_000), cadv=5_000_000, other=(4_000_000, 6_000_000))
@@ -62,7 +63,7 @@ def kk(v): return 'up' if v > 0 else 'down' if v < 0 else ''
 def assetcard(total=None, today=None, today_pct=None):
     total = F['total'] if total is None else total; today = F['today'] if today is None else today; today_pct = F['today_pct'] if today_pct is None else today_pct
     ic = 'trend-up' if today >= 0 else 'trend-down'
-    return (f'<section class="arg-assetcard" aria-label="Tổng tài sản"><span class="arg-assetcard__label">Tổng tài sản (đ)<button class="arg-icon-btn" type="button" data-arg-asset-eye aria-label="Ẩn số dư">{I("eye-slash", "i--20")}</button></span>'
+    return (f'<section class="arg-assetcard" aria-label="Tổng tài sản">{_WM.replace("arg-account__wm", "arg-assetcard__wm")}<span class="arg-assetcard__label">Tổng tài sản (đ)<button class="arg-icon-btn" type="button" data-arg-asset-eye aria-label="Ẩn số dư">{I("eye-slash", "i--20")}</button></span>'
             f'<b class="arg-assetcard__amount"{SEC}>{num(total)}</b>'
             f'<span class="arg-assetcard__delta">Lãi/lỗ hôm nay {I(ic)}<b class="{cls(today)}"{SEC}>{sgn(today)}</b><b class="{cls(today)}">({vn(today_pct, 2, True)}%)</b></span></section>')
 
@@ -124,10 +125,11 @@ def donut(parts, label, uid):
             f'<div class="arg-donut__center"><b>{vn(big[1] / tot * 100, 1)}%</b><span>{big[0]}</span></div></div><ul class="arg-donut__legend">{leg}</ul></div>')
 
 
-def date_pair(uid, a='2026-09-29', b='2026-10-29'):
+def date_pair(uid, a='2026-09-29', b='2026-10-29', compact=False):
     f = lambda i, lab, iso, extra='': (f'<div class="arg-field"><label class="arg-label" for="{uid}-{i}">{lab}</label><div class="arg-control arg-datepicker__field"><input class="arg-input" id="{uid}-{i}" type="text" '
                                        f'value="{iso[8:]}/{iso[5:7]}/{iso[:4]}" data-iso="{iso}"{extra} data-arg-datepicker>{I("calendar-blank")}</div></div>')
-    return f'<div class="arg-asset-dates">{f("from", "Từ ngày", a, " data-max=\"2026-10-29\"")}{f("to", "Đến ngày", b, " data-max=\"2026-10-29\"")}</div>'
+    mid = f'<i class="arg-asset-dates__to" aria-hidden="true">{I("arrow-right")}</i>' if compact else ''
+    return f'<div class="arg-asset-dates{" arg-asset-dates--compact" if compact else ""}">{f("from", "Từ ngày", a, " data-max=\"2026-10-29\"")}{mid}{f("to", "Đến ngày", b, " data-max=\"2026-10-29\"")}</div>'
 
 
 # ---------- tab Tài sản ----------
@@ -233,20 +235,22 @@ def with_balance(open_, rows):
 
 
 def stmt_cash(r, uid):
+    """Một giao dịch tiền dạng hàng gọn: dòng trên là nội dung và số tiền ròng (tô màu), dòng dưới là ngày, loại và số dư; bấm để xem ghi có, ghi nợ, phí, thuế."""
     d, kind, cr, db, fee, tax, text, bal = r
+    net = cr - db
     kv = lambda l, v, c='': f'<div class="arg-stmt__row"><dt>{l}</dt><dd class="{c}">{v}</dd></div>'
-    main = kv('Ghi có', num(cr), 'arg-up' if cr else '') + kv('Ghi nợ', num(db), 'arg-down' if db else '') + kv('Số dư', num(bal))
-    extra = kv('Phí', num(fee)) + kv('Thuế', num(tax))
-    return (f'<li class="arg-stmt"><div class="arg-stmt__head"><span>{d}</span><span class="arg-stmt__type">{kind}</span></div><p class="arg-stmt__title">{text}</p>'
-            f'<dl class="arg-stmt__rows">{main}</dl><div class="arg-collapse" id="{uid}"><div><dl class="arg-stmt__rows">{extra}</dl></div></div>'
-            f'<button class="arg-icon-btn arg-collapse-toggle arg-stmt__more" type="button" data-arg-collapse aria-controls="{uid}" aria-expanded="false" aria-label="Xem chi tiết phí và thuế">{I("caret-down", "i--20")}</button></li>')
+    extra = kv('Ghi có', num(cr), 'arg-up' if cr else '') + kv('Ghi nợ', num(db), 'arg-down' if db else '') + kv('Phí', num(fee)) + kv('Thuế', num(tax))
+    return (f'<li class="arg-stmt arg-stmt--compact"><button class="arg-stmt__main" type="button" data-arg-collapse aria-controls="{uid}" aria-expanded="false" aria-label="Xem chi tiết giao dịch">'
+            f'<span class="arg-stmt__title">{text}</span><b class="arg-stmt__amt {cls(net)}">{sgn(net)}</b>'
+            f'<span class="arg-stmt__meta">{d} · {kind}</span><span class="arg-stmt__bal">Số dư {num(bal)}</span></button>'
+            f'<div class="arg-collapse" id="{uid}"><div><dl class="arg-stmt__rows">{extra}</dl></div></div></li>')
 
 
 def cash_pane(uid, open_, rows):
     done, end = with_balance(open_, rows)
-    m = '<dl class="arg-metric-row">' + mc('Số dư đầu kỳ', num(open_)) + mc('Số dư cuối kỳ', num(end)) + '</dl>'
+    m = f'<dl class="arg-cashsum"><div><dt>Đầu kỳ</dt><dd{SEC}>{num(open_)}</dd></div><i aria-hidden="true">{I("arrow-right")}</i><div><dt>Cuối kỳ</dt><dd{SEC}>{num(end)}</dd></div></dl>'
     lst = '<ul class="arg-stmt-list">' + ''.join(stmt_cash(r, f'{uid}-{i}') for i, r in enumerate(reversed(done))) + '</ul>'
-    return f'<div class="arg-stack">{date_pair(uid)}{m}{lst}</div>'
+    return f'<div class="arg-stack">{date_pair(uid, compact=True)}{m}{lst}</div>'
 
 
 def tab_cash():
@@ -260,12 +264,12 @@ def tab_cash():
 
 def screen(tabbar_html):
     tabs = [('Tài sản', tab_asset()), ('Danh mục', tab_portfolio()), ('Lãi lỗ', tab_pl()), ('Sao kê tiền', tab_cash())]
-    chips = ''.join(f'<button class="arg-chip-tab" role="tab" type="button" aria-selected="{"true" if i == 0 else "false"}">{t}</button>' for i, (t, _) in enumerate(tabs))
+    chips = ''.join(f'<button class="arg-chip-tab arg-sidepanel__item" role="tab" type="button" aria-selected="{"true" if i == 0 else "false"}">{t}</button>' for i, (t, _) in enumerate(tabs))
     return f'''<div class="arg-screen arg-screen--sections" data-arg-screen="asset" hidden>
 <header class="arg-appbar arg-appbar--sticky">{TP.acctsel(ACCOUNTS)}</header>
 <main class="arg-page__main">
-  <div class="arg-page__tabbed" data-arg-tabs>
-    <div class="arg-page__block">{IP.title('Tài sản')}<div class="arg-chip-tabs arg-chip-tabs--sm"><div class="arg-chip-tabs__list" role="tablist" aria-label="Nội dung tài sản">{chips}</div></div></div>
+  <div class="arg-page__tabbed arg-page__tabbed--side" data-arg-tabs>
+    <div class="arg-page__block arg-sidepanel">{IP.title('Tài sản')}<div class="arg-chip-tabs arg-chip-tabs--sm"><div class="arg-chip-tabs__list" role="tablist" aria-label="Nội dung tài sản">{chips}</div></div></div>
     {''.join(h for _, h in tabs)}
   </div>
 </main>

@@ -1,0 +1,31 @@
+/* ARG UI · sidenav (màn nhiều nhóm chức năng: mobile xếp các nhóm nối nhau; tablet có Side panel bên trái liệt kê tên nhóm, bấm nhóm nào hiện danh sách nhóm đó ở bên phải) */
+.arg-sidenav { display: grid; gap: 10px; min-width: 0; }
+.arg-sidenav__nav { display: none; }
+.arg-sidenav__list, .arg-sidenav__foot { display: contents; }
+.arg-sidenav__user { display: none; }
+.arg-sidenav__body { display: grid; gap: 10px; min-width: 0; }
+.arg-screen--sections .arg-sidenav__body > .arg-page__block { padding: var(--arg-space-5x) var(--arg-gutter) var(--arg-space-6x); background: var(--arg-ui-background-surface); align-content: start; }
+@media (min-width: 720px) {
+  .arg-sidenav { grid-template-columns: var(--arg-sidepanel-w) minmax(0, 1fr); gap: 0; align-items: stretch; }
+  .arg-sidenav__nav { display: grid; }
+  .arg-sidenav__nav .arg-sidepanel__item .i { width: 16px; height: 16px; flex: none; }
+  .arg-sidenav__body > [data-sn-group]:not([data-sn-active]) { display: none; }
+  /* Tablet: Đăng xuất và chữ ký nằm ở đáy panel trái nên luôn thấy, không phải cuộn; khối đăng xuất ở cuối trang chỉ dành cho mobile */
+    .arg-sidenav { min-height: calc(100vh - var(--arg-space-14x) - var(--arg-safe-top, 0px) - var(--arg-tabbar-h, 68px) - var(--arg-safe-bottom, 0px)); } /* cao bằng phần còn lại giữa thanh đầu và thanh tab dưới: cả màn vừa một khung hình, không cuộn */
+  .arg-screen--sections .arg-page__main > .arg-more__profile { display: none; } /* tablet: thông tin tài khoản thu nhỏ vào đầu panel trái */
+  .arg-sidenav__user { display: flex; align-items: center; gap: var(--arg-space-3x); padding: 0 var(--arg-space-3x) var(--arg-space-3x); margin-bottom: var(--arg-space-2x); border-bottom: 1px solid var(--arg-ui-divider-separator); }
+  .arg-sidenav__avatar { flex: none; display: grid; place-items: center; width: var(--arg-space-10x); height: var(--arg-space-10x); border-radius: 50%; background-color: var(--arg-p-brand-header-start); background-image: var(--arg-gradient-primary-button); color: #fff; font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-body-3)/1 var(--arg-font-family-family); }
+  .arg-sidenav__who { display: grid; gap: 1px; min-width: 0; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+  .arg-sidenav__who > b { font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .arg-sidenav__who span b { color: var(--arg-ui-text-on-bright-text-title); }
+  .arg-sidenav__nav { min-height: 0; grid-template-rows: auto auto minmax(0, 1fr); align-content: stretch; padding-bottom: var(--arg-space-5x); /* Đăng xuất cách đỉnh thanh tab dưới (đáy vùng nhìn thấy) 20px */ }
+  .arg-sidenav__list { display: grid; gap: 2px; align-content: start; }
+  .arg-sidenav__foot { display: grid; align-content: end; gap: var(--arg-space-3x); }
+  .arg-sidenav__nav .arg-sidenav__logout { padding-left: 0; justify-content: flex-start; gap: var(--arg-space-2x); text-decoration: none; color: var(--arg-action-noti-toast-error); }
+  .arg-sidenav__foot .arg-brandsign--row { padding: 0; margin-bottom: var(--arg-space-2x); }
+  .arg-sidenav__logout .i { width: 20px; height: 20px; color: inherit; }
+  .arg-sidenav__nav .arg-sidenav__logout:hover { background: color-mix(in srgb, var(--arg-action-noti-toast-error) 10%, transparent); }
+  .arg-sidenav__out { display: none !important; }
+  .arg-screen--sections:has(.arg-sidenav) > .arg-page__main { padding-bottom: 0; } /* panel đã tự chừa chỗ cho thanh tab dưới */
+  .arg-sidenav__body { gap: 0; }
+}

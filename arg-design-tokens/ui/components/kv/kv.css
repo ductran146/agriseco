@@ -12,3 +12,7 @@
 .arg-kv--lines { gap: 0; }
 .arg-kv--lines .arg-kv__row { min-height: 44px; padding: var(--arg-space-2x) 0; }
 .arg-kv--lines .arg-kv__row + .arg-kv__row { border-top: 1px solid var(--arg-ui-divider-separator); }
+/* Tablet: danh sách thông tin dạng dòng ở màn chi tiết (đứng trực tiếp trong main) chia hai cột, nhãn và giá trị không bị kéo ra hai đầu 700px */
+@media (min-width: 720px) { .arg-page__main > .arg-kv--lines { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--arg-space-8x); align-content: start; } }
+/* Màu tăng giảm trên giá trị của hàng Kv (ví dụ lãi/lỗ tạm tính ở thông tin mã) */
+.arg-kv dd.arg-up { color: var(--arg-trading-up-light-increase); } .arg-kv dd.arg-down { color: var(--arg-trading-down-light-increase); } .arg-kv dd.arg-ref { color: var(--arg-trading-flat-flat); }

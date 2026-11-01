@@ -1,0 +1,31 @@
+/* ARG UI · orderhist (tab Lịch sử lệnh: một hàng công cụ gồm khoảng thời gian và Bộ lọc, thẻ tổng kết mua bán khớp, danh sách nhóm theo ngày; trạng thái và chiều lệnh nằm trong bảng Bộ lọc; mỗi lệnh dùng lại Order row) */
+.arg-page__tabbed.arg-orderbook__tabbed > .arg-orderbook__pane { display: grid; align-content: start; gap: var(--arg-space-4x); }
+.arg-orderhist { display: grid; gap: var(--arg-space-4x); min-width: 0; }
+/* Hàng công cụ: Select chọn khoảng thời gian bên trái, nút Bộ lọc (Button --outline2, chữ trung tính) bên phải; cao 40px */
+.arg-orderhist__bar { display: flex; align-items: center; justify-content: space-between; gap: var(--arg-space-3x); }
+.arg-orderhist__bar .arg-btn .i { width: 20px; height: 20px; }
+.arg-orderhist__bar .arg-select { width: 158px; flex: none; } /* cùng độ rộng select của Listbar */
+.arg-orderhist__filter { position: relative; gap: var(--arg-space-2x); }
+.arg-orderhist__filter .arg-count { margin-left: var(--arg-space-1x); }
+.arg-orderhist__filter .arg-count[hidden] { display: none; }
+.arg-orderhist__filter.is-active { border-color: var(--arg-action-text-button-link-text-button); } /* chỉ viền báo đang lọc; chữ giữ màu trung tính */
+.arg-orderhist__range[hidden] { display: none; }
+/* Tổng kết: một thẻ hai chỉ số (giá trị mua khớp, giá trị bán khớp) theo khoảng thời gian và bộ lọc đang chọn */
+.arg-orderhist__sum { margin: 0; padding: var(--arg-space-3x) var(--arg-space-4x); border-radius: var(--arg-radius); background: var(--arg-ui-background-lv-3); }
+.arg-orderhist__sum .arg-statrow__item { flex: 1 1 0; }
+.arg-orderhist__list { display: grid; gap: var(--arg-space-5x); }
+.arg-orderhist__day { display: grid; gap: var(--arg-space-2x); }
+.arg-orderhist__day[hidden] { display: none; }
+.arg-orderhist__date { display: flex; align-items: baseline; justify-content: space-between; gap: var(--arg-space-3x); margin: 0; font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-orderhist__date span { font-weight: var(--arg-font-font-weight-regular); font-size: var(--arg-font-font-size-label-1); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+/* Bảng Bộ lọc: mỗi nhóm có nhãn và các radio (Checkbox kiểu radio) xếp hai cột; chân bảng Đặt lại và Xem n lệnh */
+.arg-orderhist__opts { display: grid; gap: var(--arg-space-4x); }
+.arg-orderhist__grp { display: grid; gap: var(--arg-space-2x); }
+/* Nhãn nhóm đậm, đủ nổi hơn nhãn radio; các nhóm cách nhau bằng đường kẻ */
+.arg-orderhist__grp > .arg-label { font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-body-3)/var(--arg-font-line-height-body-3) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-orderhist__grp + .arg-orderhist__grp { padding-top: var(--arg-space-4x); border-top: 1px solid var(--arg-ui-divider-separator); }
+.arg-orderhist__radios { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--arg-space-1x) var(--arg-space-3x); }
+.arg-orderhist__opt { gap: var(--arg-space-3x); min-height: var(--arg-border-height-size-height-normal); font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-body-3)/var(--arg-font-line-height-body-3) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-orderhist__foot { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--arg-space-3x); }
+.arg-orderhist__panel { display: grid; gap: var(--arg-space-4x); }
+@media (min-width: 720px) { .arg-orderhist__panel { gap: 0 var(--arg-space-6x); } }

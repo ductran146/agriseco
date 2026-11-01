@@ -6,18 +6,21 @@ TAB = ('.arg-tabbar', 'l', 'Tabbar: 5 mục, dính đáy, nền mờ 85%, chừa
 
 HOME = [
     ('.arg-appbar__logo', 'l', 'Appbar --sticky: logo thay chữ, dính đầu, nền mờ 85%, phủ cả status bar.'),
-    ('.arg-promo', 'r', 'Promo: bấm × thu chiều cao, mờ dần, khối dưới trượt lên.'),
+    ('.arg-splash', 'r', 'Splash [data-arg-splash]: gradient header, ô logo 96px, hình chìm lá lúa (.arg-brandmark); hiện ~1,1s rồi mờ 0,4s và gỡ, một lần mỗi phiên.'),
     ('.arg-index-row', 'l', 'Market card: cuộn ngang, màu theo token giao dịch, bấm mở chi tiết chỉ số.'),
-    ('.arg-account', 'r', 'Account: nền gradient header web, chip chọn tiểu khoản X1, M1, D1, Ảo.'),
+        ('.arg-account__top', 'l', 'Hàng lời chào nằm ngoài thẻ: avatar gradient 40px, lời chào và số tài khoản (mã tô màu link thương hiệu). Tiểu khoản áp dụng cho cả tài khoản nên đặt ở đây, không đặt trong thẻ.'),
+    ('.arg-account__sub', 'l', 'Select gốc (.arg-control.arg-select) cao 40px, rộng 96px, chữ trung tính, mũi tên caret-down: chọn tiểu khoản X1 (thường) hoặc M1 (ký quỹ).'),
+    ('.arg-account', 'r', 'Account: nền gradient header web, hình chìm là logo Agriseco gốc (trắng mờ 14%); tổng tài sản (con mắt ẩn số), biến động hôm nay, thanh phân bổ; thân trắng một hàng: lãi/lỗ danh mục bên trái, nút Nộp tiền bên phải. Số tổng đếm 0 → giá trị ~600ms.'),
     ('.arg-service-grid', 'l', 'Service trong khối nền trắng (.arg-service-grid--card): lưới 3 cột, ô icon gradient thương hiệu, icon trắng.'),
     ('.arg-reco-row', 'r', 'Reco: cuộn ngang, nhãn B, G, M, giá mục tiêu và lãi lỗ.'),
     ('.arg-quote-list', 'l', 'Quote: sparkline, giá và % theo 5 trạng thái, bấm mở thông tin mã.'),
     ('.arg-news-list', 'r', 'News: ảnh 88×64, tiêu đề tối đa 2 dòng, nguồn và ngày.'),
+    ('.arg-brandsign', 'l', 'Brandsign: logo cao 40px, tên Agriseco (đỏ logo) và dòng phụ; chữ ký cuối trang.'),
     TAB,
 ]
 
 MARKET = [
-    ('.arg-tabs--lg', 'l', 'Tabs --lg: 7 mục cuộn ngang, đệm trên 0, sát thanh đầu.'),
+    ('.arg-tabs--lg', 'l', 'Tabs --lg: 7 mục cuộn ngang, đệm trên 0, sát thanh đầu. Tablet: thành Side panel dọc rộng 240px bên trái (kiểu Cài đặt macOS), mục chọn nền tối như Chip tabs đang chọn, nội dung mục ở bên phải.'),
     ('.arg-chip-tabs--sm', 'r', 'Chip tabs --sm: cao 32px, bo 12px; đổi góc nhìn thị trường.'),
     ('.arg-tabpanel .arg-tabs--pill', 'l', 'Tabs --pill: HOSE, HNX, UPCoM; giữ lựa chọn khi đổi góc nhìn.'),
     ('.arg-donut', 'r', 'Donut: số mã tăng, giảm, đứng; giữa vòng là tổng số mã. Rê chuột hoặc nhấn giữ 250ms một cung: cung phóng to 7%, cung khác mờ, giữa vòng hiện số liệu của cung.'),
@@ -51,6 +54,8 @@ THEME = [
 
 TRADE = [
     ('.arg-acctsel', 'l', 'Acctsel + Dropdown: xổ danh sách toàn chiều ngang, nền mờ như hộp thoại.'),
+    ('.arg-appbar__tools .arg-appbar__tool:nth-child(1)', 'r', 'Appbar tool 40px, icon calendar-check, aria-label Sổ lệnh: mở màn Sổ lệnh (tab Sổ lệnh: lệnh trong ngày, huỷ lệnh). Màn này không có thanh tab dưới; Quay lại về Giao dịch.'),
+    ('.arg-appbar__tools .arg-appbar__tool:nth-child(2)', 'r', 'Appbar tool 40px, icon chart-pie-slice, aria-label Danh mục: mở màn Tài sản (danh mục đang nắm giữ, cơ cấu tài sản). Là màn gốc của thanh tab dưới nên tab Tài sản được chọn.'),
     ('.arg-symbol', 'r', 'Tabs --pill: Lite (đặt nhanh) hoặc Pro (đủ sổ lệnh).'),
     ('.arg-pricehead', 'l', 'Pricehead --lg: giá khớp, màu theo biến động; Thông tin CP mở trang mã.'),
     ('.arg-statrow', 'r', 'Statrow: màu theo token giao dịch (tăng, giảm, tham chiếu).'),
@@ -67,13 +72,18 @@ TRADE = [
 ]
 
 ORDERBOOK = [
-    ('[data-ob-select]', 'r', 'Nút chữ: bật chọn nhiều lệnh (đổi thành Xong); nhấn giữ một lệnh cũng bật.'),
+    ('[data-ob-select]', 'r', 'Nút chữ: bật chọn nhiều lệnh (đổi thành Xong); nhấn giữ một lệnh cũng bật. Chỉ dùng cho tab Sổ lệnh, ẩn khi xem Lịch sử lệnh.'),
+    ('.arg-orderbook__tabbed > .arg-tabs', 'l', 'Tabs --lg (Title 3 đậm, cao 48px, gạch chân gradient): Sổ lệnh và Lịch sử lệnh. Màn con của Giao dịch nên ẩn hẳn thanh tab dưới (không để thanh tab không chọn mục nào), Quay lại về Giao dịch.'),
     ('.arg-orderbook__search', 'l', 'Input có icon: lọc ngay khi gõ.'),
     ('.arg-orderbook__chips', 'r', 'Chip tabs --sm: lọc trạng thái, kèm số lệnh, cuộn ngang.'),
     ('.arg-orderbook__head .arg-tabs', 'l', 'Tabs --pill: lọc Tất cả, Mua, Bán.'),
     ('.arg-orderrow', 'r', 'Order row: viền và nền chuyển màu 5% theo chiều lệnh, đệm 12px, bấm mở chi tiết lệnh.'),
     ('.arg-orderrow__bar', 'l', 'Thanh tiến độ khớp: cao 3px, sát đáy thẻ (cắt theo bo góc). --v = khối lượng khớp / khối lượng đặt (%). Màu theo chiều lệnh (Mua, Bán), phần chưa khớp nền 14%. Ẩn ở lệnh đã huỷ.'),
-    ('.arg-tabbar', 'l', 'Tabbar; khi chọn nhiều được thay bằng thanh Huỷ lệnh (n).'),
+    ('.arg-orderhist__bar', 'l', 'Hàng công cụ duy nhất của tab: Select (158px) chọn 7 ngày, 30 ngày (mặc định), 3 tháng, Tuỳ chọn và nút Bộ lọc (Button --outline2); cao 40px, cách nhau 12px. Tuỳ chọn hiện hai ô ngày (Datepicker).'),
+    ('.arg-orderhist__filter', 'r', 'Button --outline2 (chữ trung tính) mở Offcanvas bottom: hai nhóm cách nhau bằng đường kẻ, nhãn nhóm Body 3 đậm, radio (Checkbox kiểu radio) xếp hai cột: Trạng thái (Tất cả, Đã khớp, Khớp một phần, Đã huỷ, Từ chối) và Chiều lệnh (Tất cả, Mua, Bán). Chọn là lọc ngay; số lệnh kết quả chỉ ghi ở nút chính "Xem n lệnh". Có lọc đang bật thì viền màu link và badge đếm.'),
+    ('.arg-orderhist__sum', 'l', 'Statrow trong thẻ nền lv-3, bo 13px: giá trị mua khớp và bán khớp (đồng); tính lại theo khoảng thời gian và bộ lọc đang chọn.'),
+    ('.arg-orderhist__date', 'r', 'Tiêu đề ngày (Body 4 đậm) kèm số lệnh trong ngày; ngày không còn lệnh sau khi lọc thì ẩn.'),
+    ('.arg-orderhist .arg-orderrow', 'l', 'Order row dùng lại: không ô chọn, không thanh tiến độ; lệnh bị từ chối ghi lý do ngắn thay số khớp. Bấm mở chi tiết lệnh (không huỷ, không sửa được).'),
 ]
 
 ORDERDETAIL = [
@@ -120,9 +130,10 @@ MODIFY = [
 ]
 
 MORE = [
-    ('.arg-empty__art', 'l', 'Empty state: hình thư mục trống rộng 200px (SVG do chủ dự án cung cấp, không thuộc bộ icon Solar), căn giữa màn.'),
-    ('.arg-empty__title', 'r', 'Tiêu đề Title 2 đậm và đoạn giải thích Body 4 màu phụ, tối đa 300px: nói rõ mục chưa có trong bản demo lần này.'),
-    ('.arg-empty .arg-btn', 'l', 'Button --primary --xl: Về trang chủ.'),
+    ('.arg-profile', 'l', 'Profile: thẻ nền cam nhạt 8%, avatar tròn 56px gradient thương hiệu, tên Title 2 đậm, số tài khoản; hình chìm .arg-brandmark--soft. Họ tên là dữ liệu mẫu.'),
+    ('.arg-navlist', 'r', 'Navlist: hàng cao tối thiểu 56px, ô icon 40px nền cam nhạt 12%, nhãn Body 3 vừa, mũi tên; đường kẻ --arg-ui-divider-separator. Mục có data-arg-go mở màn tương ứng, mục còn lại là giữ chỗ.'),
+    ('.arg-navlist__item--danger', 'l', 'Navlist --danger: Đăng xuất, chữ và ô icon màu giảm (--arg-trading-down-light-increase).'),
+    ('.arg-brandsign', 'r', 'Brandsign: chữ ký thương hiệu cuối màn, logo cao 40px, tên Agriseco, dòng phụ.'),
     TAB,
 ]
 

@@ -11,7 +11,7 @@ Danh sách mã theo dõi hoặc bảng giá ngắn trên mobile.
 | `.arg-quote-list--plain` | Danh sách phẳng trong khối trắng, không khung thẻ |
 | `--link` | Dòng bấm được: `__id` là thẻ `a` (ví dụ `data-arg-go` mở trang thông tin mã), vùng bấm phủ cả dòng, viền focus quanh dòng |
 | `--ceil` `--floor` | Trạng thái trần (tím) và sàn (xanh ngọc): giá `b` đổi màu; dùng cùng Badge `--ceil` `--floor` và Spark `--ceil` `--floor` |
-| `--board` | Bảng giá: mã và tên, sparkline kèm đường tham chiếu nét đứt, giá và Badge phần trăm (rộng đều 64px); không hiện khối lượng |
+| `--board` | Bảng giá: mã và tên, sparkline kèm đường tham chiếu nét đứt, giá và Badge phần trăm (rộng đều 64px); mobile không hiện khối lượng. Từ 720px (tablet) thêm 5 cột: Trần (tím), Sàn (xanh ngọc), TC (vàng) `.arg-quote__lim--ceil/--floor/--ref`, KL (triệu CP) `.arg-quote__vol`, GTGD (tỷ đồng) `.arg-quote__val`; hàng tiêu đề có các cột tương ứng `.arg-quote-head__x`. Trần, sàn tính từ tham chiếu theo biên độ và bước giá của sàn |
 | `--fav` `.arg-fav` | Thêm cột nút ngôi sao yêu thích cuối dòng. `.arg-fav[aria-pressed="true"]` sao đặc màu vàng, `__on` `__off` là hai icon. Bấm nút để bỏ mã (xem Suggest) |
 | `.arg-quote-head` `--board` `--fav` `--rank` | Hàng tiêu đề cột đặt trên danh sách (lề trong 12px khớp thẻ), cột khớp lưới của dòng: Mã, Xu hướng (giữa), giá trị và dòng dưới "% so với TC" (phải, `__val`). Ẩn khi danh sách rỗng |
 | `.arg-quote-list--vol` | Xem khối lượng: ẩn sparkline, hiện cột khối lượng giữa mã và giá (bật bằng Fab; màn demo hiện không dùng) |

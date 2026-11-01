@@ -9,7 +9,7 @@
   var BADGE = { pending: 'arg-badge--yellow', partial: 'arg-badge--blue', matched: 'arg-badge--success', cancelled: '' };
   var state = new WeakMap();
   function st(root) { if (!state.has(root)) state.set(root, { status: 'all', side: 'all', q: '', pending: [] }); return state.get(root); }
-  function rows(root) { return ARG.$$('.arg-orderrow', root); }
+  function rows(root) { return ARG.$$('.arg-orderrow', root).filter(function (li) { return !li.closest('[data-arg-orderhist]'); }); } /* lệnh của tab Lịch sử lệnh do orderhist.js quản lý */
   function pick(li) { return ARG.$('.arg-orderrow__pick input', li); }
   function apply(root) {
     var s = st(root), n = 0;
@@ -44,7 +44,7 @@
     li.dataset.status = status;
     li.removeAttribute('data-cancelable');
     var b = ARG.$('.arg-badge', li); b.className = 'arg-badge' + (BADGE[status] ? ' ' + BADGE[status] : ''); b.textContent = LABEL[status];
-    var p = ARG.$('.arg-orderrow__pick', li); if (p) p.remove();
+    var p = pick(li); if (p) { p.checked = false; p.disabled = true; }
   }
   /* Nhấn giữ: vào chế độ chọn nhiều và chọn sẵn lệnh; cờ held chặn lần bấm (click) ngay sau khi nhả tay. */
   var timer = null, held = false;
@@ -107,7 +107,7 @@
     if (!root) return;
     if (e.target.matches('[data-ob-all]')) {
       var on = e.target.checked;
-      rows(root).forEach(function (li) { if (!li.hidden && pick(li)) pick(li).checked = on; });
+      rows(root).forEach(function (li) { if (!li.hidden && li.hasAttribute('data-cancelable') && pick(li)) pick(li).checked = on; });
     }
     sync(root);
   });

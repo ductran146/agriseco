@@ -1,6 +1,6 @@
 /* ARG UI · quote (danh sách dòng giá) */
 .arg-quote-list { list-style: none; margin: 0; padding: 0 var(--arg-space-4x); background: var(--arg-ui-background-surface); border-radius: var(--arg-radius-lg); box-shadow: var(--arg-shadow-shadow); }
-.arg-quote { display: grid; grid-template-columns: minmax(0, 1fr) 72px auto 56px; align-items: center; gap: var(--arg-space-3x); padding: var(--arg-space-3x) 0; }
+.arg-quote { display: grid; grid-template-columns: minmax(0, 1fr) 72px 68px 56px; align-items: center; gap: var(--arg-space-3x); padding: var(--arg-space-3x) 0; }
 .arg-quote + .arg-quote { border-top: 1px solid var(--arg-ui-divider-separator); }
 .arg-quote__id { display: grid; min-width: 0; } .arg-quote__id b { font-size: var(--arg-font-font-size-body-3); line-height: var(--arg-font-line-height-body-3); font-weight: var(--arg-font-font-weight-bold); color: var(--arg-ui-text-on-bright-text-title); }
 .arg-quote__id span { font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); color: var(--arg-ui-text-on-bright-text-content-lv2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -53,3 +53,32 @@
 .arg-quote-list--vol .arg-quote--board .arg-quote__vol { display: block; order: 2; }
 .arg-quote-list--vol .arg-quote--board .arg-quote__price { order: 3; }
 .arg-quote-list--vol .arg-quote--board .arg-fav { order: 4; }
+/* Hàng tiêu đề của danh sách xếp hạng: bản thứ hai chỉ dùng khi danh sách chia hai cột (tablet) */
+.arg-quote-heads { display: contents; }
+.arg-quote-heads > .arg-quote-head:nth-child(2) { display: none; }
+@media (min-width: 720px) {
+  .arg-quote-heads { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--arg-space-6x); }
+  .arg-quote-heads > .arg-quote-head:nth-child(2) { display: grid; }
+  .arg-quote-list--card:has(> .arg-quote--rank) { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--arg-space-6x); align-content: start; }
+}
+/* Bảng giá và danh mục theo dõi: các ô phụ (trần, sàn, tham chiếu, khối lượng, giá trị) chỉ hiện ở tablet */
+.arg-quote__lim, .arg-quote__val, .arg-quote-head__x, .arg-quote--board .arg-quote__vol { display: none; }
+.arg-quote__lim, .arg-quote__val, .arg-quote--board .arg-quote__vol { text-align: right; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--arg-ui-text-on-bright-text-content); }
+.arg-quote__lim--ceil { color: var(--arg-trading-ceiling-purple-flat); } .arg-quote__lim--floor { color: var(--arg-trading-floor-cyan-flat); } .arg-quote__lim--ref { color: var(--arg-trading-flat-flat); }
+.arg-quote-head__x { text-align: right; white-space: nowrap; }
+@media (min-width: 720px) {
+  .arg-quote__lim, .arg-quote__val, .arg-quote-head__x, .arg-quote--board .arg-quote__vol { display: block; }
+  .arg-quote--board, .arg-quote-head--board { grid-template-columns: minmax(0, 1fr) 84px 52px 52px 52px 52px 64px 72px; gap: var(--arg-space-2x); }
+  .arg-quote--fav, .arg-quote-head--fav { grid-template-columns: 20px minmax(0, 1fr) 84px 52px 52px 52px 52px 64px 72px 28px; gap: var(--arg-space-2x); }
+}
+/* Thị trường hai phần (danh mục trái, nội dung phải): phần nội dung hẹp nên danh sách về một cột và bớt cột phụ */
+@media (min-width: 720px) {
+  .arg-page__tabbed--side .arg-quote-list--card:has(> .arg-quote--rank) { grid-template-columns: minmax(0, 1fr); }
+  .arg-page__tabbed--side .arg-quote-heads { display: contents; }
+  .arg-page__tabbed--side .arg-quote-heads > .arg-quote-head:nth-child(2) { display: none; }
+  .arg-page__tabbed--side .arg-quote--board, .arg-page__tabbed--side .arg-quote-head--board { grid-template-columns: minmax(0, 1fr) 60px 52px 52px 52px 44px 72px; }
+  .arg-page__tabbed--side .arg-quote--fav, .arg-page__tabbed--side .arg-quote-head--fav { grid-template-columns: 20px minmax(0, 1fr) 64px 52px 44px 72px 28px; }
+  .arg-page__tabbed--side .arg-quote__val, .arg-page__tabbed--side .arg-quote-head__x--val { display: none; }
+  .arg-page__tabbed--side .arg-quote--fav .arg-quote__lim--ceil, .arg-page__tabbed--side .arg-quote--fav .arg-quote__lim--floor,
+  .arg-page__tabbed--side .arg-quote-head--fav .arg-quote-head__x--ceil, .arg-page__tabbed--side .arg-quote-head--fav .arg-quote-head__x--floor { display: none; }
+}

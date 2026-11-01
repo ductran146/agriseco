@@ -27,7 +27,7 @@ def price(st=VCB):
     return (f'<div class="arg-pricehead arg-pricehead--lg arg-pricehead--{st.kind}"><div class="arg-pricehead__row">'
             f'<div class="arg-pricehead__main"><b class="arg-pricehead__value">{vn(st.last)}</b>'
             f'<span class="arg-pricehead__change"><span>{I(ARROW[st.kind])}{vn(abs(st.chg))}</span><span class="arg-badge arg-badge--{st.kind}">{vn(st.pct, 2, True)}%</span></span></div>'
-            f'<span class="arg-pricehead__meta">{I("clock")}{WHEN}</span></div></div>')
+            f'</div></div>')
 
 
 def holding(st=VCB):
@@ -35,8 +35,8 @@ def holding(st=VCB):
     if not st.hold: return ''
     qty, cost = st.hold
     pl = round((st.last - cost) * qty * 1000)
-    return TP.statrow([('Đang sở hữu', f'{num(qty)} CP', ''), ('Lãi/lỗ tạm tính', ('+' if pl > 0 else '') + num(pl), 'arg-up' if pl > 0 else 'arg-down' if pl < 0 else ''),
-                       ('Giá vốn', vn(cost), '')])
+    rows = [('Đang sở hữu', f'{num(qty)} CP', ''), ('Lãi/lỗ tạm tính', ('+' if pl > 0 else '') + num(pl), 'arg-up' if pl > 0 else 'arg-down' if pl < 0 else ''), ('Giá vốn', vn(cost), '')]
+    return '<dl class="arg-kv arg-stock-hold">' + ''.join(f'<div class="arg-kv__row"><dt>{l}</dt><dd{f" class=\"{c}\"" if c else ""}>{v}</dd></div>' for l, v, c in rows) + '</dl>'
 
 
 def statgrid(items, more=None, uid='', label='Xem thêm chỉ số'):

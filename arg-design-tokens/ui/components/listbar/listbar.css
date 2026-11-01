@@ -10,6 +10,7 @@
 .arg-listbar__tool { display: grid; place-items: center; flex: none; width: var(--arg-border-height-size-height-normal); height: var(--arg-border-height-size-height-normal); padding: 0; border: 0; border-radius: var(--arg-radius-sm); background: transparent; color: var(--arg-ui-text-on-bright-text-title); cursor: pointer; }
 .arg-listbar__tool .i { width: 24px; height: 24px; color: inherit; }
 .arg-listbar__tool:hover { background: var(--arg-ui-state-layer-on-bright-hovered); }
+.arg-listbar__tool[aria-expanded="true"] { background: var(--arg-ui-state-layer-on-bright-pressed); color: var(--arg-ui-text-on-bright-text-disable); }
 .arg-listbar__tool:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: -2px; }
 .arg-listbar .arg-dropdown { display: block; }
 .arg-listbar .arg-menu { min-width: 200px; z-index: 40; }
