@@ -79,7 +79,7 @@ ORDERBOOK = [
 ORDERDETAIL = [
     ('.arg-orderdetail__head', 'r', 'Đầu màn: Lệnh mua / bán theo token Mua, Bán, Badge trạng thái, mã Title 1.'),
     ('.arg-kv', 'l', 'Kv --lines: hàng cao tối thiểu 44px, kẻ ngăn.'),
-    ('.arg-actionbar', 'r', 'Action bar --fixed: Huỷ lệnh (có xác nhận) và Sửa lệnh.'),
+    ('.arg-actionbar', 'r', 'Action bar --fixed: Huỷ lệnh (có xác nhận) và Sửa lệnh. Sửa lệnh chỉ bật với lệnh LO còn hiệu lực (Chờ khớp, Khớp một phần), mở màn Sửa lệnh; lệnh MP, ATO, ATC không sửa được nên nút bị khoá.'),
 ]
 
 
@@ -105,6 +105,20 @@ ASSET = [
     ('.arg-stmt', 'l', 'Statement: ngày, loại giao dịch, các khoản; bản tiền có mũi tên mở phí và thuế.'),
 ]
 
+MODIFY = [
+    ('.arg-appbar__title', 'r', 'Appbar --sticky: tiêu đề Sửa lệnh, mũi tên quay lại chi tiết lệnh. Ghi chú: chỉ lệnh "LO" được sửa; lệnh "MP", "ATO", "ATC" không thể sửa.'),
+    ('.arg-symbol', 'l', 'Tabs --pill: Lite (Bid / Ask gọn một cột) hoặc Pro (đủ sổ lệnh); giá, khối lượng đã sửa giữ nguyên khi đổi chế độ.'),
+    ('.arg-pricehead', 'r', 'Pricehead --lg: giá khớp của mã, màu theo biến động; Thông tin CP mở trang mã.'),
+    ('.arg-bidask, .arg-trade--pro .arg-book', 'l', 'Lite: Bid / Ask nằm ngang, 3 mức giá tốt nhất mỗi bên kèm tổng khối lượng và tỷ lệ. Pro: Book 3 mức, hoặc danh sách mức giá.'),
+    ('.arg-trade--pro .arg-locked', 'r', 'Chiều lệnh (Side) và Loại lệnh (Selectsheet) bị khoá: mờ 60%, không bấm được. Chỉ lệnh LO sửa được, nên loại lệnh luôn là LO.'),
+    ('.arg-trade--lite .arg-locked', 'r', 'Chiều lệnh (Side) và Loại lệnh (Selectsheet) bị khoá: mờ 60%, không bấm được. Chỉ lệnh LO sửa được, nên loại lệnh luôn là LO.'),
+    ('.arg-trade--pro [data-arg-field="price"]', 'r', 'Stepper giá: bước HOSE 0,01 / 0,05 / 0,10, bắt đầu từ giá lệnh gốc. Gõ số có dấu phẩy, bàn phím giả hiện lên.'),
+    ('.arg-trade--lite [data-arg-field="price"]', 'r', 'Stepper giá: bước HOSE 0,01 / 0,05 / 0,10, bắt đầu từ giá lệnh gốc. Gõ số có dấu phẩy, bàn phím giả hiện lên.'),
+    ('.arg-trade--pro [data-arg-field="qty"]', 'r', 'Stepper khối lượng: bước 100, bắt đầu từ khối lượng lệnh gốc; giá trị ước tính tính lại = giá × KL × 1.000.'),
+    ('.arg-trade--lite [data-arg-field="qty"]', 'r', 'Stepper khối lượng: bước 100, bắt đầu từ khối lượng lệnh gốc; giá trị ước tính tính lại = giá × KL × 1.000.'),
+    ('[data-om-submit]', 'l', 'Button --primary --xl: khoá cho đến khi giá hoặc khối lượng khác lệnh gốc. Bấm mở hộp xác nhận Sửa lệnh (giá, KL, loại lệnh, giá trị ước tính), Xác nhận sửa thì báo thành công.'),
+]
+
 
 def specs_for(sid):
     """Danh sách đặc tả của màn hình có id sid."""
@@ -114,6 +128,7 @@ def specs_for(sid):
     if sid == 'search': return SEARCH
     if sid == 'asset': return ASSET
     if sid.startswith('order-'): return ORDERDETAIL
+    if sid.startswith('modify-'): return MODIFY
     if sid == 'trade' or sid.startswith('trade-'): return TRADE
     if sid.startswith('stock-'): return STOCK
     if sid.startswith('idx-'): return INDEX

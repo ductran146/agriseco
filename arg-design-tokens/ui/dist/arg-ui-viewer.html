@@ -2599,6 +2599,30 @@
 .arg-orderdetail__head + .arg-kv { margin-top: var(--arg-space-2x); }
 .arg-actionbar--fixed .arg-btn[hidden] { display: none; }
 
+/* ARG UI · bidask (bước giá rút gọn nằm ngang: dư mua bên trái, dư bán bên phải, mỗi bên có tổng khối lượng và 3 mức giá tốt nhất) */
+.arg-bidask { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px; font-variant-numeric: tabular-nums; }
+.arg-bidask__side { display: grid; align-content: start; min-width: 0; }
+.arg-bidask__side--bid { --c: var(--arg-trading-up-light-increase); }
+.arg-bidask__side--ask { --c: var(--arg-trading-down-light-increase); }
+.arg-bidask__head { display: grid; justify-items: center; gap: 0; padding: var(--arg-space-1-5x) var(--arg-space-2x); background: color-mix(in srgb, var(--c) 10%, transparent); color: var(--arg-ui-text-on-bright-text-title); font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); }
+.arg-bidask__side:first-child .arg-bidask__head { border-radius: var(--arg-radius-xs) 0 0 0; }
+.arg-bidask__side:last-child .arg-bidask__head { border-radius: 0 var(--arg-radius-xs) 0 0; }
+.arg-bidask__head > b { color: var(--c); font-weight: var(--arg-font-font-weight-semibold); }
+.arg-bidask__head span b { font-weight: var(--arg-font-font-weight-semibold); }
+.arg-bidask__row { --w: 0; position: relative; display: flex; align-items: center; justify-content: space-between; gap: var(--arg-space-2x); min-height: 32px; padding: 0 var(--arg-space-2x); font: var(--arg-font-font-weight-medium) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); }
+.arg-bidask__row::before { content: ""; position: absolute; top: 3px; bottom: 3px; width: calc(var(--w) * 0.7%); background: color-mix(in srgb, var(--c) 12%, transparent); }
+.arg-bidask__side:first-child .arg-bidask__row::before { right: 0; border-radius: var(--arg-radius-xs) 0 0 var(--arg-radius-xs); }
+.arg-bidask__side:last-child .arg-bidask__row::before { left: 0; border-radius: 0 var(--arg-radius-xs) var(--arg-radius-xs) 0; }
+.arg-bidask__row > span { position: relative; z-index: 1; }
+.arg-bidask__vol { font-weight: var(--arg-font-font-weight-regular); color: var(--arg-ui-text-on-bright-text-title); }
+
+/* ARG UI · ordermodify (màn Sửa lệnh: chiều lệnh và loại lệnh bị khoá, chỉ sửa giá, khối lượng; nút Sửa lệnh chỉ bật khi có thay đổi) */
+.arg-locked { opacity: .6; }
+.arg-locked, .arg-locked * { cursor: not-allowed; }
+.arg-ordermodify__hint { margin: calc(var(--arg-space-1x) * -1) 0 0; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+[data-arg-modify] .arg-actionbar > .arg-btn:disabled { opacity: .5; }
+[data-arg-modify][data-mode="lite"] .arg-statrow { display: none; } /* Lite gọn: bỏ hàng KL, TC, Mở, Cao, Thấp */
+
 /* ARG UI · offcanvas */
 .arg-offcanvas-wrap { position: fixed; inset: 0; z-index: 100; background: var(--arg-ui-background-bg-overlay); animation: arg-fade .15s ease; }
 .arg-offcanvas-wrap[hidden] { display: none; }
@@ -3678,6 +3702,8 @@ code { font-family: var(--mono); font-size: 12px; background: var(--arg-ui-backg
         <a href="#plchart">P/L chart</a>
         <a href="#statement">Statement</a>
         <a href="#orderdetail">Order detail</a>
+        <a href="#bidask">Bid / Ask</a>
+        <a href="#ordermodify">Order modify</a>
         <a href="#offcanvas">Offcanvas</a>
         <a href="#placeholder">Placeholders</a>
         <a href="#progress">Progress</a>
@@ -5472,6 +5498,50 @@ code { font-family: var(--mono); font-size: 12px; background: var(--arg-ui-backg
 <p>Phụ thuộc: Kv, Action bar, Badge, Button, Modal.</p></div></details>
       </section>
 
+      <section id="bidask">
+        <h2>Bid / Ask</h2>
+        <p class="sec-desc">Bước giá rút gọn nằm ngang, dùng ở chế độ Lite của màn Sửa lệnh: dư mua bên trái, dư bán bên phải; mỗi bên có tổng khối lượng kèm tỷ lệ và 3 mức giá tốt nhất. Thanh nền sau giá dài theo khối lượng, mọc từ giữa ra.</p>
+        <div class="demo">
+          <div class="group"><h3>Mặc định</h3>
+            <div class="phone" style="padding:var(--arg-space-3x) var(--arg-gutter)">
+              <div class="arg-bidask">
+                <div class="arg-bidask__side arg-bidask__side--bid"><div class="arg-bidask__head"><b>Dư mua</b><span>Tổng <b>271.000</b> (91%)</span></div>
+                  <div class="arg-bidask__row" style="--w:55"><span class="arg-bidask__vol">73.500</span><span class="arg-up">35,10</span></div>
+                  <div class="arg-bidask__row" style="--w:100"><span class="arg-bidask__vol">136.900</span><span class="arg-up">35,05</span></div>
+                  <div class="arg-bidask__row" style="--w:45"><span class="arg-bidask__vol">60.600</span><span class="arg-ref">35,00</span></div></div>
+                <div class="arg-bidask__side arg-bidask__side--ask"><div class="arg-bidask__head"><b>Dư bán</b><span>Tổng <b>26.500</b> (9%)</span></div>
+                  <div class="arg-bidask__row" style="--w:30"><span class="arg-down">35,15</span><span class="arg-bidask__vol">3.400</span></div>
+                  <div class="arg-bidask__row" style="--w:80"><span class="arg-down">35,20</span><span class="arg-bidask__vol">10.700</span></div>
+                  <div class="arg-bidask__row" style="--w:100"><span class="arg-down">35,25</span><span class="arg-bidask__vol">12.400</span></div></div>
+              </div>
+            </div></div>
+        </div>
+      <details class="spec"><summary>Tài liệu: class, trạng thái, JS</summary><div class="spec__body"><h3>Dùng khi</h3>
+<p>Cần xem nhanh dư mua, dư bán ở chế độ gọn (ví dụ Sửa lệnh Lite), không cần cả sổ lệnh.</p>
+<h3>Class</h3>
+<div class="tbl-scroll"><table><thead><tr><th scope="col">Class</th><th scope="col">Mô tả</th></tr></thead><tbody><tr><td><code>.arg-bidask</code></td><td>Lưới 2 cột cách nhau 2px</td></tr><tr><td><code>__side</code> <code>--bid</code> <code>--ask</code></td><td>Một bên: dư mua (màu tăng, bên trái) hoặc dư bán (màu giảm, bên phải)</td></tr><tr><td><code>__head</code></td><td>Tiêu đề bên: nhãn đậm màu bên, dòng dưới là tổng khối lượng và tỷ lệ; nền 10% màu bên</td></tr><tr><td><code>__row</code></td><td>Một mức giá, <code>style="--w:&lt;0-100&gt;"</code> là độ dài thanh nền theo khối lượng; bên mua thanh mọc từ mép phải, bên bán từ mép trái</td></tr><tr><td><code>__vol</code></td><td>Khối lượng (chữ thường, màu tiêu đề); giá dùng lớp <code>.arg-up</code>, <code>.arg-down</code>, <code>.arg-ref</code></td></tr></tbody></table></div></div></details>
+      </section>
+
+      <section id="ordermodify">
+        <h2>Order modify</h2>
+        <p class="sec-desc">Điều khiển bị khoá của màn Sửa lệnh: chiều lệnh và loại lệnh không đổi được nên hiện mờ. Chỉ giá và khối lượng sửa được; chỉ lệnh LO sửa được, lệnh MP, ATO, ATC không sửa được.</p>
+        <div class="demo">
+          <div class="group"><h3>Điều khiển khoá</h3>
+            <div class="phone" style="padding:var(--arg-space-3x) var(--arg-gutter);display:grid;gap:var(--arg-space-3x)">
+              <div class="arg-side arg-locked" role="group" aria-label="Chiều lệnh"><button class="arg-side__btn arg-side__btn--buy" type="button" aria-pressed="true" disabled>Mua</button><button class="arg-side__btn arg-side__btn--sell" type="button" aria-pressed="false" disabled>Bán</button></div>
+              <div class="arg-control arg-select arg-select--center arg-locked"><select class="arg-select-native" aria-label="Loại lệnh" disabled><option>LO</option></select><i data-arg-icon="caret-down"></i></div>
+              <p class="arg-ordermodify__hint">KL mua tối đa: 300</p>
+            </div></div>
+        </div>
+      <details class="spec"><summary>Tài liệu: class, trạng thái, JS</summary><div class="spec__body"><h3>Dùng khi</h3>
+<p>Sửa một lệnh đang chờ khớp hoặc khớp một phần: mở từ nút Sửa lệnh ở màn Chi tiết lệnh. Chỉ lệnh LO sửa được; lệnh MP, ATO, ATC không sửa được.</p>
+<h3>Class</h3>
+<div class="tbl-scroll"><table><thead><tr><th scope="col">Class</th><th scope="col">Mô tả</th></tr></thead><tbody><tr><td><code>.arg-locked</code></td><td>Điều khiển bị khoá (chiều lệnh Mua/Bán, Loại lệnh): mờ 60%, con trỏ cấm; nút bên trong có <code>disabled</code></td></tr><tr><td><code>.arg-ordermodify__hint</code></td><td>Dòng gợi ý dưới ô nhập (Lite: "KL mua tối đa"), sát mép trái</td></tr></tbody></table></div>
+<p>Màn dùng lại Symbol, Pricehead, Statrow, Book (Pro), Bid / Ask (Lite), Side, Stepper, Kv, Action bar, Order modal.</p>
+<h3>Hành vi (JS)</h3>
+<div class="tbl-scroll"><table><thead><tr><th scope="col">Thuộc tính</th><th scope="col">Việc làm</th></tr></thead><tbody><tr><td><code>[data-arg-modify]</code> trên màn</td><td>Bật hành vi; hai form <code>[data-arg-order]</code> (Lite, Pro) giữ giá và khối lượng đồng bộ</td></tr><tr><td><code>data-om-price</code>, <code>data-om-qty</code> trên form</td><td>Giá trị lệnh gốc. Khác gốc thì nút <code>[data-om-submit]</code> mới bật</td></tr><tr><td><code>[data-om-submit]</code></td><td>Mở hộp xác nhận <code>[data-om-modal]</code> (điền <code>[data-ord]</code>)</td></tr><tr><td><code>[data-om-ok]</code></td><td>Đóng hộp xác nhận, mở hộp báo thành công <code>[data-om-done]</code>; bắn <code>arg:ordermodify</code></td></tr></tbody></table></div></div></details>
+      </section>
+
       <section id="offcanvas">
         <h2>Offcanvas</h2>
         <p class="sec-desc">Panel trượt từ mép màn hình: phải, trái hoặc dưới.</p>
@@ -5655,7 +5725,7 @@ code { font-family: var(--mono); font-size: 12px; background: var(--arg-ui-backg
   </div>
 </div>
 
-<script id="build-report" type="application/json">{"checks": [{"ok": true, "name": "Token CSS được dùng đều tồn tại", "detail": "212 biến dùng, thiếu: không"}, {"ok": true, "name": "Class trong ví dụ đều có CSS", "detail": "616 class dùng, thiếu: không"}, {"ok": true, "name": "Icon Solar được dùng đều có trong sprite", "detail": "95 icon dùng / 95 trong sprite, thiếu: không"}, {"ok": true, "name": "Mỗi component có ví dụ HTML và tài liệu", "detail": "84 component, thiếu tài liệu: không"}, {"ok": true, "name": "Token chiều cao điều khiển (32 / 40 / 44 / 48)", "detail": "height-small, height-normal, height-xl, height-xxl"}, {"ok": true, "name": "Gradient nút chính theo header web Agriseco", "detail": "--arg-gradient-primary-button: linear-gradient(90deg, var(--arg-p-brand-header-start) 0%, var(--arg-p-brand-header-end) 100%);"}]}</script>
+<script id="build-report" type="application/json">{"checks": [{"ok": true, "name": "Token CSS được dùng đều tồn tại", "detail": "212 biến dùng, thiếu: không"}, {"ok": true, "name": "Class trong ví dụ đều có CSS", "detail": "625 class dùng, thiếu: không"}, {"ok": true, "name": "Icon Solar được dùng đều có trong sprite", "detail": "95 icon dùng / 95 trong sprite, thiếu: không"}, {"ok": true, "name": "Mỗi component có ví dụ HTML và tài liệu", "detail": "86 component, thiếu tài liệu: không"}, {"ok": true, "name": "Token chiều cao điều khiển (32 / 40 / 44 / 48)", "detail": "height-small, height-normal, height-xl, height-xxl"}, {"ok": true, "name": "Gradient nút chính theo header web Agriseco", "detail": "--arg-gradient-primary-button: linear-gradient(90deg, var(--arg-p-brand-header-start) 0%, var(--arg-p-brand-header-end) 100%);"}]}</script>
 <script>
 /* ===== dist/arg-ui.js ===== */
 /* ARG UI behaviour. Generated by ui/build.py from ui/components/*. */
@@ -6831,6 +6901,50 @@ code { font-family: var(--mono); font-size: 12px; background: var(--arg-ui-backg
       root.dispatchEvent(new CustomEvent('arg:ordercancel', { bubbles: true, detail: { count: 1 } }));
     }
   });
+})();
+
+/* --- components/ordermodify/ordermodify.js --- */
+/* ARG UI ordermodify: màn [data-arg-modify] (Sửa lệnh). Giá, khối lượng ở hai chế độ Lite, Pro luôn đồng bộ; nút [data-om-submit] chỉ bật khi giá hoặc khối lượng khác lệnh gốc
+   (data-om-price, data-om-qty trên form). Bấm nút: điền [data-ord="title|symbol|type|price|qty|value"] vào hộp [data-om-modal] rồi mở; [data-om-ok] đóng hộp, mở hộp [data-om-done].
+   Bắn "arg:ordermodify" ({ symbol, price, qty }). */
+(function () {
+  'use strict';
+  function val(form, name) { var i = ARG.$('[data-arg-field="' + name + '"] input', form); return i ? i.value : ''; }
+  function put(root, key, text) { ARG.$$('[data-ord="' + key + '"]', root).forEach(function (el) { el.textContent = text; }); }
+  function forms(root) { return ARG.$$('[data-arg-order]', root); }
+  function active(root) { return forms(root).filter(function (f) { return f.offsetParent !== null; })[0] || forms(root)[0]; }
+  function sync(root) {
+    var f = forms(root)[0], dirty = val(f, 'price') !== f.getAttribute('data-om-price') || val(f, 'qty') !== f.getAttribute('data-om-qty');
+    ARG.$$('[data-om-submit]', root).forEach(function (b) { b.disabled = !dirty; });
+  }
+  document.addEventListener('input', function (e) {
+    var root = e.target.closest('[data-arg-modify]'), box = e.target.closest('[data-arg-field]');
+    if (!root || !box) return;
+    var name = box.getAttribute('data-arg-field');
+    forms(root).forEach(function (f) {
+      var i = ARG.$('[data-arg-field="' + name + '"] input', f);
+      if (i && i !== e.target && i.value !== e.target.value) { i.value = e.target.value; i.dispatchEvent(new Event('input', { bubbles: true })); }
+    });
+    sync(root);
+  });
+  document.addEventListener('click', function (e) {
+    var root = e.target.closest('[data-arg-modify]');
+    if (!root) return;
+    var go = e.target.closest('[data-om-submit]'), ok = e.target.closest('[data-om-ok]');
+    if (go && !go.disabled) {
+      var f = active(root), m = ARG.$('[data-om-modal]', root), t = ARG.$('[data-arg-order-total]', f);
+      put(m, 'title', f.getAttribute('data-side') === 'sell' ? 'Sửa lệnh bán ' + f.getAttribute('data-symbol') : 'Sửa lệnh mua ' + f.getAttribute('data-symbol'));
+      put(m, 'symbol', f.getAttribute('data-symbol')); put(m, 'type', 'LO'); put(m, 'price', val(f, 'price')); put(m, 'qty', val(f, 'qty')); put(m, 'value', t ? t.textContent : '');
+      ARG.openLayer(m, go);
+    } else if (ok) {
+      var g = active(root), d = ARG.$('[data-om-done]', root), side = g.getAttribute('data-side') === 'sell' ? 'bán' : 'mua';
+      ARG.closeLayer(ARG.$('[data-om-modal]', root));
+      put(d, 'done', 'Lệnh ' + side + ' ' + g.getAttribute('data-symbol') + ' đã được sửa thành ' + val(g, 'qty') + ' cổ phiếu, giá ' + val(g, 'price') + '. Bạn có thể xem trạng thái lệnh tại Sổ lệnh.');
+      ARG.openLayer(d, ok);
+      root.dispatchEvent(new CustomEvent('arg:ordermodify', { bubbles: true, detail: { symbol: g.getAttribute('data-symbol'), price: val(g, 'price'), qty: val(g, 'qty') } }));
+    }
+  });
+  ARG.register('ordermodify', function (root) { ARG.$$('[data-arg-modify]', root).forEach(sync); });
 })();
 
 /* --- components/book/book.js --- */

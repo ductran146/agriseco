@@ -53,9 +53,10 @@ def detail_screen(o):
     info = f'<button class="arg-icon-btn" type="button" aria-label="Giải thích phí giao dịch">{I("info")}</button>'
     rows = (kv('Số hiệu lệnh', oid) + kv('Thời gian', time) + kv('Loại lệnh', typ) + kv('Giá đặt', vn(px) if px else 'Thị trường') + kv('Giá khớp trung bình', vn(avg) if matched else '-')
             + kv('Khối lượng đặt', num(qty)) + kv('Khối lượng khớp', num(matched) if matched else '-') + kv('Giá trị ước tính', num(value)) + kv('Phí giao dịch ước tính', num(fee), info))
-    go = f'data-arg-go="{st.trade_id}" data-arg-side="{side}"'
+    edit = typ == 'LO' and cancel  # chỉ lệnh LO còn hiệu lực sửa được
     bar = ((f'<button class="arg-btn arg-btn--outline arg-btn--xl" type="button" data-od-cancel>Huỷ lệnh</button>' if cancel else '')
-           + f'<button class="arg-btn arg-btn--primary arg-btn--xl" type="button" {go}>Sửa lệnh</button>')
+           + (f'<button class="arg-btn arg-btn--primary arg-btn--xl" type="button" data-arg-go="modify-{oid.lower()}">Sửa lệnh</button>' if edit
+              else '<button class="arg-btn arg-btn--primary arg-btn--xl" type="button" disabled>Sửa lệnh</button>'))
     return f'''<div class="arg-screen arg-screen--plain" data-arg-screen="{order_id(o)}" data-arg-orderdetail hidden>
 <header class="arg-appbar arg-appbar--sticky"><button class="arg-appbar__tool" type="button" data-arg-back aria-label="Quay lại">{I('caret-left')}</button><h1 class="arg-appbar__title">Chi tiết lệnh</h1></header>
 <main class="arg-page__main arg-page__main--dense">

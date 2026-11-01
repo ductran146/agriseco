@@ -1,0 +1,6 @@
+/* ARG UI · ordermodify (màn Sửa lệnh: chiều lệnh và loại lệnh bị khoá, chỉ sửa giá, khối lượng; nút Sửa lệnh chỉ bật khi có thay đổi) */
+.arg-locked { opacity: .6; }
+.arg-locked, .arg-locked * { cursor: not-allowed; }
+.arg-ordermodify__hint { margin: calc(var(--arg-space-1x) * -1) 0 0; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+[data-arg-modify] .arg-actionbar > .arg-btn:disabled { opacity: .5; }
+[data-arg-modify][data-mode="lite"] .arg-statrow { display: none; } /* Lite gọn: bỏ hàng KL, TC, Mở, Cao, Thấp */

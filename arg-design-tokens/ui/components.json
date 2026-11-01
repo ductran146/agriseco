@@ -313,6 +313,14 @@
       "title": "Order detail"
     },
     {
+      "id": "bidask",
+      "title": "Bid / Ask"
+    },
+    {
+      "id": "ordermodify",
+      "title": "Order modify"
+    },
+    {
       "id": "offcanvas",
       "title": "Offcanvas"
     },
@@ -376,6 +384,8 @@
     "components/plchart/plchart.css",
     "components/statement/statement.css",
     "components/orderdetail/orderdetail.css",
+    "components/bidask/bidask.css",
+    "components/ordermodify/ordermodify.css",
     "components/offcanvas/offcanvas.css",
     "components/selectsheet/selectsheet.css",
     "components/datepicker/datepicker.css",

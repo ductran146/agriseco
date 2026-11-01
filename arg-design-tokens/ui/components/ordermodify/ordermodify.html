@@ -1,0 +1,12 @@
+<section id="ordermodify">
+        <h2>Order modify</h2>
+        <p class="sec-desc">Điều khiển bị khoá của màn Sửa lệnh: chiều lệnh và loại lệnh không đổi được nên hiện mờ. Chỉ giá và khối lượng sửa được; chỉ lệnh LO sửa được, lệnh MP, ATO, ATC không sửa được.</p>
+        <div class="demo">
+          <div class="group"><h3>Điều khiển khoá</h3>
+            <div class="phone" style="padding:var(--arg-space-3x) var(--arg-gutter);display:grid;gap:var(--arg-space-3x)">
+              <div class="arg-side arg-locked" role="group" aria-label="Chiều lệnh"><button class="arg-side__btn arg-side__btn--buy" type="button" aria-pressed="true" disabled>Mua</button><button class="arg-side__btn arg-side__btn--sell" type="button" aria-pressed="false" disabled>Bán</button></div>
+              <div class="arg-control arg-select arg-select--center arg-locked"><select class="arg-select-native" aria-label="Loại lệnh" disabled><option>LO</option></select><i data-arg-icon="caret-down"></i></div>
+              <p class="arg-ordermodify__hint">KL mua tối đa: 300</p>
+            </div></div>
+        </div>
+      </section>
