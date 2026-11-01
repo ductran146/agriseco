@@ -1,0 +1,21 @@
+/* ARG UI · search (màn tìm mã: thanh đầu có nút quay lại và ô tìm, danh sách tìm gần đây, kết quả kèm ngôi sao theo dõi) */
+.arg-search__bar { justify-content: flex-start; gap: var(--arg-space-2x); }
+.arg-search__bar .arg-control { flex: 1; min-width: 0; }
+.arg-search__bar .arg-input::-webkit-search-cancel-button { display: none; }
+.arg-search__clear[hidden] { display: none; }
+.arg-search__recent[hidden], .arg-search__results[hidden], .arg-search__none[hidden] { display: none; }
+.arg-search__head { display: flex; align-items: center; justify-content: space-between; gap: var(--arg-space-3x); padding-top: var(--arg-space-4x); }
+.arg-search__title { margin: 0; font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-title-3)/var(--arg-font-line-height-title-3) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-search__list { list-style: none; margin: 0; padding: 0; }
+.arg-search__recent .arg-search__list { margin-top: var(--arg-space-2x); }
+.arg-search__row { display: flex; align-items: center; gap: var(--arg-space-3x); min-height: 44px; }
+.arg-search__row[hidden] { display: none; }
+.arg-search__pick { flex: 1; min-width: 0; display: flex; align-items: center; gap: var(--arg-space-3x); padding: 0; border: 0; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.arg-search__pick:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: 2px; border-radius: var(--arg-radius-xs); }
+.arg-search__pick .i { width: 20px; height: 20px; flex: none; color: var(--arg-ui-text-on-bright-text-placeholder); }
+.arg-search__pick b { font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-search__results .arg-search__row { min-height: 68px; border-top: 1px solid var(--arg-ui-divider-separator); }
+.arg-search__results .arg-search__row:first-child { border-top: 0; }
+.arg-search__row > .arg-quote__id { flex: 1; min-width: 0; color: inherit; text-decoration: none; outline: 0; }
+.arg-search__row > a.arg-quote__id:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: 2px; border-radius: var(--arg-radius-xs); }
+.arg-search__none { margin: 0; padding: var(--arg-space-8x) 0; text-align: center; color: var(--arg-ui-text-on-bright-text-content-lv2); }

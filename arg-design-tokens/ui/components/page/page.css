@@ -78,3 +78,12 @@
 .arg-page__block > .arg-tabs--lg > .arg-tablist { margin-inline: calc(var(--arg-gutter) * -1); padding-inline: var(--arg-gutter); scroll-padding-inline: var(--arg-gutter); }
 /* Tiêu đề khối có dòng phụ dài: cho dòng phụ xuống dòng thay vì tràn */
 .arg-page__block > .arg-title--stacked .arg-title__sub { white-space: normal; }
+/* Dải chip tab đứng sau một khối khác (thông tin mã): cách dải xám phía trên 16px, không sát mép */
+.arg-screen--sections .arg-page__main > .arg-page__block + .arg-page__tabbed > .arg-page__block:first-child { padding-top: var(--arg-space-4x); }
+/* Màn Tài sản: cặp ô ngày, hai nút Rút/Nộp tiền, tiêu đề phụ trong khối */
+.arg-asset-dates, .arg-asset-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--arg-space-3x); }
+.arg-asset-sub { margin: 0; font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-body-3)/var(--arg-font-line-height-body-3) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); }
+/* Màn có thanh tab dưới: nội dung cuối cách thanh tab 20px (thanh đã chừa vùng an toàn đáy nên không cộng thêm) */
+.arg-screen--sections:has(> .arg-tabbar) .arg-page__main > :last-child:not(.arg-page__tabbed), .arg-screen--sections:has(> .arg-tabbar) .arg-page__cols:last-child > .arg-page__block,
+.arg-screen--sections:has(> .arg-tabbar) .arg-page__main > .arg-page__tabbed:last-child > [role="tabpanel"] > .arg-page__block:last-child { padding-bottom: var(--arg-space-5x); }
+.arg-screen:not(.arg-screen--sections):not(.arg-screen--plain):has(> .arg-tabbar) > .arg-page__main { padding-bottom: var(--arg-space-5x); }

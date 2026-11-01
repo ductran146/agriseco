@@ -12,3 +12,5 @@
 .arg-actionbar[data-ob-bar] .arg-btn:disabled { opacity: .4; }
 .arg-orderbook__empty { margin: 0; padding: var(--arg-space-8x) 0; text-align: center; color: var(--arg-ui-text-on-bright-text-content-lv2); }
 .arg-orderbook__empty[hidden] { display: none; }
+/* Sổ lệnh: nội dung cuối cách thanh tab dưới 20px */
+.arg-screen[data-arg-orderbook] > .arg-page__main { padding-bottom: var(--arg-space-5x); }

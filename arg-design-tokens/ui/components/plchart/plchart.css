@@ -1,0 +1,15 @@
+/* ARG UI · plchart (đường lãi/lỗ luỹ kế: phần trên đường 0 màu tăng, phần dưới màu giảm, vùng tô mờ; tooltip khi rê chuột hoặc chạm giữ) */
+.arg-plchart { display: grid; gap: var(--arg-space-2x); min-width: 0; }
+.arg-plchart__plot { position: relative; height: 160px; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.arg-plchart__plot svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.arg-plchart .up { --c: var(--arg-trading-up-light-increase); }
+.arg-plchart .down { --c: var(--arg-trading-down-light-increase); }
+.arg-plchart .area { fill: color-mix(in srgb, var(--c) 16%, transparent); stroke: none; }
+.arg-plchart .line { fill: none; stroke: var(--c); stroke-width: 2; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.arg-plchart .base { stroke: var(--arg-ui-divider-stroke); stroke-width: 1; stroke-dasharray: 3 3; vector-effect: non-scaling-stroke; }
+.arg-plchart__cur { position: absolute; top: 0; bottom: 0; left: calc(var(--x, 0) * 1%); width: 0; border-left: 1px dashed var(--arg-ui-text-on-bright-text-placeholder); opacity: 0; pointer-events: none; }
+.arg-plchart__dot { position: absolute; left: calc(var(--x, 0) * 1%); top: calc(var(--y, 0) * 1%); width: 10px; height: 10px; margin: -5px 0 0 -5px; border: 2px solid var(--arg-ui-background-surface); border-radius: 50%; background: var(--c, var(--arg-trading-up-light-increase)); opacity: 0; pointer-events: none; }
+.arg-plchart__tip { position: absolute; top: 0; left: calc(var(--x, 0) * 1%); transform: translateX(var(--tx, -50%)); display: grid; gap: 2px; padding: var(--arg-space-2x) var(--arg-space-3x); border-radius: var(--arg-radius-sm); background: var(--arg-ui-background-surface); box-shadow: var(--arg-shadow-shadow); font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); white-space: nowrap; opacity: 0; pointer-events: none; }
+.arg-plchart__tip b { font-weight: var(--arg-font-font-weight-semibold); }
+.arg-plchart__plot.is-active .arg-plchart__cur, .arg-plchart__plot.is-active .arg-plchart__dot, .arg-plchart__plot.is-active .arg-plchart__tip { opacity: 1; }
+.arg-plchart__axis { display: flex; justify-content: space-between; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-2)/var(--arg-font-line-height-label-2) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }

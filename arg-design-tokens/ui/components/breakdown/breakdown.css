@@ -1,0 +1,15 @@
+/* ARG UI · breakdown (thẻ cơ cấu một khoản: dòng tổng, thanh chia nhiều đoạn, danh sách thành phần có chấm màu, thành phần con mở rộng được) */
+.arg-breakdown { display: grid; gap: var(--arg-space-3x); padding: var(--arg-space-4x); border-radius: var(--arg-radius); background: var(--arg-ui-background-background); font-variant-numeric: tabular-nums; }
+.arg-breakdown__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--arg-space-3x); font: var(--arg-font-font-weight-medium) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-breakdown__head b { font-size: var(--arg-font-font-size-body-3); line-height: var(--arg-font-line-height-body-3); font-weight: var(--arg-font-font-weight-bold); }
+.arg-breakdown__bar { display: flex; gap: 2px; height: 8px; margin: 0; padding: 0; list-style: none; border-radius: var(--arg-border-radius-radius-md); overflow: hidden; }
+.arg-breakdown__bar li { flex: var(--w) 1 0; min-width: 2px; background: var(--c); }
+.arg-breakdown__list { display: grid; gap: var(--arg-space-2x); margin: 0; padding: 0; list-style: none; }
+.arg-breakdown__row { display: flex; align-items: center; gap: var(--arg-space-2x); min-height: 24px; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-breakdown__row > span { flex: 1; min-width: 0; }
+.arg-breakdown__row > b { font-weight: var(--arg-font-font-weight-semibold); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-breakdown__key { flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+.arg-breakdown__row .arg-icon-btn { margin-right: calc(var(--arg-space-1x) * -1); }
+.arg-breakdown__sub { display: grid; gap: var(--arg-space-1x); margin: 0; padding: var(--arg-space-1x) 0 var(--arg-space-1x) calc(10px + var(--arg-space-2x)); list-style: none; }
+.arg-breakdown__sub li { display: flex; justify-content: space-between; gap: var(--arg-space-3x); font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-breakdown__sub li b { font-weight: var(--arg-font-font-weight-medium); color: var(--arg-ui-text-on-bright-text-title); }

@@ -285,6 +285,30 @@
       "title": "Order book"
     },
     {
+      "id": "search",
+      "title": "Search"
+    },
+    {
+      "id": "assetcard",
+      "title": "Asset card"
+    },
+    {
+      "id": "debtcard",
+      "title": "Debt card"
+    },
+    {
+      "id": "breakdown",
+      "title": "Breakdown"
+    },
+    {
+      "id": "plchart",
+      "title": "P/L chart"
+    },
+    {
+      "id": "statement",
+      "title": "Statement"
+    },
+    {
       "id": "orderdetail",
       "title": "Order detail"
     },
@@ -345,6 +369,12 @@
     "components/ordermodal/ordermodal.css",
     "components/orderrow/orderrow.css",
     "components/orderbook/orderbook.css",
+    "components/search/search.css",
+    "components/assetcard/assetcard.css",
+    "components/debtcard/debtcard.css",
+    "components/breakdown/breakdown.css",
+    "components/plchart/plchart.css",
+    "components/statement/statement.css",
     "components/orderdetail/orderdetail.css",
     "components/offcanvas/offcanvas.css",
     "components/selectsheet/selectsheet.css",

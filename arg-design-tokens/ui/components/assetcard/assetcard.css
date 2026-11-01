@@ -1,0 +1,15 @@
+/* ARG UI · assetcard (thẻ tổng tài sản ở màn Tài sản: nền gradient thương hiệu như thẻ Account ở trang chủ; nhãn kèm nút ẩn/hiện số, số tổng, lãi/lỗ hôm nay) */
+.arg-assetcard { position: relative; isolation: isolate; overflow: hidden; display: grid; gap: var(--arg-space-1x); padding: var(--arg-space-5x); border-radius: var(--arg-radius-lg); color: #fff; box-shadow: var(--arg-shadow-shadow);
+  background-color: var(--arg-p-brand-header-start);
+  background-image: radial-gradient(120% 90% at 100% 0%, var(--arg-p-alpha-white-21) 0%, transparent 55%), radial-gradient(70% 80% at 0% 100%, color-mix(in srgb, var(--arg-p-brand-amber) 55%, transparent) 0%, transparent 70%), var(--arg-gradient-primary-button); }
+.arg-assetcard::before, .arg-assetcard::after { content: ""; position: absolute; z-index: -1; border-radius: 50%; pointer-events: none; }
+.arg-assetcard::before { width: 220px; height: 220px; top: -96px; right: -72px; border: 28px solid var(--arg-p-alpha-white-8); }
+.arg-assetcard::after { width: 120px; height: 120px; bottom: -64px; right: 72px; border: 16px solid var(--arg-p-alpha-white-5); }
+.arg-assetcard__label { display: inline-flex; align-items: center; gap: var(--arg-space-1-5x); font: var(--arg-font-font-weight-medium) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-p-alpha-white-86); }
+.arg-assetcard__label .arg-icon-btn { color: #fff; }
+.arg-assetcard__label .arg-icon-btn:hover { background: var(--arg-p-alpha-white-16); color: #fff; }
+.arg-assetcard__label .arg-icon-btn:focus-visible { outline-color: #fff; }
+.arg-assetcard__amount { font-size: var(--arg-font-font-size-header-3); line-height: var(--arg-font-line-height-header-3); font-weight: var(--arg-font-font-weight-bold); font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+.arg-assetcard__delta { justify-self: start; display: inline-flex; align-items: center; gap: var(--arg-space-1x); padding: var(--arg-space-1x) var(--arg-space-2-5x); border-radius: var(--arg-radius-sm); background: var(--arg-ui-background-surface); color: var(--arg-ui-text-on-bright-text-content-lv2); font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.arg-assetcard__delta .i { width: 16px; height: 16px; color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-assetcard__delta b { font-weight: var(--arg-font-font-weight-semibold); }

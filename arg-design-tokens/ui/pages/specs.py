@@ -82,11 +82,36 @@ ORDERDETAIL = [
 ]
 
 
+SEARCH = [
+    ('.arg-search__bar', 'l', 'Appbar --sticky + Input có icon: quay lại và ô tìm; mở màn là tự đặt con trỏ, bàn phím chữ trượt lên; nút × chỉ hiện khi có chữ.'),
+    ('.arg-search__recent .arg-search__head', 'r', 'Tìm gần đây: tiêu đề Title 3 và nút thùng rác 24px xoá cả danh sách.'),
+    ('.arg-search__recent .arg-search__list', 'l', 'Dòng 44px: icon kính lúp, mã đậm; bấm điền vào ô, nút × bên phải xoá dòng.'),
+    ('.arg-search__results', 'r', 'Kết quả: Quote __id (mã, tên) và ngôi sao .arg-fav 28px (đang theo dõi: vàng --arg-p-brand-yellow); lọc theo mã hoặc tên, bỏ dấu.'),
+]
+
+
+ASSET = [
+    ('.arg-acctsel', 'l', 'Acctsel + Dropdown: chọn tiểu khoản; màn mở sẵn tiểu khoản ký quỹ.'),
+    ('.arg-chip-tabs--sm', 'r', 'Chip tabs --sm: 4 tab Tài sản, Danh mục, Lãi lỗ, Sao kê tiền, cuộn ngang.'),
+    ('.arg-assetcard', 'l', 'Assetcard: tổng tài sản Header 3; nút mắt ẩn mọi số có data-arg-secret trong tab.'),
+    ('.arg-metric-row', 'r', 'Metric: 4 thẻ 2 cột; lãi xanh, lỗ đỏ theo token giao dịch.'),
+    ('.arg-debtcard', 'l', 'Debtcard: nền, viền màu lỗi 8% và 24%; nút Trả nợ Button primary xl.'),
+    ('.arg-donut', 'r', 'Donut: cổ phiếu và tiền; phần lớn nhất giữa vòng, màu --arg-viz.'),
+    ('.arg-breakdown', 'l', 'Breakdown: dòng tổng, thanh 8px chia đoạn, chấm màu; dòng có mũi tên mở thành phần con (Collapse).'),
+    ('.arg-asset-actions', 'r', 'Rút tiền (Button outline xl) và Nộp tiền (primary xl) chia đôi hàng.'),
+    ('.arg-kv--lines', 'l', 'Kv --lines: dư nợ margin, hàng 44px; Tổng nợ trong ngày màu giảm.'),
+    ('.arg-plchart', 'r', 'Plchart: trên đường 0 màu tăng, dưới màu giảm; tooltip khi rê chuột hoặc chạm giữ 250ms.'),
+    ('.arg-stmt', 'l', 'Statement: ngày, loại giao dịch, các khoản; bản tiền có mũi tên mở phí và thuế.'),
+]
+
+
 def specs_for(sid):
     """Danh sách đặc tả của màn hình có id sid."""
     if sid == 'home': return HOME
     if sid == 'market': return MARKET
     if sid == 'orderbook': return ORDERBOOK
+    if sid == 'search': return SEARCH
+    if sid == 'asset': return ASSET
     if sid.startswith('order-'): return ORDERDETAIL
     if sid == 'trade' or sid.startswith('trade-'): return TRADE
     if sid.startswith('stock-'): return STOCK

@@ -1039,6 +1039,122 @@
   });
 })();
 
+/* --- components/search/search.js --- */
+/* ARG UI search: màn hình [data-arg-search].
+   - Ô [data-arg-search-input]: rỗng thì hiện [data-arg-search-recent] (tìm gần đây), có chữ thì hiện [data-arg-search-results] đã lọc theo mã hoặc tên (không phân biệt hoa thường, bỏ dấu), mã bắt đầu bằng chữ gõ xếp trước. [data-arg-search-none] hiện khi không có kết quả.
+   - [data-arg-search-clear] xoá chữ trong ô và đặt con trỏ lại ô (chỉ hiện khi ô có chữ).
+   - Dòng tìm gần đây [data-arg-search-pick="MÃ"]: bấm điền mã vào ô. [data-arg-search-remove] xoá một dòng, [data-arg-search-clear-all] xoá cả danh sách (hiện [data-arg-search-empty] và ẩn nút xoá).
+   - Mở màn thì tự đặt con trỏ vào ô (bàn phím mô phỏng trượt lên). Sao yêu thích do Appbar xử lý (data-arg-fav-toggle). Bắn "arg:search" ({ q, count }) khi lọc. */
+(function () {
+  'use strict';
+  function fold(t) { return t.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd').toLowerCase(); }
+  function rank(li, q) {
+    var code = li.getAttribute('data-code').toLowerCase(), name = li.getAttribute('data-q');
+    if (code.indexOf(q) === 0) return 0;
+    if (code.indexOf(q) > 0) return 1;
+    return name.indexOf(q) >= 0 ? 2 : 3;
+  }
+  function apply(root) {
+    var input = ARG.$('[data-arg-search-input]', root), q = fold(input.value.trim()), list = ARG.$('[data-arg-search-results]', root), n = 0;
+    ARG.$$('[data-arg-search-clear]', root).forEach(function (b) { b.hidden = !input.value; });
+    ARG.$('[data-arg-search-recent]', root).hidden = !!q;
+    list.hidden = !q;
+    if (q) {
+      var rows = ARG.$$('li', list).map(function (li) { return { li: li, r: rank(li, q) }; });
+      rows.sort(function (a, b) { return a.r - b.r || a.li.getAttribute('data-code').localeCompare(b.li.getAttribute('data-code')); });
+      rows.forEach(function (x) { x.li.hidden = x.r > 2; if (!x.li.hidden) n++; list.appendChild(x.li); });
+    }
+    ARG.$('[data-arg-search-none]', root).hidden = !q || n > 0;
+    root.dispatchEvent(new CustomEvent('arg:search', { bubbles: true, detail: { q: input.value.trim(), count: n } }));
+  }
+  function recentSync(root) {
+    var left = ARG.$$('[data-arg-search-recent] .arg-search__row', root).length;
+    ARG.$('[data-arg-search-empty]', root).hidden = left > 0;
+    ARG.$$('[data-arg-search-clear-all]', root).forEach(function (b) { b.hidden = left === 0; });
+  }
+  ARG.register('search', function (scope) {
+    ARG.$$('[data-arg-search]', scope).forEach(function (root) {
+      if (!ARG.once(root, 'search')) return;
+      var input = ARG.$('[data-arg-search-input]', root);
+      apply(root); recentSync(root);
+      if (root.classList.contains('arg-screen') && !root.hidden) setTimeout(function () { input.focus(); }, 0);
+    });
+  });
+  document.addEventListener('arg:screen', function (e) {
+    var root = document.querySelector('[data-arg-search]:not([hidden])');
+    if (root && e.detail && e.detail.id === root.getAttribute('data-arg-screen')) ARG.$('[data-arg-search-input]', root).focus();
+  });
+  document.addEventListener('input', function (e) {
+    var root = e.target.closest('[data-arg-search]');
+    if (root && e.target.matches('[data-arg-search-input]')) apply(root);
+  });
+  document.addEventListener('click', function (e) {
+    var root = e.target.closest('[data-arg-search]'); if (!root) return;
+    var input = ARG.$('[data-arg-search-input]', root), t;
+    if ((t = e.target.closest('[data-arg-search-clear]'))) { input.value = ''; apply(root); input.focus(); }
+    else if ((t = e.target.closest('[data-arg-search-pick]'))) { input.value = t.getAttribute('data-arg-search-pick'); apply(root); input.focus(); }
+    else if ((t = e.target.closest('[data-arg-search-remove]'))) { t.closest('.arg-search__row').remove(); recentSync(root); }
+    else if (e.target.closest('[data-arg-search-clear-all]')) { ARG.$$('[data-arg-search-recent] .arg-search__row', root).forEach(function (li) { li.remove(); }); recentSync(root); }
+  });
+})();
+
+/* --- components/assetcard/assetcard.js --- */
+/* ARG UI assetcard: nút [data-arg-asset-eye] trong .arg-assetcard ẩn hoặc hiện mọi số [data-arg-secret] trong vùng [data-arg-secret-scope] gần nhất (không có thì chỉ trong thẻ).
+   Icon luôn là trạng thái sẽ chuyển tới (đang hiện số thì eye-slash). Vùng nhận lớp .is-hidden khi đang ẩn. Bắn "arg:secret" ({ hidden }). */
+(function () {
+  'use strict';
+  var MASK = '••••••';
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-arg-asset-eye]');
+    if (!btn) return;
+    var card = btn.closest('.arg-assetcard'), scope = btn.closest('[data-arg-secret-scope]') || card;
+    if (!card) return;
+    var hide = !scope.classList.contains('is-hidden');
+    ARG.$$('[data-arg-secret]', scope).forEach(function (el) {
+      if (hide) { if (!el.hasAttribute('data-arg-value')) { el.setAttribute('data-arg-value', el.textContent); el.textContent = MASK; } }
+      else if (el.hasAttribute('data-arg-value')) { el.textContent = el.getAttribute('data-arg-value'); el.removeAttribute('data-arg-value'); }
+    });
+    scope.classList.toggle('is-hidden', hide);
+    btn.setAttribute('aria-label', hide ? 'Hiện số dư' : 'Ẩn số dư');
+    btn.innerHTML = ARG.icon(hide ? 'eye' : 'eye-slash', 'i--20');
+    scope.dispatchEvent(new CustomEvent('arg:secret', { bubbles: true, detail: { hidden: hide } }));
+  });
+})();
+
+/* --- components/plchart/plchart.js --- */
+/* ARG UI plchart: vùng [data-arg-plchart] mang data-points (mảng lãi/lỗ luỹ kế, đồng), data-dates (nhãn ngày cùng độ dài), data-min và data-max (đồng, khớp trục dọc của SVG).
+   Đường gióng, chấm và tooltip chỉ hiện khi rê chuột, hoặc chạm giữ khoảng 250ms rồi kéo; vuốt nhanh vẫn cuộn trang. Bắn "arg:plchart" ({ index }). */
+(function () {
+  'use strict';
+  function vnd(v) { var s = Math.abs(Math.round(v)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'); return (v > 0 ? '+' : v < 0 ? '-' : '') + s; }
+  ARG.register('plchart', function (scope) {
+    ARG.$$('[data-arg-plchart]', scope).forEach(function (plot) {
+      if (!ARG.once(plot, 'plchart')) return;
+      var pts = JSON.parse(plot.getAttribute('data-points')), dates = JSON.parse(plot.getAttribute('data-dates'));
+      var lo = parseFloat(plot.getAttribute('data-min')), hi = parseFloat(plot.getAttribute('data-max'));
+      var dot = ARG.$('.arg-plchart__dot', plot), tip = ARG.$('.arg-plchart__tip', plot), timer = null, held = false;
+      function show(clientX) {
+        var r = plot.getBoundingClientRect(), t = Math.min(1, Math.max(0, (clientX - r.left) / r.width)), i = Math.round(t * (pts.length - 1)), v = pts[i];
+        var x = i / (pts.length - 1) * 100, y = (hi - v) / (hi - lo) * 100, up = v >= 0;
+        plot.style.setProperty('--x', x); plot.style.setProperty('--y', y);
+        plot.style.setProperty('--tx', x < 25 ? '0%' : x > 75 ? '-100%' : '-50%');
+        dot.style.setProperty('--c', up ? 'var(--arg-trading-up-light-increase)' : 'var(--arg-trading-down-light-increase)');
+        tip.innerHTML = '<span>' + dates[i] + '</span><span>Lãi/lỗ luỹ kế: <b class="' + (up ? 'arg-up' : 'arg-down') + '">' + vnd(v) + '</b></span>';
+        plot.classList.add('is-active');
+        plot.dispatchEvent(new CustomEvent('arg:plchart', { bubbles: true, detail: { index: i } }));
+      }
+      function hide() { plot.classList.remove('is-active'); held = false; clearTimeout(timer); }
+      plot.addEventListener('pointermove', function (e) { if (e.pointerType === 'mouse' || held) show(e.clientX); });
+      plot.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') hide(); });
+      plot.addEventListener('pointerdown', function (e) {
+        if (e.pointerType === 'mouse') return;
+        var x = e.clientX; timer = setTimeout(function () { held = true; plot.style.touchAction = 'none'; show(x); }, 250);
+      });
+      ['pointerup', 'pointercancel'].forEach(function (n) { plot.addEventListener(n, function (e) { if (e.pointerType !== 'mouse') { plot.style.touchAction = ''; hide(); } }); });
+    });
+  });
+})();
+
 /* --- components/orderdetail/orderdetail.js --- */
 /* ARG UI orderdetail: màn [data-arg-orderdetail]. Bấm [data-od-cancel] mở hộp xác nhận [data-od-modal]; bấm [data-od-ok] đóng hộp, đổi nhãn [data-od-badge] thành Đã huỷ, ẩn nút huỷ.
    Bắn "arg:ordercancel" ({ count: 1 }). */

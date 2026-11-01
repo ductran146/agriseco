@@ -383,7 +383,7 @@ def screen(tabbar_html, watch_lists, index_rows):
     head = ''.join(f'<button class="arg-tab" role="tab" type="button" aria-selected="{"true" if i == 0 else "false"}">{t}</button>' for i, (t, _) in enumerate(tabs))
     panels = ''.join(f'<div class="arg-tabpanel" role="tabpanel"{"" if i == 0 else " hidden"}>{h}</div>' for i, (_, h) in enumerate(tabs))
     return f'''<div class="arg-screen arg-screen--sections" data-arg-screen="market" hidden>
-<header class="arg-appbar arg-appbar--sticky"><h1 class="arg-appbar__title">Thị trường</h1><div class="arg-appbar__tools"><button class="arg-appbar__tool" type="button" aria-label="Tìm kiếm">{I('magnifying-glass')}</button></div></header>
+<header class="arg-appbar arg-appbar--sticky"><h1 class="arg-appbar__title">Thị trường</h1><div class="arg-appbar__tools"><button class="arg-appbar__tool" type="button" data-arg-go="search" aria-label="Tìm kiếm">{I('magnifying-glass')}</button></div></header>
 <main class="arg-page__main">
   <div class="arg-page__tabbed" data-arg-tabs>
     <div class="arg-page__block"><div class="arg-tabs arg-tabs--lg"><div class="arg-tablist" role="tablist" aria-label="Thị trường">{head}</div></div></div>
