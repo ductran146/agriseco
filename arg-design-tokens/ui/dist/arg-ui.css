@@ -1949,6 +1949,9 @@ button.arg-book__more { border: 0; padding: 0; background: transparent; cursor: 
 @media (min-width: 720px) {
   /* Hai cột ngang chiều cao: khối thấp hơn giãn thẻ bên trong cho đủ chiều cao; tiêu đề hai cột cùng cao 44px; khối có chip tab thì thẻ danh sách giãn cho hai cột ngang nhau để thẳng hàng với hàng lời chào */
   .arg-page__cols--match { align-items: stretch; gap: var(--arg-space-6x); }
+  /* Khuyến nghị nằm trong cột: thẻ vừa đúng cột, không tràn lề (mobile mới cần lộ mép thẻ kế để gợi vuốt); thẻ thứ hai không lấn sang cột Tin tức */
+  .arg-page__cols .arg-reco-row { margin-inline: 0; padding-inline: 0; scroll-padding-inline: 0; }
+  .arg-page__cols .arg-reco-row > .arg-reco { flex-basis: 100%; }
   .arg-page__cols--match > .arg-page__block { grid-template-rows: minmax(0, 1fr); align-content: stretch; }
   .arg-page__cols--match > .arg-page__block:has(> .arg-title) { grid-template-rows: auto minmax(0, 1fr); }
   .arg-page__cols--match > .arg-page__block > .arg-title { height: var(--arg-border-height-size-height-xl); min-height: 0; align-items: center; } /* cùng cao 44px với hàng lời chào */

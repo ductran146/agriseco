@@ -3316,6 +3316,9 @@ button.arg-book__more { border: 0; padding: 0; background: transparent; cursor: 
 @media (min-width: 720px) {
   
   .arg-page__cols--match { align-items: stretch; gap: var(--arg-space-6x); }
+  
+  .arg-page__cols .arg-reco-row { margin-inline: 0; padding-inline: 0; scroll-padding-inline: 0; }
+  .arg-page__cols .arg-reco-row > .arg-reco { flex-basis: 100%; }
   .arg-page__cols--match > .arg-page__block { grid-template-rows: minmax(0, 1fr); align-content: stretch; }
   .arg-page__cols--match > .arg-page__block:has(> .arg-title) { grid-template-rows: auto minmax(0, 1fr); }
   .arg-page__cols--match > .arg-page__block > .arg-title { height: var(--arg-border-height-size-height-xl); min-height: 0; align-items: center; } 
