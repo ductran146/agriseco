@@ -6,6 +6,7 @@ Lọc hoặc chuyển nhanh giữa vài nhóm nội dung cùng cấp, ví dụ d
 | `.arg-chip-tabs[data-arg-tabs]` | Khung, dùng script của Tabs |
 | `.arg-chip-tabs__list[role=tablist]` | Dải chip, cuộn ngang khi hết chỗ, ẩn thanh cuộn |
 | `.arg-chip-tab[role=tab]` | Một chip cao 40px, bo tròn; `aria-selected="true"` là chip đang chọn |
+| `.arg-badge.arg-badge--pill` trong chip | Số đếm: badge pill nhỏ ở cuối chip; chip đang chọn thì badge nền mờ, chữ cùng màu chip |
 | `--sm` | Chip cao 32px |
 | `--xs` | Chip cao 28px, tối thiểu 28×28px, chữ viết tắt (ví dụ 1N, 1T, 1Th) |
 | Chip hành động | Dùng `.arg-chip-tab` là nút thường (không `role=tab`, không có `data-arg-tabs`) để chọn nhanh một giá trị, ví dụ giá Sàn, TC, Trần hoặc khối lượng 25%, 50%. Kết hợp `--sm` và `--fill` cho hàng chip chia đều |

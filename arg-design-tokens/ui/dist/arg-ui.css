@@ -350,6 +350,9 @@
 .arg-chip-tabs__list::-webkit-scrollbar { display: none; }
 .arg-chip-tab { flex: none; display: inline-flex; align-items: center; justify-content: center; gap: var(--arg-space-2x); height: var(--h); padding: 0 var(--arg-space-5x); border: 0; border-radius: var(--r); background: var(--arg-ui-background-lv-3); color: var(--arg-ui-text-on-bright-text-content-lv2); font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); white-space: nowrap; cursor: pointer; }
 .arg-chip-tab .i { width: 16px; height: 16px; }
+/* Số đếm trong chip: badge pill nhỏ; chip chưa chọn thì badge nền trắng, chip đang chọn (nền đậm) thì badge nền mờ, chữ cùng màu chip */
+.arg-chip-tab .arg-badge { --bg: var(--arg-ui-background-surface); height: 18px; padding-inline: var(--arg-space-1-5x); border-radius: 9px; font-size: var(--arg-font-font-size-label-2, 11px); line-height: 1; font-variant-numeric: tabular-nums; }
+.arg-chip-tab[aria-selected="true"] .arg-badge, .arg-chip-tab[aria-pressed="true"] .arg-badge { --bg: color-mix(in srgb, var(--arg-ui-background-surface) 20%, transparent); --c: var(--arg-ui-background-surface); }
 .arg-chip-tab:hover { color: var(--arg-ui-text-on-bright-text-title); }
 /* chữ theo màu nền trang để đủ tương phản ở cả chế độ sáng (chữ trắng) và tối (chữ tối trên nền sáng) */
 .arg-chip-tab[aria-selected="true"], .arg-chip-tab[aria-pressed="true"] { background: var(--arg-ui-text-on-bright-text-content); color: var(--arg-ui-background-surface); }
@@ -762,8 +765,7 @@
 /* ARG UI · orderbook (màn sổ lệnh: ô tìm mã, chip trạng thái kèm số lệnh, lọc chiều lệnh, chế độ chọn nhiều và thanh huỷ lệnh) */
 .arg-orderbook__search { display: grid; grid-template-columns: minmax(0, 1fr); }
 .arg-orderbook__chips .arg-chip-tabs__list { margin-inline: calc(var(--arg-gutter) * -1); padding-inline: var(--arg-gutter); scroll-padding-inline: var(--arg-gutter); }
-.arg-orderbook__head { display: flex; align-items: center; justify-content: space-between; gap: var(--arg-space-3x); }
-.arg-orderbook__count { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-orderbook__head { display: flex; align-items: center; justify-content: flex-end; gap: var(--arg-space-3x); }
 .arg-orderbook__head .arg-tabs { gap: 0; }
 /* Chế độ chọn nhiều: thanh tab dưới nhường chỗ cho thanh huỷ lệnh (Action bar) */
 .arg-screen[data-select] > .arg-tabbar { display: none; }
@@ -1820,9 +1822,12 @@ button.arg-book__more { border: 0; padding: 0; background: transparent; cursor: 
 .arg-navlist__meta { flex: none; font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); color: var(--arg-ui-text-on-bright-text-content-lv2); }
 .arg-navlist__go { flex: none; display: grid; place-items: center; color: var(--arg-ui-text-on-bright-text-read-only); }
 .arg-navlist__go .i { width: 20px; height: 20px; }
-/* Mục nguy hiểm (đăng xuất): chữ màu lỗi, ô icon cùng màu */
-.arg-navlist__item--danger { color: var(--arg-trading-down-light-increase); }
-.arg-navlist__item--danger .arg-navlist__icon { background-color: var(--arg-trading-down-light-increase); background-image: none; color: #fff; }
+/* Mục nguy hiểm (đăng xuất): không nổi bật để hạn chế bấm nhầm; giống Đăng xuất ở panel trái của tablet: icon 20px không ô nền, chữ màu lỗi, không mũi tên, sát lề trái */
+.arg-navlist__item--danger { gap: var(--arg-space-2x); min-height: 48px; padding: var(--arg-space-2x) var(--arg-gutter); color: var(--arg-action-noti-toast-error); }
+.arg-navlist__item--danger .arg-navlist__icon { width: 20px; height: 20px; border-radius: 0; background: none; color: inherit; }
+.arg-navlist__item--danger .arg-navlist__icon .i { width: 20px; height: 20px; }
+.arg-navlist__item--danger .arg-navlist__label { font-weight: var(--arg-font-font-weight-regular); }
+.arg-navlist__item--danger .arg-navlist__go { display: none; }
 
 /* ARG UI · emptystate (trạng thái trống: hình minh hoạ, tiêu đề, giải thích, nút hành động) */
 .arg-empty { display: grid; justify-items: center; align-content: center; gap: var(--arg-space-3x); min-height: 62vh; padding: var(--arg-space-6x) var(--arg-space-4x); text-align: center; }

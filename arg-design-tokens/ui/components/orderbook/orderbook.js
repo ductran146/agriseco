@@ -1,5 +1,5 @@
 /* ARG UI orderbook: màn hình [data-arg-orderbook] (thường là chính .arg-screen).
-   - Lọc: chip [data-ob-status] (all, pending, partial, matched, cancelled), nút [data-ob-side] (all, buy, sell), ô tìm [data-ob-search] theo mã; [data-ob-count] ghi số lệnh đang hiện; [data-ob-empty] hiện khi không có lệnh.
+   - Lọc: chip [data-ob-status] (all, pending, partial, matched, cancelled), nút [data-ob-side] (all, buy, sell), ô tìm [data-ob-search] theo mã; [data-ob-empty] hiện khi không có lệnh.
    - Bấm .arg-orderrow__main (liên kết data-arg-go) mở màn chi tiết lệnh; ở chế độ chọn nhiều thì bấm là chọn lệnh còn huỷ được, không chuyển màn.
    - Chọn nhiều: [data-ob-select] bật hoặc tắt data-select (hiện ô chọn của lệnh còn huỷ được, thanh [data-ob-bar] thay thanh tab); [data-ob-all] chọn tất cả lệnh đang hiện còn huỷ được; [data-ob-cancel] huỷ các lệnh đã chọn,
      nhấn giữ (450ms) một lệnh còn huỷ được cũng bật chế độ chọn và chọn sẵn lệnh đó. Huỷ mở hộp xác nhận [data-ob-modal]; bấm [data-ob-ok] đổi các lệnh sang Đã huỷ. Bắn "arg:ordercancel" ({ count }). */
@@ -17,7 +17,6 @@
       var on = (s.status === 'all' || li.dataset.status === s.status) && (s.side === 'all' || li.dataset.side === s.side) && (!s.q || li.dataset.code.indexOf(s.q) >= 0);
       li.hidden = !on; if (on) n++;
     });
-    ARG.$$('[data-ob-count]', root).forEach(function (el) { el.textContent = n + ' lệnh'; });
     ARG.$$('[data-ob-empty]', root).forEach(function (el) { el.hidden = n > 0; });
     ARG.$$('[data-ob-status]', root).forEach(function (c) {
       var k = c.getAttribute('data-ob-status'), cnt = rows(root).filter(function (li) { return k === 'all' || li.dataset.status === k; }).length;

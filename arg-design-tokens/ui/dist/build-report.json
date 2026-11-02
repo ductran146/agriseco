@@ -8,12 +8,12 @@
     {
       "ok": true,
       "name": "Class trong ví dụ đều có CSS",
-      "detail": "698 class dùng, thiếu: không"
+      "detail": "697 class dùng, thiếu: không"
     },
     {
       "ok": true,
       "name": "Icon Solar được dùng đều có trong sprite",
-      "detail": "115 icon dùng / 115 trong sprite, thiếu: không"
+      "detail": "116 icon dùng / 116 trong sprite, thiếu: không"
     },
     {
       "ok": true,

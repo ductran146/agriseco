@@ -9,5 +9,5 @@ Liệt kê các mục chức năng dạng hàng (màn Thêm, cài đặt): mỗi
 | `__label` | Nhãn, Body 3 vừa |
 | `__meta` | Ghi chú phụ bên phải (phiên bản, số lượng), Label 1 màu phụ |
 | `__go` | Mũi tên `caret-right` |
-| `--danger` | Mục nguy hiểm: chữ và ô icon màu giảm/lỗi |
+| `--danger` | Mục nguy hiểm (đăng xuất), cố ý không nổi bật: chữ và icon 20px màu lỗi, không ô nền, không mũi tên, giống Đăng xuất của panel tablet |
 Mục chưa có đích dùng `href="#"` (luôn `preventDefault`).

@@ -1,8 +1,7 @@
 /* ARG UI · orderbook (màn sổ lệnh: ô tìm mã, chip trạng thái kèm số lệnh, lọc chiều lệnh, chế độ chọn nhiều và thanh huỷ lệnh) */
 .arg-orderbook__search { display: grid; grid-template-columns: minmax(0, 1fr); }
 .arg-orderbook__chips .arg-chip-tabs__list { margin-inline: calc(var(--arg-gutter) * -1); padding-inline: var(--arg-gutter); scroll-padding-inline: var(--arg-gutter); }
-.arg-orderbook__head { display: flex; align-items: center; justify-content: space-between; gap: var(--arg-space-3x); }
-.arg-orderbook__count { font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-orderbook__head { display: flex; align-items: center; justify-content: flex-end; gap: var(--arg-space-3x); }
 .arg-orderbook__head .arg-tabs { gap: 0; }
 /* Chế độ chọn nhiều: thanh tab dưới nhường chỗ cho thanh huỷ lệnh (Action bar) */
 .arg-screen[data-select] > .arg-tabbar { display: none; }

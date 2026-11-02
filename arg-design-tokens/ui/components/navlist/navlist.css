@@ -10,6 +10,9 @@
 .arg-navlist__meta { flex: none; font-size: var(--arg-font-font-size-label-1); line-height: var(--arg-font-line-height-label-1); color: var(--arg-ui-text-on-bright-text-content-lv2); }
 .arg-navlist__go { flex: none; display: grid; place-items: center; color: var(--arg-ui-text-on-bright-text-read-only); }
 .arg-navlist__go .i { width: 20px; height: 20px; }
-/* Mục nguy hiểm (đăng xuất): chữ màu lỗi, ô icon cùng màu */
-.arg-navlist__item--danger { color: var(--arg-trading-down-light-increase); }
-.arg-navlist__item--danger .arg-navlist__icon { background-color: var(--arg-trading-down-light-increase); background-image: none; color: #fff; }
+/* Mục nguy hiểm (đăng xuất): không nổi bật để hạn chế bấm nhầm; giống Đăng xuất ở panel trái của tablet: icon 20px không ô nền, chữ màu lỗi, không mũi tên, sát lề trái */
+.arg-navlist__item--danger { gap: var(--arg-space-2x); min-height: 48px; padding: var(--arg-space-2x) var(--arg-gutter); color: var(--arg-action-noti-toast-error); }
+.arg-navlist__item--danger .arg-navlist__icon { width: 20px; height: 20px; border-radius: 0; background: none; color: inherit; }
+.arg-navlist__item--danger .arg-navlist__icon .i { width: 20px; height: 20px; }
+.arg-navlist__item--danger .arg-navlist__label { font-weight: var(--arg-font-font-weight-regular); }
+.arg-navlist__item--danger .arg-navlist__go { display: none; }

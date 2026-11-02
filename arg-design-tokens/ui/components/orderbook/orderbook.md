@@ -12,7 +12,7 @@ Màn Sổ lệnh có hai tab (Tabs `--lg`): Sổ lệnh và Lịch sử lệnh (
 | Thuộc tính | Việc làm |
 |---|---|
 | `[data-arg-orderbook]` | Vùng chứa (thường là màn hình); các lệnh nằm trong `[data-arg-orderhist]` do Order history quản lý |
-| `[data-ob-status]` `[data-ob-side]` `[data-ob-search]` | Chip trạng thái, nút chiều lệnh, ô tìm mã; lọc ngay, `[data-ob-count]` và `[data-ob-empty]` cập nhật; số lệnh trong `[data-ob-n]` của chip |
+| `[data-ob-status]` `[data-ob-side]` `[data-ob-search]` | Chip trạng thái, nút chiều lệnh, ô tìm mã; lọc ngay, `[data-ob-empty]` cập nhật; số lệnh nằm trong badge `[data-ob-n]` của chip |
 | `.arg-orderrow__main` | Liên kết `data-arg-go` mở màn chi tiết lệnh; ở chế độ chọn nhiều thì bấm là chọn lệnh (nếu còn huỷ được), không chuyển màn |
 | `[data-ob-select]` | Nút chữ (Button `--text`) đặt ở bên phải thanh đầu (navigation): bật hoặc tắt chế độ chọn nhiều (`data-select` trên vùng chứa), chữ đổi Chọn và Xong. Nhấn giữ khoảng nửa giây trên một lệnh còn huỷ được cũng bật chế độ này và chọn sẵn lệnh đó |
 | `[data-ob-all]` `[data-ob-cancel]` `[data-ob-ok]` | Chọn tất cả lệnh đang hiện còn huỷ được; huỷ các lệnh đã chọn; xác nhận trong hộp thoại `[data-ob-modal]`. Lệnh chuyển sang Đã huỷ, bắn `arg:ordercancel` |

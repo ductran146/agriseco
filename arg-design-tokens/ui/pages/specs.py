@@ -132,7 +132,7 @@ MODIFY = [
 MORE = [
     ('.arg-profile', 'l', 'Profile: thẻ nền cam nhạt 8%, avatar tròn 56px gradient thương hiệu, tên Title 2 đậm, số tài khoản; hình chìm .arg-brandmark--soft. Họ tên là dữ liệu mẫu.'),
     ('.arg-navlist', 'r', 'Navlist: hàng cao tối thiểu 56px, ô icon 40px nền cam nhạt 12%, nhãn Body 3 vừa, mũi tên; đường kẻ --arg-ui-divider-separator. Mục có data-arg-go mở màn tương ứng, mục còn lại là giữ chỗ.'),
-    ('.arg-navlist__item--danger', 'l', 'Navlist --danger: Đăng xuất, chữ và ô icon màu giảm (--arg-trading-down-light-increase).'),
+    ('.arg-navlist__item--danger', 'l', 'Navlist --danger: Đăng xuất, cố ý không nổi bật: icon 20px không ô nền, chữ màu lỗi (--arg-action-noti-toast-error), không mũi tên.'),
     ('.arg-brandsign', 'r', 'Brandsign: chữ ký thương hiệu cuối màn, logo cao 40px, tên Agriseco, dòng phụ.'),
     TAB,
 ]

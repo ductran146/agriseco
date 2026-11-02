@@ -4,6 +4,9 @@
 .arg-chip-tabs__list::-webkit-scrollbar { display: none; }
 .arg-chip-tab { flex: none; display: inline-flex; align-items: center; justify-content: center; gap: var(--arg-space-2x); height: var(--h); padding: 0 var(--arg-space-5x); border: 0; border-radius: var(--r); background: var(--arg-ui-background-lv-3); color: var(--arg-ui-text-on-bright-text-content-lv2); font: var(--arg-font-font-weight-semibold) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); white-space: nowrap; cursor: pointer; }
 .arg-chip-tab .i { width: 16px; height: 16px; }
+/* Số đếm trong chip: badge pill nhỏ; chip chưa chọn thì badge nền trắng, chip đang chọn (nền đậm) thì badge nền mờ, chữ cùng màu chip */
+.arg-chip-tab .arg-badge { --bg: var(--arg-ui-background-surface); height: 18px; padding-inline: var(--arg-space-1-5x); border-radius: 9px; font-size: var(--arg-font-font-size-label-2, 11px); line-height: 1; font-variant-numeric: tabular-nums; }
+.arg-chip-tab[aria-selected="true"] .arg-badge, .arg-chip-tab[aria-pressed="true"] .arg-badge { --bg: color-mix(in srgb, var(--arg-ui-background-surface) 20%, transparent); --c: var(--arg-ui-background-surface); }
 .arg-chip-tab:hover { color: var(--arg-ui-text-on-bright-text-title); }
 /* chữ theo màu nền trang để đủ tương phản ở cả chế độ sáng (chữ trắng) và tối (chữ tối trên nền sáng) */
 .arg-chip-tab[aria-selected="true"], .arg-chip-tab[aria-pressed="true"] { background: var(--arg-ui-text-on-bright-text-content); color: var(--arg-ui-background-surface); }

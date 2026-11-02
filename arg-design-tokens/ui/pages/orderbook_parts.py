@@ -85,7 +85,7 @@ def screen(tabbar_html=''):
     """Màn Sổ lệnh có hai tab: Sổ lệnh (lệnh trong ngày, huỷ lệnh) và Lịch sử lệnh (các phiên trước). Màn con của Giao dịch nên không có thanh tab dưới (tabbar_html bỏ qua)."""
     import orderhist_parts as OH
     counts = {k: sum(1 for o in ORDERS if k == 'all' or o[9] == k) for k, _ in CHIPS}
-    chips = ''.join(f'<button class="arg-chip-tab arg-sidepanel__item" type="button" data-ob-status="{k}" aria-pressed="{"true" if k == "all" else "false"}">{t} <span data-ob-n>{counts[k]}</span></button>' for k, t in CHIPS)
+    chips = ''.join(f'<button class="arg-chip-tab arg-sidepanel__item" type="button" data-ob-status="{k}" aria-pressed="{"true" if k == "all" else "false"}">{t}<span class="arg-badge arg-badge--pill" data-ob-n>{counts[k]}</span></button>' for k, t in CHIPS)
     sides = ''.join(f'<button class="arg-tab" role="tab" type="button" data-ob-side="{k}" aria-selected="{"true" if k == "all" else "false"}">{t}</button>' for k, t in (('all', 'Tất cả'), ('buy', 'Mua'), ('sell', 'Bán')))
     return f'''<div class="arg-screen arg-screen--plain" data-arg-screen="orderbook" data-arg-orderbook hidden>
 <header class="arg-appbar arg-appbar--sticky" style="justify-content:flex-start;gap:var(--arg-space-2x)"><button class="arg-appbar__tool" type="button" data-arg-back aria-label="Quay lại">{I('caret-left')}</button>{acctsel()}<button class="arg-btn arg-btn--text" type="button" data-ob-select style="margin-left:auto">Chọn</button></header>
@@ -98,7 +98,7 @@ def screen(tabbar_html=''):
       <div class="arg-chip-tabs arg-chip-tabs--sm arg-orderbook__chips"><div class="arg-chip-tabs__list" role="group" aria-label="Trạng thái lệnh">{chips}</div></div>
       </div>
       <div class="arg-orderbook__results">
-      <div class="arg-orderbook__head"><span class="arg-orderbook__count" data-ob-count>{len(ORDERS)} lệnh</span><div class="arg-tabs arg-tabs--pill" data-arg-tabs><div class="arg-tablist" role="tablist" aria-label="Chiều lệnh">{sides}</div></div></div>
+      <div class="arg-orderbook__head"><div class="arg-tabs arg-tabs--pill" data-arg-tabs><div class="arg-tablist" role="tablist" aria-label="Chiều lệnh">{sides}</div></div></div>
       <ul class="arg-orderrow-list" data-ob-list>{''.join(order_li(o) for o in ORDERS)}</ul>
       <p class="arg-orderbook__empty" data-ob-empty hidden>Không có lệnh phù hợp.</p>
       </div>
