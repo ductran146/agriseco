@@ -126,3 +126,11 @@ Không báo "xong" nếu chưa chạy. Dùng Chrome headless:
 - Khi làm khác ảnh mẫu (màu theo token, giản lược dữ liệu, bỏ phần cho vừa màn hình), nói rõ khác chỗ nào và vì sao.
 - Không tự làm việc ngoài yêu cầu. Quyết định thiết kế chưa rõ: chọn mặc định hợp lý, nói ra, và để người dùng đổi.
 - Còn tồn đọng đã biết (không tự làm khi chưa được yêu cầu): chọn đỏ `#A5000A` hay cam đỏ cho link, phụ, outline; cập nhật `arg-design-tokens/README.md` (thư mục `ui/`, token XL/XXL, gradient header, token Mua, Bán); nâng `--arg-gutter`, thang bo góc thành token chính thức trong `build_arg.py`; sửa tương phản; đồng bộ chiều lệnh Mua, Bán giữa Lite và Pro.
+
+## 11. Đồng bộ với bản clone GitHub
+
+- Thư mục làm việc là `Agriseco/arg-design-tokens/`. Bản clone repo `github.com/ductran146/agriseco` nằm ở `Agriseco/agriseco-demo/agriseco/` (cùng cấu trúc, có `.git`). Sửa ở thư mục làm việc, **không sửa trực tiếp trong clone**.
+- Sau khi sửa xong và build đạt ở thư mục làm việc, chép mã nguồn sang clone: `arg-design-tokens/` (component, pages, icons, base, `components.json`, `build.py`, token, `AGENT-RULES.md`, README), cùng `AGENTS.md` và `CLAUDE.md` ở gốc. Không chép `dist/`, `__pycache__`, `.DS_Store`, `_backup/`.
+- Rồi build trong clone: `python3 -I build.py` (không có FAIL) và `python3 -I pages/build_pages.py`. `dist/` được commit, nên phải build lại để khớp mã nguồn.
+- Kiểm tra lệch bằng `diff -rq --exclude=__pycache__ --exclude=.DS_Store arg-design-tokens agriseco-demo/agriseco/arg-design-tokens`.
+- **Không tự commit hay push.** Chỉ làm khi người dùng yêu cầu.

@@ -263,10 +263,10 @@ def no_hover(src):
 
 
 SHELL = r'''<!doctype html>
-<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#ffffff" id="tc"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Agriseco"><title>__TITLE__</title><link rel="stylesheet" href="assets/arg.css"><script>var THEME = 'light'; try { THEME = sessionStorage.getItem('arg-theme') || (window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light'); } catch (e) {} document.documentElement.setAttribute("data-theme", THEME);</script>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#ffffff" id="tc"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Agriseco"><title>__TITLE__</title><link rel="stylesheet" href="assets/arg.css"><script>var THEME = 'light'; try { THEME = sessionStorage.getItem('arg-theme') || 'light'; } catch (e) {} document.documentElement.setAttribute("data-theme", THEME);</script>
 <style>
 :root { --brand: var(--arg-p-brand-header-start); --brand2: var(--arg-p-brand-header-end); --bg: color-mix(in srgb, var(--brand) 5%, var(--arg-ui-background-surface)); --ink: var(--arg-ui-text-on-bright-text-title); --line: var(--arg-ui-divider-stroke); --on: var(--arg-ui-state-layer-on-bright-hovered); --onc: var(--arg-action-text-button-link-text-button); }
-:root[data-theme="dark"] { color-scheme: dark; }
+:root[data-theme="dark"] { color-scheme: dark; --bg: color-mix(in srgb, var(--brand) 12%, color-mix(in srgb, var(--ink) 13%, var(--arg-ui-background-surface))); }  /* nền xem trước sáng hơn khung thiết bị (nền surface) để khung nổi lên, ngả nhẹ tông brand */
 * { box-sizing: border-box; } body { margin: 0; background: var(--bg); color: var(--ink); font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); height: 100vh; display: flex; flex-direction: column; }
 .bar { display: flex; justify-content: center; align-items: center; gap: var(--arg-space-2x); flex-wrap: wrap; padding: var(--arg-space-3x) var(--arg-gutter); background: var(--arg-ui-background-surface); border-bottom: 1px solid var(--line); }
 .bar button { --h: var(--arg-border-height-size-height-normal); display: inline-flex; align-items: center; gap: var(--arg-space-2x); height: var(--h); padding: 0 var(--arg-space-4x); border: 1px solid var(--line); border-radius: var(--arg-radius-control); background: transparent; color: var(--ink); font: var(--arg-font-font-weight-medium) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); cursor: pointer; }
@@ -277,14 +277,13 @@ SHELL = r'''<!doctype html>
 .stage { flex: 1; min-height: 0; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: start; column-gap: 24px; padding: 24px 16px; }
 .devwrap { grid-column: 2; position: relative; }
 .stage { position: relative; }
-/* Danh sách màn hình: cột sát mép trái trình duyệt, dạng cây (mục lớn, thư mục gập được, màn có icon đánh dấu), ô tìm ở trên, màn đang xem là nút tối */
+/* Danh sách màn hình: cột sát mép trái trình duyệt, dạng cây (mục lớn, thư mục gập được, màn có icon đánh dấu), màn đang xem là nút tối */
 .nav { position: absolute; z-index: 3; left: 0; top: 0; bottom: 0; width: 260px; display: flex; flex-direction: column; box-sizing: border-box; padding: var(--arg-space-4x) var(--arg-space-3x) var(--arg-space-3x); border-right: 1px solid color-mix(in srgb, var(--brand) 12%, var(--arg-ui-background-surface)); background: color-mix(in srgb, var(--brand) 2%, var(--arg-ui-background-surface)); color: var(--arg-ui-text-on-bright-text-content); font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); overflow: hidden; }
-.nav .arg-control { flex: none; margin: 0 0 var(--arg-space-4x); }
 .nav .tree { flex: 1; min-height: 0; overflow: auto; scrollbar-width: none; margin: 0 -4px; padding: 0 4px; }
 .nav .tree::-webkit-scrollbar { display: none; }
-.nav h2 { display: flex; align-items: center; gap: var(--arg-space-2x); margin: 0 0 var(--arg-space-1x); padding: var(--arg-space-1x); font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); text-transform: uppercase; letter-spacing: .02em; color: var(--arg-ui-text-on-bright-text-content-lv2); cursor: pointer; }
+.nav h2 { display: flex; align-items: center; gap: var(--arg-space-2x); margin: 0 0 var(--arg-space-1x); padding: var(--arg-space-1x); font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); text-transform: uppercase; letter-spacing: .02em; color: var(--arg-ui-text-on-bright-text-content-lv2); }
 .nav .ic { flex: none; width: 18px; height: 18px; fill: currentColor; }
-.nav .chev { margin-left: auto; margin-right: 2px; transition: transform .15s; } .nav details[open] > summary .chev, .nav:not([data-closed]) h2 .chev { transform: rotate(180deg); }
+.nav .chev { margin-left: auto; margin-right: 2px; transition: transform .15s; } .nav details[open] > summary .chev { transform: rotate(180deg); }
 .nav .bend { width: 14px; height: 14px; opacity: .55; }
 .nav details { margin: 0; } .nav summary { display: flex; align-items: center; gap: var(--arg-space-2x); padding: var(--arg-space-1-5x) var(--arg-space-1x); border-radius: var(--arg-radius-xs); cursor: pointer; list-style: none; color: var(--arg-ui-text-on-bright-text-title); }
 .nav summary::-webkit-details-marker { display: none; } .nav summary .open { display: none; } .nav details[open] > summary .open { display: block; } .nav details[open] > summary .shut { display: none; }
@@ -297,6 +296,12 @@ SHELL = r'''<!doctype html>
 /* Ghi chú bên phải: cột sát mép phải trình duyệt, cùng kiểu và nền với danh sách màn hình bên trái */
 .info { position: absolute; z-index: 3; right: 0; top: 0; bottom: 0; width: 300px; overflow: auto; scrollbar-width: none; box-sizing: border-box; padding: var(--arg-space-4x); border-left: 1px solid color-mix(in srgb, var(--brand) 12%, var(--arg-ui-background-surface)); background: color-mix(in srgb, var(--brand) 2%, var(--arg-ui-background-surface)); font-size: var(--arg-font-font-size-body-4); line-height: var(--arg-font-line-height-body-4); }
 .info::-webkit-scrollbar { display: none; }
+/* Nút ẩn/hiện hai cột bên: nằm thay chevron ở tiêu đề cột trái và trước chip "Đang xem" ở cột phải; khi cột ẩn thì dời ra góc trên sát mép, vẫn bấm để hiện lại; icon thanh bên Solar, cột trái lật gương */
+.ptog { position: absolute; z-index: 4; top: var(--arg-space-3x); display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: var(--arg-radius-control); background: transparent; color: var(--arg-ui-text-on-bright-text-content-lv2); cursor: pointer; }
+.ptog:hover { background: var(--arg-ui-state-layer-on-bright-hovered); } .ptog:focus-visible { outline: 2px solid var(--onc); outline-offset: 2px; }
+.ptog .ic { width: 20px; height: 20px; fill: currentColor; } .ptog--l { left: calc(260px - var(--arg-space-3x) - 32px); top: 14px; } body[data-nav="off"] .ptog--l { left: var(--arg-space-3x); top: var(--arg-space-3x); } .ptog--l .ic { transform: scaleX(-1); } .ptog--r { right: calc(300px - var(--arg-space-4x) - 32px); top: 12px; } body[data-info="off"] .ptog--r { right: var(--arg-space-3x); top: var(--arg-space-3x); } .info .tag { display: flex; align-items: center; height: 32px; margin: -8px 0 -8px 40px; }
+body[data-nav="off"] .nav, body[data-info="off"] .info { display: none; }
+body[data-d="full"] .ptog, body[data-bare] .ptog { display: none; } @media (max-width: 1000px) { .ptog { display: none; } }
 .info .tag { display: inline-flex; align-items: center; gap: 6px; padding: 0; background: none; color: var(--onc); font-size: var(--arg-font-font-size-label-1); font-weight: var(--arg-font-font-weight-semibold); letter-spacing: .04em; text-transform: uppercase; }
 .info .tag::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--brand); }
 .info h2 { margin: 6px 0 4px; font: var(--arg-font-font-weight-bold) var(--arg-font-font-size-title-3)/var(--arg-font-line-height-title-3) var(--arg-font-family-family); }
@@ -345,7 +350,7 @@ body[data-d="full"] .spec-sw { display: none; } @media (max-width: 1000px) { .sp
   <span class="lbl" id="lbl"></span><a class="all" href="index.html" id="all">Tất cả màn hình</a>
 </div>
 <div id="safe" aria-hidden="true" style="position:fixed;left:0;top:0;width:0;height:0;visibility:hidden;padding:env(safe-area-inset-top, 0px) 0 env(safe-area-inset-bottom, 0px)"></div>
-<div class="stage" id="stage">__NAV__<div class="spec-layer" id="spec"></div><div class="devwrap" id="devwrap"><div class="dev" id="dev">__SB__<div class="hind" aria-hidden="true"></div><iframe id="fr" aria-label="__TITLE__" srcdoc="__PAGE__"></iframe><iframe id="fr2" class="back" style="visibility:hidden" title="" aria-hidden="true" tabindex="-1"></iframe></div></div><aside class="info" id="info" aria-live="polite"></aside></div>
+<div class="stage" id="stage">__NAV__<button class="ptog ptog--l" type="button" id="tog-nav" aria-controls="nav" aria-expanded="true" aria-label="Ẩn danh sách màn hình" title="Ẩn/hiện danh sách màn hình">__IC_SIDEBAR__</button><button class="ptog ptog--r" type="button" id="tog-info" aria-controls="info" aria-expanded="true" aria-label="Ẩn ghi chú" title="Ẩn/hiện ghi chú">__IC_SIDEBAR__</button><div class="spec-layer" id="spec"></div><div class="devwrap" id="devwrap"><div class="dev" id="dev">__SB__<div class="hind" aria-hidden="true"></div><iframe id="fr" aria-label="__TITLE__" srcdoc="__PAGE__"></iframe><iframe id="fr2" class="back" style="visibility:hidden" title="" aria-hidden="true" tabindex="-1"></iframe></div></div><aside class="info" id="info" aria-live="polite"></aside></div>
 <script>
 (function () {
   var S = { mobile: [375, 812], tablet: [768, 1068] }, st = document.getElementById('stage'), dev = document.getElementById('dev'), wrap = document.getElementById('devwrap'), info = document.getElementById('info'), nav = document.querySelector('.nav'), cur = (location.hash.match(/d=(mobile|tablet|full)/) || [])[1] || 'mobile', START = '__ID__';
@@ -390,16 +395,13 @@ body[data-d="full"] .spec-sw { display: none; } @media (max-width: 1000px) { .sp
       cur = btn.dataset.d; document.querySelectorAll('.bar button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === btn)); }); fit();
     });
   });
-  var q = nav.querySelector('.search'), fold = function (t) { return t.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').toLowerCase(); };
-  q.addEventListener('input', function () {
-    var k = fold(q.value.trim());
-    nav.querySelectorAll('details').forEach(function (g) {
-      var any = false;
-      g.querySelectorAll('li').forEach(function (li) { var on = !k || fold(li.textContent).indexOf(k) >= 0; li.hidden = !on; if (on) any = true; });
-      g.hidden = !any; if (k && any) g.open = true;
-    });
+  /* Ẩn/hiện hai cột bên (nhớ trong phiên); cột ẩn thì đặc tả nối bong bóng tính lại theo chỗ trống */
+  [['nav', 'tog-nav', 'danh sách màn hình'], ['info', 'tog-info', 'ghi chú']].forEach(function (c) {
+    var b = document.getElementById(c[1]), key = 'arg-panel-' + c[0];
+    function set(off) { if (off) document.body.setAttribute('data-' + c[0], 'off'); else document.body.removeAttribute('data-' + c[0]); b.setAttribute('aria-expanded', String(!off)); b.setAttribute('aria-label', (off ? 'Hiện ' : 'Ẩn ') + c[2]); }
+    try { set(sessionStorage.getItem(key) === 'off'); } catch (e) {}
+    b.addEventListener('click', function () { var off = !document.body.hasAttribute('data-' + c[0]); set(off); try { sessionStorage.setItem(key, off ? 'off' : 'on'); } catch (e) {} renderSpec(); });
   });
-  nav.querySelector('h2').addEventListener('click', function () { nav.toggleAttribute('data-closed'); nav.querySelector('.tree').hidden = nav.hasAttribute('data-closed'); });
   nav.addEventListener('click', function (e) { var a = e.target.closest('a'); if (!a) return; e.preventDefault(); var id = a.getAttribute('href').replace(/\.html$/, ''); if (id !== START) window.__argGo(id); });
   document.getElementById('all').addEventListener('click', function (e) { e.preventDefault(); location.href = 'index.html#d=' + cur; });
   /* Đặc tả: bật bằng công tắc trên thanh đầu (nhớ trạng thái trong phiên). Chấm đánh số nằm trên thành phần trong màn hình, bong bóng nằm ở hai bên khung thiết bị, nối bằng đường nét đứt. */
@@ -411,7 +413,8 @@ body[data-d="full"] .spec-sw { display: none; } @media (max-width: 1000px) { .sp
     if (!tg.checked || !doc || cur === 'full' || window.innerWidth < 1000 || !SPECS.length) return;
     var scr = doc.querySelector('[data-arg-screen]:not([hidden])') || doc, dr = dev.getBoundingClientRect(), sr = st.getBoundingClientRect(), nr = nav.getBoundingClientRect(), ir = info.getBoundingClientRect();
     var k = dr.width / fr.clientWidth, vh = doc.documentElement.clientHeight, vw = fr.clientWidth, X = dr.left - sr.left, XR = dr.right - sr.left;
-    var room = { l: X - (nr.right - sr.left) - 36, r: (ir.left - sr.left) - XR - 36 }, items = [];
+    var navR = nav.offsetParent ? nr.right - sr.left : 0, infoL = info.offsetParent ? ir.left - sr.left : st.clientWidth;   /* cột ẩn (display:none) thì không có kích thước: coi như sát mép khung */
+    var room = { l: X - navR - 36, r: infoL - XR - 36 }, items = [];
     SPECS.forEach(function (sp, n) {
       var el = null; try { el = scr.querySelector(sp.s); } catch (e) {}
       if (!el) return;
@@ -548,17 +551,17 @@ ico = lambda n, cls='': re.sub(r'<metadata>.*?</metadata>', '', re.sub(r'<svg[^>
 
 
 def nav_html(cur):
-    """Cột danh sách màn hình sát mép trái: ô tìm, mục lớn, mỗi nhóm là một thư mục gập được (nhóm chứa màn đang xem mở sẵn), màn đang xem đánh dấu aria-current."""
+    """Cột danh sách màn hình sát mép trái: mục lớn, mỗi nhóm là một thư mục gập được (nhóm chứa màn đang xem mở sẵn), màn đang xem đánh dấu aria-current."""
     chev, shut, opn, mark, bend = ico('caret-down', 'chev'), ico('folder', 'shut'), ico('folder-open', 'open'), ico('file-text'), ico('arrow-bend-down-right', 'bend')
     out = ''
     for g, ids in groups:
         links = ''.join(f'<li><a href="{i}.html"{" aria-current=\"page\"" if i == cur else ""}>{bend}{mark}<span>{re.sub(r"^(Chủ đề|Chỉ số|Thông tin|Giao dịch|Lệnh) ", "", names[i]) if g != "Màn chính" else names[i]}</span></a></li>' for i in ids)
         out += f'<details{" open" if cur in ids else ""}><summary>{shut}{opn}<span>{g}</span>{chev}</summary><ul>{links}</ul></details>'
-    return (f'<nav class="nav arg-ui" aria-label="Danh sách màn hình"><div class="arg-control"><input class="arg-input search" type="search" placeholder="Tìm màn hình..." aria-label="Tìm màn hình"></div>'
-            f'<h2><span>Màn hình demo</span>{chev}</h2><div class="tree">{out}</div></nav>')
+    return (f'<nav class="nav arg-ui" id="nav" aria-label="Danh sách màn hình">'
+            f'<h2><span>Màn hình demo</span></h2><div class="tree">{out}</div></nav>')
 
 
-SHELL_TPL = SHELL.replace('__IC_MOBILE__', ico('device-mobile')).replace('__IC_TABLET__', ico('device-tablet')).replace('__IC_FULL__', ico('arrows-out-simple')).replace('__SB__', statusbar).replace('__BRAND__', BRAND[0]).replace('__BRAND2__', BRAND[1])
+SHELL_TPL = SHELL.replace('__IC_MOBILE__', ico('device-mobile')).replace('__IC_TABLET__', ico('device-tablet')).replace('__IC_SIDEBAR__', ico('sidebar')).replace('__IC_FULL__', ico('arrows-out-simple')).replace('__SB__', statusbar).replace('__BRAND__', BRAND[0]).replace('__BRAND2__', BRAND[1])
 for sid, html, name in SCREENS:
     html = re.sub(r'(data-arg-screen="' + re.escape(sid) + r'"[^>]*?)\s+hidden', r'\1', html, count=1)
     html = unique_logo_ids(html)

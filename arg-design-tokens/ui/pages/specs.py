@@ -103,7 +103,7 @@ SEARCH = [
 
 ASSET = [
     ('.arg-acctsel', 'l', 'Acctsel + Dropdown: chọn tiểu khoản; màn mở sẵn tiểu khoản ký quỹ.'),
-    ('.arg-chip-tabs--sm', 'r', 'Chip tabs --sm: 4 tab Tài sản, Danh mục, Lãi lỗ, Sao kê tiền, cuộn ngang.'),
+    ('.arg-tabs--lg', 'r', 'Tabs --lg: 4 tab Tài sản, Danh mục, Lãi lỗ, Sao kê tiền, cuộn ngang; cùng kiểu tab của màn Thị trường.'),
     ('.arg-assetcard', 'l', 'Assetcard: tổng tài sản Header 3; nút mắt ẩn mọi số có data-arg-secret trong tab.'),
     ('.arg-metric-row', 'r', 'Metric: 4 thẻ 2 cột; lãi xanh, lỗ đỏ theo token giao dịch.'),
     ('.arg-debtcard', 'l', 'Debtcard: nền, viền màu lỗi 8% và 24%; nút Trả nợ Button primary xl.'),

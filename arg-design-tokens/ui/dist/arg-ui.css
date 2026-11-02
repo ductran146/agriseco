@@ -187,10 +187,10 @@
 .arg-check input:disabled + .box { background: var(--arg-ui-background-lv-3); border-color: var(--arg-ui-divider-stroke); opacity: .6; }
 .arg-check:has(input:disabled) { cursor: not-allowed; color: var(--arg-ui-text-on-bright-text-disable); }
 .arg-switch .track { flex: none; width: 40px; height: 24px; border-radius: 12px; background: var(--arg-ui-state-layer-on-bright-extra); position: relative; transition: .15s; }
-.arg-switch .track::after { content: ""; position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; border-radius: 50%; background: var(--arg-p-grayscale-100); box-shadow: 0 0 3px 0 var(--arg-effect-black-8pct), 0 0 1px 0 var(--arg-effect-black-5pct); /* bóng đối xứng, không lệch xuống (bóng token Shadow đổ xuống 2px làm nút nhìn như tụt xuống ở nền tối) */ transition: transform .15s; }
+.arg-switch .track::after { content: ""; position: absolute; top: 50%; left: 2px; transform: translateY(-50%);  /* căn giữa theo trục dọc bằng transform, không bị làm tròn pixel lệch với track khi zoom lẻ */ width: 20px; height: 20px; border-radius: 50%; background: var(--arg-p-grayscale-100); box-shadow: 0 0 3px 0 var(--arg-effect-black-8pct), 0 0 1px 0 var(--arg-effect-black-5pct); /* bóng đối xứng, không lệch xuống (bóng token Shadow đổ xuống 2px làm nút nhìn như tụt xuống ở nền tối) */ transition: transform .15s; }
 .arg-switch input { position: absolute; opacity: 0; width: 40px; height: 24px; margin: 0; cursor: inherit; }
 .arg-switch input:checked + .track { background-color: var(--arg-p-brand-header-start); background-image: var(--arg-gradient-primary-button); }
-.arg-switch input:checked + .track::after { transform: translateX(16px); }
+.arg-switch input:checked + .track::after { transform: translate(16px, -50%); }
 /* Vòng focus bằng bóng đổ (bo theo hình viên thuốc ở mọi trình duyệt, đồng tâm với thanh trượt; màu thương hiệu để thấy được cả ở chế độ tối) */
 .arg-switch input:focus-visible + .track { outline: 0; box-shadow: 0 0 0 2px var(--arg-ui-background-surface), 0 0 0 4px var(--arg-p-brand-header-start); }
 .arg-switch input:disabled + .track { opacity: .5; }

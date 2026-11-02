@@ -264,12 +264,12 @@ def tab_cash():
 
 def screen(tabbar_html):
     tabs = [('Tài sản', tab_asset()), ('Danh mục', tab_portfolio()), ('Lãi lỗ', tab_pl()), ('Sao kê tiền', tab_cash())]
-    chips = ''.join(f'<button class="arg-chip-tab arg-sidepanel__item" role="tab" type="button" aria-selected="{"true" if i == 0 else "false"}">{t}</button>' for i, (t, _) in enumerate(tabs))
+    chips = ''.join(f'<button class="arg-tab arg-sidepanel__item" role="tab" type="button" aria-selected="{"true" if i == 0 else "false"}">{t}</button>' for i, (t, _) in enumerate(tabs))
     return f'''<div class="arg-screen arg-screen--sections" data-arg-screen="asset" hidden>
 <header class="arg-appbar arg-appbar--sticky">{TP.acctsel(ACCOUNTS)}</header>
 <main class="arg-page__main">
   <div class="arg-page__tabbed arg-page__tabbed--side" data-arg-tabs>
-    <div class="arg-page__block arg-sidepanel">{IP.title('Tài sản')}<div class="arg-chip-tabs arg-chip-tabs--sm"><div class="arg-chip-tabs__list" role="tablist" aria-label="Nội dung tài sản">{chips}</div></div></div>
+    <div class="arg-page__block arg-sidepanel"><div class="arg-tabs arg-tabs--lg"><div class="arg-tablist" role="tablist" aria-label="Nội dung tài sản">{chips}</div></div></div>
     {''.join(h for _, h in tabs)}
   </div>
 </main>
