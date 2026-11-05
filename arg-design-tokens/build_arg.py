@@ -111,6 +111,7 @@ prim = {
     "p--Brand": {
         "Header_Start": {"$type": "color", "$value": "#ea5b2f"},
         "Header_End": {"$type": "color", "$value": "#f33a44"},
+        "Gradient_Start": {"$type": "color", "$value": "#ff6a00"},  # điểm đầu gradient ô icon dịch vụ (--arg-gradient-service, chủ dự án chốt)
         "Orange": {"$type": "color", "$value": "#f28021"},
         "Yellow": {"$type": "color", "$value": "#fec015"},
         "Amber": {"$type": "color", "$value": "#faae42"},

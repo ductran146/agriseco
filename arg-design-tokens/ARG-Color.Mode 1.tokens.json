@@ -8,6 +8,10 @@
       "$type": "color",
       "$value": "#f33a44"
     },
+    "Gradient_Start": {
+      "$type": "color",
+      "$value": "#ff6a00"
+    },
     "Orange": {
       "$type": "color",
       "$value": "#f28021"

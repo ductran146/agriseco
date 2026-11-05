@@ -1,6 +1,6 @@
 /* ARG UI reorder: danh sách [data-arg-reorder] (ul) có dòng li chứa nút kéo [data-arg-handle]. Nhấn giữ nút rồi kéo lên xuống (chuột hoặc cảm ứng) để đổi thứ tự; dòng đang kéo nổi lên
    và bám theo con trỏ, các dòng khác nhường chỗ. Nút kéo cũng dùng được bằng bàn phím: mũi tên lên, xuống đổi một bậc. Sau khi thả, ghi lại thứ tự vào li.dataset.i
-   (để kiểu sắp xếp "Mặc định" của Listbar nhận thứ tự mới). Bắn "arg:reorder" ({ code, index }) trên ul. */
+   (để kiểu sắp xếp "Mặc định" của Listbar nhận thứ tự mới). Dạng lưới: xem khối "Dạng lưới" bên dưới. Bắn "arg:reorder" ({ code, index }) trên ul. */
 (function () {
   'use strict';
   function items(ul) { return Array.prototype.slice.call(ul.children).filter(function (x) { return x.tagName === 'LI'; }); }
@@ -40,6 +40,52 @@
     commit(d.ul, d.li);
   }
   document.addEventListener('pointerup', end); document.addEventListener('pointercancel', end);
+  /* Dạng lưới [data-arg-reorder="grid"]: cả thẻ li là nút kéo (không có nút kéo riêng). Chuột: kéo thẻ khi đã di chuyển quá 4px; cảm ứng: giữ khoảng 250ms rồi kéo (vuốt nhanh vẫn cuộn trang).
+     Thẻ đang kéo bám theo con trỏ; con trỏ vào thẻ nào thì thẻ đang kéo đổi chỗ tới vị trí đó. Nút bên trong thẻ (button) không bắt đầu kéo. */
+  var gr = null, gTimer = 0, HOLD = 250;
+  function gTarget(t) { var li = t.closest && t.closest('[data-arg-reorder="grid"] > li'); return li && !t.closest('button, a') ? li : null; }
+  function gBegin(li, x, y) {
+    var r = li.getBoundingClientRect();
+    gr = { li: li, ul: li.parentNode, gx: x - r.left, gy: y - r.top, x0: x, y0: y, on: false };
+  }
+  function gStart() { gr.on = true; gr.li.classList.add('is-dragging'); gr.ul.classList.add('is-sorting'); }
+  function gMove(x, y) {
+    var li = gr.li, all = items(gr.ul), hit = null;
+    li.style.transform = '';
+    all.forEach(function (o) { if (o !== li && !hit) { var b = o.getBoundingClientRect(); if (x >= b.left && x <= b.right && y >= b.top && y <= b.bottom) hit = o; } });
+    if (hit) gr.ul.insertBefore(li, all.indexOf(hit) < all.indexOf(li) ? hit : hit.nextSibling);
+    var n = li.getBoundingClientRect();
+    li.style.transform = 'translate(' + (x - gr.gx - n.left) + 'px,' + (y - gr.gy - n.top) + 'px)';
+  }
+  function gEnd() {
+    clearTimeout(gTimer);
+    if (!gr) return;
+    var d = gr; gr = null;
+    if (!d.on) return;
+    d.li.style.transform = ''; d.li.classList.remove('is-dragging'); d.ul.classList.remove('is-sorting');
+    commit(d.ul, d.li);
+  }
+  document.addEventListener('mousedown', function (e) { var li = e.button === 0 && gTarget(e.target); if (li) gBegin(li, e.clientX, e.clientY); });
+  document.addEventListener('mousemove', function (e) {
+    if (!gr) return;
+    if (!gr.on) { if (Math.abs(e.clientX - gr.x0) + Math.abs(e.clientY - gr.y0) > 4) gStart(); else return; }
+    gMove(e.clientX, e.clientY);
+  });
+  document.addEventListener('mouseup', gEnd);
+  document.addEventListener('touchstart', function (e) {
+    var li = gTarget(e.target); if (!li) return;
+    var t = e.touches[0]; gBegin(li, t.clientX, t.clientY);
+    clearTimeout(gTimer); gTimer = setTimeout(function () { if (gr) { gStart(); gMove(gr.x0, gr.y0); } }, HOLD);
+  }, { passive: true });
+  document.addEventListener('touchmove', function (e) {
+    if (!gr) return;
+    var t = e.touches[0];
+    if (gr.on) { e.preventDefault(); gMove(t.clientX, t.clientY); }
+    else if (Math.abs(t.clientX - gr.x0) + Math.abs(t.clientY - gr.y0) > 8) { clearTimeout(gTimer); gr = null; }
+  }, { passive: false });
+  document.addEventListener('touchend', gEnd); document.addEventListener('touchcancel', gEnd);
+  document.addEventListener('contextmenu', function (e) { if (gr && gr.on) e.preventDefault(); });
+
   document.addEventListener('keydown', function (e) {
     var h = e.target.closest && e.target.closest('[data-arg-handle]');
     if (!h || (e.key !== 'ArrowUp' && e.key !== 'ArrowDown')) return;

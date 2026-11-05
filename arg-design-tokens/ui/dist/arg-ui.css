@@ -15,6 +15,8 @@
   /* Bảng màu phân loại cho biểu đồ (không phải token Figma: P5_Chart trong Figma đang để trống). Tông Agriseco: cam đỏ thương hiệu dẫn đầu, kế đến vàng hổ phách, đỏ đậm, rồi xám trung tính; không dùng xanh dương của TradeX cũ, tránh xanh lá và đỏ của tăng giảm */
   --arg-viz-1: var(--arg-p-brand-header-start); --arg-viz-2: var(--arg-p-brand-amber); --arg-viz-3: var(--arg-p-primary-agri-red-600-m);
   --arg-viz-4: var(--arg-p-neutral-500); --arg-viz-5: var(--arg-p-primary-agri-red-200); --arg-viz-6: var(--arg-p-neutral-300);
+  /* Nền ô icon dịch vụ (không phải token Figma): #FF6A00 từ 50% sang đỏ header end ở 130%, hướng ngang, theo thông số chủ dự án chỉnh bằng công cụ gradient */
+  --arg-gradient-service: linear-gradient(90deg, var(--arg-p-brand-gradient-start) 50%, var(--arg-p-brand-header-end) 130%);
 } /* lề trái phải chuẩn so với mép thiết bị: 20px */
 .arg-ui, .arg-ui * { box-sizing: border-box; }
 .arg-ui {
@@ -1256,11 +1258,38 @@
 .arg-service-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--arg-space-3x); }
 .arg-service { display: grid; justify-items: center; align-content: start; gap: var(--arg-space-2x); padding: var(--arg-space-2x) 0; border-radius: var(--arg-radius); color: var(--arg-ui-text-on-bright-text-content); text-decoration: none; text-align: center; transition: transform .15s; }
 .arg-service:hover { transform: translateY(-2px); } .arg-service:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: 2px; }
-.arg-service__icon { display: grid; place-items: center; width: var(--arg-space-12x); height: var(--arg-space-12x); border-radius: var(--arg-radius); background-color: var(--arg-p-brand-header-start); background-image: var(--arg-gradient-primary-button); color: #fff; } .arg-service__icon .i { width: 24px; height: 24px; }
+.arg-service__icon { display: grid; place-items: center; width: var(--arg-space-12x); height: var(--arg-space-12x); border-radius: var(--arg-radius); background-color: var(--arg-p-brand-gradient-start); background-image: var(--arg-gradient-service); color: #fff; } .arg-service__icon .i { width: 24px; height: 24px; }
 .arg-service__label { font-size: var(--arg-font-font-size-body-4); line-height: var(--arg-font-line-height-body-4); font-weight: var(--arg-font-font-weight-medium); }
 @media (min-width: 720px) { .arg-service-grid--auto { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); } }
 /* Lưới nằm trong thẻ trắng, tiêu đề mục nằm ngoài thẻ như các mục khác */
 .arg-service-grid--card { padding: var(--arg-space-3x) var(--arg-space-4x); border-radius: var(--arg-radius-lg); background: var(--arg-ui-background-surface); box-shadow: var(--arg-shadow-shadow); }
+
+/* ARG UI · svcedit (màn Tuỳ chỉnh dịch vụ nhanh: lưới thẻ dịch vụ đã chọn có nút bỏ và kéo đổi vị trí, danh sách dịch vụ theo nhóm có nút thêm) */
+.arg-svcedit__hint { margin: calc(var(--arg-space-1x) * -1) 0 0; font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-body-4)/var(--arg-font-line-height-body-4) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-svcedit__hint b { color: var(--arg-ui-text-on-bright-text-title); font-weight: var(--arg-font-font-weight-semibold); }
+.arg-svcedit__empty { margin: 0; padding: var(--arg-space-6x) 0; text-align: center; font-size: var(--arg-font-font-size-body-4); color: var(--arg-ui-text-on-bright-text-content-lv2); }
+.arg-svcedit__grid { list-style: none; margin: 0; padding: var(--arg-space-2x) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--arg-space-3x); }
+.arg-svcedit__grid:empty { display: none; }
+.arg-svcedit__tile { position: relative; display: grid; justify-items: center; align-content: start; gap: var(--arg-space-2x); padding: var(--arg-space-3x) var(--arg-space-2x); border-radius: var(--arg-radius); background: var(--arg-ui-background-background); color: var(--arg-ui-text-on-bright-text-content); text-align: center; cursor: grab; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+.arg-svcedit__tile .arg-service__label { overflow-wrap: anywhere; }
+.arg-svcedit__grid > .arg-svcedit__tile.is-dragging { background: var(--arg-ui-background-background); border-radius: var(--arg-radius); z-index: 5; cursor: grabbing; box-shadow: var(--arg-shadow-soft-shadow); }
+.arg-svcedit__remove { position: absolute; top: calc(var(--arg-space-2x) * -1); right: calc(var(--arg-space-2x) * -1); z-index: 1; display: grid; place-items: center; width: 20px; height: 20px; padding: 0; border: 2px solid var(--arg-ui-background-surface); border-radius: 50%; background: var(--arg-action-noti-toast-error); color: #fff; cursor: pointer; box-sizing: content-box; }
+.arg-svcedit__remove .i { width: 12px; height: 12px; }
+.arg-svcedit__remove:focus-visible, .arg-svcedit__add:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: 2px; }
+.arg-svcedit__list { list-style: none; margin: 0; padding: 0 var(--arg-space-4x); border-radius: var(--arg-radius-lg); background: var(--arg-ui-background-background); }
+.arg-svcedit__row { position: relative; display: flex; align-items: center; gap: var(--arg-space-3x); min-height: 56px; }
+/* Đường kẻ giữa các dòng: nhạt (50% màu kẻ chuẩn), bắt đầu từ chữ (sau icon 32px và khoảng cách 12px), không kéo qua icon */
+.arg-svcedit__row + .arg-svcedit__row::before { content: ""; position: absolute; top: 0; left: calc(32px + var(--arg-space-3x)); right: 0; height: 1px; background: color-mix(in srgb, var(--arg-ui-divider-separator) 50%, transparent); }
+.arg-svcedit__icon { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: var(--arg-radius-sm); background-color: var(--arg-p-brand-gradient-start); background-image: var(--arg-gradient-service); color: #fff; }
+.arg-svcedit__icon .i { width: 20px; height: 20px; }
+.arg-svcedit__name { flex: 1; min-width: 0; font: var(--arg-font-font-weight-medium) var(--arg-font-font-size-body-3)/var(--arg-font-line-height-body-3) var(--arg-font-family-family); color: var(--arg-ui-text-on-bright-text-title); }
+.arg-svcedit__add { flex: none; display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--arg-p-brand-header-start); cursor: pointer; }
+.arg-svcedit__add .i { width: 24px; height: 24px; }
+.arg-svcedit__add:disabled { color: var(--arg-ui-text-on-bright-text-disable); cursor: not-allowed; }
+/* Đang kéo: thẻ được kéo phóng to nhẹ, nổi trên các thẻ khác (bóng ở trên); các thẻ còn lại mờ còn 40% để thẻ chính nổi bật */
+.arg-svcedit__grid > .arg-svcedit__tile.is-dragging { scale: 1.06; }
+.arg-svcedit__grid.is-sorting > .arg-svcedit__tile:not(.is-dragging) { opacity: .4; }
+@media (prefers-reduced-motion: no-preference) { .arg-svcedit__tile:not(.is-dragging) { transition: transform .15s ease, opacity .15s ease; } }
 
 /* ARG UI · news */
 .arg-news-list { list-style: none; margin: 0; padding: 0 var(--arg-space-4x); background: var(--arg-ui-background-surface); border-radius: var(--arg-radius-lg); box-shadow: var(--arg-shadow-shadow); }

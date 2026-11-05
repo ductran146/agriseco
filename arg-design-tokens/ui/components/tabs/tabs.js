@@ -1,5 +1,6 @@
 /* ARG UI tabs: [data-arg-tabs] > [role=tablist] + [role=tabpanel] (same order).
-   Arrow keys, Home, End move focus; aria-orientation="vertical" switches to Up/Down. Fires "arg:tab". */
+   Arrow keys, Home, End move focus; aria-orientation="vertical" switches to Up/Down. Fires "arg:tab".
+   Dải tab cuộn ngang: tab được chọn (bấm hoặc phím) cuộn ra giữa dải. */
 (function () {
   'use strict';
   ARG.register('tabs', function (root) {
@@ -11,6 +12,12 @@
       var panels = ARG.$$('[role="tabpanel"]', t).filter(own);
       var vertical = list.getAttribute('aria-orientation') === 'vertical';
 
+      /* dải tab cuộn ngang: đưa tab vừa chọn ra giữa dải để luôn thấy một phần các tab hai bên (chỉ cuộn ngang trong dải, không cuộn trang); tab đầu, cuối dải thì dừng ở mép */
+      function center(x) {
+        if (vertical || list.scrollWidth <= list.clientWidth) return;
+        var l = x.getBoundingClientRect().left - list.getBoundingClientRect().left + list.scrollLeft;
+        list.scrollTo({ left: Math.max(0, l + x.offsetWidth / 2 - list.clientWidth / 2), behavior: ARG.reducedMotion && ARG.reducedMotion() ? 'auto' : 'smooth' });
+      }
       function select(i, focus) {
         tabs.forEach(function (x, j) { x.setAttribute('aria-selected', String(i === j)); x.tabIndex = i === j ? 0 : -1; });
         panels.forEach(function (p, j) { p.hidden = i !== j; });
@@ -24,12 +31,7 @@
         x.addEventListener('click', function () {
           if (x.disabled) return;
           select(i);
-          /* dải tab cuộn ngang: kéo tab vừa chọn vào tầm nhìn (chỉ cuộn ngang trong dải, không cuộn trang) */
-          if (list.scrollWidth > list.clientWidth) {
-            var l = x.offsetLeft - list.offsetLeft, pad = 20;
-            if (l < list.scrollLeft + pad) list.scrollTo({ left: Math.max(0, l - pad), behavior: 'smooth' });
-            else if (l + x.offsetWidth > list.scrollLeft + list.clientWidth - pad) list.scrollTo({ left: l + x.offsetWidth - list.clientWidth + pad, behavior: 'smooth' });
-          }
+          center(x);
         });
         x.addEventListener('keydown', function (e) {
           var next = vertical ? 'ArrowDown' : 'ArrowRight', prev = vertical ? 'ArrowUp' : 'ArrowLeft';
@@ -39,7 +41,7 @@
           else if (e.key === prev) to = enabled[(pos - 1 + enabled.length) % enabled.length];
           else if (e.key === 'Home') to = enabled[0];
           else if (e.key === 'End') to = enabled[enabled.length - 1];
-          if (to !== null) { e.preventDefault(); select(to, true); }
+          if (to !== null) { e.preventDefault(); select(to, true); center(tabs[to]); }
         });
       });
       t._argSelect = select;

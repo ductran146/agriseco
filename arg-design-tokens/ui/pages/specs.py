@@ -11,7 +11,7 @@ HOME = [
         ('.arg-account__top', 'l', 'Hàng lời chào nằm ngoài thẻ: avatar gradient 40px, lời chào và số tài khoản (mã tô màu link thương hiệu). Tiểu khoản áp dụng cho cả tài khoản nên đặt ở đây, không đặt trong thẻ.'),
     ('.arg-account__sub', 'l', 'Select gốc (.arg-control.arg-select) cao 40px, rộng 96px, chữ trung tính, mũi tên caret-down: chọn tiểu khoản X1 (thường) hoặc M1 (ký quỹ).'),
     ('.arg-account', 'r', 'Account: nền gradient header web, hình chìm là logo Agriseco gốc (trắng mờ 14%); tổng tài sản (con mắt ẩn số), biến động hôm nay, thanh phân bổ; thân trắng một hàng: lãi/lỗ danh mục bên trái, nút Nộp tiền bên phải. Số tổng đếm 0 → giá trị ~600ms.'),
-    ('.arg-service-grid', 'l', 'Service trong khối nền trắng (.arg-service-grid--card): lưới 3 cột, ô icon gradient thương hiệu, icon trắng.'),
+    ('.arg-service-grid', 'l', 'Service trong khối nền trắng (.arg-service-grid--card): lưới 3 cột, ô icon gradient dịch vụ (vàng sang cam), icon trắng.'),
     ('.arg-reco-row', 'r', 'Reco: cuộn ngang, nhãn B, G, M, giá mục tiêu và lãi lỗ.'),
     ('.arg-quote-list', 'l', 'Quote: sparkline, giá và % theo 5 trạng thái, bấm mở thông tin mã. Mũi tên ở tiêu đề khối mở tab Yêu thích của Thị trường (data-arg-go kèm data-arg-tab).'),
     ('.arg-news-list', 'r', 'News: ảnh 88×64, tiêu đề tối đa 2 dòng, nguồn và ngày.'),
@@ -137,12 +137,22 @@ MORE = [
     TAB,
 ]
 
+SERVICES = [
+    ('.arg-svcedit__hint', 'r', 'Hướng dẫn và bộ đếm "Đã chọn n/6": tối đa 6 dịch vụ, bằng số ô của lưới Trang chủ.'),
+    ('.arg-svcedit__tile', 'l', 'Thẻ dịch vụ nhanh (Svcedit): icon gradient dịch vụ 48px, nhãn; giữ và kéo (cảm ứng giữ 250ms) để đổi vị trí bằng Reorder dạng lưới.'),
+    ('.arg-svcedit__remove', 'r', 'Nút bỏ: tròn 20px nền đỏ (token lỗi), icon trừ trắng; bỏ dịch vụ khỏi dịch vụ nhanh.'),
+    ('.arg-svcedit__list', 'l', 'Danh sách theo nhóm: thẻ nền xám bo --arg-radius-lg, dòng cao 56px, đường kẻ nhạt bắt đầu từ chữ; icon gradient dịch vụ 32px.'),
+    ('.arg-svcedit__add', 'r', 'Nút thêm: icon plus-circle màu thương hiệu; màu disable nhạt khi đã đủ 6 dịch vụ; dịch vụ đã chọn không hiện nút.'),
+    ('[data-svc-save]', 'l', 'Button --primary --xl: lưu thứ tự vào phiên (sessionStorage), quay lại Trang chủ và báo toast một dòng.'),
+]
+
 
 def specs_for(sid):
     """Danh sách đặc tả của màn hình có id sid."""
     if sid == 'home': return HOME
     if sid == 'market': return MARKET
     if sid == 'more': return MORE
+    if sid == 'services': return SERVICES
     if sid == 'orderbook': return ORDERBOOK
     if sid == 'search': return SEARCH
     if sid == 'asset': return ASSET

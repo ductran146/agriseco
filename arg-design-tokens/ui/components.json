@@ -157,6 +157,10 @@
       "title": "Service tile"
     },
     {
+      "id": "svcedit",
+      "title": "Svcedit"
+    },
+    {
       "id": "news",
       "title": "News list"
     },
@@ -456,6 +460,7 @@
     "components/splash/splash.css",
     "components/account/account.css",
     "components/service/service.css",
+    "components/svcedit/svcedit.css",
     "components/news/news.css",
     "components/rating/rating.css",
     "components/reco/reco.css",

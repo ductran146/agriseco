@@ -202,7 +202,8 @@
 
 /* --- components/tabs/tabs.js --- */
 /* ARG UI tabs: [data-arg-tabs] > [role=tablist] + [role=tabpanel] (same order).
-   Arrow keys, Home, End move focus; aria-orientation="vertical" switches to Up/Down. Fires "arg:tab". */
+   Arrow keys, Home, End move focus; aria-orientation="vertical" switches to Up/Down. Fires "arg:tab".
+   Dải tab cuộn ngang: tab được chọn (bấm hoặc phím) cuộn ra giữa dải. */
 (function () {
   'use strict';
   ARG.register('tabs', function (root) {
@@ -214,6 +215,12 @@
       var panels = ARG.$$('[role="tabpanel"]', t).filter(own);
       var vertical = list.getAttribute('aria-orientation') === 'vertical';
 
+      /* dải tab cuộn ngang: đưa tab vừa chọn ra giữa dải để luôn thấy một phần các tab hai bên (chỉ cuộn ngang trong dải, không cuộn trang); tab đầu, cuối dải thì dừng ở mép */
+      function center(x) {
+        if (vertical || list.scrollWidth <= list.clientWidth) return;
+        var l = x.getBoundingClientRect().left - list.getBoundingClientRect().left + list.scrollLeft;
+        list.scrollTo({ left: Math.max(0, l + x.offsetWidth / 2 - list.clientWidth / 2), behavior: ARG.reducedMotion && ARG.reducedMotion() ? 'auto' : 'smooth' });
+      }
       function select(i, focus) {
         tabs.forEach(function (x, j) { x.setAttribute('aria-selected', String(i === j)); x.tabIndex = i === j ? 0 : -1; });
         panels.forEach(function (p, j) { p.hidden = i !== j; });
@@ -227,12 +234,7 @@
         x.addEventListener('click', function () {
           if (x.disabled) return;
           select(i);
-          /* dải tab cuộn ngang: kéo tab vừa chọn vào tầm nhìn (chỉ cuộn ngang trong dải, không cuộn trang) */
-          if (list.scrollWidth > list.clientWidth) {
-            var l = x.offsetLeft - list.offsetLeft, pad = 20;
-            if (l < list.scrollLeft + pad) list.scrollTo({ left: Math.max(0, l - pad), behavior: 'smooth' });
-            else if (l + x.offsetWidth > list.scrollLeft + list.clientWidth - pad) list.scrollTo({ left: l + x.offsetWidth - list.clientWidth + pad, behavior: 'smooth' });
-          }
+          center(x);
         });
         x.addEventListener('keydown', function (e) {
           var next = vertical ? 'ArrowDown' : 'ArrowRight', prev = vertical ? 'ArrowUp' : 'ArrowLeft';
@@ -242,7 +244,7 @@
           else if (e.key === prev) to = enabled[(pos - 1 + enabled.length) % enabled.length];
           else if (e.key === 'Home') to = enabled[0];
           else if (e.key === 'End') to = enabled[enabled.length - 1];
-          if (to !== null) { e.preventDefault(); select(to, true); }
+          if (to !== null) { e.preventDefault(); select(to, true); center(tabs[to]); }
         });
       });
       t._argSelect = select;
@@ -1597,7 +1599,7 @@
 /* --- components/reorder/reorder.js --- */
 /* ARG UI reorder: danh sách [data-arg-reorder] (ul) có dòng li chứa nút kéo [data-arg-handle]. Nhấn giữ nút rồi kéo lên xuống (chuột hoặc cảm ứng) để đổi thứ tự; dòng đang kéo nổi lên
    và bám theo con trỏ, các dòng khác nhường chỗ. Nút kéo cũng dùng được bằng bàn phím: mũi tên lên, xuống đổi một bậc. Sau khi thả, ghi lại thứ tự vào li.dataset.i
-   (để kiểu sắp xếp "Mặc định" của Listbar nhận thứ tự mới). Bắn "arg:reorder" ({ code, index }) trên ul. */
+   (để kiểu sắp xếp "Mặc định" của Listbar nhận thứ tự mới). Dạng lưới: xem khối "Dạng lưới" bên dưới. Bắn "arg:reorder" ({ code, index }) trên ul. */
 (function () {
   'use strict';
   function items(ul) { return Array.prototype.slice.call(ul.children).filter(function (x) { return x.tagName === 'LI'; }); }
@@ -1637,6 +1639,52 @@
     commit(d.ul, d.li);
   }
   document.addEventListener('pointerup', end); document.addEventListener('pointercancel', end);
+  /* Dạng lưới [data-arg-reorder="grid"]: cả thẻ li là nút kéo (không có nút kéo riêng). Chuột: kéo thẻ khi đã di chuyển quá 4px; cảm ứng: giữ khoảng 250ms rồi kéo (vuốt nhanh vẫn cuộn trang).
+     Thẻ đang kéo bám theo con trỏ; con trỏ vào thẻ nào thì thẻ đang kéo đổi chỗ tới vị trí đó. Nút bên trong thẻ (button) không bắt đầu kéo. */
+  var gr = null, gTimer = 0, HOLD = 250;
+  function gTarget(t) { var li = t.closest && t.closest('[data-arg-reorder="grid"] > li'); return li && !t.closest('button, a') ? li : null; }
+  function gBegin(li, x, y) {
+    var r = li.getBoundingClientRect();
+    gr = { li: li, ul: li.parentNode, gx: x - r.left, gy: y - r.top, x0: x, y0: y, on: false };
+  }
+  function gStart() { gr.on = true; gr.li.classList.add('is-dragging'); gr.ul.classList.add('is-sorting'); }
+  function gMove(x, y) {
+    var li = gr.li, all = items(gr.ul), hit = null;
+    li.style.transform = '';
+    all.forEach(function (o) { if (o !== li && !hit) { var b = o.getBoundingClientRect(); if (x >= b.left && x <= b.right && y >= b.top && y <= b.bottom) hit = o; } });
+    if (hit) gr.ul.insertBefore(li, all.indexOf(hit) < all.indexOf(li) ? hit : hit.nextSibling);
+    var n = li.getBoundingClientRect();
+    li.style.transform = 'translate(' + (x - gr.gx - n.left) + 'px,' + (y - gr.gy - n.top) + 'px)';
+  }
+  function gEnd() {
+    clearTimeout(gTimer);
+    if (!gr) return;
+    var d = gr; gr = null;
+    if (!d.on) return;
+    d.li.style.transform = ''; d.li.classList.remove('is-dragging'); d.ul.classList.remove('is-sorting');
+    commit(d.ul, d.li);
+  }
+  document.addEventListener('mousedown', function (e) { var li = e.button === 0 && gTarget(e.target); if (li) gBegin(li, e.clientX, e.clientY); });
+  document.addEventListener('mousemove', function (e) {
+    if (!gr) return;
+    if (!gr.on) { if (Math.abs(e.clientX - gr.x0) + Math.abs(e.clientY - gr.y0) > 4) gStart(); else return; }
+    gMove(e.clientX, e.clientY);
+  });
+  document.addEventListener('mouseup', gEnd);
+  document.addEventListener('touchstart', function (e) {
+    var li = gTarget(e.target); if (!li) return;
+    var t = e.touches[0]; gBegin(li, t.clientX, t.clientY);
+    clearTimeout(gTimer); gTimer = setTimeout(function () { if (gr) { gStart(); gMove(gr.x0, gr.y0); } }, HOLD);
+  }, { passive: true });
+  document.addEventListener('touchmove', function (e) {
+    if (!gr) return;
+    var t = e.touches[0];
+    if (gr.on) { e.preventDefault(); gMove(t.clientX, t.clientY); }
+    else if (Math.abs(t.clientX - gr.x0) + Math.abs(t.clientY - gr.y0) > 8) { clearTimeout(gTimer); gr = null; }
+  }, { passive: false });
+  document.addEventListener('touchend', gEnd); document.addEventListener('touchcancel', gEnd);
+  document.addEventListener('contextmenu', function (e) { if (gr && gr.on) e.preventDefault(); });
+
   document.addEventListener('keydown', function (e) {
     var h = e.target.closest && e.target.closest('[data-arg-handle]');
     if (!h || (e.key !== 'ArrowUp' && e.key !== 'ArrowDown')) return;
@@ -1647,6 +1695,82 @@
     if (!sib) return;
     ul.insertBefore(li, e.key === 'ArrowUp' ? sib : sib.nextElementSibling);
     h.focus(); commit(ul, li);
+  });
+})();
+
+/* --- components/service/service.js --- */
+/* ARG UI service: lưới [data-arg-catalog] (Dịch vụ nhanh ở Trang chủ) được dựng lại theo lựa chọn đã lưu ở màn Tuỳ chỉnh dịch vụ nhanh
+   (sessionStorage "arg-services": mảng id theo thứ tự; data-arg-catalog là JSON { id: { id, label, icon } }). Có cờ "arg-services-saved" thì báo toast một dòng rồi xoá cờ. */
+(function () {
+  'use strict';
+  ARG.register('service', function (root) {
+    ARG.$$('[data-arg-catalog]', root).forEach(function (grid) {
+      if (grid.hasAttribute('data-arg-svcedit') || !ARG.once(grid, 'service')) return;
+      var cat = {}, ids = null, saved = false;
+      try { cat = JSON.parse(grid.getAttribute('data-arg-catalog')); ids = JSON.parse(sessionStorage.getItem('arg-services')); saved = sessionStorage.getItem('arg-services-saved') === '1'; } catch (e) {}
+      if (Array.isArray(ids)) {
+        var html = ids.filter(function (id) { return cat[id]; }).map(function (id) {
+          var d = cat[id];
+          return '<a class="arg-service" href="#" data-id="' + d.id + '"><span class="arg-service__icon">' + ARG.icon(d.icon) + '</span><span class="arg-service__label">' + d.label + '</span></a>';
+        }).join('');
+        grid.innerHTML = html || '<p class="arg-note" style="grid-column:1/-1;text-align:center">Chưa có dịch vụ nhanh. Bấm Tuỳ chỉnh để thêm.</p>';
+        ARG.init(grid);
+      }
+      if (saved) {
+        try { sessionStorage.removeItem('arg-services-saved'); } catch (e) {}
+        setTimeout(function () { if (ARG.toast) ARG.toast({ type: 'success', title: 'Đã lưu dịch vụ nhanh', text: '' }); }, 350);
+      }
+    });
+  });
+})();
+
+/* --- components/svcedit/svcedit.js --- */
+/* ARG UI svcedit: màn [data-arg-svcedit] (Tuỳ chỉnh dịch vụ nhanh). data-arg-catalog là JSON { id: { id, label, icon } }, data-max là số dịch vụ tối đa.
+   - Lựa chọn ban đầu lấy từ sessionStorage "arg-services" (mảng id theo thứ tự), không có thì theo thẻ đang vẽ sẵn.
+   - [data-svc-remove] bỏ một dịch vụ; [data-svc-add] thêm vào cuối (tắt khi đủ tối đa); kéo thẻ đổi vị trí (Reorder dạng lưới, sự kiện arg:reorder).
+   - [data-svc-save] lưu thứ tự vào sessionStorage, đặt cờ "arg-services-saved" để Trang chủ báo toast, rồi quay lại. Lưu: ghi đè hoàn toàn danh sách. */
+(function () {
+  'use strict';
+  var KEY = 'arg-services', FLAG = 'arg-services-saved';
+  function read() { try { var v = JSON.parse(sessionStorage.getItem(KEY)); return Array.isArray(v) ? v : null; } catch (e) { return null; } }
+  ARG.register('svcedit', function (root) {
+    ARG.$$('[data-arg-svcedit]', root).forEach(function (scr) {
+      if (!ARG.once(scr, 'svcedit')) return;
+      var cat = {}, max = +scr.getAttribute('data-max') || 6, grid = ARG.$('.arg-svcedit__grid', scr), cnt = ARG.$('[data-svc-count]', scr), empty = ARG.$('[data-svc-empty]', scr);
+      try { cat = JSON.parse(scr.getAttribute('data-arg-catalog')); } catch (e) {}
+      var fav = read() || ARG.$$('.arg-svcedit__tile', grid).map(function (t) { return t.getAttribute('data-id'); });
+      fav = fav.filter(function (id) { return cat[id]; });
+      function tile(d) {
+        return '<li class="arg-svcedit__tile" data-id="' + d.id + '"><button class="arg-svcedit__remove" type="button" data-svc-remove aria-label="Bỏ ' + d.label + ' khỏi dịch vụ nhanh">' + ARG.icon('minus') + '</button>' +
+          '<span class="arg-service__icon">' + ARG.icon(d.icon) + '</span><span class="arg-service__label">' + d.label + '</span></li>';
+      }
+      function render() {
+        grid.innerHTML = fav.map(function (id) { return tile(cat[id]); }).join('');
+        ARG.init(grid);
+        if (cnt) cnt.textContent = fav.length;
+        if (empty) empty.hidden = fav.length > 0;
+        ARG.$$('.arg-svcedit__row', scr).forEach(function (row) {
+          var id = row.getAttribute('data-id'), on = fav.indexOf(id) >= 0, b = ARG.$('.arg-svcedit__add', row);
+          if (on && b) b.remove();
+          if (!on) {
+            if (!b) { row.insertAdjacentHTML('beforeend', '<button class="arg-svcedit__add" type="button" data-svc-add aria-label="Thêm ' + cat[id].label + ' vào dịch vụ nhanh">' + ARG.icon('plus-circle') + '</button>'); ARG.init(row); b = ARG.$('.arg-svcedit__add', row); }
+            b.disabled = fav.length >= max;
+          }
+        });
+      }
+      scr.addEventListener('click', function (e) {
+        var rm = e.target.closest('[data-svc-remove]'), ad = e.target.closest('[data-svc-add]'), sv = e.target.closest('[data-svc-save]');
+        if (rm) { var id = rm.closest('li').getAttribute('data-id'); fav = fav.filter(function (x) { return x !== id; }); render(); }
+        else if (ad && !ad.disabled && fav.length < max) { fav.push(ad.closest('li').getAttribute('data-id')); render(); }
+        else if (sv) {
+          try { sessionStorage.setItem(KEY, JSON.stringify(fav)); sessionStorage.setItem(FLAG, '1'); } catch (x) {}
+          scr.dispatchEvent(new CustomEvent('arg:services', { bubbles: true, detail: { ids: fav.slice() } }));
+          var back = ARG.$('[data-arg-back]', scr); if (back) back.click();
+        }
+      });
+      grid.addEventListener('arg:reorder', function () { fav = ARG.$$('.arg-svcedit__tile', grid).map(function (t) { return t.getAttribute('data-id'); }); });
+      render();
+    });
   });
 })();
 

@@ -13,6 +13,8 @@
   /* Bảng màu phân loại cho biểu đồ (không phải token Figma: P5_Chart trong Figma đang để trống). Tông Agriseco: cam đỏ thương hiệu dẫn đầu, kế đến vàng hổ phách, đỏ đậm, rồi xám trung tính; không dùng xanh dương của TradeX cũ, tránh xanh lá và đỏ của tăng giảm */
   --arg-viz-1: var(--arg-p-brand-header-start); --arg-viz-2: var(--arg-p-brand-amber); --arg-viz-3: var(--arg-p-primary-agri-red-600-m);
   --arg-viz-4: var(--arg-p-neutral-500); --arg-viz-5: var(--arg-p-primary-agri-red-200); --arg-viz-6: var(--arg-p-neutral-300);
+  /* Nền ô icon dịch vụ (không phải token Figma): #FF6A00 từ 50% sang đỏ header end ở 130%, hướng ngang, theo thông số chủ dự án chỉnh bằng công cụ gradient */
+  --arg-gradient-service: linear-gradient(90deg, var(--arg-p-brand-gradient-start) 50%, var(--arg-p-brand-header-end) 130%);
 } /* lề trái phải chuẩn so với mép thiết bị: 20px */
 .arg-ui, .arg-ui * { box-sizing: border-box; }
 .arg-ui {
