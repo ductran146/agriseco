@@ -13,7 +13,7 @@ HOME = [
     ('.arg-account', 'r', 'Account: nền gradient header web, hình chìm là logo Agriseco gốc (trắng mờ 14%); tổng tài sản (con mắt ẩn số), biến động hôm nay, thanh phân bổ; thân trắng một hàng: lãi/lỗ danh mục bên trái, nút Nộp tiền bên phải. Số tổng đếm 0 → giá trị ~600ms.'),
     ('.arg-service-grid', 'l', 'Service trong khối nền trắng (.arg-service-grid--card): lưới 3 cột, ô icon gradient thương hiệu, icon trắng.'),
     ('.arg-reco-row', 'r', 'Reco: cuộn ngang, nhãn B, G, M, giá mục tiêu và lãi lỗ.'),
-    ('.arg-quote-list', 'l', 'Quote: sparkline, giá và % theo 5 trạng thái, bấm mở thông tin mã.'),
+    ('.arg-quote-list', 'l', 'Quote: sparkline, giá và % theo 5 trạng thái, bấm mở thông tin mã. Mũi tên ở tiêu đề khối mở tab Yêu thích của Thị trường (data-arg-go kèm data-arg-tab).'),
     ('.arg-news-list', 'r', 'News: ảnh 88×64, tiêu đề tối đa 2 dòng, nguồn và ngày.'),
     ('.arg-brandsign', 'l', 'Brandsign: logo cao 40px, tên Agriseco (đỏ logo) và dòng phụ; chữ ký cuối trang.'),
     TAB,
