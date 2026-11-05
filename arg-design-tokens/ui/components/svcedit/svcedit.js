@@ -1,6 +1,8 @@
 /* ARG UI svcedit: màn [data-arg-svcedit] (Tuỳ chỉnh dịch vụ nhanh). data-arg-catalog là JSON { id: { id, label, icon } }, data-max là số dịch vụ tối đa.
    - Lựa chọn ban đầu lấy từ sessionStorage "arg-services" (mảng id theo thứ tự), không có thì theo thẻ đang vẽ sẵn.
+   - Chưa chọn đủ tối đa thì các ô còn lại vẽ thành ô trống .arg-svcedit__slot (data-fixed).
    - [data-svc-remove] bỏ một dịch vụ; [data-svc-add] thêm vào cuối (tắt khi đủ tối đa); kéo thẻ đổi vị trí (Reorder dạng lưới, sự kiện arg:reorder).
+   - [data-svc-save] tắt khi danh sách (kể cả thứ tự) giống lúc mở màn, bật khi có thay đổi, tắt lại nếu người dùng đưa về như cũ.
    - [data-svc-save] lưu thứ tự vào sessionStorage, đặt cờ "arg-services-saved" để Trang chủ báo toast, rồi quay lại. Lưu: ghi đè hoàn toàn danh sách. */
 (function () {
   'use strict';
@@ -13,15 +15,20 @@
       try { cat = JSON.parse(scr.getAttribute('data-arg-catalog')); } catch (e) {}
       var fav = read() || ARG.$$('.arg-svcedit__tile', grid).map(function (t) { return t.getAttribute('data-id'); });
       fav = fav.filter(function (id) { return cat[id]; });
+      var base = fav.join(','), save = ARG.$('[data-svc-save]', scr);  /* thứ tự lúc mở màn: giống thì nút Lưu tắt */
       function tile(d) {
         return '<li class="arg-svcedit__tile" data-id="' + d.id + '"><button class="arg-svcedit__remove" type="button" data-svc-remove aria-label="Bỏ ' + d.label + ' khỏi dịch vụ nhanh">' + ARG.icon('minus') + '</button>' +
           '<span class="arg-service__icon">' + ARG.icon(d.icon) + '</span><span class="arg-service__label">' + d.label + '</span></li>';
       }
+      /* Chưa chọn đủ: các ô còn lại hiện thành ô trống viền nét đứt để người dùng thấy còn chỗ (không kéo được, không bấm được) */
+      function slots(n) { var h = ''; for (var i = 0; i < n; i++) h += '<li class="arg-svcedit__slot" data-fixed aria-hidden="true">' + ARG.icon('plus') + '<span>Còn trống</span></li>'; return h; }
+      function dirty() { if (save) save.disabled = fav.join(',') === base; }
       function render() {
-        grid.innerHTML = fav.map(function (id) { return tile(cat[id]); }).join('');
+        grid.innerHTML = fav.map(function (id) { return tile(cat[id]); }).join('') + slots(max - fav.length);
         ARG.init(grid);
         if (cnt) cnt.textContent = fav.length;
         if (empty) empty.hidden = fav.length > 0;
+        dirty();
         ARG.$$('.arg-svcedit__row', scr).forEach(function (row) {
           var id = row.getAttribute('data-id'), on = fav.indexOf(id) >= 0, b = ARG.$('.arg-svcedit__add', row);
           if (on && b) b.remove();
@@ -41,7 +48,7 @@
           var back = ARG.$('[data-arg-back]', scr); if (back) back.click();
         }
       });
-      grid.addEventListener('arg:reorder', function () { fav = ARG.$$('.arg-svcedit__tile', grid).map(function (t) { return t.getAttribute('data-id'); }); });
+      grid.addEventListener('arg:reorder', function () { fav = ARG.$$('.arg-svcedit__tile', grid).map(function (t) { return t.getAttribute('data-id'); }); dirty(); });
       render();
     });
   });

@@ -9,3 +9,5 @@
 [data-arg-reorder].is-sorting { -webkit-user-select: none; user-select: none; }
 [data-arg-reorder].is-sorting > li:not(.is-dragging) { transition: transform .15s ease; }
 @media (prefers-reduced-motion: reduce) { [data-arg-reorder].is-sorting > li:not(.is-dragging) { transition: none; } }
+/* Dạng lưới: bản sao nổi bám theo con trỏ (phóng to nhẹ, bóng rõ) và ô giữ chỗ viền nét đứt tại vị trí sẽ thả */
+.arg-reorder__ghost { z-index: 200; box-sizing: border-box; pointer-events: none; scale: 1.06; box-shadow: var(--arg-shadow-soft-shadow), 0 10px 24px var(--arg-effect-black-8pct), 0 2px 6px var(--arg-effect-black-8pct); cursor: grabbing; }

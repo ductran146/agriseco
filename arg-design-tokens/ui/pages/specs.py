@@ -139,11 +139,12 @@ MORE = [
 
 SERVICES = [
     ('.arg-svcedit__hint', 'r', 'Hướng dẫn và bộ đếm "Đã chọn n/6": tối đa 6 dịch vụ, bằng số ô của lưới Trang chủ.'),
-    ('.arg-svcedit__tile', 'l', 'Thẻ dịch vụ nhanh (Svcedit): icon gradient dịch vụ 48px, nhãn; giữ và kéo (cảm ứng giữ 250ms) để đổi vị trí bằng Reorder dạng lưới.'),
+    ('.arg-svcedit__tile', 'l', 'Thẻ dịch vụ nhanh (Svcedit): icon gradient dịch vụ 48px, nhãn; giữ và kéo (cảm ứng giữ 250ms) để đổi vị trí bằng Reorder dạng lưới: bản sao nổi có bóng bám con trỏ, vị trí sẽ thả hiện ô viền nét đứt.'),
+    ('.arg-svcedit__slot', 'r', 'Chưa chọn đủ 6: các ô còn lại là ô trống viền nét đứt "Còn trống" (Svcedit __slot), không kéo, không bấm; Trang chủ chỉ hiện dịch vụ đã chọn, xếp từ trái.'),
     ('.arg-svcedit__remove', 'r', 'Nút bỏ: tròn 20px nền đỏ (token lỗi), icon trừ trắng; bỏ dịch vụ khỏi dịch vụ nhanh.'),
     ('.arg-svcedit__list', 'l', 'Danh sách theo nhóm: thẻ nền xám bo --arg-radius-lg, dòng cao 56px, đường kẻ nhạt bắt đầu từ chữ; icon gradient dịch vụ 32px.'),
     ('.arg-svcedit__add', 'r', 'Nút thêm: icon plus-circle màu thương hiệu; màu disable nhạt khi đã đủ 6 dịch vụ; dịch vụ đã chọn không hiện nút.'),
-    ('[data-svc-save]', 'l', 'Button --primary --xl: lưu thứ tự vào phiên (sessionStorage), quay lại Trang chủ và báo toast một dòng.'),
+    ('[data-svc-save]', 'l', 'Button --primary --xl: tắt khi chưa thay đổi gì, bật khi có thay đổi; bấm lưu thứ tự vào phiên (sessionStorage), quay lại Trang chủ và báo toast một dòng.'),
 ]
 
 

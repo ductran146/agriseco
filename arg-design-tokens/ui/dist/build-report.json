@@ -3,12 +3,12 @@
     {
       "ok": true,
       "name": "Token CSS được dùng đều tồn tại",
-      "detail": "217 biến dùng, thiếu: không"
+      "detail": "218 biến dùng, thiếu: không"
     },
     {
       "ok": true,
       "name": "Class trong ví dụ đều có CSS",
-      "detail": "705 class dùng, thiếu: không"
+      "detail": "706 class dùng, thiếu: không"
     },
     {
       "ok": true,

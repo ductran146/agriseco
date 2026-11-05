@@ -11,4 +11,6 @@ Nhấn giữ nút kéo rồi kéo lên xuống (chuột hoặc cảm ứng); cá
 Dòng Quote `--fav` dùng nút kéo ở cột đầu; vùng bấm phủ cả dòng của `--link` nằm dưới nút (nút có `z-index: 1`).
 
 ## Dạng lưới
-`[data-arg-reorder="grid"]` (ul lưới nhiều cột): cả thẻ `li` là nút kéo, không cần `[data-arg-handle]`. Chuột: kéo khi đã di chuyển quá 4px; cảm ứng: giữ khoảng 250ms rồi kéo, vuốt nhanh vẫn cuộn trang. Thẻ đang kéo bám theo con trỏ, con trỏ vào thẻ nào thì thẻ đang kéo đổi chỗ tới vị trí thẻ đó. Nút, liên kết bên trong thẻ không bắt đầu kéo. Dùng ở Svcedit.
+`[data-arg-reorder="grid"]` (ul lưới nhiều cột): cả thẻ `li` là nút kéo, không cần `[data-arg-handle]`. Chuột: kéo khi đã di chuyển quá 4px; cảm ứng: giữ khoảng 250ms rồi kéo, vuốt nhanh vẫn cuộn trang. Bản sao nổi `.arg-reorder__ghost` (phóng to 106%, có bóng) bám theo con trỏ; thẻ thật ở lại làm ô giữ chỗ `.is-placeholder` (CSS riêng của từng component, ví dụ viền nét đứt ở Svcedit) và đổi chỗ tới vị trí thẻ mà con trỏ đi vào. Nút, liên kết bên trong thẻ không bắt đầu kéo. Dùng ở Svcedit.
+
+Ô có `data-fixed` trong lưới (ví dụ ô trống của Svcedit) không kéo được và không nhận thẻ.

@@ -3,10 +3,8 @@
 .arg-svcedit__hint b { color: var(--arg-ui-text-on-bright-text-title); font-weight: var(--arg-font-font-weight-semibold); }
 .arg-svcedit__empty { margin: 0; padding: var(--arg-space-6x) 0; text-align: center; font-size: var(--arg-font-font-size-body-4); color: var(--arg-ui-text-on-bright-text-content-lv2); }
 .arg-svcedit__grid { list-style: none; margin: 0; padding: var(--arg-space-2x) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--arg-space-3x); }
-.arg-svcedit__grid:empty { display: none; }
 .arg-svcedit__tile { position: relative; display: grid; justify-items: center; align-content: start; gap: var(--arg-space-2x); padding: var(--arg-space-3x) var(--arg-space-2x); border-radius: var(--arg-radius); background: var(--arg-ui-background-background); color: var(--arg-ui-text-on-bright-text-content); text-align: center; cursor: grab; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 .arg-svcedit__tile .arg-service__label { overflow-wrap: anywhere; }
-.arg-svcedit__grid > .arg-svcedit__tile.is-dragging { background: var(--arg-ui-background-background); border-radius: var(--arg-radius); z-index: 5; cursor: grabbing; box-shadow: var(--arg-shadow-soft-shadow); }
 .arg-svcedit__remove { position: absolute; top: calc(var(--arg-space-2x) * -1); right: calc(var(--arg-space-2x) * -1); z-index: 1; display: grid; place-items: center; width: 20px; height: 20px; padding: 0; border: 2px solid var(--arg-ui-background-surface); border-radius: 50%; background: var(--arg-action-noti-toast-error); color: #fff; cursor: pointer; box-sizing: content-box; }
 .arg-svcedit__remove .i { width: 12px; height: 12px; }
 .arg-svcedit__remove:focus-visible, .arg-svcedit__add:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: 2px; }
@@ -20,7 +18,12 @@
 .arg-svcedit__add { flex: none; display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--arg-p-brand-header-start); cursor: pointer; }
 .arg-svcedit__add .i { width: 24px; height: 24px; }
 .arg-svcedit__add:disabled { color: var(--arg-ui-text-on-bright-text-disable); cursor: not-allowed; }
-/* Đang kéo: thẻ được kéo phóng to nhẹ, nổi trên các thẻ khác (bóng ở trên); các thẻ còn lại mờ còn 40% để thẻ chính nổi bật */
-.arg-svcedit__grid > .arg-svcedit__tile.is-dragging { scale: 1.06; }
-.arg-svcedit__grid.is-sorting > .arg-svcedit__tile:not(.is-dragging) { opacity: .4; }
-@media (prefers-reduced-motion: no-preference) { .arg-svcedit__tile:not(.is-dragging) { transition: transform .15s ease, opacity .15s ease; } }
+/* Đang kéo: bản sao nổi có bóng bám theo con trỏ (Reorder), các thẻ còn lại mờ còn 40% */
+/* Ô giữ chỗ: viền nét đứt màu thương hiệu, nền nhạt, nội dung ẩn; không đổi kích thước thẻ (dùng outline) */
+.arg-svcedit__tile.is-placeholder { opacity: 1; outline: 1.5px dashed var(--arg-p-brand-header-start); outline-offset: -1.5px; background: color-mix(in srgb, var(--arg-p-brand-header-start) 6%, transparent); }
+.arg-svcedit__tile.is-placeholder > * { visibility: hidden; }
+.arg-svcedit__grid.is-sorting > .arg-svcedit__tile:not(.is-placeholder) { opacity: .4; }
+@media (prefers-reduced-motion: no-preference) { .arg-svcedit__tile { transition: transform .15s ease, opacity .15s ease; } }
+/* Ô trống (chưa chọn đủ 6 dịch vụ): viền nét đứt màu kẻ, icon cộng và chữ "Còn trống" mờ; không tương tác */
+.arg-svcedit__slot { display: grid; justify-items: center; align-content: center; gap: var(--arg-space-1x); min-height: 104px; border-radius: var(--arg-radius); outline: 1.5px dashed var(--arg-ui-divider-stroke); outline-offset: -1.5px; color: var(--arg-ui-text-on-bright-text-disable); font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); -webkit-user-select: none; user-select: none; }
+.arg-svcedit__slot .i { width: 24px; height: 24px; }

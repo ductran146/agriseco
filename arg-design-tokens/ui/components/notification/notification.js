@@ -17,6 +17,9 @@
       b.setAttribute('aria-live', 'polite');
       ARG.root().appendChild(b);
     }
+    /* Vị trí: có thanh tab dưới (hoặc thanh nút dính đáy) thì cách thanh đó 20px; không có thì cách vạch Home indicator 20px (CSS mặc định) */
+    var scr = ARG.$$('[data-arg-screen]').filter(function (x) { return !x.hidden; })[0] || document, bar = scr.querySelector('.arg-tabbar, .arg-actionbar');
+    b.style.bottom = bar && bar.offsetParent !== null ? Math.max(0, window.innerHeight - bar.getBoundingClientRect().top) + 20 + 'px' : '';
     return b;
   }
   ARG.toast = function (opt) {

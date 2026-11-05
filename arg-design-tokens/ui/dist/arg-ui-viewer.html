@@ -1885,6 +1885,7 @@
   /* Bảng màu phân loại cho biểu đồ (không phải token Figma: P5_Chart trong Figma đang để trống). Tông Agriseco: cam đỏ thương hiệu dẫn đầu, kế đến vàng hổ phách, đỏ đậm, rồi xám trung tính; không dùng xanh dương của TradeX cũ, tránh xanh lá và đỏ của tăng giảm */
   --arg-viz-1: var(--arg-p-brand-header-start); --arg-viz-2: var(--arg-p-brand-amber); --arg-viz-3: var(--arg-p-primary-agri-red-600-m);
   --arg-viz-4: var(--arg-p-neutral-500); --arg-viz-5: var(--arg-p-primary-agri-red-200); --arg-viz-6: var(--arg-p-neutral-300);
+  --arg-home-indicator: 13px; /* cạnh trên vạch Home indicator tính từ đáy thiết bị (cách đáy 8px, dày 5px); không phải token Figma */
   /* Nền ô icon dịch vụ (không phải token Figma): #FF6A00 từ 50% sang đỏ header end ở 130%, hướng ngang, theo thông số chủ dự án chỉnh bằng công cụ gradient */
   --arg-gradient-service: linear-gradient(90deg, var(--arg-p-brand-gradient-start) 50%, var(--arg-p-brand-header-end) 130%);
 } /* lề trái phải chuẩn so với mép thiết bị: 20px */
@@ -2407,6 +2408,8 @@
 [data-arg-reorder].is-sorting { -webkit-user-select: none; user-select: none; }
 [data-arg-reorder].is-sorting > li:not(.is-dragging) { transition: transform .15s ease; }
 @media (prefers-reduced-motion: reduce) { [data-arg-reorder].is-sorting > li:not(.is-dragging) { transition: none; } }
+/* Dạng lưới: bản sao nổi bám theo con trỏ (phóng to nhẹ, bóng rõ) và ô giữ chỗ viền nét đứt tại vị trí sẽ thả */
+.arg-reorder__ghost { z-index: 200; box-sizing: border-box; pointer-events: none; scale: 1.06; box-shadow: var(--arg-shadow-soft-shadow), 0 10px 24px var(--arg-effect-black-8pct), 0 2px 6px var(--arg-effect-black-8pct); cursor: grabbing; }
 
 /* ARG UI · holding (thẻ cổ phiếu đang nắm giữ, gọn hai dòng: trái là mã, giá hiện tại, khối lượng và giá vốn; phải là kết quả lãi/lỗ) */
 .arg-holding-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--arg-space-2x); }
@@ -2964,7 +2967,7 @@
 .arg-ring b { font-size: var(--arg-font-font-size-title-3); font-weight: var(--arg-font-font-weight-bold); color: var(--arg-ui-text-on-bright-text-title); font-variant-numeric: tabular-nums; }
 
 /* ARG UI · notification */
-.arg-toasts { position: fixed; z-index: 120; right: max(var(--arg-space-4x), env(safe-area-inset-right, 0px)); bottom: calc(var(--arg-space-4x) + env(safe-area-inset-bottom, 0px)); display: grid; gap: var(--arg-space-2x); width: min(380px, calc(100% - var(--arg-space-8x))); pointer-events: none; }
+.arg-toasts { position: fixed; z-index: 120; right: max(var(--arg-space-4x), env(safe-area-inset-right, 0px)); bottom: calc(var(--arg-home-indicator, 13px) + var(--arg-space-5x)); display: grid; gap: var(--arg-space-2x); width: min(380px, calc(100% - var(--arg-space-8x))); pointer-events: none; }
 .arg-toast { pointer-events: auto; display: flex; align-items: flex-start; gap: var(--arg-space-3x); padding: var(--arg-space-3x) var(--arg-space-3x) var(--arg-space-3x) var(--arg-space-4x); border-radius: var(--arg-radius-sm); background: var(--arg-action-noti-toast-fill); color: var(--arg-ui-text-on-dim-text-content); box-shadow: var(--arg-shadow-toast-shadow); animation: arg-pop .2s ease; }
 .arg-toast__icon { flex: none; width: 20px; height: 20px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--c, var(--arg-ui-label-strong-blue)); }
 .arg-toast__icon .i { width: 12px; height: 12px; }
@@ -3139,10 +3142,8 @@
 .arg-svcedit__hint b { color: var(--arg-ui-text-on-bright-text-title); font-weight: var(--arg-font-font-weight-semibold); }
 .arg-svcedit__empty { margin: 0; padding: var(--arg-space-6x) 0; text-align: center; font-size: var(--arg-font-font-size-body-4); color: var(--arg-ui-text-on-bright-text-content-lv2); }
 .arg-svcedit__grid { list-style: none; margin: 0; padding: var(--arg-space-2x) 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--arg-space-3x); }
-.arg-svcedit__grid:empty { display: none; }
 .arg-svcedit__tile { position: relative; display: grid; justify-items: center; align-content: start; gap: var(--arg-space-2x); padding: var(--arg-space-3x) var(--arg-space-2x); border-radius: var(--arg-radius); background: var(--arg-ui-background-background); color: var(--arg-ui-text-on-bright-text-content); text-align: center; cursor: grab; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
 .arg-svcedit__tile .arg-service__label { overflow-wrap: anywhere; }
-.arg-svcedit__grid > .arg-svcedit__tile.is-dragging { background: var(--arg-ui-background-background); border-radius: var(--arg-radius); z-index: 5; cursor: grabbing; box-shadow: var(--arg-shadow-soft-shadow); }
 .arg-svcedit__remove { position: absolute; top: calc(var(--arg-space-2x) * -1); right: calc(var(--arg-space-2x) * -1); z-index: 1; display: grid; place-items: center; width: 20px; height: 20px; padding: 0; border: 2px solid var(--arg-ui-background-surface); border-radius: 50%; background: var(--arg-action-noti-toast-error); color: #fff; cursor: pointer; box-sizing: content-box; }
 .arg-svcedit__remove .i { width: 12px; height: 12px; }
 .arg-svcedit__remove:focus-visible, .arg-svcedit__add:focus-visible { outline: 2px solid var(--arg-action-text-button-link-text-button); outline-offset: 2px; }
@@ -3156,10 +3157,15 @@
 .arg-svcedit__add { flex: none; display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--arg-p-brand-header-start); cursor: pointer; }
 .arg-svcedit__add .i { width: 24px; height: 24px; }
 .arg-svcedit__add:disabled { color: var(--arg-ui-text-on-bright-text-disable); cursor: not-allowed; }
-/* Đang kéo: thẻ được kéo phóng to nhẹ, nổi trên các thẻ khác (bóng ở trên); các thẻ còn lại mờ còn 40% để thẻ chính nổi bật */
-.arg-svcedit__grid > .arg-svcedit__tile.is-dragging { scale: 1.06; }
-.arg-svcedit__grid.is-sorting > .arg-svcedit__tile:not(.is-dragging) { opacity: .4; }
-@media (prefers-reduced-motion: no-preference) { .arg-svcedit__tile:not(.is-dragging) { transition: transform .15s ease, opacity .15s ease; } }
+/* Đang kéo: bản sao nổi có bóng bám theo con trỏ (Reorder), các thẻ còn lại mờ còn 40% */
+/* Ô giữ chỗ: viền nét đứt màu thương hiệu, nền nhạt, nội dung ẩn; không đổi kích thước thẻ (dùng outline) */
+.arg-svcedit__tile.is-placeholder { opacity: 1; outline: 1.5px dashed var(--arg-p-brand-header-start); outline-offset: -1.5px; background: color-mix(in srgb, var(--arg-p-brand-header-start) 6%, transparent); }
+.arg-svcedit__tile.is-placeholder > * { visibility: hidden; }
+.arg-svcedit__grid.is-sorting > .arg-svcedit__tile:not(.is-placeholder) { opacity: .4; }
+@media (prefers-reduced-motion: no-preference) { .arg-svcedit__tile { transition: transform .15s ease, opacity .15s ease; } }
+/* Ô trống (chưa chọn đủ 6 dịch vụ): viền nét đứt màu kẻ, icon cộng và chữ "Còn trống" mờ; không tương tác */
+.arg-svcedit__slot { display: grid; justify-items: center; align-content: center; gap: var(--arg-space-1x); min-height: 104px; border-radius: var(--arg-radius); outline: 1.5px dashed var(--arg-ui-divider-stroke); outline-offset: -1.5px; color: var(--arg-ui-text-on-bright-text-disable); font: var(--arg-font-font-weight-regular) var(--arg-font-font-size-label-1)/var(--arg-font-line-height-label-1) var(--arg-font-family-family); -webkit-user-select: none; user-select: none; }
+.arg-svcedit__slot .i { width: 24px; height: 24px; }
 
 /* ARG UI · news */
 .arg-news-list { list-style: none; margin: 0; padding: 0 var(--arg-space-4x); background: var(--arg-ui-background-surface); border-radius: var(--arg-radius-lg); box-shadow: var(--arg-shadow-shadow); }
@@ -4966,7 +4972,8 @@ code { font-family: var(--mono); font-size: 12px; background: var(--arg-ui-backg
 <p>Nhấn giữ nút kéo rồi kéo lên xuống (chuột hoặc cảm ứng); các dòng khác nhường chỗ ngay khi con trỏ qua giữa dòng. Bàn phím: nút kéo đang focus, mũi tên lên hoặc xuống đổi một bậc. Thả tay thì ghi thứ tự vào <code>li.dataset.i</code> (kiểu sắp xếp "Mặc định" của Listbar lấy thứ tự mới) và bắn <code>arg:reorder</code> ({ code, index }).</p>
 <p>Dòng Quote <code>--fav</code> dùng nút kéo ở cột đầu; vùng bấm phủ cả dòng của <code>--link</code> nằm dưới nút (nút có <code>z-index: 1</code>).</p>
 <h3>Dạng lưới</h3>
-<p><code>[data-arg-reorder="grid"]</code> (ul lưới nhiều cột): cả thẻ <code>li</code> là nút kéo, không cần <code>[data-arg-handle]</code>. Chuột: kéo khi đã di chuyển quá 4px; cảm ứng: giữ khoảng 250ms rồi kéo, vuốt nhanh vẫn cuộn trang. Thẻ đang kéo bám theo con trỏ, con trỏ vào thẻ nào thì thẻ đang kéo đổi chỗ tới vị trí thẻ đó. Nút, liên kết bên trong thẻ không bắt đầu kéo. Dùng ở Svcedit.</p></div></details>
+<p><code>[data-arg-reorder="grid"]</code> (ul lưới nhiều cột): cả thẻ <code>li</code> là nút kéo, không cần <code>[data-arg-handle]</code>. Chuột: kéo khi đã di chuyển quá 4px; cảm ứng: giữ khoảng 250ms rồi kéo, vuốt nhanh vẫn cuộn trang. Bản sao nổi <code>.arg-reorder__ghost</code> (phóng to 106%, có bóng) bám theo con trỏ; thẻ thật ở lại làm ô giữ chỗ <code>.is-placeholder</code> (CSS riêng của từng component, ví dụ viền nét đứt ở Svcedit) và đổi chỗ tới vị trí thẻ mà con trỏ đi vào. Nút, liên kết bên trong thẻ không bắt đầu kéo. Dùng ở Svcedit.</p>
+<p>Ô có <code>data-fixed</code> trong lưới (ví dụ ô trống của Svcedit) không kéo được và không nhận thẻ.</p></div></details>
       </section>
 
       <section id="holding">
@@ -5293,11 +5300,14 @@ code { font-family: var(--mono); font-size: 12px; background: var(--arg-ui-backg
         <h2>Svcedit</h2>
         <p class="sec-desc">Màn Tuỳ chỉnh dịch vụ nhanh: lưới thẻ đã chọn (nút bỏ đỏ, kéo đổi vị trí) và danh sách dịch vụ theo nhóm với nút thêm. Dịch vụ đã chọn không hiện nút thêm.</p>
         <div class="demo">
-          <div class="group"><h3>Thẻ đã chọn</h3>
+          <div class="group"><h3>Thẻ đã chọn, còn ô trống</h3>
             <div class="phone" style="padding:var(--arg-space-4x) var(--arg-gutter)"><ul class="arg-svcedit__grid">
               <li class="arg-svcedit__tile"><button class="arg-svcedit__remove" type="button" aria-label="Bỏ Sổ lệnh"><i data-arg-icon="minus"></i></button><span class="arg-service__icon"><i data-arg-icon="clipboard-list-duotone"></i></span><span class="arg-service__label">Sổ lệnh</span></li>
               <li class="arg-svcedit__tile"><button class="arg-svcedit__remove" type="button" aria-label="Bỏ Nộp tiền"><i data-arg-icon="minus"></i></button><span class="arg-service__icon"><i data-arg-icon="card-receive-duotone"></i></span><span class="arg-service__label">Nộp tiền</span></li>
               <li class="arg-svcedit__tile"><button class="arg-svcedit__remove" type="button" aria-label="Bỏ Chuyển khoản"><i data-arg-icon="minus"></i></button><span class="arg-service__icon"><i data-arg-icon="transfer-horizontal-duotone"></i></span><span class="arg-service__label">Chuyển khoản</span></li>
+              <li class="arg-svcedit__slot" aria-hidden="true"><i data-arg-icon="plus"></i><span>Còn trống</span></li>
+              <li class="arg-svcedit__slot" aria-hidden="true"><i data-arg-icon="plus"></i><span>Còn trống</span></li>
+              <li class="arg-svcedit__slot" aria-hidden="true"><i data-arg-icon="plus"></i><span>Còn trống</span></li>
             </ul></div></div>
           <div class="group"><h3>Danh sách theo nhóm</h3>
             <div class="phone" style="padding:var(--arg-space-3x) var(--arg-gutter)"><ul class="arg-svcedit__list">
@@ -5309,9 +5319,9 @@ code { font-family: var(--mono); font-size: 12px; background: var(--arg-ui-backg
       <details class="spec"><summary>Tài liệu: class, trạng thái, JS</summary><div class="spec__body"><h3>Dùng khi</h3>
 <p>Người dùng chọn các dịch vụ hay dùng và sắp xếp vị trí để hiện ở lưới Dịch vụ nhanh trên Trang chủ. Mở từ nút Tuỳ chỉnh.</p>
 <h3>Class</h3>
-<div class="tbl-scroll"><table><thead><tr><th scope="col">Class</th><th scope="col">Mô tả</th></tr></thead><tbody><tr><td><code>__grid</code> <code>__tile</code></td><td>Lưới 3 cột các thẻ dịch vụ đã chọn (Service: icon gradient dịch vụ 48px và nhãn) trên nền xám nhạt, bo <code>--arg-radius</code>; <code>[data-arg-reorder="grid"]</code> cho kéo đổi vị trí; <code>.is-dragging</code> thẻ đang kéo phóng to 106%, nổi lên có bóng, các thẻ khác mờ còn 40% (<code>.is-sorting</code> trên lưới)</td></tr><tr><td><code>__remove</code></td><td>Nút bỏ ở góc trên phải thẻ: tròn 20px nền đỏ (token lỗi), icon trừ trắng, viền trắng</td></tr><tr><td><code>__hint</code></td><td>Dòng hướng dẫn và bộ đếm "Đã chọn n/6"</td></tr><tr><td><code>__list</code> <code>__row</code></td><td>Danh sách dịch vụ theo nhóm trong thẻ nền xám bo <code>--arg-radius-lg</code>, dòng cao 56px, đường kẻ nhạt (50% màu kẻ) bắt đầu từ chữ, không kéo qua icon</td></tr><tr><td><code>__icon</code> <code>__name</code></td><td>Icon gradient dịch vụ 32px (icon trắng 20px) và tên dịch vụ</td></tr><tr><td><code>__add</code></td><td>Nút thêm: icon <code>plus-circle</code> 24px màu thương hiệu; dịch vụ đã chọn không có nút; chuyển màu disable (<code>--arg-ui-text-on-bright-text-disable</code>, nhạt) khi đã đủ 6 dịch vụ</td></tr></tbody></table></div>
+<div class="tbl-scroll"><table><thead><tr><th scope="col">Class</th><th scope="col">Mô tả</th></tr></thead><tbody><tr><td><code>__grid</code> <code>__tile</code></td><td>Lưới 3 cột các thẻ dịch vụ đã chọn (Service: icon gradient dịch vụ 48px và nhãn) trên nền xám nhạt, bo <code>--arg-radius</code>; <code>[data-arg-reorder="grid"]</code> cho kéo đổi vị trí; khi kéo: bản sao nổi phóng to 106% có bóng bám theo con trỏ, thẻ thật thành ô giữ chỗ <code>.is-placeholder</code> (viền nét đứt màu thương hiệu, nội dung ẩn) ở vị trí sẽ thả, các thẻ khác mờ còn 40% (<code>.is-sorting</code> trên lưới)</td></tr><tr><td><code>__remove</code></td><td>Nút bỏ ở góc trên phải thẻ: tròn 20px nền đỏ (token lỗi), icon trừ trắng, viền trắng</td></tr><tr><td><code>__slot</code></td><td>Ô trống khi chưa chọn đủ 6 dịch vụ: viền nét đứt màu kẻ (<code>--arg-ui-divider-stroke</code>), icon cộng và chữ "Còn trống" màu disable; có <code>data-fixed</code> nên không kéo được, không nhận thẻ. Trên Trang chủ chỉ hiện các dịch vụ đã chọn (xếp từ trái, không có ô trống); không chọn dịch vụ nào thì hiện dòng nhắc bấm Tuỳ chỉnh</td></tr><tr><td><code>__hint</code></td><td>Dòng hướng dẫn và bộ đếm "Đã chọn n/6"</td></tr><tr><td><code>__list</code> <code>__row</code></td><td>Danh sách dịch vụ theo nhóm trong thẻ nền xám bo <code>--arg-radius-lg</code>, dòng cao 56px, đường kẻ nhạt (50% màu kẻ) bắt đầu từ chữ, không kéo qua icon</td></tr><tr><td><code>__icon</code> <code>__name</code></td><td>Icon gradient dịch vụ 32px (icon trắng 20px) và tên dịch vụ</td></tr><tr><td><code>__add</code></td><td>Nút thêm: icon <code>plus-circle</code> 24px màu thương hiệu; dịch vụ đã chọn không có nút; chuyển màu disable (<code>--arg-ui-text-on-bright-text-disable</code>, nhạt) khi đã đủ 6 dịch vụ</td></tr></tbody></table></div>
 <h3>Hành vi (JS)</h3>
-<p><code>[data-arg-svcedit]</code> trên màn, <code>data-arg-catalog</code> là JSON danh mục dịch vụ (id, nhãn, icon), <code>data-max</code> số dịch vụ tối đa. Bấm <code>[data-svc-remove]</code> bỏ, <code>[data-svc-add]</code> thêm vào cuối, kéo thẻ để đổi vị trí. <code>[data-svc-save]</code> lưu thứ tự vào sessionStorage (<code>arg-services</code>), đặt cờ <code>arg-services-saved</code> rồi quay lại; Trang chủ (Service) đọc lại và báo toast. Bắn <code>arg:services</code> ({ ids }).</p>
+<p><code>[data-arg-svcedit]</code> trên màn, <code>data-arg-catalog</code> là JSON danh mục dịch vụ (id, nhãn, icon), <code>data-max</code> số dịch vụ tối đa. Bấm <code>[data-svc-remove]</code> bỏ, <code>[data-svc-add]</code> thêm vào cuối, kéo thẻ để đổi vị trí. <code>[data-svc-save]</code> tắt khi danh sách và thứ tự giống lúc mở màn, bật khi có thay đổi (đưa về như cũ thì tắt lại). Bấm thì lưu thứ tự vào sessionStorage (<code>arg-services</code>), đặt cờ <code>arg-services-saved</code> rồi quay lại; Trang chủ (Service) đọc lại và báo toast. Bắn <code>arg:services</code> ({ ids }).</p>
 <p>Phụ thuộc: Service, Reorder (dạng lưới), Button, Action bar, Title, Appbar.</p></div></details>
       </section>
 
@@ -6473,7 +6483,8 @@ code { font-family: var(--mono); font-size: 12px; background: var(--arg-ui-backg
 <ul><li><code>ARG.toast({ type, title, text, duration })</code>, tối đa 4 toast, tự tắt sau 4 giây.</li><li><code>[data-arg-toast="success"]</code> mở toast mẫu.</li><li><code>[data-arg-mark-read="#id"]</code> đánh dấu đã đọc.</li></ul>
 <h3>Phụ thuộc</h3>
 <p><code>button.css</code> (<code>.arg-icon-btn</code>), <code>icon.css</code>.</p>
-<ul><li>Toast thành công dùng icon trắng (<code>.arg-toast--success</code>), tương phản tốt hơn vòng xanh lá trên nền tối.</li><li><code>.arg-toast--single</code> (gọi <code>ARG.toast({ text: '' })</code>): toast một dòng chỉ có tiêu đề, không xuống dòng; tiêu đề cần ngắn (khoảng dưới 30 chữ).</li></ul></div></details>
+<ul><li>Toast thành công dùng icon trắng (<code>.arg-toast--success</code>), tương phản tốt hơn vòng xanh lá trên nền tối.</li><li><code>.arg-toast--single</code> (gọi <code>ARG.toast({ text: '' })</code>): toast một dòng chỉ có tiêu đề, không xuống dòng; tiêu đề cần ngắn (khoảng dưới 30 chữ).</li></ul>
+<ul><li>Vị trí toast: có thanh tab dưới hoặc thanh nút dính đáy (Action bar) thì cách thanh đó 20px; không có thì cách vạch Home indicator 20px (<code>--arg-home-indicator</code> + 20px).</li></ul></div></details>
       </section>
 
       <section id="media">
@@ -6525,7 +6536,7 @@ code { font-family: var(--mono); font-size: 12px; background: var(--arg-ui-backg
   </div>
 </div>
 
-<script id="build-report" type="application/json">{"checks": [{"ok": true, "name": "Token CSS được dùng đều tồn tại", "detail": "217 biến dùng, thiếu: không"}, {"ok": true, "name": "Class trong ví dụ đều có CSS", "detail": "705 class dùng, thiếu: không"}, {"ok": true, "name": "Icon Solar được dùng đều có trong sprite", "detail": "116 icon dùng / 116 trong sprite, thiếu: không"}, {"ok": true, "name": "Mỗi component có ví dụ HTML và tài liệu", "detail": "99 component, thiếu tài liệu: không"}, {"ok": true, "name": "Token chiều cao điều khiển (32 / 40 / 44 / 48)", "detail": "height-small, height-normal, height-xl, height-xxl"}, {"ok": true, "name": "Gradient nút chính theo header web Agriseco", "detail": "--arg-gradient-primary-button: linear-gradient(90deg, var(--arg-p-brand-header-start) 0%, var(--arg-p-brand-header-end) 100%);"}]}</script>
+<script id="build-report" type="application/json">{"checks": [{"ok": true, "name": "Token CSS được dùng đều tồn tại", "detail": "218 biến dùng, thiếu: không"}, {"ok": true, "name": "Class trong ví dụ đều có CSS", "detail": "706 class dùng, thiếu: không"}, {"ok": true, "name": "Icon Solar được dùng đều có trong sprite", "detail": "116 icon dùng / 116 trong sprite, thiếu: không"}, {"ok": true, "name": "Mỗi component có ví dụ HTML và tài liệu", "detail": "99 component, thiếu tài liệu: không"}, {"ok": true, "name": "Token chiều cao điều khiển (32 / 40 / 44 / 48)", "detail": "height-small, height-normal, height-xl, height-xxl"}, {"ok": true, "name": "Gradient nút chính theo header web Agriseco", "detail": "--arg-gradient-primary-button: linear-gradient(90deg, var(--arg-p-brand-header-start) 0%, var(--arg-p-brand-header-end) 100%);"}]}</script>
 <script>
 /* ===== dist/arg-ui.js ===== */
 /* ARG UI behaviour. Generated by ui/build.py from ui/components/*. */
@@ -6934,6 +6945,9 @@ code { font-family: var(--mono); font-size: 12px; background: var(--arg-ui-backg
       b.setAttribute('aria-live', 'polite');
       ARG.root().appendChild(b);
     }
+    /* Vị trí: có thanh tab dưới (hoặc thanh nút dính đáy) thì cách thanh đó 20px; không có thì cách vạch Home indicator 20px (CSS mặc định) */
+    var scr = ARG.$$('[data-arg-screen]').filter(function (x) { return !x.hidden; })[0] || document, bar = scr.querySelector('.arg-tabbar, .arg-actionbar');
+    b.style.bottom = bar && bar.offsetParent !== null ? Math.max(0, window.innerHeight - bar.getBoundingClientRect().top) + 20 + 'px' : '';
     return b;
   }
   ARG.toast = function (opt) {
@@ -8132,7 +8146,7 @@ code { font-family: var(--mono); font-size: 12px; background: var(--arg-ui-backg
    (để kiểu sắp xếp "Mặc định" của Listbar nhận thứ tự mới). Dạng lưới: xem khối "Dạng lưới" bên dưới. Bắn "arg:reorder" ({ code, index }) trên ul. */
 (function () {
   'use strict';
-  function items(ul) { return Array.prototype.slice.call(ul.children).filter(function (x) { return x.tagName === 'LI'; }); }
+  function items(ul) { return Array.prototype.slice.call(ul.children).filter(function (x) { return x.tagName === 'LI' && !x.hasAttribute('data-fixed'); }); }
   function commit(ul, li) {
     var all = items(ul);
     all.forEach(function (x, i) { x.dataset.i = i; delete x.dataset.added; });
@@ -8170,28 +8184,33 @@ code { font-family: var(--mono); font-size: 12px; background: var(--arg-ui-backg
   }
   document.addEventListener('pointerup', end); document.addEventListener('pointercancel', end);
   /* Dạng lưới [data-arg-reorder="grid"]: cả thẻ li là nút kéo (không có nút kéo riêng). Chuột: kéo thẻ khi đã di chuyển quá 4px; cảm ứng: giữ khoảng 250ms rồi kéo (vuốt nhanh vẫn cuộn trang).
-     Thẻ đang kéo bám theo con trỏ; con trỏ vào thẻ nào thì thẻ đang kéo đổi chỗ tới vị trí đó. Nút bên trong thẻ (button) không bắt đầu kéo. */
+     Bản sao nổi (có bóng) bám theo con trỏ; thẻ thật ở lại làm ô giữ chỗ viền nét đứt, con trỏ vào thẻ nào thì ô giữ chỗ đổi chỗ tới vị trí đó. Nút bên trong thẻ (button) không bắt đầu kéo; ô có data-fixed (ví dụ ô trống) không kéo được và không nhận thẻ. */
   var gr = null, gTimer = 0, HOLD = 250;
-  function gTarget(t) { var li = t.closest && t.closest('[data-arg-reorder="grid"] > li'); return li && !t.closest('button, a') ? li : null; }
+  function gTarget(t) { var li = t.closest && t.closest('[data-arg-reorder="grid"] > li:not([data-fixed])'); return li && !t.closest('button, a') ? li : null; }
   function gBegin(li, x, y) {
     var r = li.getBoundingClientRect();
     gr = { li: li, ul: li.parentNode, gx: x - r.left, gy: y - r.top, x0: x, y0: y, on: false };
   }
-  function gStart() { gr.on = true; gr.li.classList.add('is-dragging'); gr.ul.classList.add('is-sorting'); }
+  /* Thẻ thật ở lại trong lưới làm ô giữ chỗ (viền nét đứt, nội dung ẩn) cho thấy vị trí sẽ thả; một bản sao nổi (ghost, có bóng) bám theo con trỏ. */
+  function gStart() {
+    var li = gr.li, r = li.getBoundingClientRect(), g = li.cloneNode(true);
+    gr.on = true; li.classList.add('is-placeholder'); gr.ul.classList.add('is-sorting');
+    g.removeAttribute('id'); g.setAttribute('aria-hidden', 'true'); g.classList.add('arg-reorder__ghost');
+    g.style.cssText = 'position:fixed;margin:0;left:' + r.left + 'px;top:' + r.top + 'px;width:' + r.width + 'px;height:' + r.height + 'px';
+    document.body.appendChild(g); gr.ghost = g;
+  }
   function gMove(x, y) {
     var li = gr.li, all = items(gr.ul), hit = null;
-    li.style.transform = '';
     all.forEach(function (o) { if (o !== li && !hit) { var b = o.getBoundingClientRect(); if (x >= b.left && x <= b.right && y >= b.top && y <= b.bottom) hit = o; } });
     if (hit) gr.ul.insertBefore(li, all.indexOf(hit) < all.indexOf(li) ? hit : hit.nextSibling);
-    var n = li.getBoundingClientRect();
-    li.style.transform = 'translate(' + (x - gr.gx - n.left) + 'px,' + (y - gr.gy - n.top) + 'px)';
+    gr.ghost.style.left = x - gr.gx + 'px'; gr.ghost.style.top = y - gr.gy + 'px';
   }
   function gEnd() {
     clearTimeout(gTimer);
     if (!gr) return;
     var d = gr; gr = null;
     if (!d.on) return;
-    d.li.style.transform = ''; d.li.classList.remove('is-dragging'); d.ul.classList.remove('is-sorting');
+    d.ghost.remove(); d.li.classList.remove('is-placeholder'); d.ul.classList.remove('is-sorting');
     commit(d.ul, d.li);
   }
   document.addEventListener('mousedown', function (e) { var li = e.button === 0 && gTarget(e.target); if (li) gBegin(li, e.clientX, e.clientY); });
@@ -8257,7 +8276,9 @@ code { font-family: var(--mono); font-size: 12px; background: var(--arg-ui-backg
 /* --- components/svcedit/svcedit.js --- */
 /* ARG UI svcedit: màn [data-arg-svcedit] (Tuỳ chỉnh dịch vụ nhanh). data-arg-catalog là JSON { id: { id, label, icon } }, data-max là số dịch vụ tối đa.
    - Lựa chọn ban đầu lấy từ sessionStorage "arg-services" (mảng id theo thứ tự), không có thì theo thẻ đang vẽ sẵn.
+   - Chưa chọn đủ tối đa thì các ô còn lại vẽ thành ô trống .arg-svcedit__slot (data-fixed).
    - [data-svc-remove] bỏ một dịch vụ; [data-svc-add] thêm vào cuối (tắt khi đủ tối đa); kéo thẻ đổi vị trí (Reorder dạng lưới, sự kiện arg:reorder).
+   - [data-svc-save] tắt khi danh sách (kể cả thứ tự) giống lúc mở màn, bật khi có thay đổi, tắt lại nếu người dùng đưa về như cũ.
    - [data-svc-save] lưu thứ tự vào sessionStorage, đặt cờ "arg-services-saved" để Trang chủ báo toast, rồi quay lại. Lưu: ghi đè hoàn toàn danh sách. */
 (function () {
   'use strict';
@@ -8270,15 +8291,20 @@ code { font-family: var(--mono); font-size: 12px; background: var(--arg-ui-backg
       try { cat = JSON.parse(scr.getAttribute('data-arg-catalog')); } catch (e) {}
       var fav = read() || ARG.$$('.arg-svcedit__tile', grid).map(function (t) { return t.getAttribute('data-id'); });
       fav = fav.filter(function (id) { return cat[id]; });
+      var base = fav.join(','), save = ARG.$('[data-svc-save]', scr);  /* thứ tự lúc mở màn: giống thì nút Lưu tắt */
       function tile(d) {
         return '<li class="arg-svcedit__tile" data-id="' + d.id + '"><button class="arg-svcedit__remove" type="button" data-svc-remove aria-label="Bỏ ' + d.label + ' khỏi dịch vụ nhanh">' + ARG.icon('minus') + '</button>' +
           '<span class="arg-service__icon">' + ARG.icon(d.icon) + '</span><span class="arg-service__label">' + d.label + '</span></li>';
       }
+      /* Chưa chọn đủ: các ô còn lại hiện thành ô trống viền nét đứt để người dùng thấy còn chỗ (không kéo được, không bấm được) */
+      function slots(n) { var h = ''; for (var i = 0; i < n; i++) h += '<li class="arg-svcedit__slot" data-fixed aria-hidden="true">' + ARG.icon('plus') + '<span>Còn trống</span></li>'; return h; }
+      function dirty() { if (save) save.disabled = fav.join(',') === base; }
       function render() {
-        grid.innerHTML = fav.map(function (id) { return tile(cat[id]); }).join('');
+        grid.innerHTML = fav.map(function (id) { return tile(cat[id]); }).join('') + slots(max - fav.length);
         ARG.init(grid);
         if (cnt) cnt.textContent = fav.length;
         if (empty) empty.hidden = fav.length > 0;
+        dirty();
         ARG.$$('.arg-svcedit__row', scr).forEach(function (row) {
           var id = row.getAttribute('data-id'), on = fav.indexOf(id) >= 0, b = ARG.$('.arg-svcedit__add', row);
           if (on && b) b.remove();
@@ -8298,7 +8324,7 @@ code { font-family: var(--mono); font-size: 12px; background: var(--arg-ui-backg
           var back = ARG.$('[data-arg-back]', scr); if (back) back.click();
         }
       });
-      grid.addEventListener('arg:reorder', function () { fav = ARG.$$('.arg-svcedit__tile', grid).map(function (t) { return t.getAttribute('data-id'); }); });
+      grid.addEventListener('arg:reorder', function () { fav = ARG.$$('.arg-svcedit__tile', grid).map(function (t) { return t.getAttribute('data-id'); }); dirty(); });
       render();
     });
   });

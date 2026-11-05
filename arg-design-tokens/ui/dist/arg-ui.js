@@ -404,6 +404,9 @@
       b.setAttribute('aria-live', 'polite');
       ARG.root().appendChild(b);
     }
+    /* Vị trí: có thanh tab dưới (hoặc thanh nút dính đáy) thì cách thanh đó 20px; không có thì cách vạch Home indicator 20px (CSS mặc định) */
+    var scr = ARG.$$('[data-arg-screen]').filter(function (x) { return !x.hidden; })[0] || document, bar = scr.querySelector('.arg-tabbar, .arg-actionbar');
+    b.style.bottom = bar && bar.offsetParent !== null ? Math.max(0, window.innerHeight - bar.getBoundingClientRect().top) + 20 + 'px' : '';
     return b;
   }
   ARG.toast = function (opt) {
@@ -1602,7 +1605,7 @@
    (để kiểu sắp xếp "Mặc định" của Listbar nhận thứ tự mới). Dạng lưới: xem khối "Dạng lưới" bên dưới. Bắn "arg:reorder" ({ code, index }) trên ul. */
 (function () {
   'use strict';
-  function items(ul) { return Array.prototype.slice.call(ul.children).filter(function (x) { return x.tagName === 'LI'; }); }
+  function items(ul) { return Array.prototype.slice.call(ul.children).filter(function (x) { return x.tagName === 'LI' && !x.hasAttribute('data-fixed'); }); }
   function commit(ul, li) {
     var all = items(ul);
     all.forEach(function (x, i) { x.dataset.i = i; delete x.dataset.added; });
@@ -1640,28 +1643,33 @@
   }
   document.addEventListener('pointerup', end); document.addEventListener('pointercancel', end);
   /* Dạng lưới [data-arg-reorder="grid"]: cả thẻ li là nút kéo (không có nút kéo riêng). Chuột: kéo thẻ khi đã di chuyển quá 4px; cảm ứng: giữ khoảng 250ms rồi kéo (vuốt nhanh vẫn cuộn trang).
-     Thẻ đang kéo bám theo con trỏ; con trỏ vào thẻ nào thì thẻ đang kéo đổi chỗ tới vị trí đó. Nút bên trong thẻ (button) không bắt đầu kéo. */
+     Bản sao nổi (có bóng) bám theo con trỏ; thẻ thật ở lại làm ô giữ chỗ viền nét đứt, con trỏ vào thẻ nào thì ô giữ chỗ đổi chỗ tới vị trí đó. Nút bên trong thẻ (button) không bắt đầu kéo; ô có data-fixed (ví dụ ô trống) không kéo được và không nhận thẻ. */
   var gr = null, gTimer = 0, HOLD = 250;
-  function gTarget(t) { var li = t.closest && t.closest('[data-arg-reorder="grid"] > li'); return li && !t.closest('button, a') ? li : null; }
+  function gTarget(t) { var li = t.closest && t.closest('[data-arg-reorder="grid"] > li:not([data-fixed])'); return li && !t.closest('button, a') ? li : null; }
   function gBegin(li, x, y) {
     var r = li.getBoundingClientRect();
     gr = { li: li, ul: li.parentNode, gx: x - r.left, gy: y - r.top, x0: x, y0: y, on: false };
   }
-  function gStart() { gr.on = true; gr.li.classList.add('is-dragging'); gr.ul.classList.add('is-sorting'); }
+  /* Thẻ thật ở lại trong lưới làm ô giữ chỗ (viền nét đứt, nội dung ẩn) cho thấy vị trí sẽ thả; một bản sao nổi (ghost, có bóng) bám theo con trỏ. */
+  function gStart() {
+    var li = gr.li, r = li.getBoundingClientRect(), g = li.cloneNode(true);
+    gr.on = true; li.classList.add('is-placeholder'); gr.ul.classList.add('is-sorting');
+    g.removeAttribute('id'); g.setAttribute('aria-hidden', 'true'); g.classList.add('arg-reorder__ghost');
+    g.style.cssText = 'position:fixed;margin:0;left:' + r.left + 'px;top:' + r.top + 'px;width:' + r.width + 'px;height:' + r.height + 'px';
+    document.body.appendChild(g); gr.ghost = g;
+  }
   function gMove(x, y) {
     var li = gr.li, all = items(gr.ul), hit = null;
-    li.style.transform = '';
     all.forEach(function (o) { if (o !== li && !hit) { var b = o.getBoundingClientRect(); if (x >= b.left && x <= b.right && y >= b.top && y <= b.bottom) hit = o; } });
     if (hit) gr.ul.insertBefore(li, all.indexOf(hit) < all.indexOf(li) ? hit : hit.nextSibling);
-    var n = li.getBoundingClientRect();
-    li.style.transform = 'translate(' + (x - gr.gx - n.left) + 'px,' + (y - gr.gy - n.top) + 'px)';
+    gr.ghost.style.left = x - gr.gx + 'px'; gr.ghost.style.top = y - gr.gy + 'px';
   }
   function gEnd() {
     clearTimeout(gTimer);
     if (!gr) return;
     var d = gr; gr = null;
     if (!d.on) return;
-    d.li.style.transform = ''; d.li.classList.remove('is-dragging'); d.ul.classList.remove('is-sorting');
+    d.ghost.remove(); d.li.classList.remove('is-placeholder'); d.ul.classList.remove('is-sorting');
     commit(d.ul, d.li);
   }
   document.addEventListener('mousedown', function (e) { var li = e.button === 0 && gTarget(e.target); if (li) gBegin(li, e.clientX, e.clientY); });
@@ -1727,7 +1735,9 @@
 /* --- components/svcedit/svcedit.js --- */
 /* ARG UI svcedit: màn [data-arg-svcedit] (Tuỳ chỉnh dịch vụ nhanh). data-arg-catalog là JSON { id: { id, label, icon } }, data-max là số dịch vụ tối đa.
    - Lựa chọn ban đầu lấy từ sessionStorage "arg-services" (mảng id theo thứ tự), không có thì theo thẻ đang vẽ sẵn.
+   - Chưa chọn đủ tối đa thì các ô còn lại vẽ thành ô trống .arg-svcedit__slot (data-fixed).
    - [data-svc-remove] bỏ một dịch vụ; [data-svc-add] thêm vào cuối (tắt khi đủ tối đa); kéo thẻ đổi vị trí (Reorder dạng lưới, sự kiện arg:reorder).
+   - [data-svc-save] tắt khi danh sách (kể cả thứ tự) giống lúc mở màn, bật khi có thay đổi, tắt lại nếu người dùng đưa về như cũ.
    - [data-svc-save] lưu thứ tự vào sessionStorage, đặt cờ "arg-services-saved" để Trang chủ báo toast, rồi quay lại. Lưu: ghi đè hoàn toàn danh sách. */
 (function () {
   'use strict';
@@ -1740,15 +1750,20 @@
       try { cat = JSON.parse(scr.getAttribute('data-arg-catalog')); } catch (e) {}
       var fav = read() || ARG.$$('.arg-svcedit__tile', grid).map(function (t) { return t.getAttribute('data-id'); });
       fav = fav.filter(function (id) { return cat[id]; });
+      var base = fav.join(','), save = ARG.$('[data-svc-save]', scr);  /* thứ tự lúc mở màn: giống thì nút Lưu tắt */
       function tile(d) {
         return '<li class="arg-svcedit__tile" data-id="' + d.id + '"><button class="arg-svcedit__remove" type="button" data-svc-remove aria-label="Bỏ ' + d.label + ' khỏi dịch vụ nhanh">' + ARG.icon('minus') + '</button>' +
           '<span class="arg-service__icon">' + ARG.icon(d.icon) + '</span><span class="arg-service__label">' + d.label + '</span></li>';
       }
+      /* Chưa chọn đủ: các ô còn lại hiện thành ô trống viền nét đứt để người dùng thấy còn chỗ (không kéo được, không bấm được) */
+      function slots(n) { var h = ''; for (var i = 0; i < n; i++) h += '<li class="arg-svcedit__slot" data-fixed aria-hidden="true">' + ARG.icon('plus') + '<span>Còn trống</span></li>'; return h; }
+      function dirty() { if (save) save.disabled = fav.join(',') === base; }
       function render() {
-        grid.innerHTML = fav.map(function (id) { return tile(cat[id]); }).join('');
+        grid.innerHTML = fav.map(function (id) { return tile(cat[id]); }).join('') + slots(max - fav.length);
         ARG.init(grid);
         if (cnt) cnt.textContent = fav.length;
         if (empty) empty.hidden = fav.length > 0;
+        dirty();
         ARG.$$('.arg-svcedit__row', scr).forEach(function (row) {
           var id = row.getAttribute('data-id'), on = fav.indexOf(id) >= 0, b = ARG.$('.arg-svcedit__add', row);
           if (on && b) b.remove();
@@ -1768,7 +1783,7 @@
           var back = ARG.$('[data-arg-back]', scr); if (back) back.click();
         }
       });
-      grid.addEventListener('arg:reorder', function () { fav = ARG.$$('.arg-svcedit__tile', grid).map(function (t) { return t.getAttribute('data-id'); }); });
+      grid.addEventListener('arg:reorder', function () { fav = ARG.$$('.arg-svcedit__tile', grid).map(function (t) { return t.getAttribute('data-id'); }); dirty(); });
       render();
     });
   });

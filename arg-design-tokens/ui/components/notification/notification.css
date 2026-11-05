@@ -1,5 +1,5 @@
 /* ARG UI · notification */
-.arg-toasts { position: fixed; z-index: 120; right: max(var(--arg-space-4x), env(safe-area-inset-right, 0px)); bottom: calc(var(--arg-space-4x) + env(safe-area-inset-bottom, 0px)); display: grid; gap: var(--arg-space-2x); width: min(380px, calc(100% - var(--arg-space-8x))); pointer-events: none; }
+.arg-toasts { position: fixed; z-index: 120; right: max(var(--arg-space-4x), env(safe-area-inset-right, 0px)); bottom: calc(var(--arg-home-indicator, 13px) + var(--arg-space-5x)); display: grid; gap: var(--arg-space-2x); width: min(380px, calc(100% - var(--arg-space-8x))); pointer-events: none; }
 .arg-toast { pointer-events: auto; display: flex; align-items: flex-start; gap: var(--arg-space-3x); padding: var(--arg-space-3x) var(--arg-space-3x) var(--arg-space-3x) var(--arg-space-4x); border-radius: var(--arg-radius-sm); background: var(--arg-action-noti-toast-fill); color: var(--arg-ui-text-on-dim-text-content); box-shadow: var(--arg-shadow-toast-shadow); animation: arg-pop .2s ease; }
 .arg-toast__icon { flex: none; width: 20px; height: 20px; display: grid; place-items: center; border-radius: 50%; color: #fff; background: var(--c, var(--arg-ui-label-strong-blue)); }
 .arg-toast__icon .i { width: 12px; height: 12px; }

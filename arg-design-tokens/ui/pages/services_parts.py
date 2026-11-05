@@ -49,5 +49,5 @@ def screen():
     <ul class="arg-svcedit__grid" data-arg-reorder="grid" aria-label="Dịch vụ nhanh">{''.join(edit_tile(CATALOG[i]) for i in DEFAULT)}</ul><p class="arg-svcedit__empty" data-svc-empty hidden>Chưa có dịch vụ nào. Thêm từ danh sách bên dưới.</p></div>
   {groups}
 </main>
-<div class="arg-actionbar arg-actionbar--fixed"><button class="arg-btn arg-btn--primary arg-btn--xl" type="button" data-svc-save>Lưu</button></div>
+<div class="arg-actionbar arg-actionbar--fixed"><button class="arg-btn arg-btn--primary arg-btn--xl" type="button" data-svc-save disabled>Lưu</button></div>
 </div>'''
